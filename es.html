@@ -2011,6 +2011,26 @@ html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
 .br7.br7-done .br7-home .ch{opacity:1;animation:chIn 1.1s cubic-bezier(.22,.61,.36,1) both;animation-delay:calc(var(--c) * 70ms + .2s)}
 .br7.br7-done .br7-after{transition:opacity 1.6s ease 2.6s,max-height 1.4s ease 2.4s}
 @media (prefers-reduced-motion:reduce){.br7-home .ch{opacity:1}.br7.br7-done .br7-home .ch{animation:none}.br7.br7-done .br7-after{transition-delay:0s}}
+/* v14 · the entrance, one thing at a time: the title, its gold line and heart, then what & where.
+   On the first scroll "Individual support and sound healing" rises into the top bar, and the human-space line takes its place. */
+.v8 .hero-copy{display:grid;grid-template-columns:minmax(0,1fr)}
+.v8 .hero-copy .kick8,.v8 .hero-copy .hero-sub{grid-row:3;grid-column:1;align-self:start}
+.v8 .hero-copy .hero-sub{margin-top:.9em}
+.v8 .hero-copy .h-swash{display:block;width:min(24rem,72vw);height:auto;margin:.1em 0 0;overflow:visible}
+.v8 .hero-copy .h-swash path{fill:none;stroke:var(--gold);stroke-width:2.2;stroke-linecap:round;stroke-dasharray:1;stroke-dashoffset:1;animation:hsDraw 2s cubic-bezier(.4,0,.2,1) 1.3s forwards}
+.v8 .hero-copy .h-swash .sh{fill:var(--rose-deep);stroke:none;opacity:0;animation:hsHeart 1s ease 2.9s forwards}
+@keyframes hsDraw{to{stroke-dashoffset:0}}
+@keyframes hsHeart{to{opacity:1}}
+.v8 .hero-copy .kick8{align-items:flex-start;animation-delay:3.5s}
+.v8 .kick8 .k-what{transform-origin:0 0;transition:transform .7s cubic-bezier(.45,0,.2,1)}
+.v8 .kick8 .k-where{transition:opacity .35s ease}
+.v8 .kick8.k-fly .k-where{opacity:0}
+.v8 .kick8{transition:opacity .25s ease}
+.v8 .kick8.k-gone{opacity:0}
+.v8.tag-on .bn-tag{opacity:1;transition-duration:.25s}
+.v8 .hero.sub-on .hero-sub .hw{animation-delay:calc(var(--c) * 95ms + .65s)}
+@media (prefers-reduced-motion:reduce){.v8 .hero-copy .h-swash path{animation:none;stroke-dashoffset:0}.v8 .hero-copy .h-swash .sh{animation:none;opacity:1}.v8 .kick8 .k-what{transition:none}}
+.v8 .kick8.k-fly .k-what{opacity:.85}
 </style>
 </head>
 <body class="v8">
@@ -2125,6 +2145,7 @@ html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
     <div class="lay pads" aria-hidden="true" data-sc-parallax="1.6"><svg viewBox="0 0 1200 300" preserveAspectRatio="xMidYMax slice" aria-hidden="true"><g fill="#6F7F40"><path d="M-40 300C-40 220 80 170 200 182 276 190 330 232 320 262L230 236 260 300Z" fill-opacity=".92"/><path d="M1240 300C1240 206 1120 160 1000 170 920 178 880 214 890 246L980 226 950 300Z" fill-opacity=".9"/></g><g fill="#8E9F58"><ellipse cx="420" cy="292" rx="110" ry="22" fill-opacity=".7"/><ellipse cx="820" cy="280" rx="70" ry="14" fill-opacity=".6"/></g></svg></div>
     <div class="hero-copy">
       <h1 class="d h1w" data-tremble aria-label="Tú también eres importante."><span class="w"><span class="ch" style="--c:0">T</span><span class="ch" style="--c:1">ú</span></span> <span class="w"><span class="ch" style="--c:4">t</span><span class="ch" style="--c:5">a</span><span class="ch" style="--c:6">m</span><span class="ch" style="--c:7">b</span><span class="ch" style="--c:8">i</span><span class="ch" style="--c:9">é</span><span class="ch" style="--c:10">n</span></span> <span class="w"><span class="ch" style="--c:13">e</span><span class="ch" style="--c:14">r</span><span class="ch" style="--c:15">e</span><span class="ch" style="--c:16">s</span></span> <em><span class="w"><span class="ch" style="--c:19">i</span><span class="ch" style="--c:20">m</span><span class="ch" style="--c:21">p</span><span class="ch" style="--c:22">o</span><span class="ch" style="--c:23">r</span><span class="ch" style="--c:24">t</span><span class="ch" style="--c:25">a</span><span class="ch" style="--c:26">n</span><span class="ch" style="--c:27">t</span><span class="ch" style="--c:28">e</span><span class="ch" style="--c:29">.</span></span></em></h1>
+      <svg class="swash h-swash" viewBox="0 0 600 60" aria-hidden="true"><path pathLength="1" d="M10 40C120 18 240 12 330 28 400 40 470 46 590 22"/><path class="sh" transform="translate(560 18) scale(.9)" d="M0 6C-3 -1 -12 0 -12 7 -12 13 0 20 0 20 0 20 12 13 12 7 12 0 3 -1 0 6Z"/></svg>
       <p class="kick8"><span class="k-what">Acompañamiento individual y sonoterapia</span><span class="k-where">Gatineau · Ottawa</span></p>
       <p class="hero-sub" aria-label="Un espacio profundamente humano para bajar el ritmo, sentir, acoger lo que se vive en ti y recuperar la claridad y la calma."><span class="hw" style="--c:0" aria-hidden="true">Un</span> <span class="hw" style="--c:1" aria-hidden="true">espacio</span> <span class="hw" style="--c:2" aria-hidden="true">profundamente</span> <span class="hw" style="--c:3" aria-hidden="true">humano</span> <span class="hw" style="--c:4" aria-hidden="true">para</span> <span class="hw" style="--c:5" aria-hidden="true">bajar</span> <span class="hw" style="--c:6" aria-hidden="true">el</span> <span class="hw" style="--c:7" aria-hidden="true">ritmo,</span> <span class="hw" style="--c:8" aria-hidden="true">sentir,</span> <span class="hw" style="--c:9" aria-hidden="true">acoger</span> <span class="hw" style="--c:10" aria-hidden="true">lo</span> <span class="hw" style="--c:11" aria-hidden="true">que</span> <span class="hw" style="--c:12" aria-hidden="true">se</span> <span class="hw" style="--c:13" aria-hidden="true">vive</span> <span class="hw" style="--c:14" aria-hidden="true">en</span> <span class="hw" style="--c:15" aria-hidden="true">ti</span> <span class="hw" style="--c:16" aria-hidden="true">y</span> <span class="hw" style="--c:17" aria-hidden="true">recuperar</span> <span class="hw" style="--c:18" aria-hidden="true">la</span> <span class="hw" style="--c:19" aria-hidden="true">claridad</span> <span class="hw" style="--c:20" aria-hidden="true">y</span> <span class="hw" style="--c:21" aria-hidden="true">la</span> <span class="hw" style="--c:22" aria-hidden="true">calma.</span></p>
     </div>
@@ -4295,6 +4316,30 @@ size(); addEventListener('resize',size);
   if(document.readyState==='complete') later(); else addEventListener('load',later);
   /* a tap before that still plays: the first touch loads it on the spot */
   addEventListener('pointerdown',go,{once:true,passive:true});
+})();
+
+/* v14 · "Individual support and sound healing" rises into the top bar on the first scroll, and comes back down at the top */
+(function(){
+  var hero=document.querySelector('.hero'), k=hero&&hero.querySelector('.kick8'), what=k&&k.querySelector('.k-what'),
+      tag=document.querySelector('.bar .bn-tag'), tl=tag&&(tag.querySelector('.t-long')||tag);
+  if(!k||!what||!tl) return;
+  var RMm=matchMedia('(prefers-reduced-motion: reduce)'), up=false, tmr=0, b=document.body;
+  function fly(){
+    if(up) return; up=true; clearTimeout(tmr);
+    if(RMm.matches){ k.classList.add('k-gone'); b.classList.add('tag-on'); return; }
+    var a=what.getBoundingClientRect(), t=tl.getBoundingClientRect(); if(!a.width) return;
+    k.classList.add('k-fly');
+    what.style.transform='translate('+(t.left-a.left).toFixed(1)+'px,'+(t.top-a.top).toFixed(1)+'px) scale('+(t.width/a.width).toFixed(3)+')';
+    tmr=setTimeout(function(){ b.classList.add('tag-on'); k.classList.add('k-gone'); },640);
+  }
+  function back(){
+    if(!up) return; up=false; clearTimeout(tmr);
+    b.classList.remove('tag-on'); k.classList.remove('k-gone'); what.style.transform='';
+    tmr=setTimeout(function(){ k.classList.remove('k-fly'); },500);
+  }
+  function sync(){ if(hero.classList.contains('moved')) fly(); else back(); }
+  new MutationObserver(sync).observe(hero,{attributes:true,attributeFilter:['class']});
+  sync();
 })();
 </script>
 <script>ScrollCraft.mount(document.body);</script>
