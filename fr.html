@@ -2031,6 +2031,14 @@ html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
 .v8 .hero.sub-on .hero-sub .hw{animation-delay:calc(var(--c) * 95ms + .65s)}
 @media (prefers-reduced-motion:reduce){.v8 .hero-copy .h-swash path{animation:none;stroke-dashoffset:0}.v8 .hero-copy .h-swash .sh{animation:none;opacity:1}.v8 .kick8 .k-what{transition:none}}
 .v8 .kick8.k-fly .k-what{opacity:.85}
+/* v14.1 · the human-space line waits for "Individual support…" to have risen */
+.v8 .hero-copy .hero-sub{transition:opacity .5s ease}
+.v8 .hero-copy:not(.k-up) .hero-sub{opacity:0}
+.v8 .hero-copy:not(.k-up) .hero-sub .hw{opacity:0!important;animation:none!important}
+.v8 .hero-copy.k-up .hero-sub .hw{opacity:1;animation:readIn 1s cubic-bezier(.22,.61,.36,1) both;animation-delay:calc(var(--c) * 95ms + .15s)}
+@media (prefers-reduced-motion:reduce){.v8 .hero-copy.k-up .hero-sub .hw{animation:none}}
+.v8 .hero-copy .kick8.k-in{animation:none;opacity:1}
+.v8 .hero-copy .kick8.k-in.k-gone{opacity:0}
 </style>
 </head>
 <body class="v8">
@@ -4318,28 +4326,37 @@ size(); addEventListener('resize',size);
   addEventListener('pointerdown',go,{once:true,passive:true});
 })();
 
-/* v14 · "Individual support and sound healing" rises into the top bar on the first scroll, and comes back down at the top */
+/* v14.1 · "Individual support and sound healing" always shows first; it rises into the top bar only after the visitor
+   has had time to see it (1.5 s) and then really scrolls (40 px from where they were). The human-space line follows it. */
 (function(){
-  var hero=document.querySelector('.hero'), k=hero&&hero.querySelector('.kick8'), what=k&&k.querySelector('.k-what'),
-      tag=document.querySelector('.bar .bn-tag'), tl=tag&&(tag.querySelector('.t-long')||tag);
-  if(!k||!what||!tl) return;
-  var RMm=matchMedia('(prefers-reduced-motion: reduce)'), up=false, tmr=0, b=document.body;
+  var hero=document.querySelector('.hero'), copy=hero&&hero.querySelector('.hero-copy'), k=hero&&hero.querySelector('.kick8'),
+      what=k&&k.querySelector('.k-what'), tag=document.querySelector('.bar .bn-tag'), tl=tag&&(tag.querySelector('.t-long')||tag);
+  if(!k||!what||!tl||!copy) return;
+  var RMm=matchMedia('(prefers-reduced-motion: reduce)'), b=document.body, up=false, tmr=0, shown=0, y0=0, raf=0;
+  function markShown(){ if(shown) return; shown=performance.now(); y0=scrollY; k.classList.add('k-in'); }
+  k.addEventListener('animationend',markShown);
+  setTimeout(markShown, RMm.matches ? 0 : 5200);           /* safety net if the animation event never comes */
   function fly(){
     if(up) return; up=true; clearTimeout(tmr);
-    if(RMm.matches){ k.classList.add('k-gone'); b.classList.add('tag-on'); return; }
-    var a=what.getBoundingClientRect(), t=tl.getBoundingClientRect(); if(!a.width) return;
+    if(RMm.matches){ k.classList.add('k-gone'); b.classList.add('tag-on'); copy.classList.add('k-up'); return; }
+    var a=what.getBoundingClientRect(), t=tl.getBoundingClientRect();
     k.classList.add('k-fly');
-    what.style.transform='translate('+(t.left-a.left).toFixed(1)+'px,'+(t.top-a.top).toFixed(1)+'px) scale('+(t.width/a.width).toFixed(3)+')';
-    tmr=setTimeout(function(){ b.classList.add('tag-on'); k.classList.add('k-gone'); },640);
+    if(a.width && t.width) what.style.transform='translate('+(t.left-a.left).toFixed(1)+'px,'+(t.top-a.top).toFixed(1)+'px) scale('+(t.width/a.width).toFixed(3)+')';
+    tmr=setTimeout(function(){ b.classList.add('tag-on'); k.classList.add('k-gone'); copy.classList.add('k-up'); },640);
   }
   function back(){
     if(!up) return; up=false; clearTimeout(tmr);
-    b.classList.remove('tag-on'); k.classList.remove('k-gone'); what.style.transform='';
+    copy.classList.remove('k-up'); b.classList.remove('tag-on'); k.classList.remove('k-gone'); what.style.transform='';
     tmr=setTimeout(function(){ k.classList.remove('k-fly'); },500);
   }
-  function sync(){ if(hero.classList.contains('moved')) fly(); else back(); }
-  new MutationObserver(sync).observe(hero,{attributes:true,attributeFilter:['class']});
-  sync();
+  function check(){ raf=0;
+    if(!shown) return;
+    var d=scrollY-y0;
+    if(!up && d>40 && performance.now()-shown>1500) fly();
+    else if(up && d<12) back();
+  }
+  addEventListener('scroll',function(){ if(!raf) raf=requestAnimationFrame(check); },{passive:true});
+  setInterval(check,700);                                  /* also catches a scroll that happened while it was still appearing */
 })();
 </script>
 <script>ScrollCraft.mount(document.body);</script>
