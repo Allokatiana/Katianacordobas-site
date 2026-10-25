@@ -2045,6 +2045,9 @@ html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
 .v8 .hero-copy .hero-sub2{grid-row:4;margin-top:.55em;font-size:.92em;font-weight:400;color:#4A2E3A}
 .v8 .hero-copy .hero-sub:not(.hero-sub2){grid-row:3}
 @media (max-width:860px){.v8 .hero-copy .hero-sub2{font-size:.95rem}}
+/* v17 · breathing words above the circle, a little larger */
+.v8 .br7-hold .br7-word{margin:0 0 var(--sc-4);min-height:2.8rem;font-size:clamp(1.9rem,1.5rem + 1.3vw,2.6rem)}
+.v8 .br7.br7-done .br7-word{min-height:0;margin:0}
 </style>
 </head>
 <body class="v8">
@@ -2220,11 +2223,11 @@ Take a look around and see what appeals to you. And if you&#x27;d like, you can 
         <p class="lede">Tap the bowl and breathe with its sound, as many times as you like.</p>
       </div>
       <div class="br7-hold">
+        <p class="br7-word" aria-live="polite"><span class="br7-hint">Play the bowl</span><span class="br7-say"></span></p>
         <button class="br7-btn" type="button" aria-label="Strike Katiana&#x27;s singing bowl and play its tone" data-in="Breathe in…" data-hold="Hold…" data-out="Breathe out…">
           <span class="br7-photo"><img src="assets/bowl-round.webp" width="900" height="900" alt="Katiana in nature, eyes closed, holding a singing bowl" loading="lazy" decoding="async"></span>
           <svg class="br7-ring" viewBox="0 0 200 200" aria-hidden="true"><circle class="trk" cx="100" cy="100" r="96"/><circle class="prg" cx="100" cy="100" r="96" pathLength="1"/></svg>
         </button>
-        <p class="br7-word" aria-live="polite"><span class="br7-hint">Play the bowl</span><span class="br7-say"></span></p>
         <p class="br7-home d" aria-label="Come back to yourself, gently."><span aria-hidden="true"><span class="w"><span class="ch" style="--c:1">C</span><span class="ch" style="--c:2">o</span><span class="ch" style="--c:3">m</span><span class="ch" style="--c:4">e</span></span> <span class="w"><span class="ch" style="--c:5">b</span><span class="ch" style="--c:6">a</span><span class="ch" style="--c:7">c</span><span class="ch" style="--c:8">k</span></span> <span class="w"><span class="ch" style="--c:9">t</span><span class="ch" style="--c:10">o</span></span> <span class="w"><span class="ch" style="--c:11">y</span><span class="ch" style="--c:12">o</span><span class="ch" style="--c:13">u</span><span class="ch" style="--c:14">r</span><span class="ch" style="--c:15">s</span><span class="ch" style="--c:16">e</span><span class="ch" style="--c:17">l</span><span class="ch" style="--c:18">f</span><span class="ch" style="--c:19">,</span></span> <em><span class="w"><span class="ch" style="--c:20">g</span><span class="ch" style="--c:21">e</span><span class="ch" style="--c:22">n</span><span class="ch" style="--c:23">t</span><span class="ch" style="--c:24">l</span><span class="ch" style="--c:25">y</span><span class="ch" style="--c:26">.</span></span></em></span></p>
         <div class="br7-after" aria-live="polite">
           <p class="br7-a">How do you feel now?</p>

@@ -2045,6 +2045,9 @@ html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
 .v8 .hero-copy .hero-sub2{grid-row:4;margin-top:.55em;font-size:.92em;font-weight:400;color:#4A2E3A}
 .v8 .hero-copy .hero-sub:not(.hero-sub2){grid-row:3}
 @media (max-width:860px){.v8 .hero-copy .hero-sub2{font-size:.95rem}}
+/* v17 · breathing words above the circle, a little larger */
+.v8 .br7-hold .br7-word{margin:0 0 var(--sc-4);min-height:2.8rem;font-size:clamp(1.9rem,1.5rem + 1.3vw,2.6rem)}
+.v8 .br7.br7-done .br7-word{min-height:0;margin:0}
 </style>
 </head>
 <body class="v8">
@@ -2220,11 +2223,11 @@ Mira a tu alrededor y ve qué te llama. Y si quieres, puedes regalarte un moment
         <p class="lede">Toca el cuenco y respira con su sonido, tantas veces como quieras.</p>
       </div>
       <div class="br7-hold">
+        <p class="br7-word" aria-live="polite"><span class="br7-hint">Toca el cuenco</span><span class="br7-say"></span></p>
         <button class="br7-btn" type="button" aria-label="Hacer sonar el cuenco de Katiana y escuchar su nota" data-in="Inhala…" data-hold="Retén el aire…" data-out="Exhala…">
           <span class="br7-photo"><img src="assets/bowl-round.webp" width="900" height="900" alt="Katiana en la naturaleza, con los ojos cerrados, sosteniendo un cuenco tibetano" loading="lazy" decoding="async"></span>
           <svg class="br7-ring" viewBox="0 0 200 200" aria-hidden="true"><circle class="trk" cx="100" cy="100" r="96"/><circle class="prg" cx="100" cy="100" r="96" pathLength="1"/></svg>
         </button>
-        <p class="br7-word" aria-live="polite"><span class="br7-hint">Toca el cuenco</span><span class="br7-say"></span></p>
         <p class="br7-home d" aria-label="Vuelve a ti, con dulzura."><span aria-hidden="true"><span class="w"><span class="ch" style="--c:1">V</span><span class="ch" style="--c:2">u</span><span class="ch" style="--c:3">e</span><span class="ch" style="--c:4">l</span><span class="ch" style="--c:5">v</span><span class="ch" style="--c:6">e</span></span> <span class="w"><span class="ch" style="--c:7">a</span></span> <span class="w"><span class="ch" style="--c:8">t</span><span class="ch" style="--c:9">i</span><span class="ch" style="--c:10">,</span></span> <em><span class="w"><span class="ch" style="--c:11">c</span><span class="ch" style="--c:12">o</span><span class="ch" style="--c:13">n</span></span> <span class="w"><span class="ch" style="--c:14">d</span><span class="ch" style="--c:15">u</span><span class="ch" style="--c:16">l</span><span class="ch" style="--c:17">z</span><span class="ch" style="--c:18">u</span><span class="ch" style="--c:19">r</span><span class="ch" style="--c:20">a</span><span class="ch" style="--c:21">.</span></span></em></span></p>
         <div class="br7-after" aria-live="polite">
           <p class="br7-a">¿Cómo te sientes ahora?</p>
