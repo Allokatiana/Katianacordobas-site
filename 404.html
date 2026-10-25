@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Katiana Cordoba · This page has moved</title><meta name="robots" content="noindex">
+<style>
+:root{color-scheme:light}
+body{margin:0;min-height:100vh;display:grid;place-items:center;background:linear-gradient(180deg,#F2D9D6,#FAE8D2);font-family:Georgia,'Times New Roman',serif;color:#3A2430;text-align:center;padding:24px;box-sizing:border-box}
+main{max-width:34rem}
+h1{font-weight:500;font-size:clamp(2rem,6vw,3rem);margin:0 0 .4em}h1 em{color:#9E4460}
+p{font-family:system-ui,-apple-system,'Segoe UI',sans-serif;font-size:1.05rem;line-height:1.6;color:#5A3E4A;margin:.3em 0}
+.l{margin-top:1.6em;display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+a{font-family:system-ui,-apple-system,'Segoe UI',sans-serif;display:inline-block;padding:12px 20px;border-radius:999px;background:#9E4460;color:#fff;text-decoration:none;font-weight:600}
+a.s{background:#fff;color:#9E4460;border:1px solid rgb(158 68 96/.35)}
+</style></head><body><main>
+<h1>This page has <em>moved.</em></h1>
+<p>Cette page a changé d'adresse. · Esta página cambió de dirección.</p>
+<p>You'll be taken to the home page in a moment.</p>
+<div class="l"><a id="en" href="/">Home</a><a class="s" id="fr" href="/fr.html">Français</a><a class="s" id="es" href="/es.html">Español</a></div>
+</main>
+<script>
+(function(){ var base = /github\.io$/.test(location.hostname) ? '/' + location.pathname.split('/')[1] + '/' : '/';
+  ['en','fr','es'].forEach(function(k){ var a=document.getElementById(k); a.href = base + (k==='en' ? '' : k + '.html'); });
+  var p = location.pathname.toLowerCase(), to = base + (/(^|\/)(fr|francais|français)(\/|$|-)/.test(p) ? 'fr.html' : /(^|\/)(es|espanol|español)(\/|$|-)/.test(p) ? 'es.html' : '');
+  setTimeout(function(){ location.replace(to); }, 3500); })();
+</script></body></html>
