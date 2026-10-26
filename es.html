@@ -4105,12 +4105,23 @@ function replayDawn(){
 }
 function start(){
   on=true; paint(); replayDawn();
-  try{ a.volume=0; }catch(e){}
-  if(a.preload==='none'){ a.preload='auto'; }
-  var p=a.play(); if(p && p.catch) p.catch(function(){ on=false; paint(); });
-  fadeTo(target, 9000);
+  /* v20 · iPhone: ask for "media playback" so the music plays like a song (iOS 17+), and never start at volume 0
+     there, since iPhones can't fade and would stay silent */
+  try{ if(navigator.audioSession) navigator.audioSession.type='playback'; }catch(e){}
+  var fades=canFade();
+  try{ a.volume=fades?0:1; }catch(e){}
+  if(a.preload!=='auto'){ a.preload='auto'; }
+  try{ a.muted=false; }catch(e){}
+  var p=a.play();
+  if(p && p.catch) p.catch(function(){
+    /* one more try with a fresh load; if it still refuses, show the button as off so a new tap can try again */
+    try{ a.load(); }catch(e){}
+    var p2=a.play(); if(p2 && p2.catch) p2.catch(function(){ on=false; paint(); });
+  });
+  if(fades) fadeTo(target, 9000);
 }
 function stop(ms){ on=false; paint(); fadeTo(0, ms||1600, function(){ a.pause(); }); }
+btns.forEach(function(b){ b.addEventListener('pointerdown', function(){ if(!on && a.preload!=='auto'){ a.preload='auto'; try{ a.load(); }catch(e){} } }, {passive:true}); });
 btns.forEach(function(b){ b.addEventListener('click', function(){ offer(false); resumeAfter=false; on ? stop() : start(); }); });
 /* when the bowl is played, the music stops so the bowl is heard alone.
    It never comes back by itself; after the breathing, a small button offers it again. */
