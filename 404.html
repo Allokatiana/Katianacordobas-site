@@ -13,12 +13,12 @@ a.s{background:#fff;color:#9E4460;border:1px solid rgb(158 68 96/.35)}
 </style></head><body><main>
 <h1>This page has <em>moved.</em></h1>
 <p>Cette page a changé d'adresse. · Esta página cambió de dirección.</p>
-<p>You'll be taken to the home page in a moment.</p>
-<div class="l"><a id="en" href="/">Home</a><a class="s" id="fr" href="/fr.html">Français</a><a class="s" id="es" href="/es.html">Español</a></div>
+<p>Retour à l'accueil dans un instant. · You'll be taken to the home page in a moment.</p>
+<div class="l"><a id="fr" href="/">Accueil</a><a class="s" id="en" href="/en.html">English</a><a class="s" id="es" href="/es.html">Español</a></div>
 </main>
 <script>
 (function(){ var base = /github\.io$/.test(location.hostname) ? '/' + location.pathname.split('/')[1] + '/' : '/';
-  ['en','fr','es'].forEach(function(k){ var a=document.getElementById(k); a.href = base + (k==='en' ? '' : k + '.html'); });
-  var p = location.pathname.toLowerCase(), to = base + (/(^|\/)(fr|francais|français)(\/|$|-)/.test(p) ? 'fr.html' : /(^|\/)(es|espanol|español)(\/|$|-)/.test(p) ? 'es.html' : '');
+  ['en','fr','es'].forEach(function(k){ var a=document.getElementById(k); a.href = base + (k==='fr' ? '' : k + '.html'); });
+  var p = location.pathname.toLowerCase(), to = base + (/(^|\/)(en|english)(\/|$|-)/.test(p) ? 'en.html' : /(^|\/)(es|espanol|español)(\/|$|-)/.test(p) ? 'es.html' : '');
   setTimeout(function(){ location.replace(to); }, 3500); })();
 </script></body></html>
