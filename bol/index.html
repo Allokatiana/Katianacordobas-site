@@ -82,7 +82,7 @@ body.singing .bowl-light{opacity:.95;animation:shimmer .5s ease-in-out infinite 
   box-shadow:0 14px 30px -18px rgb(80 40 55/.65);font-weight:600;font-size:1rem;color:var(--rose-deep);pointer-events:none;white-space:nowrap}
 body.started .tapme{opacity:0;transition:opacity .5s}
 body.started .hand{opacity:0;transition:opacity .5s}
-.say{min-height:2.6em;margin:clamp(40px,6vh,52px) 0 0;font-family:var(--serif);font-style:italic;font-size:clamp(1.8rem,6.5vw,2.3rem);color:var(--rose-deep);line-height:1.1}
+.say{min-height:2.6em;margin:clamp(40px,6vh,52px) 0 0;font-family:var(--serif);font-style:italic;font-weight:600;font-size:clamp(2.2rem,8vw,2.8rem);color:var(--rose-deep);line-height:1.1}
 .say .w{display:inline-block;animation:sayIn .9s ease both}
 @keyframes sayIn{from{opacity:0;transform:translateY(8px)}}
 .breath{position:relative;z-index:0;width:min(60vw,240px);height:5px;margin:6px auto 0;border-radius:3px;background:rgb(255 255 255/.55);overflow:hidden;opacity:0;transition:opacity .6s}
@@ -108,6 +108,12 @@ footer a{color:inherit}
 .bring .prog{opacity:0;transition:opacity .4s}body.started .bring .prog{opacity:1}
 .breath i{width:100%!important;transform:scaleX(0);transform-origin:left center}
 .hand{}
+/* the breath word written along the top of the circle, where everyone is already looking */
+.arc{position:absolute;inset:-30%;z-index:4;width:160%;height:160%;pointer-events:none;overflow:visible}
+.arc text{font-family:var(--serif);font-style:italic;font-weight:600;font-size:8.2px;letter-spacing:.04em;fill:#8E3555;paint-order:stroke;stroke:rgb(255 250 242/.92);stroke-width:1.3px;stroke-linejoin:round;
+  opacity:0;transition:opacity .7s ease}
+.arc text.on{opacity:1}
+.stage{margin-top:clamp(64px,11vh,92px)}
 @media (prefers-reduced-motion:reduce){.tapme .tip,.tapme .fing,.halo-rays,body.singing .bowl-light{animation:none}.wave,.spark{display:none}}
 </style>
 </head>
@@ -120,8 +126,9 @@ footer a{color:inherit}
   <div class="stage">
     <span class="halo-rays" aria-hidden="true"></span><span class="halo-sun" aria-hidden="true"></span>
     <button class="bowl" type="button" aria-label="Faire chanter le bol"><img src="../assets/bowl-round.webp" width="900" height="900" alt="Katiana, les yeux fermés, tient un bol chantant dans la nature"><span class="bowl-light" aria-hidden="true"></span></button>
+    <svg class="arc" viewBox="0 0 100 100" aria-hidden="true"><path id="arcp" d="M 8.5,50 A 41.5,41.5 0 0 1 91.5,50" fill="none"/><text><textPath href="#arcp" startOffset="50%" text-anchor="middle"></textPath></text></svg>
     <svg class="bring" viewBox="0 0 100 100" aria-hidden="true"><defs><linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#F7DDA0"/><stop offset="1" stop-color="#D4A251"/></linearGradient></defs><circle class="track" cx="50" cy="50" r="48" pathLength="100"/><circle class="prog" cx="50" cy="50" r="48" pathLength="100"/></svg>
-    <span class="tapme" aria-hidden="true"><span class="tip"></span><span class="fing">👆</span></span><span class="hand" aria-hidden="true">Touche-le</span>
+    <span class="tapme" aria-hidden="true"><span class="tip"></span><span class="fing">👆</span></span><span class="hand" aria-hidden="true">Touche le bol et respire avec lui</span>
   </div>
   <p class="say" aria-live="polite"></p>
   <div class="breath" aria-hidden="true"><i></i></div>
@@ -152,7 +159,10 @@ footer a{color:inherit}
       if(Math.random()<.35){ sp.style.width=sp.style.height='7px'; }
       stage.appendChild(sp); (function(el){ setTimeout(function(){ el.remove(); },4800); })(sp); } }
   function rings(){ waves(1); sparks(18); }
-  function word(t){ say.innerHTML='<span class="w"></span>'; say.firstChild.textContent=t; }
+  var arcT=document.querySelector('.arc text'), arcP=document.querySelector('.arc textPath'), arcTimer=0;
+  function word(t){ say.innerHTML='<span class="w"></span>'; say.firstChild.textContent=t;
+    arcT.classList.remove('on'); clearTimeout(arcTimer); var short=t.replace(' doucement','');   // the arc keeps it short: « Expire… »
+    arcTimer=setTimeout(function(){ arcP.textContent=short; arcT.classList.add('on'); }, arcP.textContent?350:0); }
   var prog=document.querySelector('.bring .prog');
   /* in: light grows from the start until it is full. out: it keeps flowing forward and empties from the start */
   function fill(inhale,ms){
