@@ -72,13 +72,17 @@ body.singing .bowl-light{opacity:.95;animation:shimmer .5s ease-in-out infinite 
 .spark{position:absolute;z-index:4;left:50%;top:74%;width:12px;height:12px;margin:-6px 0 0 -6px;box-shadow:0 0 10px 3px rgb(255 222 150/.55);border-radius:50%;pointer-events:none;will-change:transform,opacity;
   background:radial-gradient(circle,#FFFBEF 0,#FFDC94 45%,rgb(255 220 148/0) 72%);animation:spark var(--d,3s) cubic-bezier(.2,.7,.3,1) forwards}
 @keyframes spark{0%{opacity:0;transform:translate(0,0) scale(.5)}14%{opacity:1}100%{opacity:0;transform:translate(var(--x),var(--y)) scale(1.5)}}
-.hand{position:absolute;z-index:3;right:-4%;top:4%;display:flex;align-items:center;gap:8px;padding:10px 16px 10px 12px;border-radius:999px;background:rgb(255 252 249/.95);
-  box-shadow:0 14px 30px -18px rgb(80 40 55/.65);font-weight:600;font-size:1rem;color:var(--rose-deep);pointer-events:none;animation:nudge 2.4s ease-in-out infinite}
-.hand span{font-size:1.45rem;line-height:1;display:inline-block;animation:tap 2.4s ease-in-out infinite}
-@keyframes nudge{50%{transform:translateY(-4px)}}
-@keyframes tap{0%,60%,100%{transform:none}70%{transform:translateY(5px) scale(.92)}}
+/* the invitation sits ON the bowl: a finger tapping it, with a little circle of light where it touches */
+.tapme{position:absolute;z-index:5;left:57%;top:73%;pointer-events:none}
+.tapme .tip{position:absolute;left:-14px;top:-14px;width:28px;height:28px;border-radius:50%;border:2px solid rgb(255 244 214/.95);box-shadow:0 0 12px 3px rgb(255 220 150/.7);opacity:0;animation:tipRing 2.2s ease-out infinite}
+@keyframes tipRing{0%,30%{opacity:0;transform:scale(.4)}40%{opacity:1}100%{opacity:0;transform:scale(1.8)}}
+.tapme .fing{position:absolute;left:-9px;top:-4px;font-size:2.6rem;line-height:1;filter:drop-shadow(0 6px 8px rgb(60 30 30/.35));animation:tapIt 2.2s ease-in-out infinite;transform-origin:30% 0}
+@keyframes tapIt{0%,100%{transform:translate(6px,14px) rotate(-12deg)}30%{transform:translate(0,2px) rotate(-12deg) scale(.94)}45%{transform:translate(4px,10px) rotate(-12deg)}}
+.hand{position:absolute;z-index:3;left:50%;bottom:-13%;translate:-50% 0;display:flex;align-items:center;padding:8px 18px;border-radius:999px;background:rgb(255 252 249/.95);
+  box-shadow:0 14px 30px -18px rgb(80 40 55/.65);font-weight:600;font-size:1rem;color:var(--rose-deep);pointer-events:none;white-space:nowrap}
+body.started .tapme{opacity:0;transition:opacity .5s}
 body.started .hand{opacity:0;transition:opacity .5s}
-.say{min-height:2.6em;margin:clamp(22px,4vh,34px) 0 0;font-family:var(--serif);font-style:italic;font-size:clamp(1.8rem,6.5vw,2.3rem);color:var(--rose-deep);line-height:1.1}
+.say{min-height:2.6em;margin:clamp(40px,6vh,52px) 0 0;font-family:var(--serif);font-style:italic;font-size:clamp(1.8rem,6.5vw,2.3rem);color:var(--rose-deep);line-height:1.1}
 .say .w{display:inline-block;animation:sayIn .9s ease both}
 @keyframes sayIn{from{opacity:0;transform:translateY(8px)}}
 .breath{position:relative;z-index:0;width:min(60vw,240px);height:5px;margin:6px auto 0;border-radius:3px;background:rgb(255 255 255/.55);overflow:hidden;opacity:0;transition:opacity .6s}
@@ -101,8 +105,10 @@ footer a{color:inherit}
 .bring circle{fill:none;stroke-linecap:round}
 .bring .track{stroke:rgb(255 250 240/.55);stroke-width:1.6}
 .bring .prog{stroke:url(#bg);stroke-width:3.2;stroke-dasharray:100 100;stroke-dashoffset:100;filter:drop-shadow(0 0 3px rgb(255 214 150/.9))}
+.bring .prog{opacity:0;transition:opacity .4s}body.started .bring .prog{opacity:1}
 .breath i{width:100%!important;transform:scaleX(0);transform-origin:left center}
-@media (prefers-reduced-motion:reduce){.hand,.hand span,.halo-rays,body.singing .bowl-light{animation:none}.wave,.spark{display:none}}
+.hand{}
+@media (prefers-reduced-motion:reduce){.tapme .tip,.tapme .fing,.halo-rays,body.singing .bowl-light{animation:none}.wave,.spark{display:none}}
 </style>
 </head>
 <body>
@@ -115,7 +121,7 @@ footer a{color:inherit}
     <span class="halo-rays" aria-hidden="true"></span><span class="halo-sun" aria-hidden="true"></span>
     <button class="bowl" type="button" aria-label="Faire chanter le bol"><img src="../assets/bowl-round.webp" width="900" height="900" alt="Katiana, les yeux fermés, tient un bol chantant dans la nature"><span class="bowl-light" aria-hidden="true"></span></button>
     <svg class="bring" viewBox="0 0 100 100" aria-hidden="true"><defs><linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#F7DDA0"/><stop offset="1" stop-color="#D4A251"/></linearGradient></defs><circle class="track" cx="50" cy="50" r="48" pathLength="100"/><circle class="prog" cx="50" cy="50" r="48" pathLength="100"/></svg>
-    <span class="hand" aria-hidden="true"><span>👆</span>Touche-le</span>
+    <span class="tapme" aria-hidden="true"><span class="tip"></span><span class="fing">👆</span></span><span class="hand" aria-hidden="true">Touche-le</span>
   </div>
   <p class="say" aria-live="polite"></p>
   <div class="breath" aria-hidden="true"><i></i></div>
