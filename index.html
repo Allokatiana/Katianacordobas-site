@@ -4150,10 +4150,11 @@ function start(){                                // must run inside a tap / clic
   if(a.preload!=='auto') a.preload='auto';
   /* v27 · audible at once: skip the slow fade-in recorded at the start of the file, begin at a soft level
      and reach the normal level in about 2 seconds */
-  try{ if(a.currentTime<1 && (!a.duration || a.duration>SKIP+5)) a.currentTime=SKIP; }catch(e){}
-  var soft=Math.min(.32,target()), dur=ducked?.3:2.2;
-  if(webaudio&&gain){ var t=ctx.currentTime, g=gain.gain; g.cancelScheduledValues(t); g.setValueAtTime(soft,t); g.linearRampToValueAtTime(target(),t+dur); }
-  else { try{ a.volume=soft; }catch(e){} level(target(),dur); }
+  /* v29 · always from the very beginning: the song's own gentle 12-second fade-in is the welcome,
+     so the player simply plays it at the normal level (no extra fade on top, no skipping) */
+  try{ a.currentTime=0; }catch(e){}
+  if(webaudio&&gain){ var t=ctx.currentTime, g=gain.gain; g.cancelScheduledValues(t); g.setValueAtTime(target(),t); }
+  else { try{ a.volume=target(); }catch(e){} }
   var p=a.play(); playing=true; started=true;
   if(p&&p.catch) p.catch(function(){ playing=false; });     // not allowed yet: the next touch will try again
 }
@@ -4161,7 +4162,7 @@ function start(){                                // must run inside a tap / clic
 var started=false, SKIP=12;
 function preload(){ if(a.preload!=='auto'){ a.preload='auto'; try{ a.load(); }catch(e){} } }
 btns.forEach(function(b){ ['pointerenter','pointerdown','focus'].forEach(function(t){ b.addEventListener(t, preload, {passive:true}); }); });
-a.addEventListener('loadedmetadata',function(){ if(!started) return; try{ if(a.currentTime<1 && a.duration>SKIP+5) a.currentTime=SKIP; }catch(e){} });
+
 function stop(){ playing=false; level(0,1.6); setTimeout(function(){ if(!playing) a.pause(); },1700); }
 /* the first touch anywhere starts the music (taps on the music button are handled by the button itself) */
 function firstTouch(e){
