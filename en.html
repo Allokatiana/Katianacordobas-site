@@ -4392,6 +4392,13 @@ size(); addEventListener('resize',size);
   addEventListener('scroll',function(){ if(!raf) raf=requestAnimationFrame(check); },{passive:true});
   setInterval(check,700);                                  /* also catches a scroll that happened while it was still appearing */
 })();
+
+/* v22 · iPhone: from the very first touch, ask for "media playback" so the bowl and the music are heard
+   even when the phone's ring/silent switch is on silent (iOS 17+; older phones simply ignore it) */
+(function(){
+  function pb(){ try{ if(navigator.audioSession && navigator.audioSession.type!=='playback') navigator.audioSession.type='playback'; }catch(e){} }
+  ['pointerdown','touchstart','keydown'].forEach(function(t){ addEventListener(t, pb, {capture:true, passive:true}); });
+})();
 </script>
 <script>ScrollCraft.mount(document.body);</script>
 </body>
