@@ -4111,57 +4111,75 @@ dlg.querySelector('.book-x').addEventListener('click',function(){ dlg.close(); }
 dlg.addEventListener('click',function(ev){ if(ev.target===dlg) dlg.close(); });
 })();
 
-/* ---- calming background sound: always off at first; it rises very slowly when turned on ---- */
+/* ---- v26 · background music: ON by default, ducks to 10% while the bowl sings, then rises back by itself ----
+   Browsers never allow sound before the visitor touches the page, so the music starts softly on the first tap
+   anywhere. Turning it off is remembered on this device. Volume goes through Web Audio (a gain node), because
+   iPhones ignore audio.volume: that is what makes the fades and the 10% duck work there too. */
 (function(){
 var a=document.getElementById('amb-audio'); if(!a) return;
-var btns=[].slice.call(document.querySelectorAll('.amb-btn')), on=false, ramp=null, target=.8, duck=null;
-function paint(){ btns.forEach(function(b){ b.setAttribute('aria-pressed', String(on)); }); document.body.classList.toggle('amb-playing', on); }
-function fadeTo(v, ms, done){
-  clearInterval(ramp); var start=a.volume, t0=performance.now();
-  ramp=setInterval(function(){ var k=Math.min(1,(performance.now()-t0)/ms); try{ a.volume=start+(v-start)*(k*k*(3-2*k)); }catch(e){} if(k>=1){ clearInterval(ramp); if(done) done(); } }, 60);
+var btns=[].slice.call(document.querySelectorAll('.amb-btn'));
+var NORMAL=.8, DUCK=.08;                         // 10 % of the normal level while the bowl sings
+var wanted=true; try{ if(localStorage.getItem('kc-music')==='off') wanted=false; }catch(e){}
+var playing=false, ducked=false, lastBowl=0, ctx=null, gain=null, webaudio=false, ramp=null, watch=null;
+function paint(){ btns.forEach(function(b){ b.setAttribute('aria-pressed', String(wanted)); }); document.body.classList.toggle('amb-playing', wanted); document.body.classList.remove('amb-offer'); }
+function graph(){                                // build once, inside a tap (iOS needs that)
+  if(ctx||webaudio===null) return;
+  try{
+    var AC=window.AudioContext||window.webkitAudioContext; if(!AC) { webaudio=null; return; }
+    ctx=new AC(); var src=ctx.createMediaElementSource(a); gain=ctx.createGain(); gain.gain.value=0;
+    src.connect(gain); gain.connect(ctx.destination); webaudio=true; a.volume=1;
+  }catch(e){ webaudio=null; ctx=null; gain=null; }
 }
+function level(v, sec){                          // smooth move to a level over `sec` seconds
+  if(webaudio&&gain){ var t=ctx.currentTime, g=gain.gain; g.cancelScheduledValues(t); g.setValueAtTime(g.value,t); g.linearRampToValueAtTime(v,t+sec); return; }
+  clearInterval(ramp); var start=a.volume, t0=performance.now(), ms=sec*1000;
+  ramp=setInterval(function(){ var k=Math.min(1,(performance.now()-t0)/ms); try{ a.volume=start+(v-start)*(k*k*(3-2*k)); }catch(e){} if(k>=1) clearInterval(ramp); },60);
+}
+function target(){ return ducked?DUCK:NORMAL; }
 var loadedAt=performance.now();
-/* turning the music on at the top replays the sunrise, so the flower opens with the sound */
 function replayDawn(){
   var hero=document.querySelector('.hero'); if(!hero || hero.classList.contains('moved')) return;
-  if(performance.now()-loadedAt < 6500) return;            // the first sunrise is still playing
+  if(performance.now()-loadedAt < 6500) return;
   var els=[hero].concat([].slice.call(hero.querySelectorAll('.dawn,.sun,.lotus svg,.lz,.lz-glow,.lz-breathe,.lay.pads,.reeds-l,.reeds-r,.hero-copy > *,.godown')));
-  els.forEach(function(el){ el.style.animation='none'; });
-  void hero.offsetWidth;
-  els.forEach(function(el){ el.style.animation=''; });
+  els.forEach(function(el){ el.style.animation='none'; }); void hero.offsetWidth; els.forEach(function(el){ el.style.animation=''; });
 }
-function start(){
-  on=true; paint(); replayDawn();
-  /* v20 · iPhone: ask for "media playback" so the music plays like a song (iOS 17+), and never start at volume 0
-     there, since iPhones can't fade and would stay silent */
+function start(){                                // must run inside a tap / click / key
+  if(playing) return;
   try{ if(navigator.audioSession) navigator.audioSession.type='playback'; }catch(e){}
-  var fades=canFade();
-  try{ a.volume=fades?0:1; }catch(e){}
-  if(a.preload!=='auto'){ a.preload='auto'; }
-  try{ a.muted=false; }catch(e){}
-  var p=a.play();
-  if(p && p.catch) p.catch(function(){
-    /* one more try with a fresh load; if it still refuses, show the button as off so a new tap can try again */
-    try{ a.load(); }catch(e){}
-    var p2=a.play(); if(p2 && p2.catch) p2.catch(function(){ on=false; paint(); });
-  });
-  if(fades) fadeTo(target, 9000);
+  graph(); if(ctx&&ctx.state==='suspended'){ try{ ctx.resume(); }catch(e){} }
+  if(!webaudio){ try{ a.volume=0; }catch(e){} }
+  if(a.preload!=='auto') a.preload='auto';
+  var p=a.play(); playing=true;
+  if(p&&p.catch) p.catch(function(){ playing=false; });     // not allowed yet: the next tap will try again
+  level(target(), ducked?1:9);
 }
-function stop(ms){ on=false; paint(); fadeTo(0, ms||1600, function(){ a.pause(); }); }
-btns.forEach(function(b){ b.addEventListener('pointerdown', function(){ if(!on && a.preload!=='auto'){ a.preload='auto'; try{ a.load(); }catch(e){} } }, {passive:true}); });
-btns.forEach(function(b){ b.addEventListener('click', function(){ offer(false); resumeAfter=false; on ? stop() : start(); }); });
-/* when the bowl is played, the music stops so the bowl is heard alone.
-   It never comes back by itself; after the breathing, a small button offers it again. */
-var resumeAfter=false;
-function offer(v){ document.body.classList.toggle('amb-offer', v); }
-function canFade(){ try{ var v=a.volume; a.volume=v>.5?v-.01:v+.01; var ok=Math.abs(a.volume-v)>.001; a.volume=v; return ok; }catch(e){ return false; } }
+function stop(){ playing=false; level(0,1.6); setTimeout(function(){ if(!playing) a.pause(); },1700); }
+/* the first touch anywhere starts the music (taps on the music button are handled by the button itself) */
+function firstTouch(e){
+  if(!wanted||playing) return;
+  if(e && e.target && e.target.closest && e.target.closest('.amb-btn')) return;
+  start();
+}
+['pointerup','touchend','click','keydown'].forEach(function(t){ addEventListener(t, firstTouch, {capture:true, passive:true}); });
+btns.forEach(function(b){ b.addEventListener('click', function(){
+  wanted=!wanted; try{ localStorage.setItem('kc-music', wanted?'on':'off'); }catch(e){}
+  paint(); if(wanted){ start(); replayDawn(); } else stop();
+}); });
+/* the bowl: music dips to 10 %, and comes back on its own once the bowl has gone quiet */
+var bowls=['bowl-audio','bowl-hit'].map(function(id){ return document.getElementById(id); }).filter(Boolean);
+function bowlSinging(){ return bowls.some(function(x){ return !x.paused && !x.ended; }); }
 document.addEventListener('kc-bowl', function(){
-  offer(false);
-  if(!on) return;
-  resumeAfter=true;
-  if(canFade()) stop(1000); else { on=false; paint(); clearInterval(ramp); a.pause(); }   // iPhone/iPad: no fades, so stop at once
+  lastBowl=performance.now();
+  if(!ducked){ ducked=true; if(playing) level(DUCK,.6); }
+  clearInterval(watch);
+  watch=setInterval(function(){
+    if(bowlSinging() || performance.now()-lastBowl<1500) return;
+    clearInterval(watch); ducked=false; if(playing) level(NORMAL,4);     // back to normal, smoothly, over 4 s
+  },400);
 });
-document.addEventListener('kc-breath-done', function(){ if(resumeAfter && !on) offer(true); });
+document.addEventListener('visibilitychange',function(){ if(!document.hidden && ctx && ctx.state==='suspended' && playing){ try{ ctx.resume(); }catch(e){} } });
+window.kcMusic={level:function(){ return gain?gain.gain.value:a.volume; }, playing:function(){ return playing&&!a.paused; }, ducked:function(){ return ducked; }};
+paint();
 })();
 
 /* v6.12 · the "Touch the bowl" label rings the bowl too (people tap the words) */
