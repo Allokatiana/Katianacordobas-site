@@ -82,7 +82,7 @@ body.singing .bowl-light{opacity:.95;animation:shimmer .5s ease-in-out infinite 
   box-shadow:0 14px 30px -18px rgb(80 40 55/.65);font-weight:600;font-size:1rem;color:var(--rose-deep);pointer-events:none;white-space:nowrap}
 body.started .tapme{opacity:0;transition:opacity .5s}
 body.started .hand{opacity:0;transition:opacity .5s}
-.say{min-height:2.6em;margin:clamp(40px,6vh,52px) 0 0;font-family:var(--serif);font-style:italic;font-weight:600;font-size:clamp(2.2rem,8vw,2.8rem);color:var(--rose-deep);line-height:1.1}
+.say{min-height:2.6em;margin:clamp(40px,6vh,52px) 0 0;font-family:var(--serif);font-style:italic;font-weight:500;font-size:clamp(2.1rem,7.5vw,2.6rem);color:#9A4F68;color:var(--rose-deep);line-height:1.1}
 .say .w{display:inline-block;animation:sayIn .9s ease both}
 @keyframes sayIn{from{opacity:0;transform:translateY(8px)}}
 .breath{position:relative;z-index:0;width:min(60vw,240px);height:5px;margin:6px auto 0;border-radius:3px;background:rgb(255 255 255/.55);overflow:hidden;opacity:0;transition:opacity .6s}
@@ -101,21 +101,24 @@ footer a{color:inherit}
 .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 /* the breath guide: a ring of light around the photo. Breathing in, it fills from the top, all the way round;
    breathing out, the light keeps travelling the same way and empties behind itself */
-/* the breath guide: a necklace of little lights around the photo. Breathing in, they light up one by one, all the way round;
-   breathing out, they go out one by one, the same way round */
-.beads{position:absolute;inset:0;z-index:3;pointer-events:none;--n:40}
-.bead{position:absolute;left:50%;top:50%;width:17px;height:17px;margin:-8.5px 0 0 -8.5px;border-radius:50%;
-  transform:rotate(calc(var(--i) * 360deg / var(--n))) translateY(calc(-50% * var(--r,1) - min(39vw,170px) - 16px));
-  background:radial-gradient(circle,#FFFBEE 0,#FFE3A6 34%,rgb(255 214 150/.5) 58%,rgb(255 214 150/0) 72%);
-  box-shadow:0 0 14px 5px rgb(255 216 150/.5);opacity:.16;transition:opacity .9s ease,box-shadow .9s ease;will-change:opacity}
-.beads.in .bead{opacity:1;transition-delay:calc(var(--i) * 4000ms / var(--n))}
-.beads.out .bead{opacity:.16;transition-duration:1.3s;transition-delay:calc(var(--i) * 8000ms / var(--n))}
-body:not(.started) .bead{opacity:0}
+/* the breath guide: a golden line of light around the photo. Breathing in, it draws itself all the way round,
+   led by a bright spark, and the whole circle flashes softly when it is full; breathing out, the light flows on
+   the same way and empties behind the spark */
+.bring{position:absolute;inset:-9%;z-index:3;width:118%;height:118%;pointer-events:none;transform:rotate(-90deg);overflow:visible}
+.bring circle{fill:none;stroke-linecap:round}
+.bring .glowl{stroke:#F0BE5E;stroke-width:6.5;opacity:.7;filter:blur(2.4px)}
+.bring .core{stroke:#FFE6A6;stroke-width:1.8}
+.bring .lineg{stroke-dasharray:100 100;stroke-dashoffset:100}
+.bring .spark{transition:opacity .6s;stroke:#FFFDF4;stroke-width:4.4;stroke-dasharray:.01 99.99;stroke-dashoffset:0;filter:drop-shadow(0 0 2.5px #FFE7AE) drop-shadow(0 0 6px #FFD27A)}
+.bring .flash{stroke:#FFE6A8;stroke-width:5;opacity:0;filter:blur(3px)}
+.bring.full .flash{animation:flash 1.3s ease-out}
+@keyframes flash{0%{opacity:0}25%{opacity:.95}100%{opacity:0}}
+.bring g{opacity:0;transition:opacity .5s}body.started .bring g{opacity:1}
 .breath i{width:100%!important;transform:scaleX(0);transform-origin:left center}
 .hand{}
 /* the breath word written along the top of the circle, where everyone is already looking */
 .arc{position:absolute;inset:-30%;z-index:4;width:160%;height:160%;pointer-events:none;overflow:visible}
-.arc text{font-family:var(--serif);font-style:italic;font-weight:600;font-size:8.2px;letter-spacing:.04em;fill:#8E3555;paint-order:stroke;stroke:rgb(255 250 242/.92);stroke-width:1.3px;stroke-linejoin:round;
+.arc text{font-family:var(--serif);font-style:italic;font-weight:500;font-size:7.6px;letter-spacing:.05em;fill:#9A4F68;paint-order:stroke;stroke:rgb(255 250 242/.6);stroke-width:.6px;stroke-linejoin:round;
   opacity:0;transition:opacity .7s ease}
 .arc text.on{opacity:1}
 .stage{margin-top:clamp(64px,11vh,92px)}
@@ -132,7 +135,7 @@ body:not(.started) .bead{opacity:0}
     <span class="halo-rays" aria-hidden="true"></span><span class="halo-sun" aria-hidden="true"></span>
     <button class="bowl" type="button" aria-label="Faire chanter le bol"><img src="../assets/bowl-round.webp" width="900" height="900" alt="Katiana, les yeux fermés, tient un bol chantant dans la nature"><span class="bowl-light" aria-hidden="true"></span></button>
     <svg class="arc" viewBox="0 0 100 100" aria-hidden="true"><path id="arcp" d="M 8.5,50 A 41.5,41.5 0 0 1 91.5,50" fill="none"/><text><textPath href="#arcp" startOffset="50%" text-anchor="middle"></textPath></text></svg>
-    <span class="beads" aria-hidden="true"></span>
+    <svg class="bring" viewBox="0 0 100 100" aria-hidden="true"><g><circle class="flash" cx="50" cy="50" r="48" pathLength="100"/><circle class="glowl lineg" cx="50" cy="50" r="48" pathLength="100"/><circle class="core lineg" cx="50" cy="50" r="48" pathLength="100"/><circle class="spark" cx="50" cy="50" r="48" pathLength="100"/></g></svg>
     <span class="tapme" aria-hidden="true"><span class="tip"></span><span class="fing">👆</span></span><span class="hand" aria-hidden="true">Touche le bol et respire avec lui</span>
   </div>
   <p class="say" aria-live="polite"></p>
@@ -166,16 +169,21 @@ body:not(.started) .bead{opacity:0}
   function rings(){ waves(1); sparks(18); }
   var arcT=document.querySelector('.arc text'), arcP=document.querySelector('.arc textPath'), arcTimer=0;
   function word(t){ say.innerHTML='<span class="w"></span>'; say.firstChild.textContent=t;
-    arcT.classList.remove('on'); clearTimeout(arcTimer); var short=t.replace(' doucement','');   // the arc keeps it short: « Expire… »
+    arcT.classList.remove('on'); clearTimeout(arcTimer); var short=/Encore/.test(t)?'':t.replace(' doucement','');   // the arc keeps it short: « Expire… »
     arcTimer=setTimeout(function(){ arcP.textContent=short; arcT.classList.add('on'); }, arcP.textContent?350:0); }
-  var beads=document.querySelector('.beads'), N=40;
-  for(var k=0;k<N;k++){ var d=document.createElement('span'); d.className='bead'; d.style.setProperty('--i',k); beads.appendChild(d); }
+  var ring=document.querySelector('.bring'), lines=[].slice.call(document.querySelectorAll('.bring .lineg')), spark=document.querySelector('.bring .spark');
   /* in: light grows from the start until it is full. out: it keeps flowing forward and empties from the start */
   function fill(inhale,ms){
-    var ease='cubic-bezier(.45,0,.55,1)';
-    if(inhale){ beads.classList.remove('in','out'); void beads.offsetWidth; beads.classList.add('in'); bar.style.transition='none'; bar.style.transformOrigin='left center'; bar.style.transform='scaleX(0)'; }
-    else { beads.classList.remove('in'); beads.classList.add('out'); bar.style.transition='none'; bar.style.transformOrigin='right center'; }
-    void bar.offsetWidth; bar.style.transition='transform '+ms+'ms '+ease; bar.style.transform=inhale?'scaleX(1)':'scaleX(0)';
+    var ease='cubic-bezier(.45,0,.55,1)', all=lines.concat([spark]);
+    all.forEach(function(c){ c.style.transition='none'; });
+    if(inhale){ spark.style.opacity='1'; lines.forEach(function(c){ c.style.strokeDashoffset='100'; }); spark.style.strokeDashoffset='0'; ring.classList.remove('full');
+      bar.style.transition='none'; bar.style.transformOrigin='left center'; bar.style.transform='scaleX(0)'; }
+    else { lines.forEach(function(c){ c.style.strokeDashoffset='0'; }); spark.style.strokeDashoffset='0'; bar.style.transition='none'; bar.style.transformOrigin='right center'; }
+    void ring.getBoundingClientRect(); void bar.offsetWidth;
+    all.forEach(function(c){ c.style.transition='stroke-dashoffset '+ms+'ms '+ease; });
+    lines.forEach(function(c){ c.style.strokeDashoffset=inhale?'0':'-100'; }); spark.style.strokeDashoffset='-100';
+    if(inhale) timers.push(setTimeout(function(){ ring.classList.add('full'); }, ms-150));
+    bar.style.transition='transform '+ms+'ms '+ease; bar.style.transform=inhale?'scaleX(1)':'scaleX(0)';
   }
   function clear(){ timers.forEach(clearTimeout); timers=[]; }
   function start(){
@@ -187,7 +195,7 @@ body:not(.started) .bead{opacity:0}
     word('Inspire…'); fill(true,4000);
     timers.push(setTimeout(function(){ word('Expire doucement…'); fill(false,8000); B.classList.remove('inhale'); B.classList.add('exhale'); },4000));
     timers.push(setTimeout(function(){ B.classList.remove('singing'); },11000));
-    timers.push(setTimeout(function(){ B.classList.remove('exhale'); state='done'; word('Encore?'); document.body.classList.add('done'); },12300));
+    timers.push(setTimeout(function(){ B.classList.remove('exhale'); state='done'; word('Encore?'); spark.style.opacity='0'; document.body.classList.add('done'); },12300));
   }
   btn.addEventListener('click',function(){
     if(state==='run'){ session(); play(hit); rings(); return; }   // every tap during the breath answers with the bowl
