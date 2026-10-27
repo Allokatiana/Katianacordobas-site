@@ -4144,23 +4144,32 @@ function replayDawn(){
   els.forEach(function(el){ el.style.animation='none'; }); void hero.offsetWidth; els.forEach(function(el){ el.style.animation=''; });
 }
 function start(){                                // must run inside a tap / click / key
-  if(playing) return;
+  if(playing && !a.paused) return;               // (a refused try on an early touch leaves it paused: try again)
   try{ if(navigator.audioSession) navigator.audioSession.type='playback'; }catch(e){}
   graph(); if(ctx&&ctx.state==='suspended'){ try{ ctx.resume(); }catch(e){} }
-  if(!webaudio){ try{ a.volume=0; }catch(e){} }
   if(a.preload!=='auto') a.preload='auto';
-  var p=a.play(); playing=true;
-  if(p&&p.catch) p.catch(function(){ playing=false; });     // not allowed yet: the next tap will try again
-  level(target(), ducked?1:9);
+  /* v27 · audible at once: skip the slow fade-in recorded at the start of the file, begin at a soft level
+     and reach the normal level in about 2 seconds */
+  try{ if(a.currentTime<1 && (!a.duration || a.duration>SKIP+5)) a.currentTime=SKIP; }catch(e){}
+  var soft=Math.min(.32,target()), dur=ducked?.3:2.2;
+  if(webaudio&&gain){ var t=ctx.currentTime, g=gain.gain; g.cancelScheduledValues(t); g.setValueAtTime(soft,t); g.linearRampToValueAtTime(target(),t+dur); }
+  else { try{ a.volume=soft; }catch(e){} level(target(),dur); }
+  var p=a.play(); playing=true; started=true;
+  if(p&&p.catch) p.catch(function(){ playing=false; });     // not allowed yet: the next touch will try again
 }
+/* the music file loads quietly once the page is ready, so the first touch never waits for it */
+var started=false, SKIP=12;
+function preload(){ if(!wanted) return; if(a.preload!=='auto'){ a.preload='auto'; try{ a.load(); }catch(e){} } }
+if(document.readyState==='complete') setTimeout(preload,800); else addEventListener('load',function(){ setTimeout(preload,800); });
+a.addEventListener('loadedmetadata',function(){ if(!started) return; try{ if(a.currentTime<1 && a.duration>SKIP+5) a.currentTime=SKIP; }catch(e){} });
 function stop(){ playing=false; level(0,1.6); setTimeout(function(){ if(!playing) a.pause(); },1700); }
 /* the first touch anywhere starts the music (taps on the music button are handled by the button itself) */
 function firstTouch(e){
-  if(!wanted||playing) return;
+  if(!wanted||!a.paused) return;
   if(e && e.target && e.target.closest && e.target.closest('.amb-btn')) return;
   start();
 }
-['pointerup','touchend','click','keydown'].forEach(function(t){ addEventListener(t, firstTouch, {capture:true, passive:true}); });
+['pointerdown','mousedown','touchstart','pointerup','touchend','click','keydown'].forEach(function(t){ addEventListener(t, firstTouch, {capture:true, passive:true}); });
 btns.forEach(function(b){ b.addEventListener('click', function(){
   wanted=!wanted; try{ localStorage.setItem('kc-music', wanted?'on':'off'); }catch(e){}
   paint(); if(wanted){ start(); replayDawn(); } else stop();
