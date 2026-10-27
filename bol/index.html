@@ -95,6 +95,13 @@ body.done .after{opacity:1;transform:none;pointer-events:auto;visibility:visible
 footer{margin-top:clamp(18px,4vh,30px);font-size:.8rem;color:var(--ink-soft);line-height:1.5}
 footer a{color:inherit}
 .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+/* the breath guide: a ring of light around the photo. Breathing in, it fills from the top, all the way round;
+   breathing out, the light keeps travelling the same way and empties behind itself */
+.bring{position:absolute;inset:-9%;z-index:3;width:118%;height:118%;pointer-events:none;transform:rotate(-90deg);overflow:visible}
+.bring circle{fill:none;stroke-linecap:round}
+.bring .track{stroke:rgb(255 250 240/.55);stroke-width:1.6}
+.bring .prog{stroke:url(#bg);stroke-width:3.2;stroke-dasharray:100 100;stroke-dashoffset:100;filter:drop-shadow(0 0 3px rgb(255 214 150/.9))}
+.breath i{width:100%!important;transform:scaleX(0);transform-origin:left center}
 @media (prefers-reduced-motion:reduce){.hand,.hand span,.halo-rays,body.singing .bowl-light{animation:none}.wave,.spark{display:none}}
 </style>
 </head>
@@ -107,6 +114,7 @@ footer a{color:inherit}
   <div class="stage">
     <span class="halo-rays" aria-hidden="true"></span><span class="halo-sun" aria-hidden="true"></span>
     <button class="bowl" type="button" aria-label="Faire chanter le bol"><img src="../assets/bowl-round.webp" width="900" height="900" alt="Katiana, les yeux fermés, tient un bol chantant dans la nature"><span class="bowl-light" aria-hidden="true"></span></button>
+    <svg class="bring" viewBox="0 0 100 100" aria-hidden="true"><defs><linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#F3CE86"/><stop offset="1" stop-color="#C26C86"/></linearGradient></defs><circle class="track" cx="50" cy="50" r="48" pathLength="100"/><circle class="prog" cx="50" cy="50" r="48" pathLength="100"/></svg>
     <span class="hand" aria-hidden="true"><span>👆</span>Touche-le</span>
   </div>
   <p class="say" aria-live="polite"></p>
@@ -139,7 +147,16 @@ footer a{color:inherit}
       stage.appendChild(sp); (function(el){ setTimeout(function(){ el.remove(); },4800); })(sp); } }
   function rings(){ waves(1); sparks(18); }
   function word(t){ say.innerHTML='<span class="w"></span>'; say.firstChild.textContent=t; }
-  function fill(to,ms){ bar.style.transition='none'; void bar.offsetWidth; bar.style.transition='width '+ms+'ms '+(to?'ease-in-out':'ease-in-out'); bar.style.width=to?'100%':'0%'; }
+  var prog=document.querySelector('.bring .prog');
+  /* in: light grows from the start until it is full. out: it keeps flowing forward and empties from the start */
+  function fill(inhale,ms){
+    var ease='cubic-bezier(.45,0,.55,1)';
+    if(inhale){ prog.style.transition='none'; prog.style.strokeDashoffset='100'; bar.style.transition='none'; bar.style.transformOrigin='left center'; bar.style.transform='scaleX(0)'; }
+    else { bar.style.transition='none'; bar.style.transformOrigin='right center'; }
+    void prog.getBoundingClientRect(); void bar.offsetWidth;
+    prog.style.transition='stroke-dashoffset '+ms+'ms '+ease; prog.style.strokeDashoffset=inhale?'0':'-100';
+    bar.style.transition='transform '+ms+'ms '+ease; bar.style.transform=inhale?'scaleX(1)':'scaleX(0)';
+  }
   function clear(){ timers.forEach(clearTimeout); timers=[]; }
   function start(){
     clear(); state='run'; document.body.classList.add('started'); document.body.classList.remove('done');
@@ -147,7 +164,7 @@ footer a{color:inherit}
     B.classList.add('singing','inhale'); B.classList.remove('exhale');
     /* while the bowl sings, the light keeps leaving it in softer and softer waves */
     [1.9,3.8,5.7,7.6,9.5].forEach(function(t,i){ timers.push(setTimeout(function(){ waves((.9-i*.12).toFixed(2)); sparks(10-i*2); }, t*1000)); });
-    word('Inspire…'); bar.style.width='0%'; fill(true,4000);
+    word('Inspire…'); fill(true,4000);
     timers.push(setTimeout(function(){ word('Expire doucement…'); fill(false,8000); B.classList.remove('inhale'); B.classList.add('exhale'); },4000));
     timers.push(setTimeout(function(){ B.classList.remove('singing'); },11000));
     timers.push(setTimeout(function(){ B.classList.remove('exhale'); state='done'; word('Merci.'); document.body.classList.add('done');
