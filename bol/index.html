@@ -10,7 +10,7 @@
 <meta property="og:url" content="https://www.katianacordoba.com/bol/">
 <meta property="og:title" content="Touche le bol 🔔">
 <meta property="og:description" content="Une respiration avec le son de mon bol chantant. Moins d'une minute, juste pour toi.">
-<meta property="og:image" content="https://www.katianacordoba.com/assets/share-bol.jpg">
+<meta property="og:image" content="https://www.katianacordoba.com/assets/share-bol2.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:locale" content="fr_CA">
@@ -44,11 +44,34 @@ h1 em{color:var(--rose-deep)}
 .bowl img{width:100%;height:100%;border-radius:50%;object-fit:cover;display:block}
 .bowl:active{transform:scale(.97)}
 .bowl:focus-visible{outline:3px solid var(--rose-deep);outline-offset:12px}
-.glow{position:absolute;inset:-22%;z-index:1;border-radius:50%;background:radial-gradient(closest-side,rgb(255 232 190/.85),rgb(255 226 180/0));opacity:.5;animation:glow 4s ease-in-out infinite;pointer-events:none}
-@keyframes glow{50%{opacity:.85;transform:scale(1.04)}}
-.ring{position:absolute;inset:0;z-index:1;border-radius:50%;border:2px solid rgb(201 154 85/.7);pointer-events:none;opacity:0;animation:ring 2.8s cubic-bezier(.22,.61,.36,1) forwards}
-.ring.r2{border-color:rgb(194 108 134/.6);animation-delay:.18s}.ring.r3{animation-delay:.36s;border-width:1px}
-@keyframes ring{0%{opacity:.9;transform:scale(1)}100%{opacity:0;transform:scale(2.3)}}
+.bowl{overflow:hidden;isolation:isolate}
+/* a sun that lives behind the photo and breathes with the visitor */
+.halo-sun{position:absolute;inset:-48%;z-index:0;pointer-events:none;border-radius:50%;
+  background:radial-gradient(closest-side,rgb(255 247 226/.98),rgb(255 230 184/.75) 30%,rgb(255 214 160/.3) 62%,rgb(255 214 160/0) 100%);
+  transform:scale(.92);opacity:.78;transition:transform 4s cubic-bezier(.4,0,.2,1),opacity 4s ease;will-change:transform,opacity}
+.halo-rays{position:absolute;inset:-75%;z-index:0;pointer-events:none;border-radius:50%;opacity:.65;will-change:transform,opacity;
+  background:repeating-conic-gradient(from 0deg,rgb(255 242 214/.5) 0deg 3.5deg,rgb(255 242 214/0) 3.5deg 11deg);
+  -webkit-mask-image:radial-gradient(closest-side,#000 24%,transparent 74%);mask-image:radial-gradient(closest-side,#000 24%,transparent 74%);
+  animation:spin 120s linear infinite;transition:opacity 4s ease}
+@keyframes spin{to{transform:rotate(360deg)}}
+body.inhale .halo-sun{transform:scale(1.24);opacity:1}
+body.inhale .halo-rays{opacity:1}
+body.exhale .halo-sun{transform:scale(.96);opacity:.82;transition-duration:8s}
+body.exhale .halo-rays{opacity:.7;transition-duration:8s}
+/* the bowl vibrates with light while it sings */
+.bowl-light{position:absolute;z-index:3;left:50%;top:76%;width:44%;aspect-ratio:1.5;translate:-50% -50%;border-radius:50%;pointer-events:none;
+  background:radial-gradient(closest-side,rgb(255 252 232/.95),rgb(255 226 160/.6) 42%,rgb(255 214 140/0) 100%);opacity:0;transition:opacity 1.4s ease;will-change:transform,opacity}
+body.singing .bowl-light{opacity:.95;animation:shimmer .5s ease-in-out infinite alternate}
+@keyframes shimmer{from{transform:scale(.9)}to{transform:scale(1.1)}}
+/* golden waves of light leaving the circle */
+.wave{position:absolute;inset:0;z-index:1;border-radius:50%;pointer-events:none;opacity:0;will-change:transform,opacity;
+  border:5px solid rgb(255 226 160/.95);box-shadow:0 0 34px 10px rgb(255 208 140/.7),inset 0 0 30px 6px rgb(255 232 180/.7);animation:wave 4.2s cubic-bezier(.25,.6,.35,1) forwards}
+.wave.w2{border-color:rgb(240 170 176/.85);border-width:3px;box-shadow:0 0 26px 6px rgb(240 170 176/.5);animation-delay:.3s}
+@keyframes wave{0%{opacity:var(--w,1);transform:scale(1)}45%{opacity:calc(var(--w,1) * .75)}100%{opacity:0;transform:scale(2.7)}}
+/* little sparks of golden light rising from the bowl */
+.spark{position:absolute;z-index:4;left:50%;top:74%;width:12px;height:12px;margin:-6px 0 0 -6px;box-shadow:0 0 10px 3px rgb(255 222 150/.55);border-radius:50%;pointer-events:none;will-change:transform,opacity;
+  background:radial-gradient(circle,#FFFBEF 0,#FFDC94 45%,rgb(255 220 148/0) 72%);animation:spark var(--d,3s) cubic-bezier(.2,.7,.3,1) forwards}
+@keyframes spark{0%{opacity:0;transform:translate(0,0) scale(.5)}14%{opacity:1}100%{opacity:0;transform:translate(var(--x),var(--y)) scale(1.5)}}
 .hand{position:absolute;z-index:3;right:-4%;top:4%;display:flex;align-items:center;gap:8px;padding:10px 16px 10px 12px;border-radius:999px;background:rgb(255 252 249/.95);
   box-shadow:0 14px 30px -18px rgb(80 40 55/.65);font-weight:600;font-size:1rem;color:var(--rose-deep);pointer-events:none;animation:nudge 2.4s ease-in-out infinite}
 .hand span{font-size:1.45rem;line-height:1;display:inline-block;animation:tap 2.4s ease-in-out infinite}
@@ -72,7 +95,7 @@ body.done .after{opacity:1;transform:none;pointer-events:auto;visibility:visible
 footer{margin-top:clamp(18px,4vh,30px);font-size:.8rem;color:var(--ink-soft);line-height:1.5}
 footer a{color:inherit}
 .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
-@media (prefers-reduced-motion:reduce){.glow,.hand,.hand span{animation:none}.ring{display:none}}
+@media (prefers-reduced-motion:reduce){.hand,.hand span,.halo-rays,body.singing .bowl-light{animation:none}.wave,.spark{display:none}}
 </style>
 </head>
 <body>
@@ -82,8 +105,8 @@ footer a{color:inherit}
   <h1>Touche le <em>bol</em></h1>
   <p class="lede">Une respiration, avec le son de mon bol chantant. Moins d'une minute, juste pour toi.</p>
   <div class="stage">
-    <span class="glow" aria-hidden="true"></span>
-    <button class="bowl" type="button" aria-label="Faire chanter le bol"><img src="../assets/bowl-round.webp" width="900" height="900" alt="Katiana, les yeux fermés, tient un bol chantant dans la nature"></button>
+    <span class="halo-rays" aria-hidden="true"></span><span class="halo-sun" aria-hidden="true"></span>
+    <button class="bowl" type="button" aria-label="Faire chanter le bol"><img src="../assets/bowl-round.webp" width="900" height="900" alt="Katiana, les yeux fermés, tient un bol chantant dans la nature"><span class="bowl-light" aria-hidden="true"></span></button>
     <span class="hand" aria-hidden="true"><span>👆</span>Touche-le</span>
   </div>
   <p class="say" aria-live="polite"></p>
@@ -106,16 +129,28 @@ footer a{color:inherit}
       RM=matchMedia('(prefers-reduced-motion: reduce)');
   function session(){ try{ if(navigator.audioSession) navigator.audioSession.type='playback'; }catch(e){} }  // heard even on silent iPhones
   function play(a){ try{ a.currentTime=0; }catch(e){} var p=a.play(); if(p&&p.catch) p.catch(function(){}); }
-  function rings(){ if(RM.matches) return; ['','r2','r3'].forEach(function(c){ var r=document.createElement('span'); r.className='ring '+c; stage.appendChild(r); setTimeout(function(){ r.remove(); },3400); }); }
+  var B=document.body;
+  function waves(k){ if(RM.matches) return; ['','w2'].forEach(function(c){ var r=document.createElement('span'); r.className='wave '+c; r.style.setProperty('--w',k); stage.appendChild(r); setTimeout(function(){ r.remove(); },4300); }); }
+  function sparks(n){ if(RM.matches) return; for(var i=0;i<n;i++){ var sp=document.createElement('span'); sp.className='spark';
+      var ang=(-90+(Math.random()*150-75))*Math.PI/180, dist=90+Math.random()*170;
+      sp.style.setProperty('--x',(Math.cos(ang)*dist).toFixed(0)+'px'); sp.style.setProperty('--y',(Math.sin(ang)*dist-20).toFixed(0)+'px');
+      sp.style.setProperty('--d',(2.2+Math.random()*1.8).toFixed(2)+'s'); sp.style.animationDelay=(Math.random()*.5).toFixed(2)+'s';
+      if(Math.random()<.35){ sp.style.width=sp.style.height='7px'; }
+      stage.appendChild(sp); (function(el){ setTimeout(function(){ el.remove(); },4800); })(sp); } }
+  function rings(){ waves(1); sparks(18); }
   function word(t){ say.innerHTML='<span class="w"></span>'; say.firstChild.textContent=t; }
   function fill(to,ms){ bar.style.transition='none'; void bar.offsetWidth; bar.style.transition='width '+ms+'ms '+(to?'ease-in-out':'ease-in-out'); bar.style.width=to?'100%':'0%'; }
   function clear(){ timers.forEach(clearTimeout); timers=[]; }
   function start(){
     clear(); state='run'; document.body.classList.add('started'); document.body.classList.remove('done');
     session(); play(snd); rings();
+    B.classList.add('singing','inhale'); B.classList.remove('exhale');
+    /* while the bowl sings, the light keeps leaving it in softer and softer waves */
+    [1.9,3.8,5.7,7.6,9.5].forEach(function(t,i){ timers.push(setTimeout(function(){ waves((.9-i*.12).toFixed(2)); sparks(10-i*2); }, t*1000)); });
     word('Inspire…'); bar.style.width='0%'; fill(true,4000);
-    timers.push(setTimeout(function(){ word('Expire doucement…'); fill(false,8000); },4000));
-    timers.push(setTimeout(function(){ state='done'; word('Merci.'); document.body.classList.add('done');
+    timers.push(setTimeout(function(){ word('Expire doucement…'); fill(false,8000); B.classList.remove('inhale'); B.classList.add('exhale'); },4000));
+    timers.push(setTimeout(function(){ B.classList.remove('singing'); },11000));
+    timers.push(setTimeout(function(){ B.classList.remove('exhale'); state='done'; word('Merci.'); document.body.classList.add('done');
       var c=document.querySelector('.after'), r=c.getBoundingClientRect(); if(r.bottom>innerHeight) setTimeout(function(){ c.scrollIntoView({behavior:RM.matches?'auto':'smooth',block:'end'}); },400); },12300));
   }
   btn.addEventListener('click',function(){
