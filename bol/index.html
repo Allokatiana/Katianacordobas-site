@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="fr-CA">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Touche le bol · Katiana Cordoba</title>
+<meta name="description" content="Une respiration avec le son de mon bol chantant. Moins d'une minute, juste pour toi.">
+<link rel="canonical" href="https://www.katianacordoba.com/bol/">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://www.katianacordoba.com/bol/">
+<meta property="og:title" content="Touche le bol 🔔">
+<meta property="og:description" content="Une respiration avec le son de mon bol chantant. Moins d'une minute, juste pour toi.">
+<meta property="og:image" content="https://www.katianacordoba.com/assets/share-bol.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale" content="fr_CA">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#E8B3B4">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Figtree:wght@400;500;600&display=swap">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cpath d='M10 3C7.6 6 7.6 11 10 15 12.4 11 12.4 6 10 3Z' fill='%23C97C88'/%3E%3Cpath d='M10 15C6.5 13.5 4.2 10.5 3.6 7.4 6.6 8.2 8.8 11 10 15Z' fill='%23DDA2A8'/%3E%3Cpath d='M10 15C13.5 13.5 15.8 10.5 16.4 7.4 13.4 8.2 11.2 11 10 15Z' fill='%23DDA2A8'/%3E%3C/svg%3E">
+<style>
+:root{color-scheme:light;--ink:#3A2830;--ink-soft:#6B5760;--rose:#E3A2B4;--rose-deep:#9E4460;--gold:#C99A55;--olive:#4E5C25;
+  --serif:"Cormorant Garamond",Garamond,Georgia,serif;--sans:"Figtree",system-ui,-apple-system,"Segoe UI",sans-serif}
+*{box-sizing:border-box}
+html,body{margin:0;min-height:100%}
+body{min-height:100svh;font-family:var(--sans);color:var(--ink);background:#F6DCCF;overflow-x:hidden;-webkit-tap-highlight-color:transparent}
+.sky{position:fixed;inset:0;z-index:-2;background:linear-gradient(180deg,#D99AA8 0%,#E8B3B4 28%,#F4CDBE 52%,#FBE3CC 72%,#F7E6D8 100%)}
+.sun{position:fixed;z-index:-1;left:50%;top:34%;width:min(140vw,900px);aspect-ratio:1;translate:-50% -50%;border-radius:50%;
+  background:radial-gradient(closest-side,rgb(255 244 220/.95),rgb(255 230 190/.55) 38%,rgb(255 226 180/0) 100%);pointer-events:none}
+.hills{position:fixed;z-index:-1;left:-10%;right:-10%;bottom:-8vh;height:26vh;border-radius:50% 50% 0 0;background:#C9C79A;opacity:.55;pointer-events:none}
+.hills.h2{left:-40%;right:30%;bottom:-14vh;background:#AEB57E;opacity:.55}
+header{display:flex;justify-content:center;padding:calc(18px + env(safe-area-inset-top,0px)) 16px 0}
+.brand{text-decoration:none;color:var(--ink);text-align:center;line-height:1.1}
+.brand b{display:block;font-family:var(--serif);font-weight:600;font-size:1.5rem}
+.brand small{display:block;margin-top:3px;font-size:.78rem;letter-spacing:.06em;color:var(--rose-deep)}
+main{max-width:560px;margin:0 auto;padding:12px 18px calc(28px + env(safe-area-inset-bottom,0px));text-align:center}
+h1{font-family:var(--serif);font-weight:500;font-size:clamp(2.6rem,9vw,3.6rem);line-height:1;margin:clamp(14px,4vh,34px) 0 8px;letter-spacing:-.01em}
+h1 em{color:var(--rose-deep)}
+.lede{font-size:1.05rem;line-height:1.5;color:var(--ink-soft);margin:0 auto;max-width:30ch}
+.stage{position:relative;width:min(78vw,340px);aspect-ratio:1;margin:clamp(22px,5vh,40px) auto 0}
+.bowl{position:relative;z-index:2;display:block;width:100%;height:100%;padding:0;border:0;border-radius:50%;cursor:pointer;background:none;touch-action:manipulation;
+  box-shadow:0 0 0 7px rgb(255 250 244/.85),0 0 0 9px rgb(201 154 85/.55),0 30px 60px -28px rgb(90 40 55/.6);transition:transform .5s cubic-bezier(.22,.61,.36,1)}
+.bowl img{width:100%;height:100%;border-radius:50%;object-fit:cover;display:block}
+.bowl:active{transform:scale(.97)}
+.bowl:focus-visible{outline:3px solid var(--rose-deep);outline-offset:12px}
+.glow{position:absolute;inset:-22%;z-index:1;border-radius:50%;background:radial-gradient(closest-side,rgb(255 232 190/.85),rgb(255 226 180/0));opacity:.5;animation:glow 4s ease-in-out infinite;pointer-events:none}
+@keyframes glow{50%{opacity:.85;transform:scale(1.04)}}
+.ring{position:absolute;inset:0;z-index:1;border-radius:50%;border:2px solid rgb(201 154 85/.7);pointer-events:none;opacity:0;animation:ring 2.8s cubic-bezier(.22,.61,.36,1) forwards}
+.ring.r2{border-color:rgb(194 108 134/.6);animation-delay:.18s}.ring.r3{animation-delay:.36s;border-width:1px}
+@keyframes ring{0%{opacity:.9;transform:scale(1)}100%{opacity:0;transform:scale(2.3)}}
+.hand{position:absolute;z-index:3;right:-4%;top:4%;display:flex;align-items:center;gap:8px;padding:10px 16px 10px 12px;border-radius:999px;background:rgb(255 252 249/.95);
+  box-shadow:0 14px 30px -18px rgb(80 40 55/.65);font-weight:600;font-size:1rem;color:var(--rose-deep);pointer-events:none;animation:nudge 2.4s ease-in-out infinite}
+.hand span{font-size:1.45rem;line-height:1;display:inline-block;animation:tap 2.4s ease-in-out infinite}
+@keyframes nudge{50%{transform:translateY(-4px)}}
+@keyframes tap{0%,60%,100%{transform:none}70%{transform:translateY(5px) scale(.92)}}
+body.started .hand{opacity:0;transition:opacity .5s}
+.say{min-height:2.6em;margin:clamp(22px,4vh,34px) 0 0;font-family:var(--serif);font-style:italic;font-size:clamp(1.8rem,6.5vw,2.3rem);color:var(--rose-deep);line-height:1.1}
+.say .w{display:inline-block;animation:sayIn .9s ease both}
+@keyframes sayIn{from{opacity:0;transform:translateY(8px)}}
+.breath{position:relative;z-index:0;width:min(60vw,240px);height:5px;margin:6px auto 0;border-radius:3px;background:rgb(255 255 255/.55);overflow:hidden;opacity:0;transition:opacity .6s}
+.breath i{display:block;height:100%;width:0;border-radius:3px;background:linear-gradient(90deg,var(--gold),var(--rose-deep))}
+body.started .breath{opacity:1}
+.after{margin:clamp(18px,3vh,28px) auto 0;padding:24px 20px 22px;max-width:440px;border-radius:28px;background:rgb(255 252 249/.88);box-shadow:0 26px 60px -40px rgb(90 50 70/.6);
+  opacity:0;transform:translateY(14px);pointer-events:none;transition:opacity 1s ease,transform 1s ease;visibility:hidden}
+body.done .after{opacity:1;transform:none;pointer-events:auto;visibility:visible}
+.after h2{font-family:var(--serif);font-weight:500;font-size:1.9rem;margin:0 0 8px}
+.after p{margin:0 auto 18px;line-height:1.55;color:var(--ink-soft);max-width:34ch}
+.cta{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:52px;padding:0 26px;border-radius:999px;background:var(--rose-deep);color:#fff;text-decoration:none;font-weight:600;font-size:1.02rem;box-shadow:0 16px 30px -18px rgb(158 68 96/.9)}
+.cta:focus-visible,.again:focus-visible{outline:3px solid var(--olive);outline-offset:3px}
+.again{display:block;margin:14px auto 0;padding:8px 12px;border:0;background:none;font:500 .95rem var(--sans);color:var(--rose-deep);text-decoration:underline;text-underline-offset:3px;cursor:pointer}
+footer{margin-top:clamp(18px,4vh,30px);font-size:.8rem;color:var(--ink-soft);line-height:1.5}
+footer a{color:inherit}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+@media (prefers-reduced-motion:reduce){.glow,.hand,.hand span{animation:none}.ring{display:none}}
+</style>
+</head>
+<body>
+<div class="sky" aria-hidden="true"></div><div class="sun" aria-hidden="true"></div><div class="hills" aria-hidden="true"></div><div class="hills h2" aria-hidden="true"></div>
+<header><a class="brand" href="https://www.katianacordoba.com/"><b>Katiana Cordoba</b><small>Accompagnement individuel et soins sonores</small></a></header>
+<main>
+  <h1>Touche le <em>bol</em></h1>
+  <p class="lede">Une respiration, avec le son de mon bol chantant. Moins d'une minute, juste pour toi.</p>
+  <div class="stage">
+    <span class="glow" aria-hidden="true"></span>
+    <button class="bowl" type="button" aria-label="Faire chanter le bol"><img src="../assets/bowl-round.webp" width="900" height="900" alt="Katiana, les yeux fermés, tient un bol chantant dans la nature"></button>
+    <span class="hand" aria-hidden="true"><span>👆</span>Touche-le</span>
+  </div>
+  <p class="say" aria-live="polite"></p>
+  <div class="breath" aria-hidden="true"><i></i></div>
+  <section class="after" aria-labelledby="after-t">
+    <h2 id="after-t">Comment te sens-tu?</h2>
+    <p>Une seule respiration peut déjà changer quelque chose. En séance, on prend le temps d'aller plus loin, à ton rythme.</p>
+    <a class="cta" href="https://www.katianacordoba.com/">Découvrir mon accompagnement</a>
+    <button class="again" type="button">Respirer encore une fois</button>
+  </section>
+  <footer>Katiana Cordoba · Gatineau · <a href="https://www.katianacordoba.com/">katianacordoba.com</a></footer>
+</main>
+<audio id="bowl" preload="auto" src="../assets/bowl.mp3"></audio>
+<audio id="hit" preload="auto" src="../assets/bowl-hit.mp3"></audio>
+<script>
+(function(){
+  var btn=document.querySelector('.bowl'), stage=document.querySelector('.stage'), say=document.querySelector('.say'),
+      bar=document.querySelector('.breath i'), again=document.querySelector('.again'),
+      snd=document.getElementById('bowl'), hit=document.getElementById('hit'), timers=[], state='idle',
+      RM=matchMedia('(prefers-reduced-motion: reduce)');
+  function session(){ try{ if(navigator.audioSession) navigator.audioSession.type='playback'; }catch(e){} }  // heard even on silent iPhones
+  function play(a){ try{ a.currentTime=0; }catch(e){} var p=a.play(); if(p&&p.catch) p.catch(function(){}); }
+  function rings(){ if(RM.matches) return; ['','r2','r3'].forEach(function(c){ var r=document.createElement('span'); r.className='ring '+c; stage.appendChild(r); setTimeout(function(){ r.remove(); },3400); }); }
+  function word(t){ say.innerHTML='<span class="w"></span>'; say.firstChild.textContent=t; }
+  function fill(to,ms){ bar.style.transition='none'; void bar.offsetWidth; bar.style.transition='width '+ms+'ms '+(to?'ease-in-out':'ease-in-out'); bar.style.width=to?'100%':'0%'; }
+  function clear(){ timers.forEach(clearTimeout); timers=[]; }
+  function start(){
+    clear(); state='run'; document.body.classList.add('started'); document.body.classList.remove('done');
+    session(); play(snd); rings();
+    word('Inspire…'); bar.style.width='0%'; fill(true,4000);
+    timers.push(setTimeout(function(){ word('Expire doucement…'); fill(false,8000); },4000));
+    timers.push(setTimeout(function(){ state='done'; word('Merci.'); document.body.classList.add('done');
+      var c=document.querySelector('.after'), r=c.getBoundingClientRect(); if(r.bottom>innerHeight) setTimeout(function(){ c.scrollIntoView({behavior:RM.matches?'auto':'smooth',block:'end'}); },400); },12300));
+  }
+  btn.addEventListener('click',function(){
+    if(state==='run'){ session(); play(hit); rings(); return; }   // every tap during the breath answers with the bowl
+    start();
+  });
+  again.addEventListener('click',function(){ scrollTo({top:0,behavior:'smooth'}); start(); });
+})();
+</script>
+</body>
+</html>
