@@ -4119,7 +4119,7 @@ dlg.addEventListener('click',function(ev){ if(ev.target===dlg) dlg.close(); });
 var a=document.getElementById('amb-audio'); if(!a) return;
 var btns=[].slice.call(document.querySelectorAll('.amb-btn'));
 var NORMAL=.8, DUCK=.08;                         // 10 % of the normal level while the bowl sings
-var wanted=true; try{ if(localStorage.getItem('kc-music')==='off') wanted=false; }catch(e){}
+var wanted=false;                                // v28 · off when the visitor arrives: music is always their choice
 var playing=false, ducked=false, lastBowl=0, ctx=null, gain=null, webaudio=false, ramp=null, watch=null;
 function paint(){ btns.forEach(function(b){ b.setAttribute('aria-pressed', String(wanted)); }); document.body.classList.toggle('amb-playing', wanted); document.body.classList.remove('amb-offer'); }
 function graph(){                                // build once, inside a tap (iOS needs that)
@@ -4159,8 +4159,8 @@ function start(){                                // must run inside a tap / clic
 }
 /* the music file loads quietly once the page is ready, so the first touch never waits for it */
 var started=false, SKIP=12;
-function preload(){ if(!wanted) return; if(a.preload!=='auto'){ a.preload='auto'; try{ a.load(); }catch(e){} } }
-if(document.readyState==='complete') setTimeout(preload,800); else addEventListener('load',function(){ setTimeout(preload,800); });
+function preload(){ if(a.preload!=='auto'){ a.preload='auto'; try{ a.load(); }catch(e){} } }
+btns.forEach(function(b){ ['pointerenter','pointerdown','focus'].forEach(function(t){ b.addEventListener(t, preload, {passive:true}); }); });
 a.addEventListener('loadedmetadata',function(){ if(!started) return; try{ if(a.currentTime<1 && a.duration>SKIP+5) a.currentTime=SKIP; }catch(e){} });
 function stop(){ playing=false; level(0,1.6); setTimeout(function(){ if(!playing) a.pause(); },1700); }
 /* the first touch anywhere starts the music (taps on the music button are handled by the button itself) */
@@ -4169,9 +4169,9 @@ function firstTouch(e){
   if(e && e.target && e.target.closest && e.target.closest('.amb-btn')) return;
   start();
 }
-['pointerdown','mousedown','touchstart','pointerup','touchend','click','keydown'].forEach(function(t){ addEventListener(t, firstTouch, {capture:true, passive:true}); });
+/* v28 · no automatic start any more: only the music button turns it on */
 btns.forEach(function(b){ b.addEventListener('click', function(){
-  wanted=!wanted; try{ localStorage.setItem('kc-music', wanted?'on':'off'); }catch(e){}
+  wanted=!wanted;
   paint(); if(wanted){ start(); replayDawn(); } else stop();
 }); });
 /* the bowl: music dips to 10 %, and comes back on its own once the bowl has gone quiet */
@@ -4183,9 +4183,13 @@ document.addEventListener('kc-bowl', function(){
   clearInterval(watch);
   watch=setInterval(function(){
     if(bowlSinging() || performance.now()-lastBowl<1500) return;
-    clearInterval(watch); ducked=false; if(playing) level(NORMAL,4);     // back to normal, smoothly, over 4 s
+    rise();
   },400);
 });
+function rise(){ if(!ducked) return; clearInterval(watch); ducked=false; if(playing) level(NORMAL,4); }   // back to normal, smoothly, over 4 s
+/* scrolling on past the bowl brings the music back too */
+var bowlY=null; addEventListener('scroll',function(){ if(!ducked) return; if(bowlY===null) bowlY=scrollY; if(Math.abs(scrollY-bowlY)>innerHeight*.6){ bowlY=null; rise(); } },{passive:true});
+document.addEventListener('kc-bowl',function(){ bowlY=scrollY; });
 document.addEventListener('visibilitychange',function(){ if(!document.hidden && ctx && ctx.state==='suspended' && playing){ try{ ctx.resume(); }catch(e){} } });
 window.kcMusic={level:function(){ return gain?gain.gain.value:a.volume; }, playing:function(){ return playing&&!a.paused; }, ducked:function(){ return ducked; }};
 paint();
