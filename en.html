@@ -2159,6 +2159,23 @@ html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
 /* v33 · the featured testimonial: a quiet voice, not a headline */
 .v8 .v5 .quote.feat{max-width:44rem;margin-inline:auto;padding:clamp(22px,3vw,34px) clamp(22px,4vw,44px)}
 .v8 .v5 .quote.feat blockquote{font-size:clamp(1.35rem,1.15rem + .7vw,1.75rem);line-height:1.35;max-width:36ch}
+
+/* v15 · blog: the latest article on the home page (filled by tools/build_blog.py) */
+.blog9 .bl9{margin-top:var(--sc-6);max-width:46rem;padding:clamp(22px,3.5vw,40px);border-radius:28px;background-color:rgb(255 252 249/.84);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);border:1px solid rgb(255 255 255/.7);box-shadow:0 24px 50px -32px rgb(90 50 70/.45)}
+.bl9-date{margin:0 0 10px;font-size:.78rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--olive)}
+.bl9-t{font-size:clamp(1.8rem,1.4rem + 1.6vw,2.6rem);line-height:1.08}
+.bl9-t a{color:var(--sc-ink);text-decoration:none}
+.bl9-t a:hover{color:var(--sc-accent)}
+.bl9-x{margin:14px 0 0;color:var(--sc-ink-soft);font-size:var(--sc-t-base);line-height:1.65;max-width:58ch;text-wrap:pretty}
+.bl9-go{display:flex;flex-wrap:wrap;align-items:center;gap:6px 20px;margin:22px 0 0}
+.bl9-more{display:inline-flex;align-items:center;gap:8px;min-height:46px;padding:0 20px;border-radius:999px;font-weight:600;text-decoration:none;color:var(--sc-accent);background:rgb(154 74 99/.08);box-shadow:inset 0 0 0 1px rgb(154 74 99/.28);transition:background-color .2s ease}
+.bl9-more:hover{background:rgb(154 74 99/.15)}
+.bl9-more svg{width:18px;height:18px}
+.bl9-all{color:var(--sc-ink-soft);font-weight:500;text-decoration:underline;text-underline-offset:4px;text-decoration-color:rgb(107 87 96/.4);padding:10px 2px}
+.bl9-all:hover{color:var(--sc-accent)}
+.blog9 > .wrap > h2{text-align:center}
+.blog9 .bl9{margin-inline:auto}
+.bl9 .nw{white-space:nowrap}
 </style>
 </head>
 <body class="v8">
@@ -2182,7 +2199,7 @@ html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
 </header>
 <dialog class="index" aria-label="Menu">
   <button class="menu-btn x" type="button" aria-label="Close menu"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" d="M6 6l12 12M18 6 6 18"/></svg></button>
-  <ol><li><a href="#breathe" data-to="breathe"><i aria-hidden="true"></i>Breathe with me</a></li><li><a href="#familiar" data-to="familiar"><i aria-hidden="true"></i>Is this you?</a></li><li><a href="#about" data-to="about"><i aria-hidden="true"></i>About me</a></li><li><a href="#sound" data-to="sound"><i aria-hidden="true"></i>Sound healing</a></li><li><a href="#toolbox" data-to="toolbox"><i aria-hidden="true"></i>My toolbox</a></li><li><a href="#sessions" data-to="sessions"><i aria-hidden="true"></i>Sessions</a></li><li><a href="#practical" data-to="practical"><i aria-hidden="true"></i>Prices and practical info</a></li><li><a href="#questions" data-to="questions"><i aria-hidden="true"></i>Questions</a></li><li><a href="#contact" data-to="contact"><i aria-hidden="true"></i>Contact</a></li></ol>
+  <ol><li><a href="#breathe" data-to="breathe"><i aria-hidden="true"></i>Breathe with me</a></li><li><a href="#familiar" data-to="familiar"><i aria-hidden="true"></i>Is this you?</a></li><li><a href="#about" data-to="about"><i aria-hidden="true"></i>About me</a></li><li><a href="#sound" data-to="sound"><i aria-hidden="true"></i>Sound healing</a></li><li><a href="#toolbox" data-to="toolbox"><i aria-hidden="true"></i>My toolbox</a></li><li><a href="#sessions" data-to="sessions"><i aria-hidden="true"></i>Sessions</a></li><li><a href="#practical" data-to="practical"><i aria-hidden="true"></i>Prices and practical info</a></li><li><a href="#questions" data-to="questions"><i aria-hidden="true"></i>Questions</a></li><li><a href="blog/en/"><i aria-hidden="true"></i>Blog</a></li><li><a href="#contact" data-to="contact"><i aria-hidden="true"></i>Contact</a></li></ol>
   <div class="row"><a class="btn" href="https://calendly.com/katianacoach/inner-work-coaching-session" target="_blank" rel="noopener" data-book>Book a session</a><span class="langs"><a class="lang" href="./" hreflang="fr" lang="fr">Français</a><a class="lang" href="es.html" hreflang="es" lang="es">Español</a></span><button class="amb-btn amb-menu" type="button" aria-pressed="false" aria-label="Music and nature"><span class="amb-ic" aria-hidden="true"><i></i><i></i><i></i><i></i></span><span class="amb-t">Music and nature</span><span class="amb-s"><span class="s-on">On</span><span class="s-off">Off</span></span></button></div>
 </dialog>
 <div class="kc-progress" aria-hidden="true"><i></i></div>
@@ -2498,6 +2515,20 @@ Take a look around and see what appeals to you. And if you&#x27;d like, you can 
     <div id="questions" class="blk center"><h2 class="d h2" data-sc-in data-tremble>Your <em>questions.</em></h2><div class="faq faq3" data-sc-in data-sc-stagger="40"><details><summary>How is this different from seeing a psychologist or psychotherapist?<span class="plus" aria-hidden="true"></span></summary><p class="a">Psychology and psychotherapy work within a clinical framework. My work focuses on emotional well-being and self-knowledge, through the body and experience. It does not replace psychological care.</p></details><details><summary>What happens in a first session?<span class="plus" aria-hidden="true"></span></summary><p class="a">We start with what&#x27;s present for you today. You talk, I listen, and together we see what would help most: conversation, the body, meditation or sound. You only share what you want.</p></details><details><summary>How do I know if this approach is right for me?<span class="plus" aria-hidden="true"></span></summary><p class="a">If you&#x27;d like to understand yourself better, feel calmer, or work with more than just words, it may be a good fit. If you&#x27;re unsure, text me your question and we&#x27;ll see together.</p></details><details><summary>Can I come if I&#x27;m already seeing a psychologist?<span class="plus" aria-hidden="true"></span></summary><p class="a">Yes. The two can go well together, and you&#x27;re always free to keep both.</p></details><details><summary>Do I need to know what I want to work on?<span class="plus" aria-hidden="true"></span></summary><p class="a">No. Many people arrive with just a feeling that something needs attention. We start there.</p></details><details><summary>What if it&#x27;s hard for me to talk about my feelings?<span class="plus" aria-hidden="true"></span></summary><p class="a">That&#x27;s very common, and it&#x27;s okay. We can begin with silence, your breath or the singing bowl. Words often come later.</p></details><details><summary>Do I have to talk about my past or my childhood?<span class="plus" aria-hidden="true"></span></summary><p class="a">No. We start with today. We only look at the past if it comes up and you feel ready.</p></details><details><summary>Do I need to be spiritual or believe in anything?<span class="plus" aria-hidden="true"></span></summary><p class="a">No. You come as you are, with or without beliefs. If spirituality interests you, we can explore it together.</p></details><details><summary>How long is a session, and what does it cost?<span class="plus" aria-hidden="true"></span></summary><p class="a">Individual sessions are $130 plus taxes. They usually last 60 to 90 minutes. If we need more time, we take it, sometimes up to two hours, at no extra cost. Couples sessions are $180 plus taxes.</p></details><details><summary>How many sessions will I need?<span class="plus" aria-hidden="true"></span></summary><p class="a">It depends on you and what you&#x27;re going through. We decide together, one session at a time.</p></details><details><summary>Can I get a receipt for my insurance?<span class="plus" aria-hidden="true"></span></summary><p class="a">Yes. I&#x27;m a member of the Association des naturothérapeutes du Québec (ANQ), so I can give you a receipt as a naturotherapist (naturothérapeute). Reimbursement depends on your plan.</p></details></div><button class="faq-more" type="button" aria-expanded="false" data-more="See more questions" data-less="See fewer questions">See more questions</button></div>
   </div>
 </section>
+<!-- 10b · Blog: the latest article (generated, see tools/build_blog.py) -->
+<!-- blog:latest:start -->
+<section id="blog" class="ex blog9" data-breath data-sc-act="flow" aria-labelledby="blog-h">
+  <div class="wrap">
+    <h2 id="blog-h" class="d h2" data-sc-in data-tremble>From the <em>blog.</em></h2>
+    <article class="bl9" data-sc-in>
+      <p class="bl9-date"><time datetime="2026-10-28">October 28, 2026</time></p>
+      <h3 class="d bl9-t"><a href="blog/en/carrying-the-weight-of-being-there-for-everyone/">Carrying the Weight of Being There for Everyone</a></h3>
+      <p class="bl9-x">Have you ever felt that it was your job to hold everything together? To be the one who keeps the peace, who notices what others need even before they do, who makes sure everyone is okay, even when you aren't?</p>
+      <p class="bl9-go"><a class="bl9-more" href="blog/en/carrying-the-weight-of-being-there-for-everyone/">Read more <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="M5 12h14M13 6l6 6-6 6"/></svg></a><a class="bl9-all" href="blog/en/">All articles</a></p>
+    </article>
+  </div>
+</section>
+<!-- blog:latest:end -->
 </div>
 <!-- 11 · Close: one thought unfolding into the next -->
 <section id="contact" class="close close2" data-breath data-sc-act="pin" data-sc-span="2.6" aria-labelledby="cl-h">

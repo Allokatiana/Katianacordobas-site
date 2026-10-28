@@ -1,0 +1,23 @@
+{
+  "_note": "Newest article first. The first one is the article shown on the home page. Texts live next to this file as <id>.<fr|en|es>.md. After any change, run: python3 tools/build_blog.py",
+  "articles": [
+    {
+      "id": "porter-le-poids",
+      "date": "2026-10-28",
+      "slugs": {
+        "fr": "porter-le-poids-d-etre-la-pour-tout-le-monde",
+        "en": "carrying-the-weight-of-being-there-for-everyone",
+        "es": "cargar-con-el-peso-de-estar-para-todos"
+      }
+    },
+    {
+      "id": "guerir-d-abord-soi-meme",
+      "date": "2026-10-28",
+      "slugs": {
+        "fr": "guerir-d-abord-soi-meme",
+        "en": "healing-ourselves-first",
+        "es": "sanarnos-primero"
+      }
+    }
+  ]
+}

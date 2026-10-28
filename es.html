@@ -2159,6 +2159,23 @@ html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
 /* v33 · the featured testimonial: a quiet voice, not a headline */
 .v8 .v5 .quote.feat{max-width:44rem;margin-inline:auto;padding:clamp(22px,3vw,34px) clamp(22px,4vw,44px)}
 .v8 .v5 .quote.feat blockquote{font-size:clamp(1.35rem,1.15rem + .7vw,1.75rem);line-height:1.35;max-width:36ch}
+
+/* v15 · blog: the latest article on the home page (filled by tools/build_blog.py) */
+.blog9 .bl9{margin-top:var(--sc-6);max-width:46rem;padding:clamp(22px,3.5vw,40px);border-radius:28px;background-color:rgb(255 252 249/.84);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);border:1px solid rgb(255 255 255/.7);box-shadow:0 24px 50px -32px rgb(90 50 70/.45)}
+.bl9-date{margin:0 0 10px;font-size:.78rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--olive)}
+.bl9-t{font-size:clamp(1.8rem,1.4rem + 1.6vw,2.6rem);line-height:1.08}
+.bl9-t a{color:var(--sc-ink);text-decoration:none}
+.bl9-t a:hover{color:var(--sc-accent)}
+.bl9-x{margin:14px 0 0;color:var(--sc-ink-soft);font-size:var(--sc-t-base);line-height:1.65;max-width:58ch;text-wrap:pretty}
+.bl9-go{display:flex;flex-wrap:wrap;align-items:center;gap:6px 20px;margin:22px 0 0}
+.bl9-more{display:inline-flex;align-items:center;gap:8px;min-height:46px;padding:0 20px;border-radius:999px;font-weight:600;text-decoration:none;color:var(--sc-accent);background:rgb(154 74 99/.08);box-shadow:inset 0 0 0 1px rgb(154 74 99/.28);transition:background-color .2s ease}
+.bl9-more:hover{background:rgb(154 74 99/.15)}
+.bl9-more svg{width:18px;height:18px}
+.bl9-all{color:var(--sc-ink-soft);font-weight:500;text-decoration:underline;text-underline-offset:4px;text-decoration-color:rgb(107 87 96/.4);padding:10px 2px}
+.bl9-all:hover{color:var(--sc-accent)}
+.blog9 > .wrap > h2{text-align:center}
+.blog9 .bl9{margin-inline:auto}
+.bl9 .nw{white-space:nowrap}
 </style>
 </head>
 <body class="v8">
@@ -2182,7 +2199,7 @@ html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
 </header>
 <dialog class="index" aria-label="Menú">
   <button class="menu-btn x" type="button" aria-label="Cerrar el menú"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" d="M6 6l12 12M18 6 6 18"/></svg></button>
-  <ol><li><a href="#breathe" data-to="breathe"><i aria-hidden="true"></i>Respira conmigo</a></li><li><a href="#familiar" data-to="familiar"><i aria-hidden="true"></i>¿Te reconoces aquí?</a></li><li><a href="#about" data-to="about"><i aria-hidden="true"></i>Sobre mí</a></li><li><a href="#sound" data-to="sound"><i aria-hidden="true"></i>Sonoterapia</a></li><li><a href="#toolbox" data-to="toolbox"><i aria-hidden="true"></i>Mi caja de herramientas</a></li><li><a href="#sessions" data-to="sessions"><i aria-hidden="true"></i>Las sesiones</a></li><li><a href="#practical" data-to="practical"><i aria-hidden="true"></i>Precios e información práctica</a></li><li><a href="#questions" data-to="questions"><i aria-hidden="true"></i>Preguntas</a></li><li><a href="#contact" data-to="contact"><i aria-hidden="true"></i>Contacto</a></li></ol>
+  <ol><li><a href="#breathe" data-to="breathe"><i aria-hidden="true"></i>Respira conmigo</a></li><li><a href="#familiar" data-to="familiar"><i aria-hidden="true"></i>¿Te reconoces aquí?</a></li><li><a href="#about" data-to="about"><i aria-hidden="true"></i>Sobre mí</a></li><li><a href="#sound" data-to="sound"><i aria-hidden="true"></i>Sonoterapia</a></li><li><a href="#toolbox" data-to="toolbox"><i aria-hidden="true"></i>Mi caja de herramientas</a></li><li><a href="#sessions" data-to="sessions"><i aria-hidden="true"></i>Las sesiones</a></li><li><a href="#practical" data-to="practical"><i aria-hidden="true"></i>Precios e información práctica</a></li><li><a href="#questions" data-to="questions"><i aria-hidden="true"></i>Preguntas</a></li><li><a href="blog/es/"><i aria-hidden="true"></i>Blog</a></li><li><a href="#contact" data-to="contact"><i aria-hidden="true"></i>Contacto</a></li></ol>
   <div class="row"><a class="btn" href="https://calendly.com/katianacoach/inner-work-coaching-session" target="_blank" rel="noopener" data-book>Agenda una sesión</a><span class="langs"><a class="lang" href="en.html" hreflang="en" lang="en">English</a><a class="lang" href="./" hreflang="fr" lang="fr">Français</a></span><button class="amb-btn amb-menu" type="button" aria-pressed="false" aria-label="Música y naturaleza"><span class="amb-ic" aria-hidden="true"><i></i><i></i><i></i><i></i></span><span class="amb-t">Música y naturaleza</span><span class="amb-s"><span class="s-on">Encendido</span><span class="s-off">Apagado</span></span></button></div>
 </dialog>
 <div class="kc-progress" aria-hidden="true"><i></i></div>
@@ -2498,6 +2515,20 @@ Mira a tu alrededor y ve qué te llama. Y si quieres, puedes regalarte un moment
     <div id="questions" class="blk center"><h2 class="d h2" data-sc-in data-tremble>Tus <em>preguntas.</em></h2><div class="faq faq3" data-sc-in data-sc-stagger="40"><details><summary>¿Cuál es la diferencia con un psicólogo o un psicoterapeuta?<span class="plus" aria-hidden="true"></span></summary><p class="a">La psicología y la psicoterapia trabajan dentro de un marco clínico. Mi trabajo se enfoca en el bienestar emocional y el conocimiento de uno mismo, a través del cuerpo y la experiencia. No reemplaza un acompañamiento psicológico.</p></details><details><summary>¿Cómo es una primera sesión?<span class="plus" aria-hidden="true"></span></summary><p class="a">Empezamos con lo que está presente para ti hoy. Tú hablas, yo escucho, y juntos vemos qué te ayudaría más: la conversación, el cuerpo, la meditación o el sonido. Solo compartes lo que quieras.</p></details><details><summary>¿Cómo sé si este enfoque es para mí?<span class="plus" aria-hidden="true"></span></summary><p class="a">Si tienes ganas de entenderte mejor, de sentirte con más calma o de trabajar con algo más que palabras, puede ser para ti. Si tienes dudas, escríbeme tu pregunta y lo vemos juntos.</p></details><details><summary>¿Puedo venir si ya estoy viendo a un psicólogo?<span class="plus" aria-hidden="true"></span></summary><p class="a">Sí. Las dos cosas pueden ir muy bien juntas, y siempre eres libre de mantener ambas.</p></details><details><summary>¿Tengo que saber en qué quiero trabajar?<span class="plus" aria-hidden="true"></span></summary><p class="a">No. Muchas personas llegan solo con la sensación de que algo necesita atención. Empezamos por ahí.</p></details><details><summary>¿Y si me cuesta hablar de mis emociones?<span class="plus" aria-hidden="true"></span></summary><p class="a">Es muy común, y está bien. Podemos empezar con el silencio, tu respiración o el cuenco. Las palabras muchas veces llegan después.</p></details><details><summary>¿Tengo que hablar de mi pasado o de mi infancia?<span class="plus" aria-hidden="true"></span></summary><p class="a">No. Empezamos por el presente. Solo miramos el pasado si aparece y si tienes ganas.</p></details><details><summary>¿Tengo que ser una persona espiritual o creer en algo?<span class="plus" aria-hidden="true"></span></summary><p class="a">No. Vienes tal como eres, con o sin creencias. Si la espiritualidad te interesa, podemos explorarla juntos.</p></details><details><summary>¿Cuánto dura una sesión y cuánto cuesta?<span class="plus" aria-hidden="true"></span></summary><p class="a">Las sesiones individuales cuestan 130 $ más impuestos. Normalmente duran de 60 a 90 minutos. Si necesitamos más tiempo, lo tomamos, a veces hasta dos horas, sin costo adicional. Las sesiones de pareja cuestan 180 $ más impuestos.</p></details><details><summary>¿Cuántas sesiones voy a necesitar?<span class="plus" aria-hidden="true"></span></summary><p class="a">Depende de ti y de lo que estés viviendo. Lo decidimos juntos, una sesión a la vez.</p></details><details><summary>¿Me pueden dar un recibo para mi seguro?<span class="plus" aria-hidden="true"></span></summary><p class="a">Sí. Soy miembro de la Association des naturothérapeutes du Québec (ANQ), así que puedo darte un recibo como naturoterapeuta (naturothérapeute). El reembolso depende de tu plan.</p></details></div><button class="faq-more" type="button" aria-expanded="false" data-more="Ver más preguntas" data-less="Ver menos preguntas">Ver más preguntas</button></div>
   </div>
 </section>
+<!-- 10b · Blog: the latest article (generated, see tools/build_blog.py) -->
+<!-- blog:latest:start -->
+<section id="blog" class="ex blog9" data-breath data-sc-act="flow" aria-labelledby="blog-h">
+  <div class="wrap">
+    <h2 id="blog-h" class="d h2" data-sc-in data-tremble>En el <em>blog.</em></h2>
+    <article class="bl9" data-sc-in>
+      <p class="bl9-date"><time datetime="2026-10-28">28 de octubre de 2026</time></p>
+      <h3 class="d bl9-t"><a href="blog/es/cargar-con-el-peso-de-estar-para-todos/">Cargar con el peso de estar para todos</a></h3>
+      <p class="bl9-x">¿Alguna vez has sentido que te tocaba a ti sostenerlo todo? ¿Ser quien mantiene la paz, quien nota lo que los demás necesitan antes de que ellos mismos lo sepan, quien se asegura de que todos estén bien, aunque tú no lo estés?</p>
+      <p class="bl9-go"><a class="bl9-more" href="blog/es/cargar-con-el-peso-de-estar-para-todos/">Seguir leyendo <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="M5 12h14M13 6l6 6-6 6"/></svg></a><a class="bl9-all" href="blog/es/">Todos los artículos</a></p>
+    </article>
+  </div>
+</section>
+<!-- blog:latest:end -->
 </div>
 <!-- 11 · Close: one thought unfolding into the next -->
 <section id="contact" class="close close2" data-breath data-sc-act="pin" data-sc-span="2.6" aria-labelledby="cl-h">

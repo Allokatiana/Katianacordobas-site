@@ -28,4 +28,78 @@
     <loc>https://www.katianacordoba.com/bol/</loc>
     <lastmod>2026-10-27</lastmod>
   </url>
+  <!-- blog:start -->
+  <url>
+    <loc>https://www.katianacordoba.com/blog/</loc>
+    <lastmod>2026-10-28</lastmod>
+    <xhtml:link rel="alternate" hreflang="fr-CA" href="https://www.katianacordoba.com/blog/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.katianacordoba.com/blog/en/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.katianacordoba.com/blog/es/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.katianacordoba.com/blog/"/>
+  </url>
+  <url>
+    <loc>https://www.katianacordoba.com/blog/en/</loc>
+    <lastmod>2026-10-28</lastmod>
+    <xhtml:link rel="alternate" hreflang="fr-CA" href="https://www.katianacordoba.com/blog/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.katianacordoba.com/blog/en/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.katianacordoba.com/blog/es/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.katianacordoba.com/blog/"/>
+  </url>
+  <url>
+    <loc>https://www.katianacordoba.com/blog/es/</loc>
+    <lastmod>2026-10-28</lastmod>
+    <xhtml:link rel="alternate" hreflang="fr-CA" href="https://www.katianacordoba.com/blog/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.katianacordoba.com/blog/en/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.katianacordoba.com/blog/es/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.katianacordoba.com/blog/"/>
+  </url>
+  <url>
+    <loc>https://www.katianacordoba.com/blog/porter-le-poids-d-etre-la-pour-tout-le-monde/</loc>
+    <lastmod>2026-10-28</lastmod>
+    <xhtml:link rel="alternate" hreflang="fr-CA" href="https://www.katianacordoba.com/blog/porter-le-poids-d-etre-la-pour-tout-le-monde/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.katianacordoba.com/blog/en/carrying-the-weight-of-being-there-for-everyone/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.katianacordoba.com/blog/es/cargar-con-el-peso-de-estar-para-todos/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.katianacordoba.com/blog/porter-le-poids-d-etre-la-pour-tout-le-monde/"/>
+  </url>
+  <url>
+    <loc>https://www.katianacordoba.com/blog/en/carrying-the-weight-of-being-there-for-everyone/</loc>
+    <lastmod>2026-10-28</lastmod>
+    <xhtml:link rel="alternate" hreflang="fr-CA" href="https://www.katianacordoba.com/blog/porter-le-poids-d-etre-la-pour-tout-le-monde/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.katianacordoba.com/blog/en/carrying-the-weight-of-being-there-for-everyone/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.katianacordoba.com/blog/es/cargar-con-el-peso-de-estar-para-todos/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.katianacordoba.com/blog/porter-le-poids-d-etre-la-pour-tout-le-monde/"/>
+  </url>
+  <url>
+    <loc>https://www.katianacordoba.com/blog/es/cargar-con-el-peso-de-estar-para-todos/</loc>
+    <lastmod>2026-10-28</lastmod>
+    <xhtml:link rel="alternate" hreflang="fr-CA" href="https://www.katianacordoba.com/blog/porter-le-poids-d-etre-la-pour-tout-le-monde/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.katianacordoba.com/blog/en/carrying-the-weight-of-being-there-for-everyone/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.katianacordoba.com/blog/es/cargar-con-el-peso-de-estar-para-todos/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.katianacordoba.com/blog/porter-le-poids-d-etre-la-pour-tout-le-monde/"/>
+  </url>
+  <url>
+    <loc>https://www.katianacordoba.com/blog/guerir-d-abord-soi-meme/</loc>
+    <lastmod>2026-10-28</lastmod>
+    <xhtml:link rel="alternate" hreflang="fr-CA" href="https://www.katianacordoba.com/blog/guerir-d-abord-soi-meme/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.katianacordoba.com/blog/en/healing-ourselves-first/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.katianacordoba.com/blog/es/sanarnos-primero/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.katianacordoba.com/blog/guerir-d-abord-soi-meme/"/>
+  </url>
+  <url>
+    <loc>https://www.katianacordoba.com/blog/en/healing-ourselves-first/</loc>
+    <lastmod>2026-10-28</lastmod>
+    <xhtml:link rel="alternate" hreflang="fr-CA" href="https://www.katianacordoba.com/blog/guerir-d-abord-soi-meme/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.katianacordoba.com/blog/en/healing-ourselves-first/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.katianacordoba.com/blog/es/sanarnos-primero/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.katianacordoba.com/blog/guerir-d-abord-soi-meme/"/>
+  </url>
+  <url>
+    <loc>https://www.katianacordoba.com/blog/es/sanarnos-primero/</loc>
+    <lastmod>2026-10-28</lastmod>
+    <xhtml:link rel="alternate" hreflang="fr-CA" href="https://www.katianacordoba.com/blog/guerir-d-abord-soi-meme/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.katianacordoba.com/blog/en/healing-ourselves-first/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.katianacordoba.com/blog/es/sanarnos-primero/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.katianacordoba.com/blog/guerir-d-abord-soi-meme/"/>
+  </url>
+  <!-- blog:end -->
 </urlset>
