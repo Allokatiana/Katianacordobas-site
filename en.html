@@ -2115,6 +2115,8 @@ html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
 .v8 .w-water .glint{background:linear-gradient(180deg,rgb(var(--sun-c,255 240 210)/0) 0%,rgb(var(--sun-c,255 240 210)/.8) 9%,rgb(255 240 210/0) 70%)}
 /* v25 · the sun's reflection on the water: soft sides too, so it reads as light, not as a rectangle */
 .v8 .water .glint,.v8 .tg-water .glint,.v8 .w-water .glint,.v8 .w-water .mglint{-webkit-mask-image:linear-gradient(90deg,transparent 0%,#000 32%,#000 68%,transparent 100%);mask-image:linear-gradient(90deg,transparent 0%,#000 32%,#000 68%,transparent 100%)}
+/* v30 · on phones the "Is this you?" portrait landed right before the About photo (two portraits in a row): phones keep only the About photo */
+@media (max-width:860px){.v8 .fig-wrap.fig5{display:none!important}}
 </style>
 </head>
 <body class="v8">
