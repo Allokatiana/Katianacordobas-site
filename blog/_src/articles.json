@@ -2,6 +2,42 @@
   "_note": "Newest article first. The first one is the article shown on the home page. Texts live next to this file as <id>.<fr|en|es>.md. After any change, run: python3 tools/build_blog.py",
   "articles": [
     {
+      "id": "nous-sommes-des-fractales",
+      "date": "2026-10-30",
+      "slugs": {
+        "fr": "nous-sommes-des-fractales",
+        "en": "we-are-fractals",
+        "es": "somos-fractales"
+      }
+    },
+    {
+      "id": "la-culpabilite-invisible",
+      "date": "2026-10-30",
+      "slugs": {
+        "fr": "la-culpabilite-invisible",
+        "en": "the-invisible-guilt",
+        "es": "la-culpa-invisible"
+      }
+    },
+    {
+      "id": "donner-un-sens-a-la-douleur",
+      "date": "2026-10-30",
+      "slugs": {
+        "fr": "donner-un-sens-a-la-douleur-emotionnelle",
+        "en": "making-sense-of-emotional-pain",
+        "es": "darle-sentido-al-dolor-emocional"
+      }
+    },
+    {
+      "id": "la-pression-de-toujours-faire",
+      "date": "2026-10-30",
+      "slugs": {
+        "fr": "la-pression-de-toujours-faire",
+        "en": "the-pressure-to-always-be-doing",
+        "es": "la-presion-de-estar-siempre-haciendo"
+      }
+    },
+    {
       "id": "ne-pas-s-identifier-a-ses-pensees",
       "date": "2026-10-30",
       "slugs": {

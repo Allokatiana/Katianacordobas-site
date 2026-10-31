@@ -109,6 +109,9 @@ def body_html(blocks, lang):
     for i, b in enumerate(blocks):
         if b.startswith('### '):
             out.append(f'<h2>{fmt(b[4:].strip(), lang)}</h2>')
+        elif all(re.match(r'\d+\. ', l.strip()) for l in b.split('\n')):
+            items = ''.join(f'<li>{fmt(re.sub(r"^\d+\. ", "", l.strip()), lang)}</li>' for l in b.split('\n'))
+            out.append(f'<ol>{items}</ol>')
         elif b.startswith('>'):
             inner = ' '.join(l.lstrip('>').strip() for l in b.split('\n'))
             out.append(f'<blockquote><p>{fmt(inner, lang)}</p></blockquote>')
