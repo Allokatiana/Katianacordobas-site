@@ -2,6 +2,42 @@
   "_note": "Newest article first. The first one is the article shown on the home page. Texts live next to this file as <id>.<fr|en|es>.md. After any change, run: python3 tools/build_blog.py",
   "articles": [
     {
+      "id": "ne-pas-s-identifier-a-ses-pensees",
+      "date": "2026-10-30",
+      "slugs": {
+        "fr": "ne-pas-s-identifier-a-ses-pensees",
+        "en": "not-identifying-with-your-thoughts",
+        "es": "no-identificarse-con-los-pensamientos"
+      }
+    },
+    {
+      "id": "comment-la-manifestation-fonctionne",
+      "date": "2026-10-30",
+      "slugs": {
+        "fr": "comment-la-manifestation-fonctionne-vraiment",
+        "en": "how-manifestation-actually-works",
+        "es": "como-funciona-realmente-la-manifestacion"
+      }
+    },
+    {
+      "id": "le-corps-porte-le-trauma",
+      "date": "2026-10-30",
+      "slugs": {
+        "fr": "le-corps-porte-le-trauma",
+        "en": "the-body-holds-trauma",
+        "es": "el-cuerpo-carga-el-trauma"
+      }
+    },
+    {
+      "id": "qui-est-la-voix-dans-ma-tete",
+      "date": "2026-10-30",
+      "slugs": {
+        "fr": "qui-est-la-voix-dans-ma-tete",
+        "en": "who-is-the-voice-in-my-head",
+        "es": "quien-es-la-voz-en-mi-cabeza"
+      }
+    },
+    {
       "id": "quand-parler-fait-peur",
       "date": "2026-10-30",
       "slugs": {
