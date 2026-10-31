@@ -2,6 +2,78 @@
   "_note": "Newest article first. The first one is the article shown on the home page. Texts live next to this file as <id>.<fr|en|es>.md. After any change, run: python3 tools/build_blog.py",
   "articles": [
     {
+      "id": "creer-ou-suivre-la-vie",
+      "date": "2026-10-30",
+      "slugs": {
+        "fr": "creer-ou-suivre-la-vie",
+        "en": "creators-or-followers-of-life",
+        "es": "crear-o-seguir-la-vida"
+      }
+    },
+    {
+      "id": "nous-sommes-tous-un",
+      "date": "2026-10-30",
+      "slugs": {
+        "fr": "nous-sommes-tous-un",
+        "en": "we-are-all-one",
+        "es": "todos-somos-uno"
+      }
+    },
+    {
+      "id": "sommes-nous-createurs",
+      "date": "2026-10-30",
+      "slugs": {
+        "fr": "sommes-nous-createurs",
+        "en": "are-we-creators-free-will",
+        "es": "somos-creadores"
+      }
+    },
+    {
+      "id": "le-defi-d-etre-moi",
+      "date": "2026-10-30",
+      "slugs": {
+        "fr": "le-defi-d-etre-moi",
+        "en": "struggling-to-be-me",
+        "es": "lo-que-me-cuesta-ser-yo"
+      }
+    },
+    {
+      "id": "la-bonte-la-verite",
+      "date": "2026-10-30",
+      "slugs": {
+        "fr": "la-bonte-la-verite-et-le-courage-d-etre-vrai",
+        "en": "kindness-truth-and-the-courage-to-be-real",
+        "es": "la-bondad-la-verdad-y-el-valor-de-ser-autentico"
+      }
+    },
+    {
+      "id": "les-je-devrais",
+      "date": "2026-10-30",
+      "slugs": {
+        "fr": "les-je-devrais-qui-nous-gouvernent",
+        "en": "the-shoulds-that-govern-us",
+        "es": "los-deberia-que-nos-gobiernan"
+      }
+    },
+    {
+      "id": "etes-vous-bizarre",
+      "date": "2026-10-30",
+      "slugs": {
+        "fr": "etes-vous-bizarre",
+        "en": "are-you-weird",
+        "es": "eres-un-bicho-raro"
+      }
+    },
+    {
+      "id": "guerir-par-le-travail-de-l-ombre",
+      "date": "2026-10-30",
+      "slugs": {
+        "fr": "guerir-par-le-travail-de-l-ombre",
+        "en": "healing-through-shadow-work",
+        "es": "sanar-a-traves-del-trabajo-con-la-sombra"
+      }
+    },
+    {
       "id": "qu-est-ce-que-l-amour-vraiment",
       "date": "2026-10-30",
       "slugs": {
