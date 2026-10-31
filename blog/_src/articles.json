@@ -2,6 +2,33 @@
   "_note": "Newest article first. The first one is the article shown on the home page. Texts live next to this file as <id>.<fr|en|es>.md. After any change, run: python3 tools/build_blog.py",
   "articles": [
     {
+      "id": "quand-parler-fait-peur",
+      "date": "2026-10-30",
+      "slugs": {
+        "fr": "quand-parler-fait-peur",
+        "en": "when-speaking-feels-unsafe",
+        "es": "cuando-hablar-da-miedo"
+      }
+    },
+    {
+      "id": "nous-sommes-des-miroirs",
+      "date": "2026-10-30",
+      "slugs": {
+        "fr": "nous-sommes-des-miroirs",
+        "en": "we-are-mirrors",
+        "es": "somos-espejos"
+      }
+    },
+    {
+      "id": "guerir-la-blessure-maternelle",
+      "date": "2026-10-30",
+      "slugs": {
+        "fr": "guerir-la-blessure-maternelle",
+        "en": "healing-the-mother-wound",
+        "es": "sanar-la-herida-materna"
+      }
+    },
+    {
       "id": "porter-le-poids",
       "date": "2026-10-28",
       "slugs": {

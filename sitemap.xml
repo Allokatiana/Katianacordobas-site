@@ -31,7 +31,7 @@
   <!-- blog:start -->
   <url>
     <loc>https://www.katianacordoba.com/blog/</loc>
-    <lastmod>2026-10-28</lastmod>
+    <lastmod>2026-10-30</lastmod>
     <xhtml:link rel="alternate" hreflang="fr-CA" href="https://www.katianacordoba.com/blog/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.katianacordoba.com/blog/en/"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://www.katianacordoba.com/blog/es/"/>
@@ -39,7 +39,7 @@
   </url>
   <url>
     <loc>https://www.katianacordoba.com/blog/en/</loc>
-    <lastmod>2026-10-28</lastmod>
+    <lastmod>2026-10-30</lastmod>
     <xhtml:link rel="alternate" hreflang="fr-CA" href="https://www.katianacordoba.com/blog/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.katianacordoba.com/blog/en/"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://www.katianacordoba.com/blog/es/"/>
@@ -47,11 +47,83 @@
   </url>
   <url>
     <loc>https://www.katianacordoba.com/blog/es/</loc>
-    <lastmod>2026-10-28</lastmod>
+    <lastmod>2026-10-30</lastmod>
     <xhtml:link rel="alternate" hreflang="fr-CA" href="https://www.katianacordoba.com/blog/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.katianacordoba.com/blog/en/"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://www.katianacordoba.com/blog/es/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.katianacordoba.com/blog/"/>
+  </url>
+  <url>
+    <loc>https://www.katianacordoba.com/blog/quand-parler-fait-peur/</loc>
+    <lastmod>2026-10-30</lastmod>
+    <xhtml:link rel="alternate" hreflang="fr-CA" href="https://www.katianacordoba.com/blog/quand-parler-fait-peur/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.katianacordoba.com/blog/en/when-speaking-feels-unsafe/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.katianacordoba.com/blog/es/cuando-hablar-da-miedo/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.katianacordoba.com/blog/quand-parler-fait-peur/"/>
+  </url>
+  <url>
+    <loc>https://www.katianacordoba.com/blog/en/when-speaking-feels-unsafe/</loc>
+    <lastmod>2026-10-30</lastmod>
+    <xhtml:link rel="alternate" hreflang="fr-CA" href="https://www.katianacordoba.com/blog/quand-parler-fait-peur/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.katianacordoba.com/blog/en/when-speaking-feels-unsafe/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.katianacordoba.com/blog/es/cuando-hablar-da-miedo/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.katianacordoba.com/blog/quand-parler-fait-peur/"/>
+  </url>
+  <url>
+    <loc>https://www.katianacordoba.com/blog/es/cuando-hablar-da-miedo/</loc>
+    <lastmod>2026-10-30</lastmod>
+    <xhtml:link rel="alternate" hreflang="fr-CA" href="https://www.katianacordoba.com/blog/quand-parler-fait-peur/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.katianacordoba.com/blog/en/when-speaking-feels-unsafe/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.katianacordoba.com/blog/es/cuando-hablar-da-miedo/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.katianacordoba.com/blog/quand-parler-fait-peur/"/>
+  </url>
+  <url>
+    <loc>https://www.katianacordoba.com/blog/nous-sommes-des-miroirs/</loc>
+    <lastmod>2026-10-30</lastmod>
+    <xhtml:link rel="alternate" hreflang="fr-CA" href="https://www.katianacordoba.com/blog/nous-sommes-des-miroirs/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.katianacordoba.com/blog/en/we-are-mirrors/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.katianacordoba.com/blog/es/somos-espejos/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.katianacordoba.com/blog/nous-sommes-des-miroirs/"/>
+  </url>
+  <url>
+    <loc>https://www.katianacordoba.com/blog/en/we-are-mirrors/</loc>
+    <lastmod>2026-10-30</lastmod>
+    <xhtml:link rel="alternate" hreflang="fr-CA" href="https://www.katianacordoba.com/blog/nous-sommes-des-miroirs/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.katianacordoba.com/blog/en/we-are-mirrors/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.katianacordoba.com/blog/es/somos-espejos/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.katianacordoba.com/blog/nous-sommes-des-miroirs/"/>
+  </url>
+  <url>
+    <loc>https://www.katianacordoba.com/blog/es/somos-espejos/</loc>
+    <lastmod>2026-10-30</lastmod>
+    <xhtml:link rel="alternate" hreflang="fr-CA" href="https://www.katianacordoba.com/blog/nous-sommes-des-miroirs/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.katianacordoba.com/blog/en/we-are-mirrors/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.katianacordoba.com/blog/es/somos-espejos/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.katianacordoba.com/blog/nous-sommes-des-miroirs/"/>
+  </url>
+  <url>
+    <loc>https://www.katianacordoba.com/blog/guerir-la-blessure-maternelle/</loc>
+    <lastmod>2026-10-30</lastmod>
+    <xhtml:link rel="alternate" hreflang="fr-CA" href="https://www.katianacordoba.com/blog/guerir-la-blessure-maternelle/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.katianacordoba.com/blog/en/healing-the-mother-wound/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.katianacordoba.com/blog/es/sanar-la-herida-materna/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.katianacordoba.com/blog/guerir-la-blessure-maternelle/"/>
+  </url>
+  <url>
+    <loc>https://www.katianacordoba.com/blog/en/healing-the-mother-wound/</loc>
+    <lastmod>2026-10-30</lastmod>
+    <xhtml:link rel="alternate" hreflang="fr-CA" href="https://www.katianacordoba.com/blog/guerir-la-blessure-maternelle/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.katianacordoba.com/blog/en/healing-the-mother-wound/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.katianacordoba.com/blog/es/sanar-la-herida-materna/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.katianacordoba.com/blog/guerir-la-blessure-maternelle/"/>
+  </url>
+  <url>
+    <loc>https://www.katianacordoba.com/blog/es/sanar-la-herida-materna/</loc>
+    <lastmod>2026-10-30</lastmod>
+    <xhtml:link rel="alternate" hreflang="fr-CA" href="https://www.katianacordoba.com/blog/guerir-la-blessure-maternelle/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.katianacordoba.com/blog/en/healing-the-mother-wound/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.katianacordoba.com/blog/es/sanar-la-herida-materna/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.katianacordoba.com/blog/guerir-la-blessure-maternelle/"/>
   </url>
   <url>
     <loc>https://www.katianacordoba.com/blog/porter-le-poids-d-etre-la-pour-tout-le-monde/</loc>

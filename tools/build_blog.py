@@ -68,6 +68,17 @@ def title_html(s, lang):
     return re.sub(r'(\S+-\S+)', r'<span class="nw">\1</span>', esc(typo(s, lang)))
 
 
+def fmt(s, lang):
+    """Escaped text, with **bold** and *italics* kept as written in the doc."""
+    s = esc(typo(s, lang))
+    s = re.sub(r'\*\*(.+?)\*\*', r'<strong>\1</strong>', s)
+    return re.sub(r'\*(.+?)\*', r'<em>\1</em>', s)
+
+
+def plain(s):
+    return s.replace('*', '')
+
+
 def attr(s):
     return html.escape(s, quote=True)
 
@@ -97,17 +108,17 @@ def body_html(blocks, lang):
     out, first = [], None
     for i, b in enumerate(blocks):
         if b.startswith('### '):
-            out.append(f'<h2>{esc(typo(b[4:].strip(), lang))}</h2>')
+            out.append(f'<h2>{fmt(b[4:].strip(), lang)}</h2>')
         elif b.startswith('>'):
             inner = ' '.join(l.lstrip('>').strip() for l in b.split('\n'))
-            out.append(f'<blockquote><p>{esc(typo(inner, lang))}</p></blockquote>')
+            out.append(f'<blockquote><p>{fmt(inner, lang)}</p></blockquote>')
         elif i == len(blocks) - 1 and b == 'Katiana':
             out.append(f'<p class="sig">{esc(b)}</p>')
         else:
             txt = ' '.join(l.strip() for l in b.split('\n'))
-            out.append(f'<p>{esc(typo(txt, lang))}</p>')
+            out.append(f'<p>{fmt(txt, lang)}</p>')
             if first is None:
-                first = txt
+                first = plain(txt)
     return '\n'.join(out), first
 
 
