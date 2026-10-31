@@ -2,6 +2,123 @@
   "_note": "Newest article first. The first one is the article shown on the home page. Texts live next to this file as <id>.<fr|en|es>.md. After any change, run: python3 tools/build_blog.py",
   "articles": [
     {
+      "id": "le-pouvoir-des-mots",
+      "date": "2026-10-31",
+      "slugs": {
+        "fr": "le-pouvoir-des-mots-des-pensees-et-des-emotions",
+        "en": "the-power-of-words-thoughts-and-emotions",
+        "es": "el-poder-de-las-palabras-los-pensamientos-y-las-emociones"
+      }
+    },
+    {
+      "id": "pourquoi-vivons-nous-des-epreuves",
+      "date": "2026-10-31",
+      "slugs": {
+        "fr": "pourquoi-vivons-nous-des-epreuves",
+        "en": "why-do-difficult-things-happen-to-us",
+        "es": "por-que-nos-pasan-cosas-dificiles"
+      }
+    },
+    {
+      "id": "guerir-d-une-peine-d-amour",
+      "date": "2026-10-31",
+      "slugs": {
+        "fr": "guerir-d-une-peine-d-amour",
+        "en": "healing-after-heartbreak",
+        "es": "sanar-despues-de-una-ruptura-amorosa"
+      }
+    },
+    {
+      "id": "voir-les-gens-tels-qu-ils-sont",
+      "date": "2026-10-31",
+      "slugs": {
+        "fr": "voir-les-gens-tels-qu-ils-sont",
+        "en": "seeing-people-as-they-are",
+        "es": "ver-a-las-personas-como-son"
+      }
+    },
+    {
+      "id": "est-ce-que-les-autres-me-voient",
+      "date": "2026-10-31",
+      "slugs": {
+        "fr": "est-ce-que-les-autres-me-voient",
+        "en": "do-others-see-me-do-i-see-myself",
+        "es": "los-demas-me-ven-yo-me-veo"
+      }
+    },
+    {
+      "id": "l-energie-negative-des-autres",
+      "date": "2026-10-31",
+      "slugs": {
+        "fr": "garder-son-ancrage-face-a-l-energie-negative",
+        "en": "staying-grounded-around-negative-energy",
+        "es": "no-dejarte-afectar-por-la-energia-negativa"
+      }
+    },
+    {
+      "id": "suis-je-en-danger",
+      "date": "2026-10-31",
+      "slugs": {
+        "fr": "suis-je-en-danger-se-sentir-en-securite",
+        "en": "am-i-in-danger-how-to-feel-safe",
+        "es": "estoy-en-peligro-ser-quien-eres"
+      }
+    },
+    {
+      "id": "peur-nous-sommes-en-securite",
+      "date": "2026-10-31",
+      "slugs": {
+        "fr": "peur-nous-sommes-en-securite",
+        "en": "fear-we-are-safe",
+        "es": "miedo-estamos-a-salvo"
+      }
+    },
+    {
+      "id": "conversation-dans-le-ventre",
+      "date": "2026-10-31",
+      "slugs": {
+        "fr": "une-conversation-dans-le-ventre-de-la-mere",
+        "en": "a-conversation-in-the-womb",
+        "es": "una-conversacion-en-el-vientre"
+      }
+    },
+    {
+      "id": "prendre-une-decision-difficile",
+      "date": "2026-10-31",
+      "slugs": {
+        "fr": "prendre-une-decision-difficile",
+        "en": "how-to-make-hard-decisions",
+        "es": "como-tomar-decisiones-dificiles"
+      }
+    },
+    {
+      "id": "les-relations-et-le-rejet",
+      "date": "2026-10-31",
+      "slugs": {
+        "fr": "les-relations-et-le-rejet",
+        "en": "relationships-and-rejection",
+        "es": "relaciones-y-rechazo"
+      }
+    },
+    {
+      "id": "aimer-sans-attachement",
+      "date": "2026-10-31",
+      "slugs": {
+        "fr": "aimer-sans-attachement",
+        "en": "love-without-attachment",
+        "es": "amar-sin-apego"
+      }
+    },
+    {
+      "id": "l-art-de-s-ennuyer",
+      "date": "2026-10-31",
+      "slugs": {
+        "fr": "l-art-de-s-ennuyer",
+        "en": "the-art-of-being-bored",
+        "es": "el-arte-de-aburrirse"
+      }
+    },
+    {
       "id": "creer-ou-suivre-la-vie",
       "date": "2026-10-30",
       "slugs": {

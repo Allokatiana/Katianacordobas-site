@@ -31,7 +31,7 @@
   <!-- blog:start -->
   <url>
     <loc>https://www.katianacordoba.com/blog/</loc>
-    <lastmod>2026-10-30</lastmod>
+    <lastmod>2026-10-31</lastmod>
     <xhtml:link rel="alternate" hreflang="fr-CA" href="https://www.katianacordoba.com/blog/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.katianacordoba.com/blog/en/"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://www.katianacordoba.com/blog/es/"/>
@@ -39,7 +39,7 @@
   </url>
   <url>
     <loc>https://www.katianacordoba.com/blog/en/</loc>
-    <lastmod>2026-10-30</lastmod>
+    <lastmod>2026-10-31</lastmod>
     <xhtml:link rel="alternate" hreflang="fr-CA" href="https://www.katianacordoba.com/blog/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.katianacordoba.com/blog/en/"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://www.katianacordoba.com/blog/es/"/>
@@ -47,11 +47,323 @@
   </url>
   <url>
     <loc>https://www.katianacordoba.com/blog/es/</loc>
-    <lastmod>2026-10-30</lastmod>
+    <lastmod>2026-10-31</lastmod>
     <xhtml:link rel="alternate" hreflang="fr-CA" href="https://www.katianacordoba.com/blog/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.katianacordoba.com/blog/en/"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://www.katianacordoba.com/blog/es/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.katianacordoba.com/blog/"/>
+  </url>
+  <url>
+    <loc>https://www.katianacordoba.com/blog/le-pouvoir-des-mots-des-pensees-et-des-emotions/</loc>
+    <lastmod>2026-10-31</lastmod>
+    <xhtml:link rel="alternate" hreflang="fr-CA" href="https://www.katianacordoba.com/blog/le-pouvoir-des-mots-des-pensees-et-des-emotions/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.katianacordoba.com/blog/en/the-power-of-words-thoughts-and-emotions/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.katianacordoba.com/blog/es/el-poder-de-las-palabras-los-pensamientos-y-las-emociones/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.katianacordoba.com/blog/le-pouvoir-des-mots-des-pensees-et-des-emotions/"/>
+  </url>
+  <url>
+    <loc>https://www.katianacordoba.com/blog/en/the-power-of-words-thoughts-and-emotions/</loc>
+    <lastmod>2026-10-31</lastmod>
+    <xhtml:link rel="alternate" hreflang="fr-CA" href="https://www.katianacordoba.com/blog/le-pouvoir-des-mots-des-pensees-et-des-emotions/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.katianacordoba.com/blog/en/the-power-of-words-thoughts-and-emotions/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.katianacordoba.com/blog/es/el-poder-de-las-palabras-los-pensamientos-y-las-emociones/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.katianacordoba.com/blog/le-pouvoir-des-mots-des-pensees-et-des-emotions/"/>
+  </url>
+  <url>
+    <loc>https://www.katianacordoba.com/blog/es/el-poder-de-las-palabras-los-pensamientos-y-las-emociones/</loc>
+    <lastmod>2026-10-31</lastmod>
+    <xhtml:link rel="alternate" hreflang="fr-CA" href="https://www.katianacordoba.com/blog/le-pouvoir-des-mots-des-pensees-et-des-emotions/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.katianacordoba.com/blog/en/the-power-of-words-thoughts-and-emotions/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.katianacordoba.com/blog/es/el-poder-de-las-palabras-los-pensamientos-y-las-emociones/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.katianacordoba.com/blog/le-pouvoir-des-mots-des-pensees-et-des-emotions/"/>
+  </url>
+  <url>
+    <loc>https://www.katianacordoba.com/blog/pourquoi-vivons-nous-des-epreuves/</loc>
+    <lastmod>2026-10-31</lastmod>
+    <xhtml:link rel="alternate" hreflang="fr-CA" href="https://www.katianacordoba.com/blog/pourquoi-vivons-nous-des-epreuves/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.katianacordoba.com/blog/en/why-do-difficult-things-happen-to-us/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.katianacordoba.com/blog/es/por-que-nos-pasan-cosas-dificiles/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.katianacordoba.com/blog/pourquoi-vivons-nous-des-epreuves/"/>
+  </url>
+  <url>
+    <loc>https://www.katianacordoba.com/blog/en/why-do-difficult-things-happen-to-us/</loc>
+    <lastmod>2026-10-31</lastmod>
+    <xhtml:link rel="alternate" hreflang="fr-CA" href="https://www.katianacordoba.com/blog/pourquoi-vivons-nous-des-epreuves/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.katianacordoba.com/blog/en/why-do-difficult-things-happen-to-us/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.katianacordoba.com/blog/es/por-que-nos-pasan-cosas-dificiles/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.katianacordoba.com/blog/pourquoi-vivons-nous-des-epreuves/"/>
+  </url>
+  <url>
+    <loc>https://www.katianacordoba.com/blog/es/por-que-nos-pasan-cosas-dificiles/</loc>
+    <lastmod>2026-10-31</lastmod>
+    <xhtml:link rel="alternate" hreflang="fr-CA" href="https://www.katianacordoba.com/blog/pourquoi-vivons-nous-des-epreuves/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.katianacordoba.com/blog/en/why-do-difficult-things-happen-to-us/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.katianacordoba.com/blog/es/por-que-nos-pasan-cosas-dificiles/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.katianacordoba.com/blog/pourquoi-vivons-nous-des-epreuves/"/>
+  </url>
+  <url>
+    <loc>https://www.katianacordoba.com/blog/guerir-d-une-peine-d-amour/</loc>
+    <lastmod>2026-10-31</lastmod>
+    <xhtml:link rel="alternate" hreflang="fr-CA" href="https://www.katianacordoba.com/blog/guerir-d-une-peine-d-amour/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.katianacordoba.com/blog/en/healing-after-heartbreak/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.katianacordoba.com/blog/es/sanar-despues-de-una-ruptura-amorosa/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.katianacordoba.com/blog/guerir-d-une-peine-d-amour/"/>
+  </url>
+  <url>
+    <loc>https://www.katianacordoba.com/blog/en/healing-after-heartbreak/</loc>
+    <lastmod>2026-10-31</lastmod>
+    <xhtml:link rel="alternate" hreflang="fr-CA" href="https://www.katianacordoba.com/blog/guerir-d-une-peine-d-amour/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.katianacordoba.com/blog/en/healing-after-heartbreak/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.katianacordoba.com/blog/es/sanar-despues-de-una-ruptura-amorosa/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.katianacordoba.com/blog/guerir-d-une-peine-d-amour/"/>
+  </url>
+  <url>
+    <loc>https://www.katianacordoba.com/blog/es/sanar-despues-de-una-ruptura-amorosa/</loc>
+    <lastmod>2026-10-31</lastmod>
+    <xhtml:link rel="alternate" hreflang="fr-CA" href="https://www.katianacordoba.com/blog/guerir-d-une-peine-d-amour/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.katianacordoba.com/blog/en/healing-after-heartbreak/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.katianacordoba.com/blog/es/sanar-despues-de-una-ruptura-amorosa/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.katianacordoba.com/blog/guerir-d-une-peine-d-amour/"/>
+  </url>
+  <url>
+    <loc>https://www.katianacordoba.com/blog/voir-les-gens-tels-qu-ils-sont/</loc>
+    <lastmod>2026-10-31</lastmod>
+    <xhtml:link rel="alternate" hreflang="fr-CA" href="https://www.katianacordoba.com/blog/voir-les-gens-tels-qu-ils-sont/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.katianacordoba.com/blog/en/seeing-people-as-they-are/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.katianacordoba.com/blog/es/ver-a-las-personas-como-son/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.katianacordoba.com/blog/voir-les-gens-tels-qu-ils-sont/"/>
+  </url>
+  <url>
+    <loc>https://www.katianacordoba.com/blog/en/seeing-people-as-they-are/</loc>
+    <lastmod>2026-10-31</lastmod>
+    <xhtml:link rel="alternate" hreflang="fr-CA" href="https://www.katianacordoba.com/blog/voir-les-gens-tels-qu-ils-sont/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.katianacordoba.com/blog/en/seeing-people-as-they-are/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.katianacordoba.com/blog/es/ver-a-las-personas-como-son/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.katianacordoba.com/blog/voir-les-gens-tels-qu-ils-sont/"/>
+  </url>
+  <url>
+    <loc>https://www.katianacordoba.com/blog/es/ver-a-las-personas-como-son/</loc>
+    <lastmod>2026-10-31</lastmod>
+    <xhtml:link rel="alternate" hreflang="fr-CA" href="https://www.katianacordoba.com/blog/voir-les-gens-tels-qu-ils-sont/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.katianacordoba.com/blog/en/seeing-people-as-they-are/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.katianacordoba.com/blog/es/ver-a-las-personas-como-son/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.katianacordoba.com/blog/voir-les-gens-tels-qu-ils-sont/"/>
+  </url>
+  <url>
+    <loc>https://www.katianacordoba.com/blog/est-ce-que-les-autres-me-voient/</loc>
+    <lastmod>2026-10-31</lastmod>
+    <xhtml:link rel="alternate" hreflang="fr-CA" href="https://www.katianacordoba.com/blog/est-ce-que-les-autres-me-voient/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.katianacordoba.com/blog/en/do-others-see-me-do-i-see-myself/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.katianacordoba.com/blog/es/los-demas-me-ven-yo-me-veo/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.katianacordoba.com/blog/est-ce-que-les-autres-me-voient/"/>
+  </url>
+  <url>
+    <loc>https://www.katianacordoba.com/blog/en/do-others-see-me-do-i-see-myself/</loc>
+    <lastmod>2026-10-31</lastmod>
+    <xhtml:link rel="alternate" hreflang="fr-CA" href="https://www.katianacordoba.com/blog/est-ce-que-les-autres-me-voient/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.katianacordoba.com/blog/en/do-others-see-me-do-i-see-myself/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.katianacordoba.com/blog/es/los-demas-me-ven-yo-me-veo/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.katianacordoba.com/blog/est-ce-que-les-autres-me-voient/"/>
+  </url>
+  <url>
+    <loc>https://www.katianacordoba.com/blog/es/los-demas-me-ven-yo-me-veo/</loc>
+    <lastmod>2026-10-31</lastmod>
+    <xhtml:link rel="alternate" hreflang="fr-CA" href="https://www.katianacordoba.com/blog/est-ce-que-les-autres-me-voient/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.katianacordoba.com/blog/en/do-others-see-me-do-i-see-myself/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.katianacordoba.com/blog/es/los-demas-me-ven-yo-me-veo/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.katianacordoba.com/blog/est-ce-que-les-autres-me-voient/"/>
+  </url>
+  <url>
+    <loc>https://www.katianacordoba.com/blog/garder-son-ancrage-face-a-l-energie-negative/</loc>
+    <lastmod>2026-10-31</lastmod>
+    <xhtml:link rel="alternate" hreflang="fr-CA" href="https://www.katianacordoba.com/blog/garder-son-ancrage-face-a-l-energie-negative/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.katianacordoba.com/blog/en/staying-grounded-around-negative-energy/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.katianacordoba.com/blog/es/no-dejarte-afectar-por-la-energia-negativa/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.katianacordoba.com/blog/garder-son-ancrage-face-a-l-energie-negative/"/>
+  </url>
+  <url>
+    <loc>https://www.katianacordoba.com/blog/en/staying-grounded-around-negative-energy/</loc>
+    <lastmod>2026-10-31</lastmod>
+    <xhtml:link rel="alternate" hreflang="fr-CA" href="https://www.katianacordoba.com/blog/garder-son-ancrage-face-a-l-energie-negative/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.katianacordoba.com/blog/en/staying-grounded-around-negative-energy/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.katianacordoba.com/blog/es/no-dejarte-afectar-por-la-energia-negativa/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.katianacordoba.com/blog/garder-son-ancrage-face-a-l-energie-negative/"/>
+  </url>
+  <url>
+    <loc>https://www.katianacordoba.com/blog/es/no-dejarte-afectar-por-la-energia-negativa/</loc>
+    <lastmod>2026-10-31</lastmod>
+    <xhtml:link rel="alternate" hreflang="fr-CA" href="https://www.katianacordoba.com/blog/garder-son-ancrage-face-a-l-energie-negative/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.katianacordoba.com/blog/en/staying-grounded-around-negative-energy/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.katianacordoba.com/blog/es/no-dejarte-afectar-por-la-energia-negativa/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.katianacordoba.com/blog/garder-son-ancrage-face-a-l-energie-negative/"/>
+  </url>
+  <url>
+    <loc>https://www.katianacordoba.com/blog/suis-je-en-danger-se-sentir-en-securite/</loc>
+    <lastmod>2026-10-31</lastmod>
+    <xhtml:link rel="alternate" hreflang="fr-CA" href="https://www.katianacordoba.com/blog/suis-je-en-danger-se-sentir-en-securite/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.katianacordoba.com/blog/en/am-i-in-danger-how-to-feel-safe/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.katianacordoba.com/blog/es/estoy-en-peligro-ser-quien-eres/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.katianacordoba.com/blog/suis-je-en-danger-se-sentir-en-securite/"/>
+  </url>
+  <url>
+    <loc>https://www.katianacordoba.com/blog/en/am-i-in-danger-how-to-feel-safe/</loc>
+    <lastmod>2026-10-31</lastmod>
+    <xhtml:link rel="alternate" hreflang="fr-CA" href="https://www.katianacordoba.com/blog/suis-je-en-danger-se-sentir-en-securite/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.katianacordoba.com/blog/en/am-i-in-danger-how-to-feel-safe/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.katianacordoba.com/blog/es/estoy-en-peligro-ser-quien-eres/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.katianacordoba.com/blog/suis-je-en-danger-se-sentir-en-securite/"/>
+  </url>
+  <url>
+    <loc>https://www.katianacordoba.com/blog/es/estoy-en-peligro-ser-quien-eres/</loc>
+    <lastmod>2026-10-31</lastmod>
+    <xhtml:link rel="alternate" hreflang="fr-CA" href="https://www.katianacordoba.com/blog/suis-je-en-danger-se-sentir-en-securite/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.katianacordoba.com/blog/en/am-i-in-danger-how-to-feel-safe/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.katianacordoba.com/blog/es/estoy-en-peligro-ser-quien-eres/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.katianacordoba.com/blog/suis-je-en-danger-se-sentir-en-securite/"/>
+  </url>
+  <url>
+    <loc>https://www.katianacordoba.com/blog/peur-nous-sommes-en-securite/</loc>
+    <lastmod>2026-10-31</lastmod>
+    <xhtml:link rel="alternate" hreflang="fr-CA" href="https://www.katianacordoba.com/blog/peur-nous-sommes-en-securite/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.katianacordoba.com/blog/en/fear-we-are-safe/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.katianacordoba.com/blog/es/miedo-estamos-a-salvo/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.katianacordoba.com/blog/peur-nous-sommes-en-securite/"/>
+  </url>
+  <url>
+    <loc>https://www.katianacordoba.com/blog/en/fear-we-are-safe/</loc>
+    <lastmod>2026-10-31</lastmod>
+    <xhtml:link rel="alternate" hreflang="fr-CA" href="https://www.katianacordoba.com/blog/peur-nous-sommes-en-securite/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.katianacordoba.com/blog/en/fear-we-are-safe/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.katianacordoba.com/blog/es/miedo-estamos-a-salvo/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.katianacordoba.com/blog/peur-nous-sommes-en-securite/"/>
+  </url>
+  <url>
+    <loc>https://www.katianacordoba.com/blog/es/miedo-estamos-a-salvo/</loc>
+    <lastmod>2026-10-31</lastmod>
+    <xhtml:link rel="alternate" hreflang="fr-CA" href="https://www.katianacordoba.com/blog/peur-nous-sommes-en-securite/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.katianacordoba.com/blog/en/fear-we-are-safe/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.katianacordoba.com/blog/es/miedo-estamos-a-salvo/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.katianacordoba.com/blog/peur-nous-sommes-en-securite/"/>
+  </url>
+  <url>
+    <loc>https://www.katianacordoba.com/blog/une-conversation-dans-le-ventre-de-la-mere/</loc>
+    <lastmod>2026-10-31</lastmod>
+    <xhtml:link rel="alternate" hreflang="fr-CA" href="https://www.katianacordoba.com/blog/une-conversation-dans-le-ventre-de-la-mere/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.katianacordoba.com/blog/en/a-conversation-in-the-womb/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.katianacordoba.com/blog/es/una-conversacion-en-el-vientre/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.katianacordoba.com/blog/une-conversation-dans-le-ventre-de-la-mere/"/>
+  </url>
+  <url>
+    <loc>https://www.katianacordoba.com/blog/en/a-conversation-in-the-womb/</loc>
+    <lastmod>2026-10-31</lastmod>
+    <xhtml:link rel="alternate" hreflang="fr-CA" href="https://www.katianacordoba.com/blog/une-conversation-dans-le-ventre-de-la-mere/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.katianacordoba.com/blog/en/a-conversation-in-the-womb/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.katianacordoba.com/blog/es/una-conversacion-en-el-vientre/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.katianacordoba.com/blog/une-conversation-dans-le-ventre-de-la-mere/"/>
+  </url>
+  <url>
+    <loc>https://www.katianacordoba.com/blog/es/una-conversacion-en-el-vientre/</loc>
+    <lastmod>2026-10-31</lastmod>
+    <xhtml:link rel="alternate" hreflang="fr-CA" href="https://www.katianacordoba.com/blog/une-conversation-dans-le-ventre-de-la-mere/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.katianacordoba.com/blog/en/a-conversation-in-the-womb/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.katianacordoba.com/blog/es/una-conversacion-en-el-vientre/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.katianacordoba.com/blog/une-conversation-dans-le-ventre-de-la-mere/"/>
+  </url>
+  <url>
+    <loc>https://www.katianacordoba.com/blog/prendre-une-decision-difficile/</loc>
+    <lastmod>2026-10-31</lastmod>
+    <xhtml:link rel="alternate" hreflang="fr-CA" href="https://www.katianacordoba.com/blog/prendre-une-decision-difficile/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.katianacordoba.com/blog/en/how-to-make-hard-decisions/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.katianacordoba.com/blog/es/como-tomar-decisiones-dificiles/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.katianacordoba.com/blog/prendre-une-decision-difficile/"/>
+  </url>
+  <url>
+    <loc>https://www.katianacordoba.com/blog/en/how-to-make-hard-decisions/</loc>
+    <lastmod>2026-10-31</lastmod>
+    <xhtml:link rel="alternate" hreflang="fr-CA" href="https://www.katianacordoba.com/blog/prendre-une-decision-difficile/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.katianacordoba.com/blog/en/how-to-make-hard-decisions/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.katianacordoba.com/blog/es/como-tomar-decisiones-dificiles/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.katianacordoba.com/blog/prendre-une-decision-difficile/"/>
+  </url>
+  <url>
+    <loc>https://www.katianacordoba.com/blog/es/como-tomar-decisiones-dificiles/</loc>
+    <lastmod>2026-10-31</lastmod>
+    <xhtml:link rel="alternate" hreflang="fr-CA" href="https://www.katianacordoba.com/blog/prendre-une-decision-difficile/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.katianacordoba.com/blog/en/how-to-make-hard-decisions/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.katianacordoba.com/blog/es/como-tomar-decisiones-dificiles/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.katianacordoba.com/blog/prendre-une-decision-difficile/"/>
+  </url>
+  <url>
+    <loc>https://www.katianacordoba.com/blog/les-relations-et-le-rejet/</loc>
+    <lastmod>2026-10-31</lastmod>
+    <xhtml:link rel="alternate" hreflang="fr-CA" href="https://www.katianacordoba.com/blog/les-relations-et-le-rejet/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.katianacordoba.com/blog/en/relationships-and-rejection/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.katianacordoba.com/blog/es/relaciones-y-rechazo/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.katianacordoba.com/blog/les-relations-et-le-rejet/"/>
+  </url>
+  <url>
+    <loc>https://www.katianacordoba.com/blog/en/relationships-and-rejection/</loc>
+    <lastmod>2026-10-31</lastmod>
+    <xhtml:link rel="alternate" hreflang="fr-CA" href="https://www.katianacordoba.com/blog/les-relations-et-le-rejet/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.katianacordoba.com/blog/en/relationships-and-rejection/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.katianacordoba.com/blog/es/relaciones-y-rechazo/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.katianacordoba.com/blog/les-relations-et-le-rejet/"/>
+  </url>
+  <url>
+    <loc>https://www.katianacordoba.com/blog/es/relaciones-y-rechazo/</loc>
+    <lastmod>2026-10-31</lastmod>
+    <xhtml:link rel="alternate" hreflang="fr-CA" href="https://www.katianacordoba.com/blog/les-relations-et-le-rejet/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.katianacordoba.com/blog/en/relationships-and-rejection/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.katianacordoba.com/blog/es/relaciones-y-rechazo/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.katianacordoba.com/blog/les-relations-et-le-rejet/"/>
+  </url>
+  <url>
+    <loc>https://www.katianacordoba.com/blog/aimer-sans-attachement/</loc>
+    <lastmod>2026-10-31</lastmod>
+    <xhtml:link rel="alternate" hreflang="fr-CA" href="https://www.katianacordoba.com/blog/aimer-sans-attachement/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.katianacordoba.com/blog/en/love-without-attachment/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.katianacordoba.com/blog/es/amar-sin-apego/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.katianacordoba.com/blog/aimer-sans-attachement/"/>
+  </url>
+  <url>
+    <loc>https://www.katianacordoba.com/blog/en/love-without-attachment/</loc>
+    <lastmod>2026-10-31</lastmod>
+    <xhtml:link rel="alternate" hreflang="fr-CA" href="https://www.katianacordoba.com/blog/aimer-sans-attachement/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.katianacordoba.com/blog/en/love-without-attachment/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.katianacordoba.com/blog/es/amar-sin-apego/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.katianacordoba.com/blog/aimer-sans-attachement/"/>
+  </url>
+  <url>
+    <loc>https://www.katianacordoba.com/blog/es/amar-sin-apego/</loc>
+    <lastmod>2026-10-31</lastmod>
+    <xhtml:link rel="alternate" hreflang="fr-CA" href="https://www.katianacordoba.com/blog/aimer-sans-attachement/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.katianacordoba.com/blog/en/love-without-attachment/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.katianacordoba.com/blog/es/amar-sin-apego/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.katianacordoba.com/blog/aimer-sans-attachement/"/>
+  </url>
+  <url>
+    <loc>https://www.katianacordoba.com/blog/l-art-de-s-ennuyer/</loc>
+    <lastmod>2026-10-31</lastmod>
+    <xhtml:link rel="alternate" hreflang="fr-CA" href="https://www.katianacordoba.com/blog/l-art-de-s-ennuyer/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.katianacordoba.com/blog/en/the-art-of-being-bored/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.katianacordoba.com/blog/es/el-arte-de-aburrirse/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.katianacordoba.com/blog/l-art-de-s-ennuyer/"/>
+  </url>
+  <url>
+    <loc>https://www.katianacordoba.com/blog/en/the-art-of-being-bored/</loc>
+    <lastmod>2026-10-31</lastmod>
+    <xhtml:link rel="alternate" hreflang="fr-CA" href="https://www.katianacordoba.com/blog/l-art-de-s-ennuyer/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.katianacordoba.com/blog/en/the-art-of-being-bored/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.katianacordoba.com/blog/es/el-arte-de-aburrirse/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.katianacordoba.com/blog/l-art-de-s-ennuyer/"/>
+  </url>
+  <url>
+    <loc>https://www.katianacordoba.com/blog/es/el-arte-de-aburrirse/</loc>
+    <lastmod>2026-10-31</lastmod>
+    <xhtml:link rel="alternate" hreflang="fr-CA" href="https://www.katianacordoba.com/blog/l-art-de-s-ennuyer/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.katianacordoba.com/blog/en/the-art-of-being-bored/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.katianacordoba.com/blog/es/el-arte-de-aburrirse/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.katianacordoba.com/blog/l-art-de-s-ennuyer/"/>
   </url>
   <url>
     <loc>https://www.katianacordoba.com/blog/creer-ou-suivre-la-vie/</loc>
