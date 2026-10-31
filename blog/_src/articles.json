@@ -2,6 +2,33 @@
   "_note": "Newest article first. The first one is the article shown on the home page. Texts live next to this file as <id>.<fr|en|es>.md. After any change, run: python3 tools/build_blog.py",
   "articles": [
     {
+      "id": "qu-est-ce-que-l-amour-vraiment",
+      "date": "2026-10-30",
+      "slugs": {
+        "fr": "qu-est-ce-que-l-amour-vraiment",
+        "en": "what-is-love-really",
+        "es": "que-es-realmente-el-amor"
+      }
+    },
+    {
+      "id": "si-vous-croyez-savoir-qui-vous-etes",
+      "date": "2026-10-30",
+      "slugs": {
+        "fr": "si-vous-croyez-savoir-qui-vous-etes",
+        "en": "if-you-think-you-know-who-you-are",
+        "es": "si-crees-que-sabes-quien-eres"
+      }
+    },
+    {
+      "id": "quand-le-feu-monte",
+      "date": "2026-10-30",
+      "slugs": {
+        "fr": "quand-le-feu-monte",
+        "en": "when-the-fire-rises",
+        "es": "cuando-el-fuego-sube"
+      }
+    },
+    {
       "id": "nous-sommes-des-fractales",
       "date": "2026-10-30",
       "slugs": {
