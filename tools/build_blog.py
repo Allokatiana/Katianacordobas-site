@@ -11,7 +11,8 @@ What it does, from blog/_src/:
 To publish a new article:
   1. put its three texts in blog/_src/<id>.fr.md, <id>.en.md, <id>.es.md
      (first line "# Title", then the text exactly as written: paragraphs, "### " subtitles, "> " quotes)
-  2. add it at the TOP of blog/_src/articles.json (newest first) with its date and its three slugs
+  2. add it at the TOP of blog/_src/articles.json (newest first) with its three slugs
+     ("date": "YYYY-MM-DD" is optional: when it is there, the date is shown; without it, no date appears)
   3. run:  python3 tools/build_blog.py
 The texts are never rewritten: the script only turns them into HTML.
 """
@@ -81,6 +82,14 @@ def plain(s):
 
 def attr(s):
     return html.escape(s, quote=True)
+
+
+def date_html(a, lang, cls='date'):
+    """The article's date line, or nothing when the article has no date."""
+    d = a.get('date')
+    if not d:
+        return ''
+    return f'<p class="{cls}"><time datetime="{d}">{nice_date(d, lang)}</time></p>'
 
 
 def nice_date(d, lang):
@@ -228,7 +237,7 @@ def card(a, lang, prefix, heading='h2'):
     t = T[lang]
     href = rel(prefix, art_path(a, lang))
     return f'''<li class="card"><article>
-  <p class="date"><time datetime="{a['date']}">{nice_date(a['date'], lang)}</time></p>
+  {date_html(a, lang)}
   <{heading} class="ct"><a href="{href}">{title_html(a['t'][lang], lang)}</a></{heading}>
   <p class="cx">{esc(typo(a['first'][lang], lang))}</p>
   <a class="more" href="{href}" aria-label="{t['more']}{' : ' if lang == 'fr' else ': '}{attr(a['t'][lang])}">{t['more']} {ARROW}</a>
@@ -244,12 +253,14 @@ def article_page(a, lang, arts):
     desc = clip(a['first'][lang])
     ld = {
         "@context": "https://schema.org", "@type": "BlogPosting",
-        "headline": a['t'][lang], "datePublished": a['date'], "inLanguage": t['html'],
+        "headline": a['t'][lang], "inLanguage": t['html'],
         "url": SITE + path, "mainEntityOfPage": SITE + path, "image": SITE + 'assets/' + t['share'],
         "description": desc,
         "author": {"@type": "Person", "name": "Katiana Cordoba", "url": SITE},
         "publisher": {"@type": "Person", "name": "Katiana Cordoba", "url": SITE},
     }
+    if a.get('date'):
+        ld['datePublished'] = a['date']
     extra = '<script type="application/ld+json">' + json.dumps(ld, ensure_ascii=False) + '</script>\n'
     others = [o for o in arts if o['id'] != a['id']][:2]
     also = ''
@@ -262,7 +273,7 @@ def article_page(a, lang, arts):
 <article class="post" lang="{t['html']}">
   <a class="back" href="{rel(prefix, blog_path(lang))}">{BACK} {t['all']}</a>
   <header class="ph">
-    <p class="date"><time datetime="{a['date']}">{nice_date(a['date'], lang)}</time></p>
+    {date_html(a, lang)}
     <h1>{title_html(a['t'][lang], lang)}</h1>
     {BLOOM}
   </header>
@@ -298,7 +309,7 @@ def home_section(lang, a):
   <div class="wrap">
     <h2 id="blog-h" class="d h2" data-sc-in data-tremble>{t['section']}</h2>
     <article class="bl9" data-sc-in>
-      <p class="bl9-date"><time datetime="{a['date']}">{nice_date(a['date'], lang)}</time></p>
+      {date_html(a, lang, 'bl9-date')}
       <h3 class="d bl9-t"><a href="{href}">{title_html(a['t'][lang], lang)}</a></h3>
       <p class="bl9-x">{esc(typo(a['first'][lang], lang))}</p>
       <p class="bl9-go"><a class="bl9-more" href="{href}">{t['more']} {ARROW}</a><a class="bl9-all" href="{blog_path(lang)}">{t['all']}</a></p>
@@ -345,18 +356,19 @@ def main():
     sm_path = os.path.join(ROOT, 'sitemap.xml')
     sm = open(sm_path, encoding='utf-8').read()
     sm = re.sub(r'\s*<!-- blog:start -->.*?<!-- blog:end -->', '', sm, flags=re.S)
-    newest = max(a['date'] for a in meta)
+    newest = max((a['date'] for a in meta if a.get('date')), default='')
     urls = []
 
     def url(path, alts, last):
         links = ''.join(f'\n    <xhtml:link rel="alternate" hreflang="{T[k]["html"]}" href="{SITE}{v}"/>' for k, v in alts.items())
         links += f'\n    <xhtml:link rel="alternate" hreflang="x-default" href="{SITE}{alts["fr"]}"/>'
-        return f'  <url>\n    <loc>{SITE}{path}</loc>\n    <lastmod>{last}</lastmod>{links}\n  </url>'
+        lm = f'\n    <lastmod>{last}</lastmod>' if last else ''
+        return f'  <url>\n    <loc>{SITE}{path}</loc>{lm}{links}\n  </url>'
     for l in LANGS:
         urls.append(url(blog_path(l), {k: blog_path(k) for k in LANGS}, newest))
     for a in meta:
         for l in LANGS:
-            urls.append(url(art_path(a, l), {k: art_path(a, k) for k in LANGS}, a['date']))
+            urls.append(url(art_path(a, l), {k: art_path(a, k) for k in LANGS}, a.get('date')))
     block = '\n  <!-- blog:start -->\n' + '\n'.join(urls) + '\n  <!-- blog:end -->\n'
     sm = sm.replace('</urlset>', block.lstrip('\n') + '</urlset>') if '</urlset>' in sm else sm
     sm = re.sub(r'\n+  <!-- blog:start -->', '\n  <!-- blog:start -->', sm)

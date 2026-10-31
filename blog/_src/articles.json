@@ -3,7 +3,6 @@
   "articles": [
     {
       "id": "le-pouvoir-des-mots",
-      "date": "2026-10-31",
       "slugs": {
         "fr": "le-pouvoir-des-mots-des-pensees-et-des-emotions",
         "en": "the-power-of-words-thoughts-and-emotions",
@@ -12,7 +11,6 @@
     },
     {
       "id": "pourquoi-vivons-nous-des-epreuves",
-      "date": "2026-10-31",
       "slugs": {
         "fr": "pourquoi-vivons-nous-des-epreuves",
         "en": "why-do-difficult-things-happen-to-us",
@@ -21,7 +19,6 @@
     },
     {
       "id": "guerir-d-une-peine-d-amour",
-      "date": "2026-10-31",
       "slugs": {
         "fr": "guerir-d-une-peine-d-amour",
         "en": "healing-after-heartbreak",
@@ -30,7 +27,6 @@
     },
     {
       "id": "voir-les-gens-tels-qu-ils-sont",
-      "date": "2026-10-31",
       "slugs": {
         "fr": "voir-les-gens-tels-qu-ils-sont",
         "en": "seeing-people-as-they-are",
@@ -39,7 +35,6 @@
     },
     {
       "id": "est-ce-que-les-autres-me-voient",
-      "date": "2026-10-31",
       "slugs": {
         "fr": "est-ce-que-les-autres-me-voient",
         "en": "do-others-see-me-do-i-see-myself",
@@ -48,7 +43,6 @@
     },
     {
       "id": "l-energie-negative-des-autres",
-      "date": "2026-10-31",
       "slugs": {
         "fr": "garder-son-ancrage-face-a-l-energie-negative",
         "en": "staying-grounded-around-negative-energy",
@@ -57,7 +51,6 @@
     },
     {
       "id": "suis-je-en-danger",
-      "date": "2026-10-31",
       "slugs": {
         "fr": "suis-je-en-danger-se-sentir-en-securite",
         "en": "am-i-in-danger-how-to-feel-safe",
@@ -66,7 +59,6 @@
     },
     {
       "id": "peur-nous-sommes-en-securite",
-      "date": "2026-10-31",
       "slugs": {
         "fr": "peur-nous-sommes-en-securite",
         "en": "fear-we-are-safe",
@@ -75,7 +67,6 @@
     },
     {
       "id": "conversation-dans-le-ventre",
-      "date": "2026-10-31",
       "slugs": {
         "fr": "une-conversation-dans-le-ventre-de-la-mere",
         "en": "a-conversation-in-the-womb",
@@ -84,7 +75,6 @@
     },
     {
       "id": "prendre-une-decision-difficile",
-      "date": "2026-10-31",
       "slugs": {
         "fr": "prendre-une-decision-difficile",
         "en": "how-to-make-hard-decisions",
@@ -93,7 +83,6 @@
     },
     {
       "id": "les-relations-et-le-rejet",
-      "date": "2026-10-31",
       "slugs": {
         "fr": "les-relations-et-le-rejet",
         "en": "relationships-and-rejection",
@@ -102,7 +91,6 @@
     },
     {
       "id": "aimer-sans-attachement",
-      "date": "2026-10-31",
       "slugs": {
         "fr": "aimer-sans-attachement",
         "en": "love-without-attachment",
@@ -111,7 +99,6 @@
     },
     {
       "id": "l-art-de-s-ennuyer",
-      "date": "2026-10-31",
       "slugs": {
         "fr": "l-art-de-s-ennuyer",
         "en": "the-art-of-being-bored",
@@ -120,7 +107,6 @@
     },
     {
       "id": "creer-ou-suivre-la-vie",
-      "date": "2026-10-30",
       "slugs": {
         "fr": "creer-ou-suivre-la-vie",
         "en": "creators-or-followers-of-life",
@@ -129,7 +115,6 @@
     },
     {
       "id": "nous-sommes-tous-un",
-      "date": "2026-10-30",
       "slugs": {
         "fr": "nous-sommes-tous-un",
         "en": "we-are-all-one",
@@ -138,7 +123,6 @@
     },
     {
       "id": "sommes-nous-createurs",
-      "date": "2026-10-30",
       "slugs": {
         "fr": "sommes-nous-createurs",
         "en": "are-we-creators-free-will",
@@ -147,7 +131,6 @@
     },
     {
       "id": "le-defi-d-etre-moi",
-      "date": "2026-10-30",
       "slugs": {
         "fr": "le-defi-d-etre-moi",
         "en": "struggling-to-be-me",
@@ -156,7 +139,6 @@
     },
     {
       "id": "la-bonte-la-verite",
-      "date": "2026-10-30",
       "slugs": {
         "fr": "la-bonte-la-verite-et-le-courage-d-etre-vrai",
         "en": "kindness-truth-and-the-courage-to-be-real",
@@ -165,7 +147,6 @@
     },
     {
       "id": "les-je-devrais",
-      "date": "2026-10-30",
       "slugs": {
         "fr": "les-je-devrais-qui-nous-gouvernent",
         "en": "the-shoulds-that-govern-us",
@@ -174,7 +155,6 @@
     },
     {
       "id": "etes-vous-bizarre",
-      "date": "2026-10-30",
       "slugs": {
         "fr": "etes-vous-bizarre",
         "en": "are-you-weird",
@@ -183,7 +163,6 @@
     },
     {
       "id": "guerir-par-le-travail-de-l-ombre",
-      "date": "2026-10-30",
       "slugs": {
         "fr": "guerir-par-le-travail-de-l-ombre",
         "en": "healing-through-shadow-work",
@@ -192,7 +171,6 @@
     },
     {
       "id": "qu-est-ce-que-l-amour-vraiment",
-      "date": "2026-10-30",
       "slugs": {
         "fr": "qu-est-ce-que-l-amour-vraiment",
         "en": "what-is-love-really",
@@ -201,7 +179,6 @@
     },
     {
       "id": "si-vous-croyez-savoir-qui-vous-etes",
-      "date": "2026-10-30",
       "slugs": {
         "fr": "si-vous-croyez-savoir-qui-vous-etes",
         "en": "if-you-think-you-know-who-you-are",
@@ -210,7 +187,6 @@
     },
     {
       "id": "quand-le-feu-monte",
-      "date": "2026-10-30",
       "slugs": {
         "fr": "quand-le-feu-monte",
         "en": "when-the-fire-rises",
@@ -219,7 +195,6 @@
     },
     {
       "id": "nous-sommes-des-fractales",
-      "date": "2026-10-30",
       "slugs": {
         "fr": "nous-sommes-des-fractales",
         "en": "we-are-fractals",
@@ -228,7 +203,6 @@
     },
     {
       "id": "la-culpabilite-invisible",
-      "date": "2026-10-30",
       "slugs": {
         "fr": "la-culpabilite-invisible",
         "en": "the-invisible-guilt",
@@ -237,7 +211,6 @@
     },
     {
       "id": "donner-un-sens-a-la-douleur",
-      "date": "2026-10-30",
       "slugs": {
         "fr": "donner-un-sens-a-la-douleur-emotionnelle",
         "en": "making-sense-of-emotional-pain",
@@ -246,7 +219,6 @@
     },
     {
       "id": "la-pression-de-toujours-faire",
-      "date": "2026-10-30",
       "slugs": {
         "fr": "la-pression-de-toujours-faire",
         "en": "the-pressure-to-always-be-doing",
@@ -255,7 +227,6 @@
     },
     {
       "id": "ne-pas-s-identifier-a-ses-pensees",
-      "date": "2026-10-30",
       "slugs": {
         "fr": "ne-pas-s-identifier-a-ses-pensees",
         "en": "not-identifying-with-your-thoughts",
@@ -264,7 +235,6 @@
     },
     {
       "id": "comment-la-manifestation-fonctionne",
-      "date": "2026-10-30",
       "slugs": {
         "fr": "comment-la-manifestation-fonctionne-vraiment",
         "en": "how-manifestation-actually-works",
@@ -273,7 +243,6 @@
     },
     {
       "id": "le-corps-porte-le-trauma",
-      "date": "2026-10-30",
       "slugs": {
         "fr": "le-corps-porte-le-trauma",
         "en": "the-body-holds-trauma",
@@ -282,7 +251,6 @@
     },
     {
       "id": "qui-est-la-voix-dans-ma-tete",
-      "date": "2026-10-30",
       "slugs": {
         "fr": "qui-est-la-voix-dans-ma-tete",
         "en": "who-is-the-voice-in-my-head",
@@ -291,7 +259,6 @@
     },
     {
       "id": "quand-parler-fait-peur",
-      "date": "2026-10-30",
       "slugs": {
         "fr": "quand-parler-fait-peur",
         "en": "when-speaking-feels-unsafe",
@@ -300,7 +267,6 @@
     },
     {
       "id": "nous-sommes-des-miroirs",
-      "date": "2026-10-30",
       "slugs": {
         "fr": "nous-sommes-des-miroirs",
         "en": "we-are-mirrors",
@@ -309,7 +275,6 @@
     },
     {
       "id": "guerir-la-blessure-maternelle",
-      "date": "2026-10-30",
       "slugs": {
         "fr": "guerir-la-blessure-maternelle",
         "en": "healing-the-mother-wound",
@@ -318,7 +283,6 @@
     },
     {
       "id": "porter-le-poids",
-      "date": "2026-10-28",
       "slugs": {
         "fr": "porter-le-poids-d-etre-la-pour-tout-le-monde",
         "en": "carrying-the-weight-of-being-there-for-everyone",
@@ -327,7 +291,6 @@
     },
     {
       "id": "guerir-d-abord-soi-meme",
-      "date": "2026-10-28",
       "slugs": {
         "fr": "guerir-d-abord-soi-meme",
         "en": "healing-ourselves-first",

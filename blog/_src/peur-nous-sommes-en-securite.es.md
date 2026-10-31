@@ -1,6 +1,6 @@
-# Miedo, ¡estamos a salvo! Cómo vencer el miedo desde el amor de Dios
+# Miedo, ¡estamos a salvo!
 
-Los seres humanos vivimos bajo la sombra del miedo, un velo que oscurece el alma en lo más profundo de la ilusión. El miedo, en su esencia, es el grito de un alma que ha olvidado su seguridad eterna en Dios. Nos susurra que estamos separados, que somos vulnerables y que algo fuera de nosotros puede amenazar el espíritu indestructible que vive en nosotros. Pero esa, queridos, es la gran ilusión, lo que las tradiciones orientales llaman el velo de maya, esa danza de la dualidad que convierte la luz en sombra y esconde la verdad eterna del amor de Dios.
+Los seres humanos vivimos bajo la sombra del miedo, un velo que oscurece el alma en lo más profundo de la ilusión. El miedo, en su esencia, es el grito de un alma que ha olvidado su seguridad eterna en Dios, en la Fuente, o como sea que llames a esa fuerza que nos une a todos. Nos susurra que estamos separados, que somos vulnerables y que algo fuera de nosotros puede amenazar el espíritu indestructible que vive en nosotros. Pero esa, queridos, es la gran ilusión, lo que las tradiciones orientales llaman el velo de maya, esa danza de la dualidad que convierte la luz en sombra y esconde la verdad eterna del amor de Dios.
 
 ### Estoy a salvo
 

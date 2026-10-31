@@ -1,6 +1,6 @@
-# Fear, We Are Safe! Overcoming Fear Through God's Love
+# Fear, We Are Safe!
 
-Human beings live under the shadow of fear, a veil that darkens the soul in the depths of illusion. Fear, in its essence, is the cry of a soul that has forgotten its eternal security in God. It whispers that we are separate, that we are vulnerable to harm, and that something outside of us can threaten the indestructible spirit within. But this, beloved ones, is the great illusion, what Eastern traditions call the veil of maya, the dance of duality that bends light into shadow and hides the eternal truth of God's love.
+Human beings live under the shadow of fear, a veil that darkens the soul in the depths of illusion. Fear, in its essence, is the cry of a soul that has forgotten its eternal security in God, in the Source, or whatever name you give to that force that unites us all. It whispers that we are separate, that we are vulnerable to harm, and that something outside of us can threaten the indestructible spirit within. But this, beloved ones, is the great illusion, what Eastern traditions call the veil of maya, the dance of duality that bends light into shadow and hides the eternal truth of God's love.
 
 ### I Am Safe
 

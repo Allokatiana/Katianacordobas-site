@@ -1,6 +1,6 @@
-# Peur, nous sommes en sécurité! Vaincre la peur grâce à l'amour de Dieu
+# Peur, nous sommes en sécurité!
 
-L'être humain vit dans l'ombre de la peur, un voile qui assombrit l'âme au plus profond de l'illusion. La peur, dans son essence, est le cri d'une âme qui a oublié sa sécurité éternelle en Dieu. Elle murmure que nous sommes séparés, que nous sommes vulnérables, et que quelque chose à l'extérieur de nous peut menacer l'esprit indestructible qui vit en nous. Mais cela, chers amis, est la grande illusion, ce que les traditions orientales appellent le voile de maya, cette danse de la dualité qui transforme la lumière en ombre et cache la vérité éternelle de l'amour de Dieu.
+L'être humain vit dans l'ombre de la peur, un voile qui assombrit l'âme au plus profond de l'illusion. La peur, dans son essence, est le cri d'une âme qui a oublié sa sécurité éternelle en Dieu, dans la Source, ou quel que soit le nom que vous donnez à cette force qui nous unit tous. Elle murmure que nous sommes séparés, que nous sommes vulnérables, et que quelque chose à l'extérieur de nous peut menacer l'esprit indestructible qui vit en nous. Mais cela, chers amis, est la grande illusion, ce que les traditions orientales appellent le voile de maya, cette danse de la dualité qui transforme la lumière en ombre et cache la vérité éternelle de l'amour de Dieu.
 
 ### Je suis en sécurité
 
