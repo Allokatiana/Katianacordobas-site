@@ -49,12 +49,19 @@ main{max-width:720px;margin:0 auto;display:flex;flex-direction:column;gap:22px;
   padding:12px max(16px,env(safe-area-inset-right,0px)) calc(32px + env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-left,0px))}
 .hero{text-align:center;display:flex;flex-direction:column;align-items:center;gap:10px;padding-top:6px}
 .lotus{width:150px;height:150px;position:relative;display:grid;place-items:center}
-.lotus .halo{position:absolute;inset:-18px;border-radius:50%;background:radial-gradient(circle,rgb(255 226 180/.95) 0%,rgb(240 170 165/.55) 38%,rgb(240 170 165/0) 70%);transform:scale(.8);opacity:.45}
+.lotus .halo{position:absolute;inset:-40px;border-radius:50%;background:radial-gradient(circle,rgb(255 238 205/1) 0%,rgb(246 182 170/.8) 30%,rgb(214 120 140/.35) 52%,rgb(214 120 140/0) 72%);transform:scale(.7);opacity:.35}
+.lotus svg path{transform-box:view-box;transform-origin:60px 92px}
 /* 10 s cycle = 5 s in, 5 s out: about 6 breaths a minute */
 .playing .lotus .halo{animation:breathe 10s ease-in-out infinite}
 .playing .lotus svg{animation:bloom 10s ease-in-out infinite}
-@keyframes breathe{0%,100%{transform:scale(.7);opacity:.3}50%{transform:scale(1.2);opacity:1}}
-@keyframes bloom{0%,100%{transform:scale(1)}50%{transform:scale(1.07)}}
+@keyframes breathe{0%,100%{transform:scale(.55);opacity:.2}50%{transform:scale(1.3);opacity:1}}
+@keyframes bloom{0%,100%{transform:scale(.88)}50%{transform:scale(1.2)}}
+.playing .lotus .pl1{animation:openL1 10s ease-in-out infinite}.playing .lotus .pr1{animation:openR1 10s ease-in-out infinite}
+.playing .lotus .pl2{animation:openL2 10s ease-in-out infinite}.playing .lotus .pr2{animation:openR2 10s ease-in-out infinite}
+@keyframes openL1{0%,100%{transform:rotate(10deg)}50%{transform:rotate(-14deg)}}
+@keyframes openR1{0%,100%{transform:rotate(-10deg)}50%{transform:rotate(14deg)}}
+@keyframes openL2{0%,100%{transform:rotate(5deg)}50%{transform:rotate(-8deg)}}
+@keyframes openR2{0%,100%{transform:rotate(-5deg)}50%{transform:rotate(8deg)}}
 .welcome{font:500 .95rem var(--sans);display:inline-flex;align-items:center;gap:8px;background:var(--card);color:var(--rose-deep);border:1px solid var(--line);border-radius:99px;min-height:44px;padding:0 18px;cursor:pointer;font-variant-numeric:tabular-nums}
 .welcome[hidden]{display:none}
 .breath{display:none;flex-direction:column;align-items:center;gap:2px;margin:-4px 0 0}
@@ -124,7 +131,7 @@ input[type=range]{width:100%;min-width:0;accent-color:var(--rose-deep);height:28
 @media (prefers-color-scheme:dark){.cta{color:#22281A}}
 .back{color:var(--rose-deep);font-weight:500}
 footer{text-align:center;font-size:.82rem;color:var(--ink-soft);display:flex;flex-direction:column;gap:6px;align-items:center}
-@media (prefers-reduced-motion:reduce){.playing .lotus .halo,.playing .lotus svg{animation:none;opacity:.9}.playing .breath .cue{display:none}}
+@media (prefers-reduced-motion:reduce){.playing .lotus .halo,.playing .lotus svg,.playing .lotus svg path{animation:none;opacity:.9}.playing .breath .cue{display:none}}
 </style>
 </head>
 <body>
@@ -138,8 +145,8 @@ footer{text-align:center;font-size:.82rem;color:var(--ink-soft);display:flex;fle
     <div class="lotus" aria-hidden="true"><div class="halo"></div>
       <svg viewBox="0 0 120 120">
         <g fill="#E9B7B9" fill-opacity=".55" stroke="#C97C88" stroke-width="1.2">
-          <path d="M60 92 C30 80 18 58 22 40 C40 50 52 68 60 92Z"/><path d="M60 92 C90 80 102 58 98 40 C80 50 68 68 60 92Z"/>
-          <path d="M60 92 C42 72 40 46 48 26 C58 40 62 62 60 92Z"/><path d="M60 92 C78 72 80 46 72 26 C62 40 58 62 60 92Z"/>
+          <path class="pl1" d="M60 92 C30 80 18 58 22 40 C40 50 52 68 60 92Z"/><path class="pr1" d="M60 92 C90 80 102 58 98 40 C80 50 68 68 60 92Z"/>
+          <path class="pl2" d="M60 92 C42 72 40 46 48 26 C58 40 62 62 60 92Z"/><path class="pr2" d="M60 92 C78 72 80 46 72 26 C62 40 58 62 60 92Z"/>
           <path d="M60 92 C52 66 52 38 60 16 C68 38 68 66 60 92Z" fill="#F4D3CF" fill-opacity=".9"/>
         </g>
         <path d="M30 96 Q60 104 90 96" fill="none" stroke="#8A9A55" stroke-width="1.6" stroke-linecap="round"/>
