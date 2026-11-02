@@ -165,6 +165,7 @@ footer{text-align:center;font-size:.82rem;color:var(--ink-soft);display:flex;fle
     <h2 data-t="medH"></h2>
     <p class="hint" data-t="medHint"></p>
     <div class="meds" id="meds"></div>
+    <div class="row"><span data-t="vvolL"></span><input type="range" id="voiceVol" min="0" max="100" value="100" aria-label="Volume"></div>
   </section>
 
   <section class="card book">
@@ -178,7 +179,7 @@ footer{text-align:center;font-size:.82rem;color:var(--ink-soft);display:flex;fle
 </main>
 <script>
 const T={
-fr:{presetsH:"Mélanges suggérés",presetsHint:"Pas envie de mélanger? Choisis une intention, et tout se règle pour toi.",bowlsH:"Bols tibétains",bowlsHint:"Choisis un ou plusieurs bols. Ils chanteront doucement, de temps en temps. Chaque note est associée à un chakra.",notes:["Do", "Ré", "Mi", "Fa", "Sol", "La", "Si"],chak:["Racine", "Sacré", "Plexus solaire", "Cœur", "Gorge", "Troisième œil", "Couronne"],P:[["Apaiser l'anxiété", "Rivière, oiseaux, 432 Hz, détente"], ["Bien dormir", "Océan, grillons, 174 Hz, sommeil"], ["Méditation profonde", "Forêt, vent, OM 136,1 Hz, bols"], ["Ancrage", "Feu, vent, 396 Hz, résonance de la Terre"], ["Ouvrir le cœur", "Oiseaux, forêt, 639 Hz, bols du cœur"]],title:"Un espace pour respirer",lead:"Choisis tes sons, installe-toi confortablement et laisse-toi déposer. C'est gratuit, c'est pour toi.",
+fr:{vvolL:"Volume de ma voix",presetsH:"Mélanges suggérés",presetsHint:"Pas envie de mélanger? Choisis une intention, et tout se règle pour toi.",bowlsH:"Bols tibétains",bowlsHint:"Choisis un ou plusieurs bols. Ils chanteront doucement, de temps en temps. Chaque note est associée à un chakra.",notes:["Do", "Ré", "Mi", "Fa", "Sol", "La", "Si"],chak:["Racine", "Sacré", "Plexus solaire", "Cœur", "Gorge", "Troisième œil", "Couronne"],P:[["Apaiser l'anxiété", "Rivière, oiseaux, 432 Hz, détente"], ["Bien dormir", "Océan, grillons, 174 Hz, sommeil"], ["Méditation profonde", "Forêt, vent, OM 136,1 Hz, bols"], ["Ancrage", "Feu, vent, 396 Hz, résonance de la Terre"], ["Ouvrir le cœur", "Oiseaux, forêt, 639 Hz, bols du cœur"]],title:"Un espace pour respirer",lead:"Choisis tes sons, installe-toi confortablement et laisse-toi déposer. C'est gratuit, c'est pour toi.",
 play:"Commencer",pause:"Faire une pause",ready:"Prends ton temps.",
 natureH:"Sons de la nature",natureHint:"Monte doucement le volume des sons qui t'appellent.",
 freqH:"Fréquence",freqHint:"Une seule à la fois, très douce, sous les sons de la nature. Les fréquences les plus basses s'entendent mieux avec des écouteurs.",none:"Aucune",vol:"Volume",
@@ -192,7 +193,7 @@ foot:"Offert avec amour par Katiana Cordoba",bookH:"Envie d'aller plus loin?",bo
 s:{wind:"Vent",fire:"Feu de camp",birds:"Oiseaux",forest:"Forêt et ruisseau",river:"Rivière",ocean:"Océan",crickets:"Grillons, la nuit"},
 f:{111:"Renouveau, nouveaux départs",136.1:"Le son OM, l'ancrage dans la Terre",216:"Calme profond, l'octave basse du 432",285:"Régénération, retour à l'équilibre",174:"Apaisement, sécurité",396:"Libérer la peur et la culpabilité",432:"Harmonie naturelle",528:"Amour et transformation",639:"Connexion du cœur",852:"Intuition et éveil"},
 m:[["Balayage corporel","Parcourir le corps avec douceur, d'un endroit à l'autre."],["Respiration consciente","Accompagner la respiration, sans rien changer."],["Ancrage","Sentir les pieds, le poids du corps, le lien avec la terre."],["L'espace entre les pensées","Observer les pensées, et se reposer dans le silence entre elles."]]},
-es:{presetsH:"Mezclas sugeridas",presetsHint:"¿No quieres mezclar? Elige una intención y todo se ajusta solo.",bowlsH:"Cuencos tibetanos",bowlsHint:"Elige uno o varios cuencos. Cantarán suavemente, de vez en cuando. Cada nota está asociada a un chakra.",notes:["Do", "Re", "Mi", "Fa", "Sol", "La", "Si"],chak:["Raíz", "Sacro", "Plexo solar", "Corazón", "Garganta", "Tercer ojo", "Corona"],P:[["Calmar la ansiedad", "Río, pájaros, 432 Hz, relajación"], ["Dormir bien", "Océano, grillos, 174 Hz, sueño"], ["Meditación profunda", "Bosque, viento, OM 136,1 Hz, cuencos"], ["Enraizarse", "Fogata, viento, 396 Hz, resonancia de la Tierra"], ["Abrir el corazón", "Pájaros, bosque, 639 Hz, cuencos del corazón"]],title:"Un espacio para respirar",lead:"Elige tus sonidos, ponte cómoda o cómodo y déjate llevar. Es gratis, es para ti.",
+es:{vvolL:"Volumen de mi voz",presetsH:"Mezclas sugeridas",presetsHint:"¿No quieres mezclar? Elige una intención y todo se ajusta solo.",bowlsH:"Cuencos tibetanos",bowlsHint:"Elige uno o varios cuencos. Cantarán suavemente, de vez en cuando. Cada nota está asociada a un chakra.",notes:["Do", "Re", "Mi", "Fa", "Sol", "La", "Si"],chak:["Raíz", "Sacro", "Plexo solar", "Corazón", "Garganta", "Tercer ojo", "Corona"],P:[["Calmar la ansiedad", "Río, pájaros, 432 Hz, relajación"], ["Dormir bien", "Océano, grillos, 174 Hz, sueño"], ["Meditación profunda", "Bosque, viento, OM 136,1 Hz, cuencos"], ["Enraizarse", "Fogata, viento, 396 Hz, resonancia de la Tierra"], ["Abrir el corazón", "Pájaros, bosque, 639 Hz, cuencos del corazón"]],title:"Un espacio para respirar",lead:"Elige tus sonidos, ponte cómoda o cómodo y déjate llevar. Es gratis, es para ti.",
 play:"Comenzar",pause:"Pausar",ready:"Tómate tu tiempo.",
 natureH:"Sonidos de la naturaleza",natureHint:"Sube suavemente el volumen de los sonidos que te llamen.",
 freqH:"Frecuencia",freqHint:"Una sola a la vez, muy suave, debajo de los sonidos de la naturaleza. Las frecuencias más bajas se escuchan mejor con audífonos.",none:"Ninguna",vol:"Volumen",
@@ -206,7 +207,7 @@ foot:"Ofrecido con amor por Katiana Cordoba",bookH:"¿Quieres ir más lejos?",bo
 s:{wind:"Viento",fire:"Fogata",birds:"Pájaros",forest:"Bosque y arroyo",river:"Río",ocean:"Océano",crickets:"Grillos de noche"},
 f:{111:"Renovación, nuevos comienzos",136.1:"El sonido OM, enraizarse en la Tierra",216:"Calma profunda, la octava baja del 432",285:"Regeneración, volver al equilibrio",174:"Alivio, seguridad",396:"Soltar el miedo y la culpa",432:"Armonía natural",528:"Amor y transformación",639:"Conexión del corazón",852:"Intuición y despertar"},
 m:[["Escaneo corporal","Recorrer el cuerpo con suavidad, de un lugar a otro."],["Respiración consciente","Acompañar la respiración, sin cambiar nada."],["Anclaje","Sentir los pies, el peso del cuerpo, la conexión con la tierra."],["El espacio entre los pensamientos","Observar los pensamientos y descansar en el silencio entre ellos."]]},
-en:{presetsH:"Suggested blends",presetsHint:"Don't feel like mixing? Choose an intention and everything is set for you.",bowlsH:"Tibetan bowls",bowlsHint:"Choose one or more bowls. They will sing softly, every now and then. Each note is linked to a chakra.",notes:["C", "D", "E", "F", "G", "A", "B"],chak:["Root", "Sacral", "Solar plexus", "Heart", "Throat", "Third eye", "Crown"],P:[["Ease anxiety", "River, birds, 432 Hz, relaxation"], ["Sleep well", "Ocean, crickets, 174 Hz, sleep"], ["Deep meditation", "Forest, wind, OM 136.1 Hz, bowls"], ["Grounding", "Fire, wind, 396 Hz, Earth resonance"], ["Open the heart", "Birds, forest, 639 Hz, heart bowls"]],title:"A space to breathe",lead:"Choose your sounds, get comfortable and let yourself settle. It's free, and it's for you.",
+en:{vvolL:"Volume of my voice",presetsH:"Suggested blends",presetsHint:"Don't feel like mixing? Choose an intention and everything is set for you.",bowlsH:"Tibetan bowls",bowlsHint:"Choose one or more bowls. They will sing softly, every now and then. Each note is linked to a chakra.",notes:["C", "D", "E", "F", "G", "A", "B"],chak:["Root", "Sacral", "Solar plexus", "Heart", "Throat", "Third eye", "Crown"],P:[["Ease anxiety", "River, birds, 432 Hz, relaxation"], ["Sleep well", "Ocean, crickets, 174 Hz, sleep"], ["Deep meditation", "Forest, wind, OM 136.1 Hz, bowls"], ["Grounding", "Fire, wind, 396 Hz, Earth resonance"], ["Open the heart", "Birds, forest, 639 Hz, heart bowls"]],title:"A space to breathe",lead:"Choose your sounds, get comfortable and let yourself settle. It's free, and it's for you.",
 play:"Begin",pause:"Pause",ready:"Take your time.",
 natureH:"Nature sounds",natureHint:"Gently raise the volume of the sounds that call to you.",
 freqH:"Frequency",freqHint:"One at a time, very soft, beneath the nature sounds. The lower frequencies are best heard with headphones or earphones.",none:"None",vol:"Volume",
@@ -237,7 +238,7 @@ const TIMES=[0,5,10,15,20,25,30,35,40,45,50,55,60];
 
 const HOME={fr:"../",en:"../en.html",es:"../es.html"};
 let lang=(location.hash||"").slice(1);if(!T[lang]){lang="fr";try{lang=localStorage.getItem("mc-lang")||"fr"}catch(e){}if(!T[lang])lang="fr"}
-const st={vol:{wind:0,fire:35,birds:0,forest:40,river:0,ocean:0,crickets:0},freq:432,fvol:35,beat:0,timer:4,bowls:[],bvol:55};
+const st={vol:{wind:0,fire:35,birds:0,forest:40,river:0,ocean:0,crickets:0},freq:432,fvol:35,beat:0,timer:4,bowls:[],bvol:55,vvol:100};
 const NOTES=["c","d","e","f","g","a","b"];
 const PRESETS=[
  {vol:{river:40,birds:20},freq:432,beat:10,bowls:["f"],timer:3},
@@ -369,7 +370,7 @@ document.getElementById("meds").addEventListener("click",async e=>{const b=e.tar
   if(voice){voice.pause()}
   if(!playing)await start();
   voice=new Audio(MEDS[lang][i]);voiceIdx=i;
-  try{const src=ctx.createMediaElementSource(voice),g=ctx.createGain();g.gain.value=1;src.connect(g).connect(master)}catch(err){}
+  try{const src=ctx.createMediaElementSource(voice),g=ctx.createGain();g.gain.value=st.vvol/100;src.connect(g).connect(master);nodes.voice=g}catch(err){nodes.voice=null;voice.volume=st.vvol/100}
   voice.addEventListener("timeupdate",vtime);voice.addEventListener("ended",()=>render());
   await voice.play();render();vtime();});
 document.querySelectorAll(".langs button").forEach(b=>b.addEventListener("click",()=>{lang=b.dataset.l;try{localStorage.setItem("mc-lang",lang)}catch(e){}try{history.replaceState(null,"",lang==="fr"?location.pathname:"#"+lang)}catch(e){}render()}));
@@ -382,6 +383,8 @@ document.getElementById("bowls").innerHTML=NOTES.map(n=>`<button class="chip" ty
 document.getElementById("bowls").addEventListener("click",e=>{const b=e.target.closest(".chip");if(!b)return;const n=b.dataset.n;
   if(st.bowls.includes(n))st.bowls=st.bowls.filter(x=>x!==n);else{st.bowls.push(n);if(playing)strike(n,false)}
   preset=-1;render();});
+document.getElementById("voiceVol").addEventListener("input",e=>{st.vvol=+e.target.value;const v=st.vvol/100;
+  if(nodes.voice&&ctx)nodes.voice.gain.setTargetAtTime(v,ctx.currentTime,.1);else if(voice)voice.volume=v;});
 document.getElementById("bowlVol").addEventListener("input",e=>{st.bvol=+e.target.value;applyAudio()});
 ["sounds","freqs","bins"].forEach(id=>document.getElementById(id).addEventListener(id==="sounds"?"input":"click",()=>{if(preset>=0){preset=-1;render()}}));
 render();
