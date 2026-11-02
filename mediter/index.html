@@ -157,7 +157,7 @@ footer{text-align:center;font-size:.82rem;color:var(--ink-soft);display:flex;fle
 
   <section class="card">
     <h2 data-t="timerH"></h2>
-    <div class="row"><span id="timerLabel"></span><input type="range" id="timer" min="0" max="12" value="4" aria-label="Minuterie / Timer"></div>
+    <div class="row"><span id="timerLabel"></span><input type="range" id="timer" min="0" max="12" value="12" aria-label="Minuterie / Timer"></div>
     <p class="hint" data-t="timerHint"></p>
   </section>
 
@@ -242,15 +242,15 @@ const TIMES=[0,5,10,15,20,25,30,35,40,45,50,55,60];
 
 const HOME={fr:"../",en:"../en.html",es:"../es.html"};
 let lang=(location.hash||"").slice(1);if(!T[lang]){lang="fr";try{lang=localStorage.getItem("mc-lang")||"fr"}catch(e){}if(!T[lang])lang="fr"}
-const st={vol:{wind:0,fire:35,birds:0,forest:40,river:0,ocean:0,crickets:0},freq:432,fvol:35,beat:0,timer:4,bowls:[],bvol:55,vvol:100,music:"",mvol:55};
+const st={vol:{wind:0,fire:35,birds:0,forest:40,river:0,ocean:0,crickets:0},freq:432,fvol:35,beat:0,timer:12,bowls:[],bvol:55,vvol:100,music:"",mvol:55};
 const NOTES=["c","d","e","f","g","a","b"];
 const PRESETS=[
- {music:"calm",vol:{river:21,birds:15},freq:0,beat:0,bowls:[],timer:3},
- {music:"paz",vol:{ocean:18,crickets:15},freq:0,beat:0,bowls:[],timer:6},
- {music:"wonder",vol:{ocean:20,wind:40},freq:0,beat:0,bowls:[],timer:4},
- {music:"light",vol:{fire:15,river:7},freq:0,beat:0,bowls:[],timer:3},
- {music:"divine",vol:{birds:20,forest:15},freq:432,fvol:18,beat:0,bowls:[],timer:3},
- {music:"hopeful",vol:{birds:21,river:10},freq:432,fvol:18,beat:0,bowls:[],timer:2}];
+ {music:"calm",vol:{river:21,birds:15},freq:0,beat:0,bowls:[],timer:12},
+ {music:"paz",vol:{ocean:18,crickets:15},freq:0,beat:0,bowls:[],timer:12},
+ {music:"wonder",vol:{ocean:20,wind:40},freq:0,beat:0,bowls:[],timer:12},
+ {music:"light",vol:{fire:15,river:7},freq:0,beat:0,bowls:[],timer:12},
+ {music:"divine",vol:{birds:20,forest:15},freq:432,fvol:18,beat:0,bowls:[],timer:12},
+ {music:"hopeful",vol:{birds:21,river:10},freq:432,fvol:18,beat:0,bowls:[],timer:12}];
 let preset=-1;const bowlBufs={};let nextBowl=0;
 let ctx,master,playing=false,endAt=0,tick,lock=null;
 const nodes={};
