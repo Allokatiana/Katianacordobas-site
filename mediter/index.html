@@ -232,8 +232,8 @@ crickets:'<path d="M20 14a8 8 0 1 1-9-11 6 6 0 0 0 9 11z"/>',
 ocean:'<path d="M2 15c2.5 0 3-4 6-4s3.5 4 6 4 3.5-6 8-6M2 20h20"/>'};
 const MUSIC=["calm","paz","hopeful","divine","wonder"];
 /* intro plays once, then the steady part loops; each tail was blended into the bars before loopStart, so the jump is seamless */
-const MLOOP={calm:[40,239,28],paz:[150,303,130],hopeful:[8,178,0],divine:[8,96,0],wonder:[85,211,70]};  /* [loopStart, loopEnd, where to begin, skipping a near-silent opening] */
-const MGAIN={calm:1,paz:1,hopeful:1,divine:1,wonder:1.6};
+const MLOOP={calm:[40,239,28],paz:[150,303,130],hopeful:[8,178,0],divine:[8,96,0],wonder:[85,208,70]};  /* [loopStart, loopEnd, where to begin, skipping a near-silent opening] */
+const MGAIN={calm:1,paz:1,hopeful:1,divine:1,wonder:1};
 const SOUNDS=["wind","fire","birds","forest","river","ocean","crickets"];
 const FREQS=[111,136.1,174,216,285,396,432,528,639,852];
 const BINS=[["binOff",0],["binA",10],["binS",7.83],["binT",6],["binD",3]];
@@ -294,7 +294,7 @@ async function syncMusic(){
 function applyAudio(ramp=.6){
   if(!ctx)return;const now=ctx.currentTime;
   nodes.bowl.gain.setTargetAtTime(Math.pow(st.bvol/100,1.4)*.9,now,ramp);
-  nodes.music.gain.setTargetAtTime(Math.pow(st.mvol/100,1.6)*.22,now,ramp);
+  nodes.music.gain.setTargetAtTime(Math.pow(st.mvol/100,1.6)*.7,now,ramp);
   for(const k of SOUNDS)if(nodes[k])nodes[k].gain.setTargetAtTime(Math.pow(st.vol[k]/100,1.6),now,ramp);
   const f=st.freq,b=st.beat,key=f+"/"+b,level=f?Math.pow(st.fvol/100,2)*.09:0,tg=nodes.tone.gain;
   const tune=t=>{const base=f||100,[L,R]=nodes.E,hv=f&&f<300?.22:.06;
