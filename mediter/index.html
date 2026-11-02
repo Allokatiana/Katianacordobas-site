@@ -115,12 +115,6 @@ footer{text-align:center;font-size:.82rem;color:var(--ink-soft);display:flex;fle
   </section>
 
   <section class="card">
-    <h2 data-t="medH"></h2>
-    <p class="hint" data-t="medHint"></p>
-    <div class="meds" id="meds"></div>
-  </section>
-
-  <section class="card">
     <h2 data-t="natureH"></h2>
     <p class="hint" data-t="natureHint"></p>
     <div class="sounds" id="sounds"></div>
@@ -144,6 +138,12 @@ footer{text-align:center;font-size:.82rem;color:var(--ink-soft);display:flex;fle
     <h2 data-t="timerH"></h2>
     <div class="row"><span id="timerLabel"></span><input type="range" id="timer" min="0" max="12" value="4" aria-label="Minuterie / Timer"></div>
     <p class="hint" data-t="timerHint"></p>
+  </section>
+
+  <section class="card">
+    <h2 data-t="medH"></h2>
+    <p class="hint" data-t="medHint"></p>
+    <div class="meds" id="meds"></div>
   </section>
 
   <section class="card book">
@@ -222,7 +222,7 @@ const nodes={};
 
 /* ---------- audio ---------- */
 const LEN={wind:86,fire:72,birds:77,forest:26.571,river:18.473,ocean:65.608,crickets:36.384},PAD=.15;
-let loaded=null;
+const loading={};
 async function loadBuf(k){const r=await fetch("snd/"+k+".mp3");return ctx.decodeAudioData(await r.arrayBuffer())}
 function build(){
   ctx=new (window.AudioContext||window.webkitAudioContext)();
@@ -231,12 +231,15 @@ function build(){
   const L=ctx.createOscillator(),R=ctx.createOscillator();L.connect(merge,0,0);R.connect(merge,0,1);L.start();R.start();
   const H=ctx.createOscillator(),hg=ctx.createGain();hg.gain.value=.22;H.connect(hg).connect(tg);H.start();
   nodes.tone=tg;nodes.L=L;nodes.R=R;nodes.H=H;nodes.HG=hg;
-  loaded=Promise.all(SOUNDS.map(async k=>{
-    const g=ctx.createGain();g.gain.value=0;g.connect(master);nodes[k]=g;
-    const b=await loadBuf(k),src=ctx.createBufferSource();src.buffer=b;src.loop=true;
-    src.loopStart=PAD;src.loopEnd=Math.min(b.duration,PAD+LEN[k]);
-    src.connect(g);src.start(0,PAD+Math.random()*LEN[k]*.5);}));
+  SOUNDS.forEach(k=>{const g=ctx.createGain();g.gain.value=0;g.connect(master);nodes[k]=g;});
 }
+/* a sound is downloaded and decoded only the first time someone turns it up */
+function ensure(k){
+  if(!ctx||st.vol[k]<=0)return Promise.resolve();
+  if(!loading[k])loading[k]=loadBuf(k).then(b=>{const src=ctx.createBufferSource();src.buffer=b;src.loop=true;
+    src.loopStart=PAD;src.loopEnd=Math.min(b.duration,PAD+LEN[k]);src.connect(nodes[k]);src.start(0,PAD+Math.random()*LEN[k]*.5);})
+    .catch(()=>{delete loading[k]});
+  return loading[k];}
 function applyAudio(ramp=.6){
   if(!ctx)return;const now=ctx.currentTime;
   for(const k of SOUNDS)if(nodes[k])nodes[k].gain.setTargetAtTime(Math.pow(st.vol[k]/100,1.6),now,ramp);
@@ -262,7 +265,7 @@ function finish(){
 async function start(){
   try{if(navigator.audioSession)navigator.audioSession.type="playback"}catch(e){}
   if(!ctx)build();await ctx.resume();
-  const el=document.getElementById("status");el.textContent="…";try{await loaded}catch(e){el.textContent="⚠";return}playing=true;applyAudio(.01);
+  const el=document.getElementById("status");el.textContent="…";await Promise.all(SOUNDS.map(ensure));playing=true;applyAudio(.01);
   master.gain.cancelScheduledValues(ctx.currentTime);master.gain.setTargetAtTime(1,ctx.currentTime,1.2);
   document.getElementById("app").classList.add("playing");document.getElementById("status").dataset.ended="";
   const mins=TIMES[st.timer];endAt=mins?Date.now()+mins*60000:0;
@@ -296,7 +299,7 @@ document.getElementById("sounds").innerHTML=SOUNDS.map(k=>`<div class="snd" id="
   <span class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">${ICONS[k]}</svg></span>
   <label id="lbl-${k}" for="v-${k}"></label>
   <input type="range" id="v-${k}" min="0" max="100" value="${st.vol[k]}"></div>`).join("");
-SOUNDS.forEach(k=>document.getElementById("v-"+k).addEventListener("input",e=>{st.vol[k]=+e.target.value;applyAudio();render()}));
+SOUNDS.forEach(k=>document.getElementById("v-"+k).addEventListener("input",e=>{st.vol[k]=+e.target.value;ensure(k);applyAudio();document.getElementById("c-"+k).classList.toggle("on",st.vol[k]>0)}));
 document.getElementById("freqs").innerHTML=[0,...FREQS].map(f=>`<button class="chip" data-f="${f}"></button>`).join("");
 document.getElementById("freqs").addEventListener("click",e=>{const b=e.target.closest(".chip");if(!b)return;st.freq=+b.dataset.f;applyAudio();render()});
 document.getElementById("bins").innerHTML=BINS.map(([k,b])=>`<button class="chip" data-k="${k}" data-b="${b}"></button>`).join("");
