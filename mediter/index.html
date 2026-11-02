@@ -66,12 +66,11 @@ main{max-width:720px;margin:0 auto;display:flex;flex-direction:column;gap:22px;
 @keyframes openR2{0%,100%{transform:rotate(-5deg)}50%{transform:rotate(8deg)}}
 .welcome{font:500 .95rem var(--sans);display:inline-flex;align-items:center;gap:8px;background:var(--card);color:var(--rose-deep);border:1px solid var(--line);border-radius:99px;min-height:44px;padding:0 18px;cursor:pointer;font-variant-numeric:tabular-nums}
 .welcome[hidden]{display:none}
-.breath{display:none;flex-direction:column;align-items:center;gap:2px;margin:-4px 0 0}
-.playing .breath{display:flex}
+.breath{display:flex;flex-direction:column;align-items:center;gap:2px;margin:-4px 0 0}
 .breath .cue{display:grid;font-family:var(--serif);font-style:italic;font-size:1.45rem;color:var(--rose-deep);min-height:1.5em}
 .breath .cue span{grid-area:1/1;opacity:0}
-.playing .breath .in{animation:cueIn 10s ease-in-out infinite}
-.playing .breath .out{animation:cueOut 10s ease-in-out infinite}
+.breath .in{animation:cueIn 10s ease-in-out infinite}
+.breath .out{animation:cueOut 10s ease-in-out infinite}
 @keyframes cueIn{0%,42%{opacity:1}50%,92%{opacity:0}100%{opacity:1}}
 @keyframes cueOut{0%,42%{opacity:0}50%,92%{opacity:1}100%{opacity:0}}
 .breath small{font-size:.82rem;color:var(--ink-soft);letter-spacing:.03em}
@@ -133,7 +132,7 @@ input[type=range]{width:100%;min-width:0;accent-color:var(--rose-deep);height:28
 .cta{color:#22281A}
 .back{color:var(--rose-deep);font-weight:500}
 footer{text-align:center;font-size:.82rem;color:var(--ink-soft);display:flex;flex-direction:column;gap:6px;align-items:center}
-@media (prefers-reduced-motion:reduce){.lotus,.lotus .halo,.lotus svg path{animation:none!important;opacity:.9}.playing .breath .cue{display:none}}
+@media (prefers-reduced-motion:reduce){.lotus,.lotus .halo,.lotus svg path{animation:none!important;opacity:.9}.breath .cue{display:none}}
 </style>
 </head>
 <body>
