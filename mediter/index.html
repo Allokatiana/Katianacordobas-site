@@ -282,7 +282,7 @@ function ensure(k){
 /* one music track at a time: the old one fades out, the new one starts from its beginning */
 const musicBufs={};let musicSrc=null,musicKey="";
 function loadMusic(k){
-  if(!musicBufs[k])musicBufs[k]=fetch("snd/musica-"+k+".mp3").then(r=>r.arrayBuffer()).then(a=>ctx.decodeAudioData(a)).catch(()=>{delete musicBufs[k]});
+  if(!musicBufs[k])musicBufs[k]=fetch("snd/musica-"+k+".mp3?v=2").then(r=>r.arrayBuffer()).then(a=>ctx.decodeAudioData(a)).catch(()=>{delete musicBufs[k]});
   return musicBufs[k];}
 async function syncMusic(){
   if(!ctx)return;const want=playing?st.music:"";if(want===musicKey)return;
