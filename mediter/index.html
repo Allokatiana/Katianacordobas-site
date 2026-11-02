@@ -81,6 +81,14 @@ input[type=range]{width:100%;min-width:0;accent-color:var(--rose-deep);height:28
 .med p{margin:0;font-size:.93rem;color:var(--ink-soft)}
 .med button{font:600 .95rem var(--sans);align-self:flex-start;margin-top:6px;background:var(--rose-deep);color:var(--chip-on-ink);border:0;border-radius:99px;min-height:44px;padding:0 20px;cursor:pointer}
 .med .time{font-size:.85rem;color:var(--ink-soft);font-variant-numeric:tabular-nums}
+.presets{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,190px),1fr));gap:8px}
+.preset{font:inherit;text-align:left;color:var(--ink);background:var(--chip);border:1px solid var(--line);border-radius:18px;padding:12px 14px;cursor:pointer;display:flex;flex-direction:column;gap:2px}
+.preset b{font-family:var(--serif);font-weight:500;font-size:1.3rem;line-height:1.15}
+.preset span{font-size:.85rem;color:var(--ink-soft);line-height:1.4}
+.preset[aria-pressed="true"]{background:var(--rose-deep);border-color:var(--rose-deep);color:var(--chip-on-ink)}
+.preset[aria-pressed="true"] span{color:var(--chip-on-ink);opacity:.85}
+.bowls .chip{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:0;min-height:58px;padding:6px 14px;line-height:1.15}
+.bowls .chip small{font-size:.74rem;opacity:.75}
 .book{text-align:center;align-items:center}
 .book p{margin:0;color:var(--ink-soft);max-width:36ch}
 .cta{display:inline-flex;align-items:center;justify-content:center;min-height:52px;padding:0 26px;border-radius:999px;background:var(--olive);color:#fff;text-decoration:none;font-weight:600}
@@ -115,9 +123,22 @@ footer{text-align:center;font-size:.82rem;color:var(--ink-soft);display:flex;fle
   </section>
 
   <section class="card">
+    <h2 data-t="presetsH"></h2>
+    <p class="hint" data-t="presetsHint"></p>
+    <div class="presets" id="presets"></div>
+  </section>
+
+  <section class="card">
     <h2 data-t="natureH"></h2>
     <p class="hint" data-t="natureHint"></p>
     <div class="sounds" id="sounds"></div>
+  </section>
+
+  <section class="card">
+    <h2 data-t="bowlsH"></h2>
+    <p class="hint" data-t="bowlsHint"></p>
+    <div class="chips bowls" id="bowls"></div>
+    <div class="row"><span data-t="vol"></span><input type="range" id="bowlVol" min="0" max="100" value="55" aria-label="Volume"></div>
   </section>
 
   <section class="card">
@@ -157,7 +178,7 @@ footer{text-align:center;font-size:.82rem;color:var(--ink-soft);display:flex;fle
 </main>
 <script>
 const T={
-fr:{title:"Un espace pour respirer",lead:"Choisis tes sons, installe-toi confortablement et laisse-toi déposer. C'est gratuit, c'est pour toi.",
+fr:{presetsH:"Mélanges suggérés",presetsHint:"Pas envie de mélanger? Choisis une intention, et tout se règle pour toi.",bowlsH:"Bols tibétains",bowlsHint:"Choisis un ou plusieurs bols. Ils chanteront doucement, de temps en temps. Chaque note est associée à un chakra.",notes:["Do", "Ré", "Mi", "Fa", "Sol", "La", "Si"],chak:["Racine", "Sacré", "Plexus solaire", "Cœur", "Gorge", "Troisième œil", "Couronne"],P:[["Apaiser l'anxiété", "Rivière, oiseaux, 432 Hz, détente"], ["Bien dormir", "Océan, grillons, 174 Hz, sommeil"], ["Méditation profonde", "Forêt, vent, OM 136,1 Hz, bols"], ["Ancrage", "Feu, vent, 396 Hz, résonance de la Terre"], ["Ouvrir le cœur", "Oiseaux, forêt, 639 Hz, bols du cœur"]],title:"Un espace pour respirer",lead:"Choisis tes sons, installe-toi confortablement et laisse-toi déposer. C'est gratuit, c'est pour toi.",
 play:"Commencer",pause:"Faire une pause",ready:"Prends ton temps.",
 natureH:"Sons de la nature",natureHint:"Monte doucement le volume des sons qui t'appellent.",
 freqH:"Fréquence",freqHint:"Une seule à la fois, très douce, sous les sons de la nature. Les fréquences les plus basses s'entendent mieux avec des écouteurs.",none:"Aucune",vol:"Volume",
@@ -171,7 +192,7 @@ foot:"Offert avec amour par Katiana Cordoba",bookH:"Envie d'aller plus loin?",bo
 s:{wind:"Vent",fire:"Feu de camp",birds:"Oiseaux",forest:"Forêt et ruisseau",river:"Rivière",ocean:"Océan",crickets:"Grillons, la nuit"},
 f:{111:"Renouveau, nouveaux départs",136.1:"Le son OM, l'ancrage dans la Terre",216:"Calme profond, l'octave basse du 432",285:"Régénération, retour à l'équilibre",174:"Apaisement, sécurité",396:"Libérer la peur et la culpabilité",432:"Harmonie naturelle",528:"Amour et transformation",639:"Connexion du cœur",852:"Intuition et éveil"},
 m:[["Balayage corporel","Parcourir le corps avec douceur, d'un endroit à l'autre."],["Respiration consciente","Accompagner la respiration, sans rien changer."],["Ancrage","Sentir les pieds, le poids du corps, le lien avec la terre."],["L'espace entre les pensées","Observer les pensées, et se reposer dans le silence entre elles."]]},
-es:{title:"Un espacio para respirar",lead:"Elige tus sonidos, ponte cómoda o cómodo y déjate llevar. Es gratis, es para ti.",
+es:{presetsH:"Mezclas sugeridas",presetsHint:"¿No quieres mezclar? Elige una intención y todo se ajusta solo.",bowlsH:"Cuencos tibetanos",bowlsHint:"Elige uno o varios cuencos. Cantarán suavemente, de vez en cuando. Cada nota está asociada a un chakra.",notes:["Do", "Re", "Mi", "Fa", "Sol", "La", "Si"],chak:["Raíz", "Sacro", "Plexo solar", "Corazón", "Garganta", "Tercer ojo", "Corona"],P:[["Calmar la ansiedad", "Río, pájaros, 432 Hz, relajación"], ["Dormir bien", "Océano, grillos, 174 Hz, sueño"], ["Meditación profunda", "Bosque, viento, OM 136,1 Hz, cuencos"], ["Enraizarse", "Fogata, viento, 396 Hz, resonancia de la Tierra"], ["Abrir el corazón", "Pájaros, bosque, 639 Hz, cuencos del corazón"]],title:"Un espacio para respirar",lead:"Elige tus sonidos, ponte cómoda o cómodo y déjate llevar. Es gratis, es para ti.",
 play:"Comenzar",pause:"Pausar",ready:"Tómate tu tiempo.",
 natureH:"Sonidos de la naturaleza",natureHint:"Sube suavemente el volumen de los sonidos que te llamen.",
 freqH:"Frecuencia",freqHint:"Una sola a la vez, muy suave, debajo de los sonidos de la naturaleza. Las frecuencias más bajas se escuchan mejor con audífonos.",none:"Ninguna",vol:"Volumen",
@@ -185,7 +206,7 @@ foot:"Ofrecido con amor por Katiana Cordoba",bookH:"¿Quieres ir más lejos?",bo
 s:{wind:"Viento",fire:"Fogata",birds:"Pájaros",forest:"Bosque y arroyo",river:"Río",ocean:"Océano",crickets:"Grillos de noche"},
 f:{111:"Renovación, nuevos comienzos",136.1:"El sonido OM, enraizarse en la Tierra",216:"Calma profunda, la octava baja del 432",285:"Regeneración, volver al equilibrio",174:"Alivio, seguridad",396:"Soltar el miedo y la culpa",432:"Armonía natural",528:"Amor y transformación",639:"Conexión del corazón",852:"Intuición y despertar"},
 m:[["Escaneo corporal","Recorrer el cuerpo con suavidad, de un lugar a otro."],["Respiración consciente","Acompañar la respiración, sin cambiar nada."],["Anclaje","Sentir los pies, el peso del cuerpo, la conexión con la tierra."],["El espacio entre los pensamientos","Observar los pensamientos y descansar en el silencio entre ellos."]]},
-en:{title:"A space to breathe",lead:"Choose your sounds, get comfortable and let yourself settle. It's free, and it's for you.",
+en:{presetsH:"Suggested blends",presetsHint:"Don't feel like mixing? Choose an intention and everything is set for you.",bowlsH:"Tibetan bowls",bowlsHint:"Choose one or more bowls. They will sing softly, every now and then. Each note is linked to a chakra.",notes:["C", "D", "E", "F", "G", "A", "B"],chak:["Root", "Sacral", "Solar plexus", "Heart", "Throat", "Third eye", "Crown"],P:[["Ease anxiety", "River, birds, 432 Hz, relaxation"], ["Sleep well", "Ocean, crickets, 174 Hz, sleep"], ["Deep meditation", "Forest, wind, OM 136.1 Hz, bowls"], ["Grounding", "Fire, wind, 396 Hz, Earth resonance"], ["Open the heart", "Birds, forest, 639 Hz, heart bowls"]],title:"A space to breathe",lead:"Choose your sounds, get comfortable and let yourself settle. It's free, and it's for you.",
 play:"Begin",pause:"Pause",ready:"Take your time.",
 natureH:"Nature sounds",natureHint:"Gently raise the volume of the sounds that call to you.",
 freqH:"Frequency",freqHint:"One at a time, very soft, beneath the nature sounds. The lower frequencies are best heard with headphones or earphones.",none:"None",vol:"Volume",
@@ -216,7 +237,15 @@ const TIMES=[0,5,10,15,20,25,30,35,40,45,50,55,60];
 
 const HOME={fr:"../",en:"../en.html",es:"../es.html"};
 let lang=(location.hash||"").slice(1);if(!T[lang]){lang="fr";try{lang=localStorage.getItem("mc-lang")||"fr"}catch(e){}if(!T[lang])lang="fr"}
-const st={vol:{wind:0,fire:35,birds:0,forest:40,river:0,ocean:0,crickets:0},freq:432,fvol:35,beat:0,timer:4};
+const st={vol:{wind:0,fire:35,birds:0,forest:40,river:0,ocean:0,crickets:0},freq:432,fvol:35,beat:0,timer:4,bowls:[],bvol:55};
+const NOTES=["c","d","e","f","g","a","b"];
+const PRESETS=[
+ {vol:{river:40,birds:20},freq:432,beat:10,bowls:["f"],timer:3},
+ {vol:{ocean:35,crickets:25},freq:174,beat:3,bowls:[],timer:6},
+ {vol:{forest:30,wind:15},freq:136.1,beat:6,bowls:["c","g"],timer:4},
+ {vol:{fire:40,wind:10},freq:396,beat:7.83,bowls:["c"],timer:3},
+ {vol:{birds:25,forest:25},freq:639,beat:10,bowls:["f","a"],timer:3}];
+let preset=-1;const bowlBufs={};let nextBowl=0;
 let ctx,master,playing=false,endAt=0,tick,lock=null;
 const nodes={};
 
@@ -233,6 +262,7 @@ function build(){
   const ear=ch=>{const o=ctx.createOscillator(),h=ctx.createOscillator(),hg=ctx.createGain(),g=ctx.createGain();
     hg.gain.value=.22;o.connect(g);h.connect(hg).connect(g);g.connect(merge,0,ch);o.start();h.start();return{o,h,hg}};
   nodes.tone=tg;nodes.E=[ear(0),ear(1)];nodes.cur=null;
+  nodes.bowl=ctx.createGain();nodes.bowl.gain.value=0;nodes.bowl.connect(master);
   SOUNDS.forEach(k=>{const g=ctx.createGain();g.gain.value=0;g.connect(master);nodes[k]=g;});
 }
 /* a sound is downloaded and decoded only the first time someone turns it up */
@@ -244,6 +274,7 @@ function ensure(k){
   return loading[k];}
 function applyAudio(ramp=.6){
   if(!ctx)return;const now=ctx.currentTime;
+  nodes.bowl.gain.setTargetAtTime(Math.pow(st.bvol/100,1.4)*.9,now,ramp);
   for(const k of SOUNDS)if(nodes[k])nodes[k].gain.setTargetAtTime(Math.pow(st.vol[k]/100,1.6),now,ramp);
   const f=st.freq,b=st.beat,key=f+"/"+b,level=f?Math.pow(st.fvol/100,2)*.09:0,tg=nodes.tone.gain;
   const tune=t=>{const base=f||100,[L,R]=nodes.E,hv=f&&f<300?.22:.06;
@@ -275,7 +306,7 @@ function finish(){
 async function start(){
   try{if(navigator.audioSession)navigator.audioSession.type="playback"}catch(e){}
   if(!ctx)build();await ctx.resume();
-  const el=document.getElementById("status");el.textContent="…";await Promise.all(SOUNDS.map(ensure));playing=true;applyAudio(.01);
+  const el=document.getElementById("status");el.textContent="…";await Promise.all(SOUNDS.map(ensure));playing=true;applyAudio(.01);nextBowl=ctx.currentTime+2;st.bowls.forEach(loadBowl);
   master.gain.cancelScheduledValues(ctx.currentTime);master.gain.setTargetAtTime(1,ctx.currentTime,1.2);
   document.getElementById("app").classList.add("playing");document.getElementById("status").dataset.ended="";
   const mins=TIMES[st.timer];endAt=mins?Date.now()+mins*60000:0;
@@ -290,6 +321,18 @@ function stop(ended){
   try{lock&&lock.release()}catch(e){}lock=null;render();}
 
 /* ---------- UI ---------- */
+function loadBowl(n){
+  if(!bowlBufs[n])bowlBufs[n]=fetch("snd/bol-"+n+".mp3").then(r=>r.arrayBuffer()).then(a=>ctx.decodeAudioData(a)).catch(()=>{delete bowlBufs[n]});
+  return bowlBufs[n];}
+async function strike(n,soft){
+  if(!ctx)return;const b=await loadBowl(n);if(!b)return;
+  const s=ctx.createBufferSource(),g=ctx.createGain();s.buffer=b;g.gain.value=soft?.5+Math.random()*.35:.85;s.connect(g);
+  if(ctx.createStereoPanner){const p=ctx.createStereoPanner();p.pan.value=Math.random()*.8-.4;g.connect(p).connect(nodes.bowl)}else g.connect(nodes.bowl);
+  s.start();}
+setInterval(()=>{if(!playing||!ctx||!st.bowls.length)return;
+  if(ctx.currentTime>=nextBowl){strike(st.bowls[Math.floor(Math.random()*st.bowls.length)],true);nextBowl=ctx.currentTime+9+Math.random()*7}},500);
+function syncInputs(){SOUNDS.forEach(k=>{document.getElementById("v-"+k).value=st.vol[k]});document.getElementById("timer").value=st.timer;
+  document.getElementById("freqVol").value=st.fvol;document.getElementById("bowlVol").value=st.bvol;}
 function render(){
   const t=T[lang];document.documentElement.lang=lang==="fr"?"fr-CA":lang;document.title=t.title+" · Katiana Cordoba";
   document.querySelectorAll("[data-home]").forEach(a=>a.href=HOME[lang]);
@@ -303,6 +346,8 @@ function render(){
   const m=TIMES[st.timer];document.getElementById("timerLabel").textContent=m?m+" "+t.min:t.noTimer;
   document.getElementById("meds").innerHTML=t.m.map(([h,p],i)=>{const has=MEDS[lang]&&MEDS[lang][i],on=voice&&voiceIdx===i&&!voice.paused;
     return `<div class="med"><h3>${h}</h3><p>${p}</p>${has?`<button data-med="${i}">${on?t.stopV:t.listen}</button><span class="time" id="vt-${i}"></span>`:`<span class="soon">${t.soon}</span>`}</div>`}).join("");
+  document.querySelectorAll("#presets .preset").forEach((b,i)=>{b.innerHTML="<b>"+t.P[i][0]+"</b><span>"+t.P[i][1]+"</span>";b.setAttribute("aria-pressed",i===preset)});
+  document.querySelectorAll("#bowls .chip").forEach((b,i)=>{b.innerHTML=t.notes[i]+"<small>"+t.chak[i]+"</small>";b.setAttribute("aria-pressed",st.bowls.includes(NOTES[i]))});
   updStatus();}
 
 document.getElementById("sounds").innerHTML=SOUNDS.map(k=>`<div class="snd" id="c-${k}">
@@ -328,6 +373,17 @@ document.getElementById("meds").addEventListener("click",async e=>{const b=e.tar
   voice.addEventListener("timeupdate",vtime);voice.addEventListener("ended",()=>render());
   await voice.play();render();vtime();});
 document.querySelectorAll(".langs button").forEach(b=>b.addEventListener("click",()=>{lang=b.dataset.l;try{localStorage.setItem("mc-lang",lang)}catch(e){}try{history.replaceState(null,"",lang==="fr"?location.pathname:"#"+lang)}catch(e){}render()}));
+document.getElementById("presets").innerHTML=PRESETS.map((_,i)=>`<button class="preset" type="button" data-p="${i}"></button>`).join("");
+document.getElementById("presets").addEventListener("click",async e=>{const b=e.target.closest(".preset");if(!b)return;const P=PRESETS[+b.dataset.p];
+  preset=+b.dataset.p;SOUNDS.forEach(k=>st.vol[k]=P.vol[k]||0);st.freq=P.freq;st.beat=P.beat;st.bowls=P.bowls.slice();st.timer=P.timer;
+  syncInputs();if(!playing){await start()}else{SOUNDS.forEach(ensure);st.bowls.forEach(loadBowl);applyAudio();const m=TIMES[st.timer];endAt=m?Date.now()+m*60000:0;nextBowl=ctx.currentTime+1.5}
+  render();});
+document.getElementById("bowls").innerHTML=NOTES.map(n=>`<button class="chip" type="button" data-n="${n}"></button>`).join("");
+document.getElementById("bowls").addEventListener("click",e=>{const b=e.target.closest(".chip");if(!b)return;const n=b.dataset.n;
+  if(st.bowls.includes(n))st.bowls=st.bowls.filter(x=>x!==n);else{st.bowls.push(n);if(playing)strike(n,false)}
+  preset=-1;render();});
+document.getElementById("bowlVol").addEventListener("input",e=>{st.bvol=+e.target.value;applyAudio()});
+["sounds","freqs","bins"].forEach(id=>document.getElementById(id).addEventListener(id==="sounds"?"input":"click",()=>{if(preset>=0){preset=-1;render()}}));
 render();
 
 window.addEventListener("hashchange",()=>{const l=location.hash.slice(1);if(T[l]&&l!==lang){lang=l;render()}});
