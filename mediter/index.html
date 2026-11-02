@@ -17,7 +17,7 @@
 <meta property="og:image:alt" content="Coin méditation : Katiana tient un bol chantant, dans une pièce douce avec des chandelles">
 <meta property="og:locale" content="fr_CA">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="theme-color" content="#1B1424">
+<meta name="theme-color" content="#1E1830">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Figtree:wght@400;500;600&display=swap">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cpath d='M10 3C7.6 6 7.6 11 10 15 12.4 11 12.4 6 10 3Z' fill='%23C97C88'/%3E%3Cpath d='M10 15C6.5 13.5 4.2 10.5 3.6 7.4 6.6 8.2 8.8 11 10 15Z' fill='%23DDA2A8'/%3E%3Cpath d='M10 15C13.5 13.5 15.8 10.5 16.4 7.4 13.4 8.2 11.2 11 10 15Z' fill='%23DDA2A8'/%3E%3C/svg%3E">
@@ -28,11 +28,11 @@
   --serif:"Cormorant Garamond",Garamond,Georgia,serif;--sans:"Figtree",system-ui,-apple-system,"Segoe UI",sans-serif}
 :root{--ink:#F4E7E0;--ink-soft:#CDB8B0;--rose-deep:#E9A6B7;--gold:#DDB878;--olive:#B7C38A;
   --card:rgb(44 30 36/.82);--line:rgb(233 166 183/.18);--chip:rgb(60 42 48/.75);--chip-on-ink:#2B1B21;
-  --sky:linear-gradient(180deg,#1B1424 0%,#271B2E 32%,#35222F 66%,#2C1F24 100%);color-scheme:dark}
+  --sky:linear-gradient(180deg,#1E1830 0%,#2E2445 30%,#433150 62%,#3A2A42 100%);color-scheme:dark}
 *{box-sizing:border-box}
 html,body{margin:0}
 body{min-height:100svh;font-family:var(--sans);color:var(--ink);background:#F6DCCF;overflow-x:hidden;-webkit-tap-highlight-color:transparent;line-height:1.55}
-body{background:#2F2128}
+body{background:#2A2038}
 .sky{position:fixed;inset:0;z-index:-2;background:var(--sky)}
 .sun{position:fixed;z-index:-1;left:50%;top:18%;width:min(140vw,900px);aspect-ratio:1;translate:-50% -50%;border-radius:50%;pointer-events:none;
   background:radial-gradient(closest-side,rgb(255 244 220/.85),rgb(255 230 190/.45) 38%,rgb(255 226 180/0) 100%)}
@@ -47,19 +47,19 @@ header{display:flex;align-items:center;justify-content:space-between;gap:12px;ma
 .langs button[aria-pressed="true"]{background:var(--card);color:var(--ink)}
 main{max-width:720px;margin:0 auto;display:flex;flex-direction:column;gap:22px;
   padding:12px max(16px,env(safe-area-inset-right,0px)) calc(32px + env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-left,0px))}
-.hero{text-align:center;display:flex;flex-direction:column;align-items:center;gap:10px;padding-top:6px}
+.hero{text-align:center;display:flex;flex-direction:column;align-items:center;gap:10px;padding-top:22px}
 .lotus{width:150px;height:150px;position:relative;display:grid;place-items:center}
 .lotus .halo{position:absolute;inset:-46px;border-radius:50%;background:radial-gradient(circle,rgb(255 240 210/1) 0%,rgb(255 200 170/.85) 26%,rgb(230 130 150/.4) 50%,rgb(230 130 150/0) 72%);transform:scale(.7);opacity:.3}
 .lotus svg path{transform-box:view-box;transform-origin:60px 92px}
 .lotus svg{filter:drop-shadow(0 0 8px rgb(255 214 180/.6))}
 .lotus g{fill:#FBE3D6;fill-opacity:.9;stroke:#FFF1E6}
 /* 10 s cycle = 5 s in, 5 s out: about 6 breaths a minute */
-.playing .lotus .halo{animation:breathe 10s ease-in-out infinite}
-.playing .lotus svg{animation:bloom 10s ease-in-out infinite}
-@keyframes breathe{0%,100%{transform:scale(.55);opacity:.2}50%{transform:scale(1.3);opacity:1}}
-@keyframes bloom{0%,100%{transform:scale(.88)}50%{transform:scale(1.2)}}
-.playing .lotus .pl1{animation:openL1 10s ease-in-out infinite}.playing .lotus .pr1{animation:openR1 10s ease-in-out infinite}
-.playing .lotus .pl2{animation:openL2 10s ease-in-out infinite}.playing .lotus .pr2{animation:openR2 10s ease-in-out infinite}
+.lotus .halo{animation:breathe 10s ease-in-out infinite}
+.lotus{animation:bloom 10s ease-in-out infinite;will-change:transform}
+@keyframes breathe{0%,100%{transform:scale(.5);opacity:.15}50%{transform:scale(1.25);opacity:1}}
+@keyframes bloom{0%,100%{transform:scale(.78)}50%{transform:scale(1.32)}}
+.lotus .pl1{animation:openL1 10s ease-in-out infinite}.lotus .pr1{animation:openR1 10s ease-in-out infinite}
+.lotus .pl2{animation:openL2 10s ease-in-out infinite}.lotus .pr2{animation:openR2 10s ease-in-out infinite}
 @keyframes openL1{0%,100%{transform:rotate(10deg)}50%{transform:rotate(-14deg)}}
 @keyframes openR1{0%,100%{transform:rotate(-10deg)}50%{transform:rotate(14deg)}}
 @keyframes openL2{0%,100%{transform:rotate(5deg)}50%{transform:rotate(-8deg)}}
@@ -133,7 +133,7 @@ input[type=range]{width:100%;min-width:0;accent-color:var(--rose-deep);height:28
 .cta{color:#22281A}
 .back{color:var(--rose-deep);font-weight:500}
 footer{text-align:center;font-size:.82rem;color:var(--ink-soft);display:flex;flex-direction:column;gap:6px;align-items:center}
-@media (prefers-reduced-motion:reduce){.playing .lotus .halo,.playing .lotus svg,.playing .lotus svg path{animation:none;opacity:.9}.playing .breath .cue{display:none}}
+@media (prefers-reduced-motion:reduce){.lotus,.lotus .halo,.lotus svg path{animation:none!important;opacity:.9}.playing .breath .cue{display:none}}
 </style>
 </head>
 <body>
