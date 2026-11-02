@@ -398,7 +398,7 @@ function restore(){try{const d=JSON.parse(localStorage.getItem("mc-state")||"nul
   ["fvol","timer","vvol","mvol"].forEach(k=>{if(typeof d[k]==="number")st[k]=d[k]});
   if(d.music===""||MUSIC.includes(d.music))st.music=d.music;if(typeof d.preset==="number")preset=d.preset;}catch(e){}}
 /* a short welcome in Katiana's voice, only when someone chooses to hear it */
-const WELCOME={en:"snd/hola-en.mp3",es:"snd/hola-es.mp3",fr:"snd/hola-fr.mp3"};let wa=null,waLang="";
+const WELCOME={en:"snd/hola-en-m.mp3",es:"snd/hola-es-m.mp3",fr:"snd/hola-fr-m.mp3"};let wa=null,waLang="";
 function welcomeUI(t){const b=document.getElementById("welcome");b.hidden=!WELCOME[lang];
   const on=wa&&!wa.paused&&waLang===lang;b.setAttribute("aria-pressed",!!on);
   b.querySelector("svg path").setAttribute("d",on?"M7 5h4v14H7zM13 5h4v14h-4z":"M8 5v14l11-7z");
