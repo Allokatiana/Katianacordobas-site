@@ -322,7 +322,7 @@ function stop(ended){
 
 /* ---------- UI ---------- */
 function loadBowl(n){
-  if(!bowlBufs[n])bowlBufs[n]=fetch("snd/bol-"+n+".mp3").then(r=>r.arrayBuffer()).then(a=>ctx.decodeAudioData(a)).catch(()=>{delete bowlBufs[n]});
+  if(!bowlBufs[n])bowlBufs[n]=fetch("snd/cuenco-"+n+".mp3").then(r=>r.arrayBuffer()).then(a=>ctx.decodeAudioData(a)).catch(()=>{delete bowlBufs[n]});
   return bowlBufs[n];}
 async function strike(n,soft){
   if(!ctx)return;const b=await loadBowl(n);if(!b)return;
