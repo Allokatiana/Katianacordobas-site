@@ -211,7 +211,7 @@ ocean:'<path d="M2 15c2.5 0 3-4 6-4s3.5 4 6 4 3.5-6 8-6M2 20h20"/>'};
 const SOUNDS=["wind","fire","birds","forest","river","ocean","crickets"];
 const FREQS=[111,136.1,174,216,285,396,432,528,639,852];
 const BINS=[["binOff",0],["binA",10],["binS",7.83],["binT",6],["binD",3]];
-const MEDS={es:{0:"snd/med-es-0.mp3",1:"snd/med-es-1.mp3",2:"snd/med-es-2.mp3",3:"snd/med-es-3.mp3"},fr:{0:"snd/med-fr-0.mp3",1:"snd/med-fr-1.mp3",2:"snd/med-fr-2.mp3",3:"snd/med-fr-3.mp3"},en:{0:"snd/med-en-0.mp3",1:"snd/med-en-1.mp3",2:"snd/med-en-2.mp3",3:"snd/med-en-3.mp3"}};let voice=null,voiceIdx=-1;
+const MEDS={es:{0:"snd/voz-es-0.mp3",1:"snd/voz-es-1.mp3",2:"snd/voz-es-2.mp3",3:"snd/voz-es-3.mp3"},fr:{0:"snd/voz-fr-0.mp3",1:"snd/voz-fr-1.mp3",2:"snd/voz-fr-2.mp3",3:"snd/voz-fr-3.mp3"},en:{0:"snd/voz-en-0.mp3",1:"snd/voz-en-1.mp3",2:"snd/voz-en-2.mp3",3:"snd/voz-en-3.mp3"}};let voice=null,voiceIdx=-1;
 const TIMES=[0,5,10,15,20,25,30,35,40,45,50,55,60];
 
 const HOME={fr:"../",en:"../en.html",es:"../es.html"};
@@ -225,7 +225,7 @@ const LEN={wind:86,fire:72,birds:77,forest:26.571,river:18.473,ocean:65.608,cric
 const loading={};
 async function loadBuf(k){const r=await fetch("snd/"+k+".mp3");return ctx.decodeAudioData(await r.arrayBuffer())}
 function build(){
-  ctx=new (window.AudioContext||window.webkitAudioContext)();
+  const AC=window.AudioContext||window.webkitAudioContext;try{ctx=new AC({latencyHint:"playback"})}catch(e){ctx=new AC()}
   master=ctx.createGain();master.gain.value=0;master.connect(ctx.destination);
   const merge=ctx.createChannelMerger(2);const tg=ctx.createGain();tg.gain.value=0;merge.connect(tg).connect(master);
   /* each ear gets its own tone and its own soft overtone; the right ear is shifted by the beat, overtone included,
