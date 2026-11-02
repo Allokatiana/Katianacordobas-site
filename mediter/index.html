@@ -49,9 +49,33 @@ main{max-width:720px;margin:0 auto;display:flex;flex-direction:column;gap:22px;
   padding:12px max(16px,env(safe-area-inset-right,0px)) calc(32px + env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-left,0px))}
 .hero{text-align:center;display:flex;flex-direction:column;align-items:center;gap:10px;padding-top:6px}
 .lotus{width:150px;height:150px;position:relative;display:grid;place-items:center}
-.lotus .halo{position:absolute;inset:0;border-radius:50%;background:radial-gradient(circle,rgb(255 236 200/.9) 0%,rgb(255 220 180/0) 68%);transform:scale(.8);opacity:.7}
+.lotus .halo{position:absolute;inset:-18px;border-radius:50%;background:radial-gradient(circle,rgb(255 226 180/.95) 0%,rgb(240 170 165/.55) 38%,rgb(240 170 165/0) 70%);transform:scale(.8);opacity:.45}
+/* 10 s cycle = 5 s in, 5 s out: about 6 breaths a minute */
 .playing .lotus .halo{animation:breathe 10s ease-in-out infinite}
-@keyframes breathe{0%,100%{transform:scale(.75);opacity:.5}50%{transform:scale(1.08);opacity:1}}
+.playing .lotus svg{animation:bloom 10s ease-in-out infinite}
+@keyframes breathe{0%,100%{transform:scale(.7);opacity:.3}50%{transform:scale(1.2);opacity:1}}
+@keyframes bloom{0%,100%{transform:scale(1)}50%{transform:scale(1.07)}}
+.breath{display:none;flex-direction:column;align-items:center;gap:2px;margin:-4px 0 0}
+.playing .breath{display:flex}
+.breath .cue{display:grid;font-family:var(--serif);font-style:italic;font-size:1.45rem;color:var(--rose-deep);min-height:1.5em}
+.breath .cue span{grid-area:1/1;opacity:0}
+.playing .breath .in{animation:cueIn 10s ease-in-out infinite}
+.playing .breath .out{animation:cueOut 10s ease-in-out infinite}
+@keyframes cueIn{0%,42%{opacity:1}50%,92%{opacity:0}100%{opacity:1}}
+@keyframes cueOut{0%,42%{opacity:0}50%,92%{opacity:1}100%{opacity:0}}
+.breath small{font-size:.82rem;color:var(--ink-soft);letter-spacing:.03em}
+.card.fold{padding:0;gap:0}
+.fold>h2{font-size:inherit;margin:0}
+.fold-h{all:unset;box-sizing:border-box;width:100%;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:18px 20px;cursor:pointer;border-radius:28px}
+.fold-h:focus-visible{outline:3px solid var(--gold);outline-offset:-3px}
+.fold-h .t{display:flex;flex-direction:column;gap:2px;min-width:0}
+.fold-h .t b{font-family:var(--serif);font-weight:500;font-size:1.6rem;line-height:1.1}
+.fold-h .t small{font-family:var(--sans);font-size:.88rem;color:var(--ink-soft);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.fold-h svg{flex:none;transition:transform .25s;color:var(--rose-deep)}
+.fold.open .fold-h svg{transform:rotate(180deg)}
+.fold-b{display:none;flex-direction:column;gap:12px;padding:0 20px 22px}
+.fold.open .fold-b{display:flex}
+h3.sub{font-family:var(--serif);font-weight:500;font-size:1.35rem;margin:8px 0 0}
 .lotus svg{width:112px;height:112px;position:relative}
 h1{font-family:var(--serif);font-weight:500;font-size:clamp(2.5rem,9vw,3.6rem);line-height:1;margin:0;text-wrap:balance}
 .lead{color:var(--ink-soft);max-width:32ch;margin:0;font-size:1.05rem}
@@ -95,7 +119,7 @@ input[type=range]{width:100%;min-width:0;accent-color:var(--rose-deep);height:28
 @media (prefers-color-scheme:dark){.cta{color:#22281A}}
 .back{color:var(--rose-deep);font-weight:500}
 footer{text-align:center;font-size:.82rem;color:var(--ink-soft);display:flex;flex-direction:column;gap:6px;align-items:center}
-@media (prefers-reduced-motion:reduce){.playing .lotus .halo{animation:none;opacity:.9}}
+@media (prefers-reduced-motion:reduce){.playing .lotus .halo,.playing .lotus svg{animation:none;opacity:.9}.playing .breath .cue{display:none}}
 </style>
 </head>
 <body>
@@ -118,6 +142,7 @@ footer{text-align:center;font-size:.82rem;color:var(--ink-soft);display:flex;fle
     </div>
     <h1 data-t="title"></h1>
     <p class="lead" data-t="lead"></p>
+    <div class="breath" aria-hidden="true"><div class="cue"><span class="in" data-t="inhale"></span><span class="out" data-t="exhale"></span></div><small data-t="breatheL"></small></div>
     <button class="play" id="play" type="button"></button>
     <p class="status" id="status" aria-live="polite"></p>
   </section>
@@ -128,44 +153,51 @@ footer{text-align:center;font-size:.82rem;color:var(--ink-soft);display:flex;fle
     <div class="presets" id="presets"></div>
   </section>
 
-  <section class="card">
-    <h2 data-t="musicH"></h2>
-    <p class="hint" data-t="musicHint"></p>
-    <div class="chips" id="music"></div>
-    <div class="row"><span data-t="vol"></span><input type="range" id="musicVol" min="0" max="100" value="55" aria-label="Volume"></div>
+  <section class="card fold" data-fold="music">
+    <h2><button class="fold-h" type="button" aria-expanded="false" aria-controls="fb-music"><span class="t"><b data-t="musicH"></b><small id="sum-music"></small></span><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button></h2>
+    <div class="fold-b" id="fb-music">
+      <p class="hint" data-t="musicHint"></p>
+      <div class="chips" id="music"></div>
+      <div class="row"><span data-t="vol"></span><input type="range" id="musicVol" min="0" max="100" value="55" aria-label="Volume"></div>
+    </div>
   </section>
 
-  <section class="card">
-    <h2 data-t="natureH"></h2>
-    <p class="hint" data-t="natureHint"></p>
-    <div class="sounds" id="sounds"></div>
+  <section class="card fold" data-fold="nature">
+    <h2><button class="fold-h" type="button" aria-expanded="false" aria-controls="fb-nature"><span class="t"><b data-t="natureH"></b><small id="sum-nature"></small></span><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button></h2>
+    <div class="fold-b" id="fb-nature">
+      <p class="hint" data-t="natureHint"></p>
+      <div class="sounds" id="sounds"></div>
+    </div>
   </section>
 
-  <section class="card">
-    <h2 data-t="freqH"></h2>
-    <p class="hint" data-t="freqHint"></p>
-    <div class="chips" id="freqs"></div>
-    <p class="intent" id="intent"></p>
-    <div class="row"><span data-t="vol"></span><input type="range" id="freqVol" min="0" max="100" value="35" aria-label="Volume"></div>
+  <section class="card fold" data-fold="freq">
+    <h2><button class="fold-h" type="button" aria-expanded="false" aria-controls="fb-freq"><span class="t"><b data-t="moreH"></b><small id="sum-freq"></small></span><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button></h2>
+    <div class="fold-b" id="fb-freq">
+      <p class="hint" data-t="freqHint"></p>
+      <div class="chips" id="freqs"></div>
+      <p class="intent" id="intent"></p>
+      <div class="row"><span data-t="vol"></span><input type="range" id="freqVol" min="0" max="100" value="35" aria-label="Volume"></div>
+      <h3 class="sub" data-t="binH"></h3>
+      <div class="chips" id="bins"></div>
+      <p class="note" data-t="binNote"></p>
+    </div>
   </section>
 
-  <section class="card">
-    <h2 data-t="binH"></h2>
-    <div class="chips" id="bins"></div>
-    <p class="note" data-t="binNote"></p>
+  <section class="card fold" data-fold="timer">
+    <h2><button class="fold-h" type="button" aria-expanded="false" aria-controls="fb-timer"><span class="t"><b data-t="timerH"></b><small id="sum-timer"></small></span><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button></h2>
+    <div class="fold-b" id="fb-timer">
+      <div class="row"><span id="timerLabel"></span><input type="range" id="timer" min="0" max="12" value="12" aria-label="Minuterie / Timer"></div>
+      <p class="hint" data-t="timerHint"></p>
+    </div>
   </section>
 
-  <section class="card">
-    <h2 data-t="timerH"></h2>
-    <div class="row"><span id="timerLabel"></span><input type="range" id="timer" min="0" max="12" value="12" aria-label="Minuterie / Timer"></div>
-    <p class="hint" data-t="timerHint"></p>
-  </section>
-
-  <section class="card">
-    <h2 data-t="medH"></h2>
-    <p class="hint" data-t="medHint"></p>
-    <div class="meds" id="meds"></div>
-    <div class="row"><span data-t="vvolL"></span><input type="range" id="voiceVol" min="0" max="100" value="100" aria-label="Volume"></div>
+  <section class="card fold" data-fold="meds">
+    <h2><button class="fold-h" type="button" aria-expanded="false" aria-controls="fb-meds"><span class="t"><b data-t="medH"></b><small id="sum-meds"></small></span><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button></h2>
+    <div class="fold-b" id="fb-meds">
+      <p class="hint" data-t="medHint"></p>
+      <div class="meds" id="meds"></div>
+      <div class="row"><span data-t="vvolL"></span><input type="range" id="voiceVol" min="0" max="100" value="100" aria-label="Volume"></div>
+    </div>
   </section>
 
   <section class="card book">
@@ -179,7 +211,7 @@ footer{text-align:center;font-size:.82rem;color:var(--ink-soft);display:flex;fle
 </main>
 <script>
 const T={
-fr:{musicH:"Musique",musicHint:"Une musique douce pour envelopper le reste. Une seule à la fois.",mu:{calm:"Calme intérieur",paz:"Paix profonde",hopeful:"Espoir",divine:"Appel au divin",wonder:"Le chemin de l'émerveillement",light:"Fréquence de lumière"},vvolL:"Volume de ma voix",presetsH:"Mélanges suggérés",presetsHint:"Pas envie de mélanger? Choisis une intention, et tout se règle pour toi.",bowlsH:"Bols tibétains",bowlsHint:"Choisis un ou plusieurs bols. Ils chanteront doucement, de temps en temps. Chaque note est associée à un chakra.",notes:["Do", "Ré", "Mi", "Fa", "Sol", "La", "Si"],chak:["Racine", "Sacré", "Plexus solaire", "Cœur", "Gorge", "Troisième œil", "Couronne"],P:[["Apaiser l'anxiété", "Calme intérieur, rivière, oiseaux"], ["Bien dormir", "Paix profonde, océan, grillons"], ["Méditation profonde", "Le chemin de l'émerveillement, océan, vent"], ["Ancrage", "Fréquence de lumière, feu, rivière"], ["Ouvrir le cœur", "Appel au divin, oiseaux, 432 Hz"], ["Bien commencer la journée", "Espoir, oiseaux du matin, rivière, 432 Hz"]],title:"Un espace pour respirer",lead:"Choisis tes sons, installe-toi confortablement et laisse-toi déposer. C'est gratuit, c'est pour toi.",
+fr:{moreH:"Fréquences et effet binaural",medSum:"Avec ma voix",inhale:"Inspire…",exhale:"Expire…",breatheL:"Respire avec le lotus",musicH:"Musique",musicHint:"Une musique douce pour envelopper le reste. Une seule à la fois.",mu:{calm:"Calme intérieur",paz:"Paix profonde",hopeful:"Espoir",divine:"Appel au divin",wonder:"Le chemin de l'émerveillement",light:"Fréquence de lumière"},vvolL:"Volume de ma voix",presetsH:"Mélanges suggérés",presetsHint:"Pas envie de mélanger? Choisis une intention, et tout se règle pour toi.",bowlsH:"Bols tibétains",bowlsHint:"Choisis un ou plusieurs bols. Ils chanteront doucement, de temps en temps. Chaque note est associée à un chakra.",notes:["Do", "Ré", "Mi", "Fa", "Sol", "La", "Si"],chak:["Racine", "Sacré", "Plexus solaire", "Cœur", "Gorge", "Troisième œil", "Couronne"],P:[["Apaiser l'anxiété", "Calme intérieur, rivière, oiseaux"], ["Bien dormir", "Paix profonde, océan, grillons"], ["Méditation profonde", "Le chemin de l'émerveillement, océan, vent"], ["Ancrage", "Fréquence de lumière, feu, rivière"], ["Ouvrir le cœur", "Appel au divin, oiseaux, 432 Hz"], ["Bien commencer la journée", "Espoir, oiseaux du matin, rivière, 432 Hz"]],title:"Un espace pour respirer",lead:"Choisis tes sons, installe-toi confortablement et laisse-toi déposer. C'est gratuit, c'est pour toi.",
 play:"Commencer",pause:"Faire une pause",ready:"Prends ton temps.",
 natureH:"Sons de la nature",natureHint:"Monte doucement le volume des sons qui t'appellent.",
 freqH:"Fréquence",freqHint:"Une seule à la fois, très douce, sous la musique et les sons de la nature. Les fréquences les plus basses s'entendent mieux avec des écouteurs.",none:"Aucune",vol:"Volume",
@@ -193,7 +225,7 @@ foot:"Offert avec amour par Katiana Cordoba",bookH:"Envie d'aller plus loin?",bo
 s:{wind:"Vent",fire:"Feu de camp",birds:"Oiseaux",forest:"Forêt et ruisseau",river:"Rivière",ocean:"Océan",crickets:"Grillons, la nuit"},
 f:{111:"Renouveau, nouveaux départs",136.1:"Le son OM, l'ancrage dans la Terre",216:"Calme profond, l'octave basse du 432",285:"Régénération, retour à l'équilibre",174:"Apaisement, sécurité",396:"Libérer la peur et la culpabilité",432:"Harmonie naturelle",528:"Amour et transformation",639:"Connexion du cœur",852:"Intuition et éveil"},
 m:[["Balayage corporel","Parcourir le corps avec douceur, d'un endroit à l'autre."],["Respiration consciente","Accompagner la respiration, sans rien changer."],["Ancrage","Sentir les pieds, le poids du corps, le lien avec la terre."],["Ressentir qui tu es vraiment","Observer les pensées, et se reposer dans le silence entre elles."]]},
-es:{musicH:"Música",musicHint:"Una música suave que envuelve todo lo demás. Una sola a la vez.",mu:{calm:"Calma interior",paz:"Paz profunda",hopeful:"Esperanza",divine:"Llamando a lo divino",wonder:"Camino de asombro interior",light:"Frecuencia de luz"},vvolL:"Volumen de mi voz",presetsH:"Mezclas sugeridas",presetsHint:"¿No quieres mezclar? Elige una intención y todo se ajusta solo.",bowlsH:"Cuencos tibetanos",bowlsHint:"Elige uno o varios cuencos. Cantarán suavemente, de vez en cuando. Cada nota está asociada a un chakra.",notes:["Do", "Re", "Mi", "Fa", "Sol", "La", "Si"],chak:["Raíz", "Sacro", "Plexo solar", "Corazón", "Garganta", "Tercer ojo", "Corona"],P:[["Calmar la ansiedad", "Calma interior, río, pájaros"], ["Dormir bien", "Paz profunda, océano, grillos"], ["Meditación profunda", "Camino de asombro interior, océano, viento"], ["Enraizarse", "Frecuencia de luz, fogata, río"], ["Abrir el corazón", "Llamando a lo divino, pájaros, 432 Hz"], ["Empezar bien el día", "Esperanza, pájaros de la mañana, río, 432 Hz"]],title:"Un espacio para respirar",lead:"Elige tus sonidos, ponte cómoda o cómodo y déjate llevar. Es gratis, es para ti.",
+es:{moreH:"Frecuencias y efecto binaural",medSum:"Con mi voz",inhale:"Inhala…",exhale:"Exhala…",breatheL:"Respira con el loto",musicH:"Música",musicHint:"Una música suave que envuelve todo lo demás. Una sola a la vez.",mu:{calm:"Calma interior",paz:"Paz profunda",hopeful:"Esperanza",divine:"Llamando a lo divino",wonder:"Camino de asombro interior",light:"Frecuencia de luz"},vvolL:"Volumen de mi voz",presetsH:"Mezclas sugeridas",presetsHint:"¿No quieres mezclar? Elige una intención y todo se ajusta solo.",bowlsH:"Cuencos tibetanos",bowlsHint:"Elige uno o varios cuencos. Cantarán suavemente, de vez en cuando. Cada nota está asociada a un chakra.",notes:["Do", "Re", "Mi", "Fa", "Sol", "La", "Si"],chak:["Raíz", "Sacro", "Plexo solar", "Corazón", "Garganta", "Tercer ojo", "Corona"],P:[["Calmar la ansiedad", "Calma interior, río, pájaros"], ["Dormir bien", "Paz profunda, océano, grillos"], ["Meditación profunda", "Camino de asombro interior, océano, viento"], ["Enraizarse", "Frecuencia de luz, fogata, río"], ["Abrir el corazón", "Llamando a lo divino, pájaros, 432 Hz"], ["Empezar bien el día", "Esperanza, pájaros de la mañana, río, 432 Hz"]],title:"Un espacio para respirar",lead:"Elige tus sonidos, ponte cómoda o cómodo y déjate llevar. Es gratis, es para ti.",
 play:"Comenzar",pause:"Pausar",ready:"Tómate tu tiempo.",
 natureH:"Sonidos de la naturaleza",natureHint:"Sube suavemente el volumen de los sonidos que te llamen.",
 freqH:"Frecuencia",freqHint:"Una sola a la vez, muy suave, debajo de la música y los sonidos de la naturaleza. Las frecuencias más bajas se escuchan mejor con audífonos.",none:"Ninguna",vol:"Volumen",
@@ -207,7 +239,7 @@ foot:"Ofrecido con amor por Katiana Cordoba",bookH:"¿Quieres ir más lejos?",bo
 s:{wind:"Viento",fire:"Fogata",birds:"Pájaros",forest:"Bosque y arroyo",river:"Río",ocean:"Océano",crickets:"Grillos de noche"},
 f:{111:"Renovación, nuevos comienzos",136.1:"El sonido OM, enraizarse en la Tierra",216:"Calma profunda, la octava baja del 432",285:"Regeneración, volver al equilibrio",174:"Alivio, seguridad",396:"Soltar el miedo y la culpa",432:"Armonía natural",528:"Amor y transformación",639:"Conexión del corazón",852:"Intuición y despertar"},
 m:[["Escaneo corporal","Recorrer el cuerpo con suavidad, de un lugar a otro."],["Respiración consciente","Acompañar la respiración, sin cambiar nada."],["Anclaje","Sentir los pies, el peso del cuerpo, la conexión con la tierra."],["Sentir tu verdadero ser","Observar los pensamientos y descansar en el silencio entre ellos."]]},
-en:{musicH:"Music",musicHint:"Soft music to hold everything else. One at a time.",mu:{calm:"Inner calm",paz:"Deep peace",hopeful:"Hopeful",divine:"Calling the divine",wonder:"Inner wonder path",light:"Light frequency"},vvolL:"Volume of my voice",presetsH:"Suggested blends",presetsHint:"Don't feel like mixing? Choose an intention and everything is set for you.",bowlsH:"Tibetan bowls",bowlsHint:"Choose one or more bowls. They will sing softly, every now and then. Each note is linked to a chakra.",notes:["C", "D", "E", "F", "G", "A", "B"],chak:["Root", "Sacral", "Solar plexus", "Heart", "Throat", "Third eye", "Crown"],P:[["Ease anxiety", "Inner calm, river, birds"], ["Sleep well", "Deep peace, ocean, crickets"], ["Deep meditation", "Inner wonder path, ocean, wind"], ["Grounding", "Light frequency, fire, river"], ["Open the heart", "Calling the divine, birds, 432 Hz"], ["Start the day well", "Hopeful, morning birds, river, 432 Hz"]],title:"A space to breathe",lead:"Choose your sounds, get comfortable and let yourself settle. It's free, and it's for you.",
+en:{moreH:"Frequencies and binaural",medSum:"With my voice",inhale:"Breathe in…",exhale:"Breathe out…",breatheL:"Breathe with the lotus",musicH:"Music",musicHint:"Soft music to hold everything else. One at a time.",mu:{calm:"Inner calm",paz:"Deep peace",hopeful:"Hopeful",divine:"Calling the divine",wonder:"Inner wonder path",light:"Light frequency"},vvolL:"Volume of my voice",presetsH:"Suggested blends",presetsHint:"Don't feel like mixing? Choose an intention and everything is set for you.",bowlsH:"Tibetan bowls",bowlsHint:"Choose one or more bowls. They will sing softly, every now and then. Each note is linked to a chakra.",notes:["C", "D", "E", "F", "G", "A", "B"],chak:["Root", "Sacral", "Solar plexus", "Heart", "Throat", "Third eye", "Crown"],P:[["Ease anxiety", "Inner calm, river, birds"], ["Sleep well", "Deep peace, ocean, crickets"], ["Deep meditation", "Inner wonder path, ocean, wind"], ["Grounding", "Light frequency, fire, river"], ["Open the heart", "Calling the divine, birds, 432 Hz"], ["Start the day well", "Hopeful, morning birds, river, 432 Hz"]],title:"A space to breathe",lead:"Choose your sounds, get comfortable and let yourself settle. It's free, and it's for you.",
 play:"Begin",pause:"Pause",ready:"Take your time.",
 natureH:"Nature sounds",natureHint:"Gently raise the volume of the sounds that call to you.",
 freqH:"Frequency",freqHint:"One at a time, very soft, beneath the music and nature sounds. The lower frequencies are best heard with headphones or earphones.",none:"None",vol:"Volume",
@@ -242,7 +274,8 @@ const TIMES=[0,5,10,15,20,25,30,35,40,45,50,55,60];
 
 const HOME={fr:"../",en:"../en.html",es:"../es.html"};
 let lang=(location.hash||"").slice(1);if(!T[lang]){lang="fr";try{lang=localStorage.getItem("mc-lang")||"fr"}catch(e){}if(!T[lang])lang="fr"}
-const st={vol:{wind:0,fire:35,birds:0,forest:40,river:0,ocean:0,crickets:0},freq:432,fvol:35,beat:0,timer:12,bowls:[],bvol:55,vvol:100,music:"",mvol:55};
+/* default = the "Open the heart" blend */
+const st={vol:{wind:0,fire:0,birds:20,forest:15,river:0,ocean:0,crickets:0},freq:432,fvol:18,beat:0,timer:12,bowls:[],bvol:55,vvol:100,music:"divine",mvol:55};
 const NOTES=["c","d","e","f","g","a","b"];
 const PRESETS=[
  {music:"calm",vol:{river:21,birds:15},freq:0,beat:0,bowls:[],timer:12},
@@ -251,7 +284,7 @@ const PRESETS=[
  {music:"light",vol:{fire:15,river:7},freq:0,beat:0,bowls:[],timer:12},
  {music:"divine",vol:{birds:20,forest:15},freq:432,fvol:18,beat:0,bowls:[],timer:12},
  {music:"hopeful",vol:{birds:21,river:10},freq:432,fvol:18,beat:0,bowls:[],timer:12}];
-let preset=-1;const bowlBufs={};let nextBowl=0;
+let preset=4;const bowlBufs={};let nextBowl=0;
 let ctx,master,playing=false,endAt=0,tick,lock=null;
 const nodes={};
 
@@ -353,7 +386,20 @@ async function strike(n,soft){
 setInterval(()=>{if(!playing||!ctx||!st.bowls.length)return;
   if(ctx.currentTime>=nextBowl){strike(st.bowls[Math.floor(Math.random()*st.bowls.length)],true);nextBowl=ctx.currentTime+9+Math.random()*7}},500);
 function syncInputs(){SOUNDS.forEach(k=>{document.getElementById("v-"+k).value=st.vol[k]});document.getElementById("timer").value=st.timer;
-  document.getElementById("freqVol").value=st.fvol;document.getElementById("musicVol").value=st.mvol;}
+  document.getElementById("freqVol").value=st.fvol;document.getElementById("musicVol").value=st.mvol;document.getElementById("voiceVol").value=st.vvol;}
+/* each visitor's last choice is remembered on their own device */
+function save(){try{localStorage.setItem("mc-state",JSON.stringify({vol:st.vol,freq:st.freq,fvol:st.fvol,beat:st.beat,timer:st.timer,vvol:st.vvol,music:st.music,mvol:st.mvol,preset}))}catch(e){}}
+function restore(){try{const d=JSON.parse(localStorage.getItem("mc-state")||"null");if(!d)return;
+  SOUNDS.forEach(k=>{if(typeof d.vol?.[k]==="number")st.vol[k]=d.vol[k]});
+  if(d.freq===0||FREQS.includes(d.freq))st.freq=d.freq;if(BINS.some(b=>b[1]===d.beat))st.beat=d.beat;
+  ["fvol","timer","vvol","mvol"].forEach(k=>{if(typeof d[k]==="number")st[k]=d[k]});
+  if(d.music===""||MUSIC.includes(d.music))st.music=d.music;if(typeof d.preset==="number")preset=d.preset;}catch(e){}}
+function summaries(t){
+  document.getElementById("sum-music").textContent=st.music?t.mu[st.music]:t.none;
+  const on=SOUNDS.filter(k=>st.vol[k]>0).map(k=>t.s[k]);document.getElementById("sum-nature").textContent=on.length?on.join(", "):t.none;
+  const b=BINS.find(x=>x[1]===st.beat);document.getElementById("sum-freq").textContent=(st.freq?String(st.freq).replace(".",lang==="en"?".":",")+" Hz":t.none)+(st.beat&&b?" · "+t[b[0]]:"");
+  const m=TIMES[st.timer];document.getElementById("sum-timer").textContent=m?m+" "+t.min:t.noTimer;
+  document.getElementById("sum-meds").textContent=t.medSum;}
 function render(){
   const t=T[lang];document.documentElement.lang=lang==="fr"?"fr-CA":lang;document.title=t.title+" · Katiana Cordoba";
   document.querySelectorAll("[data-home]").forEach(a=>a.href=HOME[lang]);
@@ -369,7 +415,7 @@ function render(){
   document.getElementById("meds").innerHTML=t.m.map(([h,p],i)=>{const has=MEDS[lang]&&MEDS[lang][i],on=voice&&voiceIdx===i&&!voice.paused;
     return `<div class="med"><h3>${h}</h3><p>${p}</p>${has?`<button data-med="${i}">${on?t.stopV:t.listen}</button><span class="time" id="vt-${i}"></span>`:`<span class="soon">${t.soon}</span>`}</div>`}).join("");
   document.querySelectorAll("#presets .preset").forEach((b,i)=>{b.innerHTML="<b>"+t.P[i][0]+"</b><span>"+t.P[i][1]+"</span>";b.setAttribute("aria-pressed",i===preset)});
-  updStatus();}
+  summaries(t);save();updStatus();}
 
 document.getElementById("sounds").innerHTML=SOUNDS.map(k=>`<div class="snd" id="c-${k}">
   <span class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">${ICONS[k]}</svg></span>
@@ -405,7 +451,13 @@ document.getElementById("presets").addEventListener("click",async e=>{const b=e.
 document.getElementById("voiceVol").addEventListener("input",e=>{st.vvol=+e.target.value;const v=st.vvol/100;
   if(nodes.voice&&ctx)nodes.voice.gain.setTargetAtTime(v,ctx.currentTime,.1);else if(voice)voice.volume=v;});
 ["sounds","freqs","bins","music"].forEach(id=>document.getElementById(id).addEventListener(id==="sounds"?"input":"click",()=>{if(preset>=0){preset=-1;render()}}));
-render();
+/* sections open and close; each stays as the visitor left it */
+let openSet=[];try{openSet=JSON.parse(localStorage.getItem("mc-open")||"[]")}catch(e){}
+document.querySelectorAll(".fold").forEach(f=>{const k=f.dataset.fold,b=f.querySelector(".fold-h");
+  const set=o=>{f.classList.toggle("open",o);b.setAttribute("aria-expanded",o)};set(openSet.includes(k));
+  b.addEventListener("click",()=>{const o=!f.classList.contains("open");set(o);openSet=openSet.filter(x=>x!==k);if(o)openSet.push(k);try{localStorage.setItem("mc-open",JSON.stringify(openSet))}catch(e){}})});
+document.getElementById("app").addEventListener("input",()=>{summaries(T[lang]);save()});
+restore();syncInputs();render();
 
 window.addEventListener("hashchange",()=>{const l=location.hash.slice(1);if(T[l]&&l!==lang){lang=l;render()}});
 </script>
