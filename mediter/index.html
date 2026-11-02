@@ -228,9 +228,11 @@ function build(){
   ctx=new (window.AudioContext||window.webkitAudioContext)();
   master=ctx.createGain();master.gain.value=0;master.connect(ctx.destination);
   const merge=ctx.createChannelMerger(2);const tg=ctx.createGain();tg.gain.value=0;merge.connect(tg).connect(master);
-  const L=ctx.createOscillator(),R=ctx.createOscillator();L.connect(merge,0,0);R.connect(merge,0,1);L.start();R.start();
-  const H=ctx.createOscillator(),hg=ctx.createGain();hg.gain.value=.22;H.connect(hg).connect(tg);H.start();
-  nodes.tone=tg;nodes.L=L;nodes.R=R;nodes.H=H;nodes.HG=hg;
+  /* each ear gets its own tone and its own soft overtone; the right ear is shifted by the beat, overtone included,
+     so both layers pulse at the same rate instead of fighting each other */
+  const ear=ch=>{const o=ctx.createOscillator(),h=ctx.createOscillator(),hg=ctx.createGain(),g=ctx.createGain();
+    hg.gain.value=.22;o.connect(g);h.connect(hg).connect(g);g.connect(merge,0,ch);o.start();h.start();return{o,h,hg}};
+  nodes.tone=tg;nodes.E=[ear(0),ear(1)];nodes.cur=null;
   SOUNDS.forEach(k=>{const g=ctx.createGain();g.gain.value=0;g.connect(master);nodes[k]=g;});
 }
 /* a sound is downloaded and decoded only the first time someone turns it up */
@@ -243,9 +245,17 @@ function ensure(k){
 function applyAudio(ramp=.6){
   if(!ctx)return;const now=ctx.currentTime;
   for(const k of SOUNDS)if(nodes[k])nodes[k].gain.setTargetAtTime(Math.pow(st.vol[k]/100,1.6),now,ramp);
-  const f=st.freq;nodes.L.frequency.setTargetAtTime(f||100,now,.05);nodes.R.frequency.setTargetAtTime((f||100)+st.beat,now,.05);
-  nodes.H.frequency.setTargetAtTime((f||100)*2,now,.05);nodes.HG.gain.setTargetAtTime(f&&f<300?.22:.06,now,.05);
-  nodes.tone.gain.setTargetAtTime(f?Math.pow(st.fvol/100,2)*.09:0,now,ramp);}
+  const f=st.freq,b=st.beat,key=f+"/"+b,level=f?Math.pow(st.fvol/100,2)*.09:0,tg=nodes.tone.gain;
+  const tune=t=>{const base=f||100,[L,R]=nodes.E,hv=f&&f<300?.22:.06;
+    L.o.frequency.setValueAtTime(base,t);L.h.frequency.setValueAtTime(base*2,t);
+    R.o.frequency.setValueAtTime(base+b,t);R.h.frequency.setValueAtTime(base*2+b,t);
+    L.hg.gain.setValueAtTime(hv,t);R.hg.gain.setValueAtTime(hv,t);};
+  tg.cancelScheduledValues(now);
+  if(nodes.cur===null||!playing){tune(now);tg.setTargetAtTime(level,now,ramp);}
+  else if(key!==nodes.cur){                       /* a soft fade between tones, never a sliding siren */
+    tg.setValueAtTime(tg.value,now);tg.setTargetAtTime(0,now,.08);tune(now+.4);tg.setTargetAtTime(level,now+.42,.35);}
+  else tg.setTargetAtTime(level,now,ramp);
+  nodes.cur=key;}
 
 /* ---------- bell + timer ---------- */
 function bell(){
