@@ -2158,6 +2158,14 @@ body.hl-after .godown{animation-delay:.1s}
 .v8 .dial .dl.d1{translate:-50% calc(-100% - 4px);width:64%;line-height:1.1;font-size:clamp(1.25rem,1.1rem + .5vw,1.5rem)}
 .v8 .dial .dl.d2{translate:-50% 6px;width:62%}
 @media (max-width:860px){.v8 #practical .dial{width:min(240px,70vw);margin-top:8px}}
+/* v31 · readable at dusk: this part of the page sits on the darkest sky, so its text rests on the same soft cream card as the prices */
+.v8 #practical .time,.v8 #practical .info > div:first-child{background:rgb(255 252 249/.88)!important;border-radius:32px!important;box-shadow:0 24px 60px -36px rgb(60 30 50/.45)!important;-webkit-backdrop-filter:blur(8px)!important;backdrop-filter:blur(8px)!important}
+.v8 #practical .info > div:first-child{padding:clamp(22px,3vw,36px);align-self:start}
+.v8 #practical .time *,.v8 #practical .info > div:first-child *{text-shadow:none}
+.v8 #practical .creds li{color:var(--sc-ink)}
+.v8 #practical .free-call{color:#6E3F52}
+.v8 #practical .text-first{color:var(--sc-ink);font-weight:600;background:rgb(255 252 249/.88);padding:12px 18px;border-radius:18px;text-shadow:none}
+.v8 #practical .text-first .nb{text-shadow:none}
 /* v33 · the featured testimonial: a quiet voice, not a headline */
 .v8 .v5 .quote.feat{max-width:44rem;margin-inline:auto;padding:clamp(22px,3vw,34px) clamp(22px,4vw,44px)}
 .v8 .v5 .quote.feat blockquote{font-size:clamp(1.35rem,1.15rem + .7vw,1.75rem);line-height:1.35;max-width:36ch}
