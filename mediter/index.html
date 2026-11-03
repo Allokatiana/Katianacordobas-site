@@ -466,13 +466,15 @@ function restore(){try{const d=JSON.parse(localStorage.getItem("mc-state")||"nul
   ["fvol","vvol","mvol"].forEach(k=>{if(typeof d[k]==="number")st[k]=d[k]});if(typeof d.timerOn==="number")st.timer=d.timerOn;
   if(d.music===""||MUSIC.includes(d.music))st.music=d.music;if(typeof d.preset==="number")preset=d.preset;}catch(e){}}
 /* a short welcome in Katiana's voice, only when someone chooses to hear it */
-const WELCOME={en:"snd/hola-en.mp3",es:"snd/hola-es.mp3",fr:"snd/hola-fr.mp3"};let wa=null,waLang="";
+const WELCOME={en:"snd/hola-en.mp3?v=2",es:"snd/hola-es.mp3?v=2",fr:"snd/hola-fr.mp3?v=2"};let wa=null,waLang="";
 function welcomeUI(t){const b=document.getElementById("welcome");b.hidden=!WELCOME[lang];
   const on=wa&&!wa.paused&&waLang===lang;b.setAttribute("aria-pressed",!!on);
   b.querySelector("svg path").setAttribute("d",on?"M7 5h4v14H7zM13 5h4v14h-4z":"M8 5v14l11-7z");
   document.getElementById("welcomeL").textContent=t.welcomeL+(on&&isFinite(wa.duration)?" · "+fmt(Math.max(0,wa.duration-wa.currentTime)):"");}
 document.getElementById("welcome").addEventListener("click",()=>{
   if(wa&&!wa.paused&&waLang===lang){wa.pause();welcomeUI(T[lang]);return}
+  /* only one voice recording at a time: a meditation pauses when the welcome starts */
+  if(voice&&!voice.paused)voice.pause();
   if(!wa||waLang!==lang){if(wa)wa.pause();wa=new Audio(WELCOME[lang]);waLang=lang;
     wa.addEventListener("timeupdate",()=>welcomeUI(T[lang]));wa.addEventListener("ended",()=>{wa.currentTime=0;welcomeUI(T[lang])});wa.addEventListener("pause",()=>welcomeUI(T[lang]))}
   wa.play().then(()=>welcomeUI(T[lang])).catch(()=>{});});
@@ -534,11 +536,14 @@ const wake=()=>{if(!playing)start()};
 function vtime(){if(!voice)return;const e=document.getElementById("vt-"+voiceIdx);if(e)e.textContent=fmt(voice.currentTime)+" / "+(isFinite(voice.duration)?fmt(voice.duration):"…")}
 document.getElementById("meds").addEventListener("click",async e=>{const b=e.target.closest("[data-med]");if(!b)return;const i=+b.dataset.med;
   if(voice&&voiceIdx===i&&!voice.paused){voice.pause();render();return}
+  /* only one voice recording at a time: the welcome stops when a meditation starts */
+  if(wa&&!wa.paused)wa.pause();
+  if(voice&&voiceIdx===i&&voice.paused&&!voice.ended&&voice.currentTime>0){if(!playing)await start();try{await voice.play()}catch(err){}render();return}
   if(voice){voice.pause()}
   if(!playing)await start();
   voice=new Audio(MEDS[lang][i]);voiceIdx=i;
   try{const src=ctx.createMediaElementSource(voice),g=ctx.createGain();g.gain.value=st.vvol/100;src.connect(g).connect(master);nodes.voice=g}catch(err){nodes.voice=null;voice.volume=st.vvol/100}
-  voice.addEventListener("timeupdate",vtime);voice.addEventListener("ended",()=>render());
+  voice.addEventListener("timeupdate",vtime);voice.addEventListener("ended",()=>render());voice.addEventListener("pause",()=>render());voice.addEventListener("play",()=>render());
   await voice.play();render();vtime();});
 document.querySelectorAll(".langs button").forEach(b=>b.addEventListener("click",()=>{lang=b.dataset.l;try{localStorage.setItem("mc-lang",lang)}catch(e){}try{history.replaceState(null,"",lang==="fr"?location.pathname:"#"+lang)}catch(e){}render()}));
 document.getElementById("presets").innerHTML=`<button class="preset" type="button" data-none></button>`+PRESETS.map((_,i)=>`<button class="preset" type="button" data-p="${i}"></button>`).join("");
