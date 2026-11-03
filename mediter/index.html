@@ -345,7 +345,7 @@ function loadMusic(k){
 async function syncMusic(){
   if(!ctx)return;const want=playing?st.music:"";if(want===musicKey)return;
   if(musicSrc){const old=musicSrc,og=old._g,t=ctx.currentTime;og.gain.setTargetAtTime(0,t,.8);setTimeout(()=>{try{old.stop()}catch(e){}},4000);musicSrc=null}
-  musicKey=want;if(!want)return;
+  musicKey=want;Object.keys(musicBufs).forEach(k=>{if(k!==want)delete musicBufs[k]});if(!want)return;
   const b=await loadMusic(want);if(!b||musicKey!==want)return;
   const s=ctx.createBufferSource(),g=ctx.createGain(),[ls,le,from]=MLOOP[want];s.buffer=b;s.loop=true;s.loopStart=ls;s.loopEnd=Math.min(le,b.duration);
   g.gain.value=0;s.connect(g).connect(nodes.music);s._g=g;s.start(0,from);g.gain.setTargetAtTime(MGAIN[want],ctx.currentTime,1);musicSrc=s;}
@@ -381,9 +381,18 @@ function finish(){
   bell();master.gain.setTargetAtTime(0,ctx.currentTime+1.5,2.5);
   setTimeout(()=>{stop(true)},9000);clearInterval(tick);endAt=0;}
 
+/* iPhone: Web Audio is muted by the silent switch unless a media element is playing.
+   A silent looping <audio>, started inside the tap, moves iOS into playback mode. */
+let unlockEl=null;
+function iosUnlock(){try{if(!unlockEl){const sr=8000,n=sr,buf=new ArrayBuffer(44+n),v=new DataView(buf),w=(o,t)=>{for(let i=0;i<t.length;i++)v.setUint8(o+i,t.charCodeAt(i))};
+  w(0,"RIFF");v.setUint32(4,36+n,true);w(8,"WAVEfmt ");v.setUint32(16,16,true);v.setUint16(20,1,true);v.setUint16(22,1,true);v.setUint32(24,sr,true);v.setUint32(28,sr,true);v.setUint16(32,1,true);v.setUint16(34,8,true);w(36,"data");v.setUint32(40,n,true);
+  for(let i=0;i<n;i++)v.setUint8(44+i,128);
+  unlockEl=new Audio(URL.createObjectURL(new Blob([buf],{type:"audio/wav"})));unlockEl.loop=true;unlockEl.setAttribute("playsinline","");unlockEl.volume=.01}
+  const p=unlockEl.play();if(p&&p.catch)p.catch(()=>{})}catch(e){}}
 async function start(){
+  iosUnlock();
   try{if(navigator.audioSession)navigator.audioSession.type="playback"}catch(e){}
-  if(!ctx)build();await ctx.resume();
+  if(!ctx)build();const rp=ctx.resume();if(ctx.state!=="running"){try{await rp}catch(e){}}
   const el=document.getElementById("status");el.textContent="…";await Promise.all([...SOUNDS.map(ensure),st.music?loadMusic(st.music):0]);playing=true;applyAudio(.01);syncMusic();nextBowl=ctx.currentTime+2;st.bowls.forEach(loadBowl);
   master.gain.cancelScheduledValues(ctx.currentTime);master.gain.setTargetAtTime(1,ctx.currentTime,1.2);
   document.getElementById("app").classList.add("playing");document.getElementById("status").dataset.ended="";
@@ -392,7 +401,7 @@ async function start(){
   try{lock=await navigator.wakeLock?.request("screen")}catch(e){}
   render();}
 function stop(ended){
-  playing=false;clearInterval(tick);endAt=0;if(voice)voice.pause();
+  playing=false;clearInterval(tick);endAt=0;if(voice)voice.pause();try{unlockEl&&unlockEl.pause()}catch(e){}
   if(ctx)master.gain.setTargetAtTime(0,ctx.currentTime,.4);
   setTimeout(()=>{if(!playing)syncMusic()},1500);
   document.getElementById("app").classList.remove("playing");
@@ -512,6 +521,7 @@ document.querySelectorAll(".fold").forEach(f=>{const k=f.dataset.fold,b=f.queryS
 document.getElementById("app").addEventListener("input",()=>{summaries(T[lang]);save()});
 restore();syncInputs();render();
 
+document.addEventListener("visibilitychange",()=>{if(document.visibilityState==="visible"&&playing&&ctx&&ctx.state!=="running"){iosUnlock();ctx.resume().catch(()=>{})}});
 window.addEventListener("hashchange",()=>{const l=location.hash.slice(1);if(T[l]&&l!==lang){lang=l;render()}});
 </script>
 </body>
