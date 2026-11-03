@@ -194,7 +194,7 @@ footer{text-align:center;font-size:.82rem;color:var(--ink-soft);display:flex;fle
 
   <section class="card">
     <h2 data-t="timerH"></h2>
-    <div class="row"><span id="timerLabel"></span><input type="range" id="timer" min="0" max="12" value="12" aria-label="Minuterie / Timer"></div>
+    <div class="row"><span id="timerLabel"></span><input type="range" id="timer" min="0" max="12" value="0" aria-label="Minuterie / Timer"></div>
     <p class="hint" data-t="timerHint"></p>
   </section>
 
@@ -228,7 +228,7 @@ natureH:"Sons de la nature",natureHint:"Monte doucement le volume des sons qui t
 freqH:"Fréquence",freqHint:"Une seule à la fois, très douce, sous la musique et les sons de la nature. Les fréquences les plus basses s'entendent mieux avec des écouteurs.",none:"Aucune",vol:"Volume",
 binH:"Effet binaural",binNote:"Avec des écouteurs seulement : chaque oreille reçoit une fréquence un peu différente, et le cerveau perçoit une pulsation douce.",
 binOff:"Désactivé",binA:"Détente",binS:"Résonance de la Terre (7,83 Hz)",binT:"Méditation profonde",binD:"Sommeil",
-timerH:"Minuterie",timerHint:"Une cloche douce sonnera à la fin, puis le son s'éteindra lentement.",noTimer:"Sans fin",min:"min",
+timerH:"Minuterie",timerHint:"Elle est désactivée au départ : le son continue aussi longtemps que tu veux. Si tu l'actives, une cloche douce sonnera à la fin, puis le son s'éteindra lentement.",noTimer:"Désactivée",min:"min",
 left:"Il reste",medH:"Méditations guidées",medHint:"Guidées par ma voix, entre 5 et 14 minutes. À la fin, tu peux rester avec les sons aussi longtemps que tu veux.",
 soon:"Bientôt disponible",listen:"Écouter",stopV:"Arrêter",ended:"La séance est terminée. Merci d'avoir pris ce temps pour toi.",
 disclaimer:"Les intentions associées aux fréquences viennent des traditions de guérison par le son. Elles sont une invitation, pas une promesse, et ne remplacent pas un suivi médical.",
@@ -242,7 +242,7 @@ natureH:"Sonidos de la naturaleza",natureHint:"Sube suavemente el volumen de los
 freqH:"Frecuencia",freqHint:"Una sola a la vez, muy suave, debajo de la música y los sonidos de la naturaleza. Las frecuencias más bajas se escuchan mejor con audífonos.",none:"Ninguna",vol:"Volumen",
 binH:"Efecto binaural",binNote:"Solo con audífonos: cada oído recibe una frecuencia un poco distinta, y el cerebro percibe un pulso suave.",
 binOff:"Desactivado",binA:"Relajación",binS:"Resonancia de la Tierra (7,83 Hz)",binT:"Meditación profunda",binD:"Sueño",
-timerH:"Temporizador",timerHint:"Al final sonará una campanita suave y el sonido se apagará lentamente.",noTimer:"Sin fin",min:"min",
+timerH:"Temporizador",timerHint:"Está apagado al inicio: el sonido sigue todo el tiempo que quieras. Si lo activas, al final sonará una campanita suave y el sonido se apagará lentamente.",noTimer:"Apagado",min:"min",
 left:"Quedan",medH:"Meditaciones guiadas",medHint:"Guiadas con mi voz, entre 5 y 14 minutos. Al final puedes quedarte con los sonidos el tiempo que quieras.",
 soon:"Muy pronto",listen:"Escuchar",stopV:"Detener",ended:"La sesión terminó. Gracias por darte este tiempo.",
 disclaimer:"Las intenciones de cada frecuencia vienen de las tradiciones de sanación sonora. Son una invitación, no una promesa, y no reemplazan un acompañamiento médico.",
@@ -256,7 +256,7 @@ natureH:"Nature sounds",natureHint:"Gently raise the volume of the sounds that c
 freqH:"Frequency",freqHint:"One at a time, very soft, beneath the music and nature sounds. The lower frequencies are best heard with headphones or earphones.",none:"None",vol:"Volume",
 binH:"Binaural effect",binNote:"Headphones only: each ear hears a slightly different frequency, and the brain perceives a soft pulse.",
 binOff:"Off",binA:"Relaxation",binS:"Earth resonance (7.83 Hz)",binT:"Deep meditation",binD:"Sleep",
-timerH:"Timer",timerHint:"A soft bell will ring at the end, then the sound will slowly fade.",noTimer:"No end",min:"min",
+timerH:"Timer",timerHint:"It's off to begin with: the sound keeps going for as long as you like. If you turn it on, a soft bell will ring at the end, then the sound will slowly fade.",noTimer:"Off",min:"min",
 left:"Remaining",medH:"Guided meditations",medHint:"Guided by my voice, between 5 and 14 minutes. Afterwards, you can stay with the sounds as long as you like.",
 soon:"Coming soon",listen:"Listen",stopV:"Stop",ended:"Your session is complete. Thank you for taking this time for yourself.",
 disclaimer:"The intentions linked to each frequency come from sound healing traditions. They are an invitation, not a promise, and don't replace medical care.",
@@ -286,15 +286,15 @@ const TIMES=[0,5,10,15,20,25,30,35,40,45,50,55,60];
 const HOME={fr:"../",en:"../en.html",es:"../es.html"};
 let lang=(location.hash||"").slice(1);if(!T[lang]){lang="fr";try{lang=localStorage.getItem("mc-lang")||"fr"}catch(e){}if(!T[lang])lang="fr"}
 /* default = the "Open the heart" blend */
-const st={vol:{wind:0,fire:0,birds:20,forest:15,river:0,ocean:0,crickets:0},freq:432,fvol:18,beat:0,timer:12,bowls:[],bvol:55,vvol:100,music:"divine",mvol:55};
+const st={vol:{wind:0,fire:0,birds:20,forest:15,river:0,ocean:0,crickets:0},freq:432,fvol:18,beat:0,timer:0,bowls:[],bvol:55,vvol:100,music:"divine",mvol:55};
 const NOTES=["c","d","e","f","g","a","b"];
 const PRESETS=[
- {music:"calm",vol:{river:21,birds:15},freq:0,beat:0,bowls:[],timer:12},
- {music:"paz",vol:{ocean:18,crickets:15},freq:0,beat:0,bowls:[],timer:12},
- {music:"wonder",vol:{ocean:20,wind:40},freq:0,beat:0,bowls:[],timer:12},
- {music:"light",vol:{fire:15,river:7},freq:0,beat:0,bowls:[],timer:12},
- {music:"divine",vol:{birds:20,forest:15},freq:432,fvol:18,beat:0,bowls:[],timer:12},
- {music:"hopeful",vol:{birds:21,river:10},freq:432,fvol:18,beat:0,bowls:[],timer:12}];
+ {music:"calm",vol:{river:21,birds:15},freq:0,beat:0,bowls:[]},
+ {music:"paz",vol:{ocean:18,crickets:15},freq:0,beat:0,bowls:[]},
+ {music:"wonder",vol:{ocean:20,wind:40},freq:0,beat:0,bowls:[]},
+ {music:"light",vol:{fire:15,river:7},freq:0,beat:0,bowls:[]},
+ {music:"divine",vol:{birds:20,forest:15},freq:432,fvol:18,beat:0,bowls:[]},
+ {music:"hopeful",vol:{birds:21,river:10},freq:432,fvol:18,beat:0,bowls:[]}];
 let preset=4;const bowlBufs={};let nextBowl=0;
 let ctx,master,playing=false,endAt=0,tick,lock=null;
 const nodes={};
@@ -399,11 +399,11 @@ setInterval(()=>{if(!playing||!ctx||!st.bowls.length)return;
 function syncInputs(){SOUNDS.forEach(k=>{document.getElementById("v-"+k).value=st.vol[k]});document.getElementById("timer").value=st.timer;
   document.getElementById("freqVol").value=st.fvol;document.getElementById("musicVol").value=st.mvol;document.getElementById("voiceVol").value=st.vvol;}
 /* each visitor's last choice is remembered on their own device */
-function save(){try{localStorage.setItem("mc-state",JSON.stringify({vol:st.vol,freq:st.freq,fvol:st.fvol,beat:st.beat,timer:st.timer,vvol:st.vvol,music:st.music,mvol:st.mvol,preset}))}catch(e){}}
+function save(){try{localStorage.setItem("mc-state",JSON.stringify({vol:st.vol,freq:st.freq,fvol:st.fvol,beat:st.beat,timerOn:st.timer,vvol:st.vvol,music:st.music,mvol:st.mvol,preset}))}catch(e){}}
 function restore(){try{const d=JSON.parse(localStorage.getItem("mc-state")||"null");if(!d)return;
   SOUNDS.forEach(k=>{if(typeof d.vol?.[k]==="number")st.vol[k]=d.vol[k]});
   if(d.freq===0||FREQS.includes(d.freq))st.freq=d.freq;if(BINS.some(b=>b[1]===d.beat))st.beat=d.beat;
-  ["fvol","timer","vvol","mvol"].forEach(k=>{if(typeof d[k]==="number")st[k]=d[k]});
+  ["fvol","vvol","mvol"].forEach(k=>{if(typeof d[k]==="number")st[k]=d[k]});if(typeof d.timerOn==="number")st.timer=d.timerOn;
   if(d.music===""||MUSIC.includes(d.music))st.music=d.music;if(typeof d.preset==="number")preset=d.preset;}catch(e){}}
 /* a short welcome in Katiana's voice, only when someone chooses to hear it */
 const WELCOME={en:"snd/hola-en.mp3",es:"snd/hola-es.mp3",fr:"snd/hola-fr.mp3"};let wa=null,waLang="";
@@ -464,7 +464,7 @@ document.getElementById("meds").addEventListener("click",async e=>{const b=e.tar
 document.querySelectorAll(".langs button").forEach(b=>b.addEventListener("click",()=>{lang=b.dataset.l;try{localStorage.setItem("mc-lang",lang)}catch(e){}try{history.replaceState(null,"",lang==="fr"?location.pathname:"#"+lang)}catch(e){}render()}));
 document.getElementById("presets").innerHTML=PRESETS.map((_,i)=>`<button class="preset" type="button" data-p="${i}"></button>`).join("");
 document.getElementById("presets").addEventListener("click",async e=>{const b=e.target.closest(".preset");if(!b)return;const P=PRESETS[+b.dataset.p];
-  preset=+b.dataset.p;st.music=P.music||"";SOUNDS.forEach(k=>st.vol[k]=P.vol[k]||0);st.freq=P.freq;st.fvol=P.fvol??35;st.beat=P.beat;st.bowls=P.bowls.slice();st.timer=P.timer;
+  preset=+b.dataset.p;st.music=P.music||"";SOUNDS.forEach(k=>st.vol[k]=P.vol[k]||0);st.freq=P.freq;st.fvol=P.fvol??35;st.beat=P.beat;st.bowls=P.bowls.slice();
   syncInputs();if(!playing){await start()}else{SOUNDS.forEach(ensure);st.bowls.forEach(loadBowl);applyAudio();const m=TIMES[st.timer];endAt=m?Date.now()+m*60000:0;nextBowl=ctx.currentTime+1.5;syncMusic()}
   render();});
 document.getElementById("voiceVol").addEventListener("input",e=>{st.vvol=+e.target.value;const v=st.vvol/100;
