@@ -298,7 +298,7 @@ crickets:'<path d="M20 14a8 8 0 1 1-9-11 6 6 0 0 0 9 11z"/>',
 ocean:'<path d="M2 15c2.5 0 3-4 6-4s3.5 4 6 4 3.5-6 8-6M2 20h20"/>'};
 const MUSIC=["calm","heart","hopeful","divine","wonder","light"];
 /* intro plays once, then the steady part loops; each tail was blended into the bars before loopStart, so the jump is seamless */
-const MLOOP={calm:[40,239,28],heart:[8,188,0],hopeful:[8,178,0],divine:[8,96,0],wonder:[85,208,70],light:[8,198,0]};  /* [loopStart, loopEnd, where to begin, skipping a near-silent opening] */
+const MLOOP={calm:[12,211,0],heart:[8,188,0],hopeful:[8,178,0],divine:[8,96,0],wonder:[15,138,0],light:[8,198,0]};  /* [loopStart, loopEnd, where to begin, skipping a near-silent opening] */
 const MGAIN={calm:1,heart:1,hopeful:1,divine:1,wonder:1,light:1};
 const SOUNDS=["wind","fire","birds","forest","river","ocean","crickets"];
 const FREQS=[111,136.1,174,216,285,396,432,528,639,852];
@@ -337,6 +337,8 @@ function build(){
   nodes.tone=tg;nodes.E=[ear(0),ear(1)];nodes.cur=null;
   nodes.bowl=ctx.createGain();nodes.bowl.gain.value=0;nodes.bowl.connect(master);
   nodes.music=ctx.createGain();nodes.music.gain.value=0;nodes.music.connect(master);
+  try{pool=[0,1].map(()=>{const el=document.createElement("audio");el.setAttribute("playsinline","");el.preload="auto";el.loop=true;document.body.appendChild(el);
+    const g=ctx.createGain();g.gain.value=0;ctx.createMediaElementSource(el).connect(g).connect(nodes.music);return{el,_g:g,owner:null}})}catch(e){pool=null}
   SOUNDS.forEach(k=>{const g=ctx.createGain();g.gain.value=0;g.connect(master);nodes[k]=g;});
 }
 /* a sound is downloaded and decoded only the first time someone turns it up */
@@ -347,36 +349,40 @@ function ensure(k){
     .catch(()=>{delete loading[k]});
   return loading[k];}
 /* one music track at a time: the old one fades out, the new one starts from its beginning */
-const musicBufs={};let musicSrc=null,musicKey="";
+const musicBufs={};let musicSrc=null,musicKey="",pool=null,tok=0,gen=0;
 function loadMusic(k){
-  if(!musicBufs[k])musicBufs[k]=fetch("snd/musica-"+k+".mp3?v=3").then(r=>r.arrayBuffer()).then(a=>ctx.decodeAudioData(a)).catch(()=>{delete musicBufs[k]});
+  if(!musicBufs[k])musicBufs[k]=fetch("snd/musica-"+k+".mp3?v=4").then(r=>r.arrayBuffer()).then(a=>ctx.decodeAudioData(a)).catch(()=>{delete musicBufs[k]});
   return musicBufs[k];}
 /* The song starts right away by streaming; meanwhile the full song is prepared,
    then it crossfades into a seamless loop. */
 function killMusic(m){if(!m)return;try{m._g.gain.setTargetAtTime(0,ctx.currentTime,.6)}catch(e){}
-  setTimeout(()=>{try{m.el?(m.el.pause(),m.el.removeAttribute("src"),m.el.load()):m.stop()}catch(e){}},3000)}
+  if(m.slot){const slot=m.slot,t=m.t;setTimeout(()=>{if(slot.owner===t){slot.owner=null;try{slot.el.pause()}catch(e){}}},2500)}
+  else setTimeout(()=>{try{m.stop()}catch(e){}},3000)}
 function bufferLoop(want,b,offset){
   const [ls,le]=MLOOP[want],end=Math.min(le,b.duration);let pos=offset;
   if(pos>=end)pos=ls+((pos-ls)%(end-ls));
   const s=ctx.createBufferSource(),g=ctx.createGain();s.buffer=b;s.loop=true;s.loopStart=ls;s.loopEnd=end;
   g.gain.value=0;s.connect(g).connect(nodes.music);s._g=g;s.start(0,Math.max(0,pos));g.gain.setTargetAtTime(MGAIN[want],ctx.currentTime,.5);return s}
 async function syncMusic(){
-  if(!ctx)return;const want=playing?st.music:"";if(want===musicKey)return;
-  killMusic(musicSrc);musicSrc=null;
+  if(!ctx)return;const want=playing?st.music:"";if(want===musicKey)return;const my=++gen;
+  const fading=musicSrc&&musicSrc.slot;killMusic(musicSrc);musicSrc=null;
   musicKey=want;Object.keys(musicBufs).forEach(k=>{if(k!==want)delete musicBufs[k]});if(!want)return;
   const from=MLOOP[want][2];let el=null;
-  if(!musicBufs[want]||!musicBufs[want].ready){
-    try{el=new Audio("snd/musica-"+want+".mp3?v=3");el.preload="auto";el.setAttribute("playsinline","");el.loop=true;
-      const src=ctx.createMediaElementSource(el),g=ctx.createGain();g.gain.value=0;src.connect(g).connect(nodes.music);
-      const m={el,_g:g};musicSrc=m;
-      const go=()=>{try{if(from)el.currentTime=from}catch(e){}el.play().then(()=>g.gain.setTargetAtTime(MGAIN[want],ctx.currentTime,.4)).catch(()=>{})};
-      if(el.readyState>=1)go();else el.addEventListener("loadedmetadata",go,{once:true});
-    }catch(e){el=null}}
+  const slot=pool&&(pool.find(x=>!x.owner)||pool.find(x=>x!==fading)||fading);  /* reuse the older player at once if both are busy */
+  if(slot&&(!musicBufs[want]||!musicBufs[want].ready)){
+    const t=++tok;slot.owner=t;el=slot.el;const g=slot._g;g.gain.cancelScheduledValues(ctx.currentTime);g.gain.value=0;
+    musicSrc={el,_g:g,slot,t};
+    el.src="snd/musica-"+want+".mp3?v=4";el.loop=true;
+    const seek=()=>{try{if(from&&el.currentTime<from-1)el.currentTime=from}catch(e){}};
+    el.addEventListener("loadedmetadata",seek,{once:true});
+    el.addEventListener("playing",()=>{if(slot.owner===t)g.gain.setTargetAtTime(MGAIN[want],ctx.currentTime,.4)},{once:true});
+    const q=el.play();if(q&&q.catch)q.catch(()=>{});
+    if(el.readyState>=1)seek();}
   /* prepare the seamless loop only once the song is already playing, so both don't compete for the connection */
-  if(el)await new Promise(r=>{let done=false;const f=()=>{if(!done){done=true;setTimeout(r,1500)}};el.addEventListener("playing",f,{once:true});setTimeout(f,12000)});
-  if(musicKey!==want)return;
-  const b=await loadMusic(want);if(!b||musicKey!==want)return;
-  musicBufs[want].ready=true;
+  if(el)await new Promise(r=>{let done=false;const f=()=>{if(!done){done=true;setTimeout(r,1500)}};el.addEventListener("playing",f,{once:true});setTimeout(f,6000)});
+  if(gen!==my)return;
+  const b=await loadMusic(want);if(!b||gen!==my)return;
+  if(musicBufs[want])musicBufs[want].ready=true;
   if(el&&musicSrc&&musicSrc.el===el){const pos=el.currentTime||from;const old=musicSrc;musicSrc=bufferLoop(want,b,pos+.05);killMusic(old)}
   else if(!musicSrc){musicSrc=bufferLoop(want,b,from)}}
 function applyAudio(ramp=.6){
@@ -418,12 +424,12 @@ function finish(){
 let unlockEl=null;
 function iosUnlock(){try{if(!unlockEl){unlockEl=document.createElement("audio");unlockEl.src="snd/silence.mp3";unlockEl.loop=true;
   unlockEl.setAttribute("playsinline","");unlockEl.setAttribute("x-webkit-airplay","deny");unlockEl.preload="auto";document.body.appendChild(unlockEl)}
-  const p=unlockEl.play();if(p&&p.catch)p.catch(()=>{})}catch(e){}}
+  const p=unlockEl.play();if(p&&p.catch)p.catch(()=>{})}catch(e){}
+  if(pool)pool.forEach(m=>{if(!m.unlocked&&!m.owner){m.unlocked=true;try{m.el.src="snd/silence.mp3";const q=m.el.play();if(q&&q.then)q.then(()=>{if(!m.owner)m.el.pause()}).catch(()=>{})}catch(e){}}})}
 let everStarted=false;
 async function start(){
-  iosUnlock();everStarted=true;
   try{if(navigator.audioSession)navigator.audioSession.type="playback"}catch(e){}
-  if(!ctx)build();const rp=ctx.resume();if(ctx.state!=="running"){try{await rp}catch(e){}}
+  if(!ctx)build();iosUnlock();everStarted=true;const rp=ctx.resume();if(ctx.state!=="running"){try{await rp}catch(e){}}
   const el=document.getElementById("status");el.textContent="…";SOUNDS.forEach(ensure);playing=true;applyAudio(.01);syncMusic();nextBowl=ctx.currentTime+2;st.bowls.forEach(loadBowl);
   master.gain.cancelScheduledValues(ctx.currentTime);master.gain.setTargetAtTime(1,ctx.currentTime,1.2);
   document.getElementById("app").classList.add("playing");document.getElementById("status").dataset.ended="";
