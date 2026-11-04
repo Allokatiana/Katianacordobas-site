@@ -138,6 +138,10 @@ input[type=range]{width:100%;min-width:0;accent-color:var(--rose-deep);height:28
 .med p{margin:0;font-size:.93rem;color:var(--ink-soft)}
 .med button{font:600 .95rem var(--sans);align-self:flex-start;margin-top:6px;background:var(--rose-deep);color:var(--chip-on-ink);border:0;border-radius:99px;min-height:44px;padding:0 20px;cursor:pointer}
 .med .time{font-size:.85rem;color:var(--ink-soft);font-variant-numeric:tabular-nums}
+.med .ctl{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin-top:6px}
+.med .ctl button{margin-top:0}
+.med .ctl .skip{background:var(--chip);color:var(--ink);border:1px solid var(--line);padding:0 14px;font-weight:500;font-variant-numeric:tabular-nums}
+.med .seek{width:100%;margin:4px 0 0}
 .presets{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,190px),1fr));gap:8px}
 .preset{font:inherit;text-align:left;color:var(--ink);background:var(--chip);border:1px solid var(--line);border-radius:18px;padding:12px 14px;cursor:pointer;display:flex;flex-direction:column;gap:2px}
 .preset b{font-family:var(--serif);font-weight:500;font-size:1.3rem;line-height:1.15}
@@ -253,7 +257,7 @@ binH:"Effet binaural",binNote:"Avec des écouteurs seulement : chaque oreille re
 binOff:"Désactivé",binA:"Détente",binS:"Résonance de la Terre (7,83 Hz)",binT:"Méditation profonde",binD:"Sommeil",
 timerH:"Minuterie",timerHint:"Elle est désactivée au départ : le son continue aussi longtemps que tu veux. Si tu l'actives, une cloche douce sonnera à la fin, puis le son s'éteindra lentement.",noTimer:"Désactivée",min:"min",
 left:"Il reste",medH:"Méditations guidées",medHint:"Guidées par ma voix, entre 5 et 14 minutes. À la fin, tu peux rester avec les sons aussi longtemps que tu veux.",
-soon:"Bientôt disponible",listen:"Écouter",stopV:"Arrêter",ended:"La séance est terminée. Merci d'avoir pris ce temps pour toi.",
+soon:"Bientôt disponible",listen:"Écouter",stopV:"Pause",resumeV:"Reprendre",back15:"Reculer de 15 secondes",fwd15:"Avancer de 15 secondes",seekL:"Position dans la méditation",ended:"La séance est terminée. Merci d'avoir pris ce temps pour toi.",
 disclaimer:"Les intentions associées aux fréquences viennent des traditions de guérison par le son. Elles sont une invitation, pas une promesse, et ne remplacent pas un suivi médical.",
 foot:"Offert avec amour par Katiana Cordoba",bookH:"Envie d'aller plus loin?",bookP:"Ce coin est un cadeau pour toi. Si tu en ressens le besoin, je serai heureuse de t'accompagner en séance.",book:"Réserver une séance",home:"Retour au site",sub:"Accompagnement individuel et soins sonores",
 s:{wind:"Vent",fire:"Feu de camp",birds:"Oiseaux",forest:"Forêt et ruisseau",river:"Rivière",ocean:"Océan",crickets:"Grillons, la nuit"},
@@ -267,7 +271,7 @@ binH:"Efecto binaural",binNote:"Solo con audífonos: cada oído recibe una frecu
 binOff:"Desactivado",binA:"Relajación",binS:"Resonancia de la Tierra (7,83 Hz)",binT:"Meditación profunda",binD:"Sueño",
 timerH:"Temporizador",timerHint:"Está apagado al inicio: el sonido sigue todo el tiempo que quieras. Si lo activas, al final sonará una campanita suave y el sonido se apagará lentamente.",noTimer:"Apagado",min:"min",
 left:"Quedan",medH:"Meditaciones guiadas",medHint:"Guiadas con mi voz, entre 5 y 14 minutos. Al final puedes quedarte con los sonidos el tiempo que quieras.",
-soon:"Muy pronto",listen:"Escuchar",stopV:"Detener",ended:"La sesión terminó. Gracias por darte este tiempo.",
+soon:"Muy pronto",listen:"Escuchar",stopV:"Pausar",resumeV:"Continuar",back15:"Retroceder 15 segundos",fwd15:"Adelantar 15 segundos",seekL:"Posición en la meditación",ended:"La sesión terminó. Gracias por darte este tiempo.",
 disclaimer:"Las intenciones de cada frecuencia vienen de las tradiciones de sanación sonora. Son una invitación, no una promesa, y no reemplazan un acompañamiento médico.",
 foot:"Ofrecido con amor por Katiana Cordoba",bookH:"¿Quieres ir más lejos?",bookP:"Este rincón es un regalo para ti. Si sientes que necesitas acompañamiento, con gusto te recibo en una sesión.",book:"Reservar una sesión",home:"Volver al sitio",sub:"Acompañamiento individual y sonoterapia",
 s:{wind:"Viento",fire:"Fogata",birds:"Pájaros",forest:"Bosque y arroyo",river:"Río",ocean:"Océano",crickets:"Grillos de noche"},
@@ -281,7 +285,7 @@ binH:"Binaural effect",binNote:"Headphones only: each ear hears a slightly diffe
 binOff:"Off",binA:"Relaxation",binS:"Earth resonance (7.83 Hz)",binT:"Deep meditation",binD:"Sleep",
 timerH:"Timer",timerHint:"It's off to begin with: the sound keeps going for as long as you like. If you turn it on, a soft bell will ring at the end, then the sound will slowly fade.",noTimer:"Off",min:"min",
 left:"Remaining",medH:"Guided meditations",medHint:"Guided by my voice, between 5 and 14 minutes. Afterwards, you can stay with the sounds as long as you like.",
-soon:"Coming soon",listen:"Listen",stopV:"Stop",ended:"Your session is complete. Thank you for taking this time for yourself.",
+soon:"Coming soon",listen:"Listen",stopV:"Pause",resumeV:"Resume",back15:"Back 15 seconds",fwd15:"Forward 15 seconds",seekL:"Position in the meditation",ended:"Your session is complete. Thank you for taking this time for yourself.",
 disclaimer:"The intentions linked to each frequency come from sound healing traditions. They are an invitation, not a promise, and don't replace medical care.",
 foot:"Offered with love by Katiana Cordoba",bookH:"Would you like to go further?",bookP:"This corner is a gift for you. If you feel you'd like support, I'd be happy to welcome you to a session.",book:"Book a session",home:"Back to the site",sub:"Individual support and sound healing",
 s:{wind:"Wind",fire:"Campfire",birds:"Birds",forest:"Forest and stream",river:"River",ocean:"Ocean",crickets:"Crickets at night"},
@@ -505,10 +509,10 @@ function render(){
   document.querySelectorAll("#bins .chip").forEach(b=>{b.textContent=t[b.dataset.k];b.setAttribute("aria-pressed",+b.dataset.b===st.beat)});
   const m=TIMES[st.timer];document.getElementById("timerLabel").textContent=m?m+" "+t.min:t.noTimer;
   document.getElementById("meds").innerHTML=t.m.map(([h,p],i)=>{const has=MEDS[lang]&&MEDS[lang][i],on=voice&&voiceIdx===i&&!voice.paused;
-    return `<div class="med"><h3>${h}</h3><p>${p}</p>${has?`<button data-med="${i}">${on?t.stopV:t.listen}</button><span class="time" id="vt-${i}"></span>`:`<span class="soon">${t.soon}</span>`}</div>`}).join("");
+    return `<div class="med"><h3>${h}</h3><p>${p}</p>${has?(()=>{const act=voice&&voiceIdx===i&&!voice.ended,cur=act&&voice.currentTime>0;return `<div class="ctl">${act?`<button class="skip" data-skip="-15" aria-label="${t.back15}">−15 s</button>`:""}<button data-med="${i}">${on?t.stopV:(cur?t.resumeV:t.listen)}</button>${act?`<button class="skip" data-skip="15" aria-label="${t.fwd15}">+15 s</button>`:""}</div>${act?`<input type="range" class="seek" id="vs-${i}" min="0" max="${isFinite(voice.duration)?Math.floor(voice.duration):0}" step="1" value="${Math.floor(voice.currentTime)}" aria-label="${t.seekL}">`:""}<span class="time" id="vt-${i}"></span>`})():`<span class="soon">${t.soon}</span>`}</div>`}).join("");
   document.querySelectorAll("#presets .preset[data-p]").forEach((b,i)=>{b.innerHTML="<b>"+t.P[i][0]+"</b><span>"+t.P[i][1]+"</span>";b.setAttribute("aria-pressed",i===preset)});
   const nb=document.querySelector("#presets .preset[data-none]");nb.innerHTML="<b>"+t.noneP[0]+"</b><span>"+t.noneP[1]+"</span>";nb.setAttribute("aria-pressed",preset===-2);
-  summaries(t);welcomeUI(t);save();updStatus();}
+  summaries(t);welcomeUI(t);save();updStatus();vtime();}
 
 document.getElementById("sounds").innerHTML=SOUNDS.map(k=>`<div class="snd" id="c-${k}">
   <span class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">${ICONS[k]}</svg></span>
@@ -533,7 +537,15 @@ const wake=()=>{if(!playing)start()};
   document.getElementById("menuClose").addEventListener("click",()=>d.close());
   d.addEventListener("click",e=>{if(e.target===d)d.close()});
   document.getElementById("menuList").addEventListener("click",e=>{const a=e.target.closest("a");if(!a)return;if(playing)a.target="_blank";d.close()});})();
-function vtime(){if(!voice)return;const e=document.getElementById("vt-"+voiceIdx);if(e)e.textContent=fmt(voice.currentTime)+" / "+(isFinite(voice.duration)?fmt(voice.duration):"…")}
+let seeking=null;  /* position the listener is dragging to, so the bar does not jump back while she drags */
+function vtime(){if(!voice)return;const e=document.getElementById("vt-"+voiceIdx),sl=document.getElementById("vs-"+voiceIdx),d=isFinite(voice.duration)?voice.duration:0;
+  if(e)e.textContent=fmt(seeking!==null?seeking:voice.currentTime)+" / "+(d?fmt(d):"…");
+  if(sl){if(d&&+sl.max!==Math.floor(d))sl.max=Math.floor(d);if(seeking===null)sl.value=Math.floor(voice.currentTime)}}
+/* -15 s / +15 s buttons and the position bar for the meditation that is loaded */
+document.getElementById("meds").addEventListener("click",e=>{const k=e.target.closest("[data-skip]");if(!k||!voice)return;
+  const d=isFinite(voice.duration)?voice.duration:1e9;voice.currentTime=Math.max(0,Math.min(d-.5,voice.currentTime+ +k.dataset.skip));vtime()});
+document.getElementById("meds").addEventListener("input",e=>{if(!e.target.classList.contains("seek")||!voice)return;seeking=+e.target.value;vtime()});
+document.getElementById("meds").addEventListener("change",e=>{if(!e.target.classList.contains("seek")||!voice)return;voice.currentTime=+e.target.value;seeking=null;vtime()});
 document.getElementById("meds").addEventListener("click",async e=>{const b=e.target.closest("[data-med]");if(!b)return;const i=+b.dataset.med;
   if(voice&&voiceIdx===i&&!voice.paused){voice.pause();render();return}
   /* only one voice recording at a time: the welcome stops when a meditation starts */
