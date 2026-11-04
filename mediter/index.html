@@ -303,7 +303,7 @@ const MGAIN={calm:1,heart:1,hopeful:1,divine:1,om:1,light:1};
 const SOUNDS=["wind","fire","birds","forest","river","ocean","crickets"];
 const FREQS=[111,136.1,174,216,285,396,432,528,639,852];
 const BINS=[["binOff",0],["binA",10],["binS",7.83],["binT",6],["binD",3]];
-const MEDS={es:{0:"snd/voz-es-0g.mp3?v=2",1:"snd/voz-es-1c.mp3?v=2",2:"snd/voz-es-2g.mp3?v=2",3:"snd/voz-es-3g.mp3?v=2"},fr:{0:"snd/voz-fr-0g.mp3?v=2",1:"snd/voz-fr-1c.mp3?v=2",2:"snd/voz-fr-2bg.mp3?v=2",3:"snd/voz-fr-3g.mp3?v=2"},en:{0:"snd/voz-en-0g.mp3?v=2",1:"snd/voz-en-1c.mp3?v=2",2:"snd/voz-en-2g.mp3?v=2",3:"snd/voz-en-3g.mp3?v=2"}};let voice=null,voiceIdx=-1;
+const MEDS={es:{0:"snd/voz-es-0g.mp3?v=3",1:"snd/voz-es-1c.mp3?v=3",2:"snd/voz-es-2g.mp3?v=3",3:"snd/voz-es-3g.mp3?v=3"},fr:{0:"snd/voz-fr-0g.mp3?v=3",1:"snd/voz-fr-1c.mp3?v=3",2:"snd/voz-fr-2bg.mp3?v=3",3:"snd/voz-fr-3g.mp3?v=3"},en:{0:"snd/voz-en-0g.mp3?v=3",1:"snd/voz-en-1c.mp3?v=3",2:"snd/voz-en-2g.mp3?v=3",3:"snd/voz-en-3g.mp3?v=3"}};let voice=null,voiceIdx=-1;
 const TIMES=[0,5,10,15,20,25,30,35,40,45,50,55,60];
 
 const HOME={fr:"../",en:"../en.html",es:"../es.html"};
@@ -466,7 +466,7 @@ function restore(){try{const d=JSON.parse(localStorage.getItem("mc-state")||"nul
   ["fvol","vvol","mvol"].forEach(k=>{if(typeof d[k]==="number")st[k]=d[k]});if(typeof d.timerOn==="number")st.timer=d.timerOn;
   if(d.music===""||MUSIC.includes(d.music))st.music=d.music;if(typeof d.preset==="number")preset=d.preset;}catch(e){}}
 /* a short welcome in Katiana's voice, only when someone chooses to hear it */
-const WELCOME={en:"snd/hola-en.mp3?v=2",es:"snd/hola-es.mp3?v=2",fr:"snd/hola-fr.mp3?v=2"};let wa=null,waLang="";
+const WELCOME={en:"snd/hola-en.mp3?v=3",es:"snd/hola-es.mp3?v=3",fr:"snd/hola-fr.mp3?v=3"};let wa=null,waLang="";
 function welcomeUI(t){const b=document.getElementById("welcome");b.hidden=!WELCOME[lang];
   const on=wa&&!wa.paused&&waLang===lang;b.setAttribute("aria-pressed",!!on);
   b.querySelector("svg path").setAttribute("d",on?"M7 5h4v14H7zM13 5h4v14h-4z":"M8 5v14l11-7z");
