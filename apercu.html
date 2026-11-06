@@ -2271,7 +2271,7 @@ body.hl-after .godown{animation-delay:.1s}
 </div>
 <main id="main">
 <!-- 1 · Hero: the living landscape (lotus preserved; sun rays, reeds, drifting petals added) -->
-<section id="top" class="hero" data-breath data-sc-act="pin" data-sc-span="1.8">
+<section id="top" class="hero" data-breath data-sc-act="pin" data-sc-span="1.2">
   <div data-sc-stage>
     <div class="lay" aria-hidden="true"><div class="sun" data-sc-parallax="-1.4"><span class="rays"></span></div></div>
     <div class="lay hills" aria-hidden="true" data-sc-parallax="-0.35"><svg viewBox="0 0 1200 120" preserveAspectRatio="none" aria-hidden="true"><path d="M0 120V70C80 54 150 40 240 52 330 64 380 30 470 34 560 38 610 66 700 60 800 52 860 22 960 30 1060 38 1120 60 1200 56V120Z" fill="#B9B98F" fill-opacity=".45"/><path d="M0 120V92C120 80 220 74 330 84 450 94 520 70 640 74 760 78 860 94 980 86 1080 80 1150 84 1200 88V120Z" fill="#8E9A63" fill-opacity=".5"/></svg></div>
@@ -2552,6 +2552,16 @@ On peut peut-être commencer par un simple moment de présence.">Je me sens perd
 .mcx-more .mcx-doves{top:-10px;left:auto;right:-140px;width:300px}
 @media (max-width:860px){.br7-one .br7-hold{order:1}.br7-card .mcx{margin-top:var(--sc-5)}.mcx-more .mcx-doves{right:-40px;width:220px;top:-30px}}
 .mcx-more .mcx-doves{top:-90px!important;right:-220px!important}@media (max-width:860px){.mcx-more .mcx-doves{top:-120px!important;right:-30px!important}}
+
+/* hero: calmer start, subtitle appears whole, tagline lives in the header */
+.v8 .hero-copy .kick8{display:none!important}
+.hero .hero-sub .hw{opacity:1!important;animation:none!important}
+.v8 .hero .hero-copy .hero-sub{opacity:0;animation:heroSubIn 2.8s cubic-bezier(.3,.6,.3,1) 1.4s forwards!important}
+@keyframes heroSubIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+.brand{font-size:1.55rem!important}
+.bn-tag{opacity:1!important;font-size:.95rem!important;margin-top:4px}
+@media (max-width:860px){.brand{font-size:1.3rem!important}.bn-tag{font-size:.86rem!important}}
+@media (prefers-reduced-motion:reduce){.v8 .hero .hero-copy .hero-sub{animation:none!important;opacity:1}}
 </style>
   </div>
 </section>
