@@ -2588,6 +2588,11 @@ On peut peut-être commencer par un simple moment de présence.">Je me sens perd
 :root .v8 #blog .bl9-x{color:#3A2830;text-shadow:none}
 :root .v8 #blog .bl9-all{color:#3A2830;text-shadow:none;text-decoration-color:rgb(58 40 48/.45)}
 :root .v8 #blog .bl9-more{background:rgb(154 74 99/.12);text-shadow:none}
+
+/* music button stays in the hero, fades only as the hero leaves */
+.hero.moved .amb-hero{opacity:1!important;pointer-events:auto!important}
+body.past-hero .hero .amb-hero{opacity:0!important;pointer-events:none!important;transition:opacity .8s ease}
+body.amb-playing:not(.past-hero) .amb-mini{opacity:0!important;pointer-events:none!important}
 </style>
   </div>
 </section>
@@ -4553,7 +4558,7 @@ paint();
 (function(){
   var hero=document.querySelector('.hero'); if(!hero) return;
   var raf=0;
-  function check(){ raf=0; var r=hero.getBoundingClientRect(); var heroBtn=!hero.classList.contains('moved') && r.bottom>innerHeight*.5; document.body.classList.toggle('amb-hero-on', heroBtn); }
+  function check(){ raf=0; var r=hero.getBoundingClientRect(); var heroBtn=r.bottom>innerHeight*.55; document.body.classList.toggle('amb-hero-on', heroBtn); }
   addEventListener('scroll',function(){ if(!raf) raf=requestAnimationFrame(check); },{passive:true});
   addEventListener('resize',check); check(); setTimeout(check,600);
 })();
