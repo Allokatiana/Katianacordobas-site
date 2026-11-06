@@ -2488,6 +2488,13 @@ On peut peut-être commencer par un simple moment de présence.">Je me sens perd
 @keyframes mcChest{0%,100%{transform:scale(1,1)}50%{transform:scale(1.035,1.02)}}
 .mc-aura{animation-duration:10s}
 @media (prefers-reduced-motion:reduce){.mc-upper,.mc-chest{animation:none}}
+
+/* birds: one slow crossing, never coming back */
+.mc-bird{animation:none!important;transform:translate(var(--x),var(--y))}
+.mc2.fly .mc-bird{animation:mcCross var(--dur) linear forwards!important}
+@keyframes mcCross{from{transform:translate(var(--x),var(--y))}to{transform:translate(calc(var(--x) + 820px),calc(var(--y) - 34px))}}
+.mc-wing{animation-duration:2.2s}
+@media (prefers-reduced-motion:reduce){.mc2.fly .mc-bird{animation:none!important}}
 </style><div class="medc mc2"><a class="mc-scene" href="mediter/?v=6" tabindex="-1" aria-hidden="true"><svg class="mc-svg" viewBox="0 0 800 420" role="img" aria-label="Une femme médite les yeux fermés, entourée de bols chantants, au lever du soleil, pendant que des oiseaux passent dans le ciel.">
 <defs>
 <linearGradient id="mcSky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#EFC9CF"/><stop offset=".55" stop-color="#F8DDC6"/><stop offset="1" stop-color="#FBEBD8"/></linearGradient>
@@ -2500,7 +2507,7 @@ On peut peut-être commencer par un simple moment de présence.">Je me sens perd
 <g class="mc-sunwrap"><circle cx="610" cy="130" r="120" fill="url(#mcSun)"/><circle cx="610" cy="130" r="40" fill="#FFF6E2"/></g>
 <g fill="#FFF8F0" opacity=".7"><ellipse cx="170" cy="92" rx="70" ry="16"/><ellipse cx="215" cy="82" rx="44" ry="14"/><ellipse cx="470" cy="60" rx="56" ry="11"/></g>
 <circle class="mc-speck" cx="503" cy="173" r="2" style="--d:2.7s"/><circle class="mc-speck" cx="641" cy="78" r="1.6" style="--d:4.8s"/><circle class="mc-speck" cx="527" cy="191" r="2.4" style="--d:4.8s"/><circle class="mc-speck" cx="136" cy="144" r="2" style="--d:0.9s"/><circle class="mc-speck" cx="591" cy="237" r="2.4" style="--d:3.8s"/><circle class="mc-speck" cx="649" cy="131" r="2" style="--d:3.9s"/><circle class="mc-speck" cx="670" cy="196" r="1.6" style="--d:3.7s"/><circle class="mc-speck" cx="581" cy="46" r="1.6" style="--d:0.2s"/><circle class="mc-speck" cx="287" cy="183" r="1.6" style="--d:4.7s"/><circle class="mc-speck" cx="374" cy="142" r="2.4" style="--d:5.1s"/><circle class="mc-speck" cx="571" cy="89" r="2.4" style="--d:1.8s"/><circle class="mc-speck" cx="44" cy="199" r="1.6" style="--d:2.7s"/><circle class="mc-speck" cx="324" cy="134" r="2.4" style="--d:6.0s"/><circle class="mc-speck" cx="125" cy="211" r="2" style="--d:1.9s"/><circle class="mc-speck" cx="275" cy="161" r="2" style="--d:0.2s"/><circle class="mc-speck" cx="616" cy="226" r="1.6" style="--d:2.4s"/>
-<g class="mc-bird" style="--x:-60px;--y:70px;--dur:42s;--delay:-6s"><g transform="scale(1.0)"><path class="mc-wing" d="M-14 0Q-7 -8 0 0Q7 -8 14 0" fill="none" stroke="#7E4B5E" stroke-width="2.2" stroke-linecap="round"/></g></g><g class="mc-bird" style="--x:-120px;--y:96px;--dur:50s;--delay:-30s"><g transform="scale(0.75)"><path class="mc-wing" d="M-14 0Q-7 -8 0 0Q7 -8 14 0" fill="none" stroke="#7E4B5E" stroke-width="2.2" stroke-linecap="round"/></g></g>
+<g class="mc-bird" style="--x:90px;--y:78px;--dur:150s"><g transform="scale(1.0)"><path class="mc-wing" d="M-14 0Q-7 -8 0 0Q7 -8 14 0" fill="none" stroke="#7E4B5E" stroke-width="2.2" stroke-linecap="round"/></g></g><g class="mc-bird" style="--x:40px;--y:104px;--dur:175s"><g transform="scale(0.75)"><path class="mc-wing" d="M-14 0Q-7 -8 0 0Q7 -8 14 0" fill="none" stroke="#7E4B5E" stroke-width="2.2" stroke-linecap="round"/></g></g>
 <path d="M0 300C120 262 230 270 330 288S560 250 800 278V420H0Z" fill="#CBD3A8"/>
 <path d="M0 338C150 312 280 326 400 334S640 312 800 330V420H0Z" fill="#A9B37A"/>
 <path d="M0 372C200 356 600 360 800 370V420H0Z" fill="#93A06C"/>
@@ -4824,5 +4831,9 @@ size(); addEventListener('resize',size);
     });
   });
 })();
+</script><script>
+(function(){var c=document.querySelector('.mc2');if(!c)return;
+if(!('IntersectionObserver' in window)){c.classList.add('fly');return;}
+var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){c.classList.add('fly');io.disconnect();}})},{threshold:.35});io.observe(c);})();
 </script></body>
 </html>
