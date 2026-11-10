@@ -156,7 +156,7 @@ input[type=range]{width:100%;min-width:0;accent-color:var(--rose-deep);height:28
 .cta{color:#22281A}
 .back{color:var(--rose-deep);font-weight:500}
 footer{text-align:center;font-size:.82rem;color:var(--ink-soft);display:flex;flex-direction:column;gap:6px;align-items:center}
-.sea{align-items:center;text-align:center}
+.sea .fold-b{align-items:center;text-align:center}
 .sea .hint{max-width:38ch}
 .sea-stage{display:block;width:100%;max-width:380px;height:auto;border-radius:22px;background:rgb(24 17 34/.55);border:1px solid var(--line)}
 .sea-cue{font-family:var(--serif);font-style:italic;font-weight:500;font-size:1.9rem;line-height:1.1;min-height:1.2em;margin:-6px 0 0}
@@ -199,25 +199,31 @@ footer{text-align:center;font-size:.82rem;color:var(--ink-soft);display:flex;fle
     <p class="ioshint" id="iosHint" hidden></p>
   </section>
 
-  <section class="card">
-    <h2 data-t="presetsH"></h2>
-    <p class="hint" data-t="presetsHint"></p>
-    <div class="presets" id="presets"></div>
+  <section class="card fold" data-fold="presets">
+    <h2><button class="fold-h" type="button" aria-expanded="false" aria-controls="fb-presets"><span class="t"><b data-t="presetsH"></b><small id="sum-presets"></small></span><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button></h2>
+    <div class="fold-b" id="fb-presets">
+      <p class="hint" data-t="presetsHint"></p>
+      <div class="presets" id="presets"></div>
+  
+    </div>
   </section>
 
-  <section class="card sea" id="sea">
-    <h2 data-t="seaH"></h2>
-    <p class="hint" data-t="seaHint"></p>
-    <svg class="sea-stage" viewBox="0 0 320 210" aria-hidden="true"><path id="seaW3" fill="#E3A2B4"/><path id="seaW2" fill="#E3A2B4"/><path id="seaW1" fill="#E3A2B4"/></svg>
-    <p class="sea-cue" id="seaCue" aria-hidden="true"></p>
-    <p class="sea-count" id="seaCount" aria-hidden="true"></p>
-    <div class="sea-btns">
-      <button class="play" id="seaGo" type="button"></button>
-      <button class="chip" id="seaSnd" type="button" aria-pressed="false"></button>
+  <section class="card fold sea" data-fold="sea" id="sea">
+    <h2><button class="fold-h" type="button" aria-expanded="false" aria-controls="fb-sea"><span class="t"><b data-t="seaH"></b><small id="sum-sea"></small></span><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button></h2>
+    <div class="fold-b" id="fb-sea">
+      <p class="hint" data-t="seaHint"></p>
+      <svg class="sea-stage" viewBox="0 0 320 210" aria-hidden="true"><path id="seaW3" fill="#E3A2B4"/><path id="seaW2" fill="#E3A2B4"/><path id="seaW1" fill="#E3A2B4"/></svg>
+      <p class="sea-cue" id="seaCue" aria-hidden="true"></p>
+      <p class="sea-count" id="seaCount" aria-hidden="true"></p>
+      <div class="sea-btns">
+        <button class="play" id="seaGo" type="button"></button>
+        <button class="chip" id="seaSnd" type="button" aria-pressed="false"></button>
+      </div>
+      <div class="row"><span data-t="seaRateL"></span><input type="range" id="seaRate" min="0" max="3" step="1" value="1"></div>
+      <p class="sea-rate" id="seaRateOut"></p>
+      <div class="row sea-vol" id="seaVolRow" hidden><span data-t="vol"></span><input type="range" id="seaVol" min="0" max="100" value="60" aria-label="Volume"></div>
+  
     </div>
-    <div class="row"><span data-t="seaRateL"></span><input type="range" id="seaRate" min="0" max="3" step="1" value="1"></div>
-    <p class="sea-rate" id="seaRateOut"></p>
-    <div class="row sea-vol" id="seaVolRow" hidden><span data-t="vol"></span><input type="range" id="seaVol" min="0" max="100" value="60" aria-label="Volume"></div>
   </section>
 
   <div class="intro">
@@ -225,30 +231,42 @@ footer{text-align:center;font-size:.82rem;color:var(--ink-soft);display:flex;fle
     <p class="hint" data-t="createHint"></p>
   </div>
 
-  <section class="card">
-    <h2 data-t="musicH"></h2>
-    <p class="hint" data-t="musicHint"></p>
-    <div class="chips" id="music"></div>
-    <div class="row"><span data-t="vol"></span><input type="range" id="musicVol" min="0" max="100" value="55" aria-label="Volume"></div>
+  <section class="card fold" data-fold="music">
+    <h2><button class="fold-h" type="button" aria-expanded="false" aria-controls="fb-music"><span class="t"><b data-t="musicH"></b><small id="sum-music"></small></span><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button></h2>
+    <div class="fold-b" id="fb-music">
+      <p class="hint" data-t="musicHint"></p>
+      <div class="chips" id="music"></div>
+      <div class="row"><span data-t="vol"></span><input type="range" id="musicVol" min="0" max="100" value="55" aria-label="Volume"></div>
+  
+    </div>
   </section>
 
-  <section class="card">
-    <h2 data-t="natureH"></h2>
-    <p class="hint" data-t="natureHint"></p>
-    <div class="sounds" id="sounds"></div>
+  <section class="card fold" data-fold="nature">
+    <h2><button class="fold-h" type="button" aria-expanded="false" aria-controls="fb-nature"><span class="t"><b data-t="natureH"></b><small id="sum-nature"></small></span><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button></h2>
+    <div class="fold-b" id="fb-nature">
+      <p class="hint" data-t="natureHint"></p>
+      <div class="sounds" id="sounds"></div>
+  
+    </div>
   </section>
 
-  <section class="card">
-    <h2 data-t="medH"></h2>
-    <p class="hint" data-t="medHint"></p>
-    <div class="meds" id="meds"></div>
-    <div class="row"><span data-t="vvolL"></span><input type="range" id="voiceVol" min="0" max="100" value="100" aria-label="Volume"></div>
+  <section class="card fold" data-fold="med">
+    <h2><button class="fold-h" type="button" aria-expanded="false" aria-controls="fb-med"><span class="t"><b data-t="medH"></b><small id="sum-med"></small></span><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button></h2>
+    <div class="fold-b" id="fb-med">
+      <p class="hint" data-t="medHint"></p>
+      <div class="meds" id="meds"></div>
+      <div class="row"><span data-t="vvolL"></span><input type="range" id="voiceVol" min="0" max="100" value="100" aria-label="Volume"></div>
+  
+    </div>
   </section>
 
-  <section class="card">
-    <h2 data-t="timerH"></h2>
-    <div class="row"><span id="timerLabel"></span><input type="range" id="timer" min="0" max="12" value="0" aria-label="Minuterie / Timer"></div>
-    <p class="hint" data-t="timerHint"></p>
+  <section class="card fold" data-fold="timer">
+    <h2><button class="fold-h" type="button" aria-expanded="false" aria-controls="fb-timer"><span class="t"><b data-t="timerH"></b><small id="sum-timer"></small></span><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button></h2>
+    <div class="fold-b" id="fb-timer">
+      <div class="row"><span id="timerLabel"></span><input type="range" id="timer" min="0" max="12" value="0" aria-label="Minuterie / Timer"></div>
+      <p class="hint" data-t="timerHint"></p>
+  
+    </div>
   </section>
 
   <section class="card fold" data-fold="freq">
@@ -275,7 +293,7 @@ footer{text-align:center;font-size:.82rem;color:var(--ink-soft);display:flex;fle
 </main>
 <script>
 const T={
-fr:{seaH:"Respirer avec la mer",seaHint:"Suis la marée : l'eau monte quand tu inspires et se retire doucement quand tu expires. L'expiration est deux fois plus longue, pour aider ton corps à se calmer.",seaGo:"Commencer",seaStop:"Arrêter",seaSnd:"Son de la mer",seaRateL:"Respirations",perMin:"par minute",seaIn:"Inspire",seaOut:"Expire",seaIdle:"Quand tu es prête ou prêt",sIn:"inspire",sOut:"expire",pillOff:"Couper le son",pillOn:"Remettre le son",iosHint:"Tu n'entends rien? Vérifie que ton iPhone n'est pas en mode silencieux et monte le volume.",noneP:["Aucun","Je crée mon propre mélange"],welcomeL:"Bienvenue : comment ça marche",createH:"Crée ton expérience",createHint:"Choisis ta musique, tes sons de la nature et, si tu veux, une méditation guidée. Tout se mélange comme tu le sens.",moreH:"Fréquences et effet binaural",medSum:"Avec ma voix",inhale:"Inspire…",exhale:"Expire…",breatheL:"Respire avec le lotus",musicH:"Musique",musicHint:"Une musique douce pour envelopper le reste. Une seule à la fois.",mu:{calm:"Calme intérieur",heart:"Battement de cœur",hopeful:"Espoir",divine:"Appel au divin",om:"Om de la Terre",light:"Fréquence de lumière"},vvolL:"Volume de ma voix",presetsH:"Mélanges suggérés",presetsHint:"Pas envie de mélanger? Choisis une intention, et tout se règle pour toi.",bowlsH:"Bols tibétains",bowlsHint:"Choisis un ou plusieurs bols. Ils chanteront doucement, de temps en temps. Chaque note est associée à un chakra.",notes:["Do", "Ré", "Mi", "Fa", "Sol", "La", "Si"],chak:["Racine", "Sacré", "Plexus solaire", "Cœur", "Gorge", "Troisième œil", "Couronne"],P:[["Apaiser l'anxiété", "Calme intérieur, rivière, oiseaux"], ["Bien dormir", "Fréquence de lumière, océan, grillons"], ["Méditation profonde", "Om de la Terre, océan, vent"], ["Ancrage", "Battement de cœur, feu, rivière"], ["Ouvrir le cœur", "Appel au divin, oiseaux, 432 Hz"], ["Bien commencer la journée", "Espoir, oiseaux du matin, rivière, 432 Hz"]],title:"Un espace pour respirer",lead:"Choisis tes sons, installe-toi confortablement et laisse-toi déposer. C'est gratuit, c'est pour toi.",
+fr:{noneS:"Aucun",seaH:"Respirer avec la mer",seaHint:"Suis la marée : l'eau monte quand tu inspires et se retire doucement quand tu expires. L'expiration est deux fois plus longue, pour aider ton corps à se calmer.",seaGo:"Commencer",seaStop:"Arrêter",seaSnd:"Son de la mer",seaRateL:"Respirations",perMin:"par minute",seaIn:"Inspire",seaOut:"Expire",seaIdle:"Quand tu es prête ou prêt",sIn:"inspire",sOut:"expire",pillOff:"Couper le son",pillOn:"Remettre le son",iosHint:"Tu n'entends rien? Vérifie que ton iPhone n'est pas en mode silencieux et monte le volume.",noneP:["Aucun","Je crée mon propre mélange"],welcomeL:"Bienvenue : comment ça marche",createH:"Crée ton expérience",createHint:"Choisis ta musique, tes sons de la nature et, si tu veux, une méditation guidée. Tout se mélange comme tu le sens.",moreH:"Fréquences et effet binaural",medSum:"Avec ma voix",inhale:"Inspire…",exhale:"Expire…",breatheL:"Respire avec le lotus",musicH:"Musique",musicHint:"Une musique douce pour envelopper le reste. Une seule à la fois.",mu:{calm:"Calme intérieur",heart:"Battement de cœur",hopeful:"Espoir",divine:"Appel au divin",om:"Om de la Terre",light:"Fréquence de lumière"},vvolL:"Volume de ma voix",presetsH:"Mélanges suggérés",presetsHint:"Pas envie de mélanger? Choisis une intention, et tout se règle pour toi.",bowlsH:"Bols tibétains",bowlsHint:"Choisis un ou plusieurs bols. Ils chanteront doucement, de temps en temps. Chaque note est associée à un chakra.",notes:["Do", "Ré", "Mi", "Fa", "Sol", "La", "Si"],chak:["Racine", "Sacré", "Plexus solaire", "Cœur", "Gorge", "Troisième œil", "Couronne"],P:[["Apaiser l'anxiété", "Calme intérieur, rivière, oiseaux"], ["Bien dormir", "Fréquence de lumière, océan, grillons"], ["Méditation profonde", "Om de la Terre, océan, vent"], ["Ancrage", "Battement de cœur, feu, rivière"], ["Ouvrir le cœur", "Appel au divin, oiseaux, 432 Hz"], ["Bien commencer la journée", "Espoir, oiseaux du matin, rivière, 432 Hz"]],title:"Un espace pour respirer",lead:"Choisis tes sons, installe-toi confortablement et laisse-toi déposer. C'est gratuit, c'est pour toi.",
 play:"Commencer",pause:"Faire une pause",ready:"Prends ton temps.",
 natureH:"Sons de la nature",natureHint:"Monte doucement le volume des sons qui t'appellent.",
 freqH:"Fréquence",freqHint:"Une seule à la fois, très douce, sous la musique et les sons de la nature. Les fréquences les plus basses s'entendent mieux avec des écouteurs.",none:"Aucune",vol:"Volume",
@@ -289,7 +307,7 @@ foot:"Offert avec amour par Katiana Cordoba",bookH:"Envie d'aller plus loin?",bo
 s:{wind:"Vent",fire:"Feu de camp",birds:"Oiseaux",forest:"Forêt et ruisseau",river:"Rivière",ocean:"Océan",crickets:"Grillons, la nuit"},
 f:{111:"Renouveau, nouveaux départs",136.1:"Le son OM, l'ancrage dans la Terre",216:"Calme profond, l'octave basse du 432",285:"Régénération, retour à l'équilibre",174:"Apaisement, sécurité",396:"Libérer la peur et la culpabilité",432:"Harmonie naturelle",528:"Amour et transformation",639:"Connexion du cœur",852:"Intuition et éveil"},
 m:[["Balayage corporel","Parcourir le corps avec douceur, d'un endroit à l'autre."],["Respiration consciente","Accompagner la respiration, sans rien changer."],["Ancrage","Sentir les pieds, le poids du corps, le lien avec la terre."],["Ressentir qui tu es vraiment","Observer les pensées, et se reposer dans le silence entre elles."]]},
-es:{seaH:"Respirar con el mar",seaHint:"Sigue la marea: el agua sube cuando inhalas y se retira suavemente cuando exhalas. La exhalación dura el doble, para ayudar a tu cuerpo a calmarse.",seaGo:"Comenzar",seaStop:"Detener",seaSnd:"Sonido del mar",seaRateL:"Respiraciones",perMin:"por minuto",seaIn:"Inhala",seaOut:"Exhala",seaIdle:"Cuando estés lista o listo",sIn:"inhala",sOut:"exhala",pillOff:"Apagar el sonido",pillOn:"Encender el sonido",iosHint:"¿No escuchas nada? Revisa que tu iPhone no esté en modo silencio y sube el volumen.",noneP:["Ninguna","Quiero crear mi propia mezcla"],welcomeL:"Bienvenida: cómo funciona",createH:"Crea tu experiencia",createHint:"Elige tu música, tus sonidos de la naturaleza y, si quieres, una meditación guiada. Todo se mezcla como lo sientas.",moreH:"Frecuencias y efecto binaural",medSum:"Con mi voz",inhale:"Inhala…",exhale:"Exhala…",breatheL:"Respira con el loto",musicH:"Música",musicHint:"Una música suave que envuelve todo lo demás. Una sola a la vez.",mu:{calm:"Calma interior",heart:"Latido",hopeful:"Esperanza",divine:"Llamando a lo divino",om:"Om de la Tierra",light:"Frecuencia de luz"},vvolL:"Volumen de mi voz",presetsH:"Mezclas sugeridas",presetsHint:"¿No quieres mezclar? Elige una intención y todo se ajusta solo.",bowlsH:"Cuencos tibetanos",bowlsHint:"Elige uno o varios cuencos. Cantarán suavemente, de vez en cuando. Cada nota está asociada a un chakra.",notes:["Do", "Re", "Mi", "Fa", "Sol", "La", "Si"],chak:["Raíz", "Sacro", "Plexo solar", "Corazón", "Garganta", "Tercer ojo", "Corona"],P:[["Calmar la ansiedad", "Calma interior, río, pájaros"], ["Dormir bien", "Frecuencia de luz, océano, grillos"], ["Meditación profunda", "Om de la Tierra, océano, viento"], ["Enraizarse", "Latido, fogata, río"], ["Abrir el corazón", "Llamando a lo divino, pájaros, 432 Hz"], ["Empezar bien el día", "Esperanza, pájaros de la mañana, río, 432 Hz"]],title:"Un espacio para respirar",lead:"Elige tus sonidos, ponte cómoda o cómodo y déjate llevar. Es gratis, es para ti.",
+es:{noneS:"Ninguno",seaH:"Respirar con el mar",seaHint:"Sigue la marea: el agua sube cuando inhalas y se retira suavemente cuando exhalas. La exhalación dura el doble, para ayudar a tu cuerpo a calmarse.",seaGo:"Comenzar",seaStop:"Detener",seaSnd:"Sonido del mar",seaRateL:"Respiraciones",perMin:"por minuto",seaIn:"Inhala",seaOut:"Exhala",seaIdle:"Cuando estés lista o listo",sIn:"inhala",sOut:"exhala",pillOff:"Apagar el sonido",pillOn:"Encender el sonido",iosHint:"¿No escuchas nada? Revisa que tu iPhone no esté en modo silencio y sube el volumen.",noneP:["Ninguna","Quiero crear mi propia mezcla"],welcomeL:"Bienvenida: cómo funciona",createH:"Crea tu experiencia",createHint:"Elige tu música, tus sonidos de la naturaleza y, si quieres, una meditación guiada. Todo se mezcla como lo sientas.",moreH:"Frecuencias y efecto binaural",medSum:"Con mi voz",inhale:"Inhala…",exhale:"Exhala…",breatheL:"Respira con el loto",musicH:"Música",musicHint:"Una música suave que envuelve todo lo demás. Una sola a la vez.",mu:{calm:"Calma interior",heart:"Latido",hopeful:"Esperanza",divine:"Llamando a lo divino",om:"Om de la Tierra",light:"Frecuencia de luz"},vvolL:"Volumen de mi voz",presetsH:"Mezclas sugeridas",presetsHint:"¿No quieres mezclar? Elige una intención y todo se ajusta solo.",bowlsH:"Cuencos tibetanos",bowlsHint:"Elige uno o varios cuencos. Cantarán suavemente, de vez en cuando. Cada nota está asociada a un chakra.",notes:["Do", "Re", "Mi", "Fa", "Sol", "La", "Si"],chak:["Raíz", "Sacro", "Plexo solar", "Corazón", "Garganta", "Tercer ojo", "Corona"],P:[["Calmar la ansiedad", "Calma interior, río, pájaros"], ["Dormir bien", "Frecuencia de luz, océano, grillos"], ["Meditación profunda", "Om de la Tierra, océano, viento"], ["Enraizarse", "Latido, fogata, río"], ["Abrir el corazón", "Llamando a lo divino, pájaros, 432 Hz"], ["Empezar bien el día", "Esperanza, pájaros de la mañana, río, 432 Hz"]],title:"Un espacio para respirar",lead:"Elige tus sonidos, ponte cómoda o cómodo y déjate llevar. Es gratis, es para ti.",
 play:"Comenzar",pause:"Pausar",ready:"Tómate tu tiempo.",
 natureH:"Sonidos de la naturaleza",natureHint:"Sube suavemente el volumen de los sonidos que te llamen.",
 freqH:"Frecuencia",freqHint:"Una sola a la vez, muy suave, debajo de la música y los sonidos de la naturaleza. Las frecuencias más bajas se escuchan mejor con audífonos.",none:"Ninguna",vol:"Volumen",
@@ -303,7 +321,7 @@ foot:"Ofrecido con amor por Katiana Cordoba",bookH:"¿Quieres ir más lejos?",bo
 s:{wind:"Viento",fire:"Fogata",birds:"Pájaros",forest:"Bosque y arroyo",river:"Río",ocean:"Océano",crickets:"Grillos de noche"},
 f:{111:"Renovación, nuevos comienzos",136.1:"El sonido OM, enraizarse en la Tierra",216:"Calma profunda, la octava baja del 432",285:"Regeneración, volver al equilibrio",174:"Alivio, seguridad",396:"Soltar el miedo y la culpa",432:"Armonía natural",528:"Amor y transformación",639:"Conexión del corazón",852:"Intuición y despertar"},
 m:[["Escaneo corporal","Recorrer el cuerpo con suavidad, de un lugar a otro."],["Respiración consciente","Acompañar la respiración, sin cambiar nada."],["Anclaje","Sentir los pies, el peso del cuerpo, la conexión con la tierra."],["Sentir tu verdadero ser","Observar los pensamientos y descansar en el silencio entre ellos."]]},
-en:{seaH:"Breathe with the sea",seaHint:"Follow the tide: the water rises as you breathe in and gently recedes as you breathe out. The out-breath is twice as long, to help your body settle.",seaGo:"Begin",seaStop:"Stop",seaSnd:"Sound of the sea",seaRateL:"Breaths",perMin:"per minute",seaIn:"Breathe in",seaOut:"Breathe out",seaIdle:"Whenever you're ready",sIn:"in",sOut:"out",pillOff:"Sound off",pillOn:"Sound on",iosHint:"Can't hear anything? Make sure your iPhone isn't on silent and turn up the volume.",noneP:["None","I'll create my own blend"],welcomeL:"Hello! Here's how it works",createH:"Create your experience",createHint:"Choose your music, your nature sounds and, if you like, a guided meditation. Everything blends the way you feel it.",moreH:"Frequencies and binaural",medSum:"With my voice",inhale:"Breathe in…",exhale:"Breathe out…",breatheL:"Breathe with the lotus",musicH:"Music",musicHint:"Soft music to hold everything else. One at a time.",mu:{calm:"Inner calm",heart:"Heartbeat",hopeful:"Hopeful",divine:"Calling the divine",om:"Om of the Earth",light:"Light frequency"},vvolL:"Volume of my voice",presetsH:"Suggested blends",presetsHint:"Don't feel like mixing? Choose an intention and everything is set for you.",bowlsH:"Tibetan bowls",bowlsHint:"Choose one or more bowls. They will sing softly, every now and then. Each note is linked to a chakra.",notes:["C", "D", "E", "F", "G", "A", "B"],chak:["Root", "Sacral", "Solar plexus", "Heart", "Throat", "Third eye", "Crown"],P:[["Ease anxiety", "Inner calm, river, birds"], ["Sleep well", "Light frequency, ocean, crickets"], ["Deep meditation", "Om of the Earth, ocean, wind"], ["Grounding", "Heartbeat, fire, river"], ["Open the heart", "Calling the divine, birds, 432 Hz"], ["Start the day well", "Hopeful, morning birds, river, 432 Hz"]],title:"A space to breathe",lead:"Choose your sounds, get comfortable and let yourself settle. It's free, and it's for you.",
+en:{noneS:"None",seaH:"Breathe with the sea",seaHint:"Follow the tide: the water rises as you breathe in and gently recedes as you breathe out. The out-breath is twice as long, to help your body settle.",seaGo:"Begin",seaStop:"Stop",seaSnd:"Sound of the sea",seaRateL:"Breaths",perMin:"per minute",seaIn:"Breathe in",seaOut:"Breathe out",seaIdle:"Whenever you're ready",sIn:"in",sOut:"out",pillOff:"Sound off",pillOn:"Sound on",iosHint:"Can't hear anything? Make sure your iPhone isn't on silent and turn up the volume.",noneP:["None","I'll create my own blend"],welcomeL:"Hello! Here's how it works",createH:"Create your experience",createHint:"Choose your music, your nature sounds and, if you like, a guided meditation. Everything blends the way you feel it.",moreH:"Frequencies and binaural",medSum:"With my voice",inhale:"Breathe in…",exhale:"Breathe out…",breatheL:"Breathe with the lotus",musicH:"Music",musicHint:"Soft music to hold everything else. One at a time.",mu:{calm:"Inner calm",heart:"Heartbeat",hopeful:"Hopeful",divine:"Calling the divine",om:"Om of the Earth",light:"Light frequency"},vvolL:"Volume of my voice",presetsH:"Suggested blends",presetsHint:"Don't feel like mixing? Choose an intention and everything is set for you.",bowlsH:"Tibetan bowls",bowlsHint:"Choose one or more bowls. They will sing softly, every now and then. Each note is linked to a chakra.",notes:["C", "D", "E", "F", "G", "A", "B"],chak:["Root", "Sacral", "Solar plexus", "Heart", "Throat", "Third eye", "Crown"],P:[["Ease anxiety", "Inner calm, river, birds"], ["Sleep well", "Light frequency, ocean, crickets"], ["Deep meditation", "Om of the Earth, ocean, wind"], ["Grounding", "Heartbeat, fire, river"], ["Open the heart", "Calling the divine, birds, 432 Hz"], ["Start the day well", "Hopeful, morning birds, river, 432 Hz"]],title:"A space to breathe",lead:"Choose your sounds, get comfortable and let yourself settle. It's free, and it's for you.",
 play:"Begin",pause:"Pause",ready:"Take your time.",
 natureH:"Nature sounds",natureHint:"Gently raise the volume of the sounds that call to you.",
 freqH:"Frequency",freqHint:"One at a time, very soft, beneath the music and nature sounds. The lower frequencies are best heard with headphones or earphones.",none:"None",vol:"Volume",
@@ -509,6 +527,13 @@ document.getElementById("welcome").addEventListener("click",()=>{
     wa.addEventListener("timeupdate",()=>welcomeUI(T[lang]));wa.addEventListener("ended",()=>{wa.currentTime=0;welcomeUI(T[lang])});wa.addEventListener("pause",()=>welcomeUI(T[lang]))}
   wa.play().then(()=>welcomeUI(T[lang])).catch(()=>{});});
 function summaries(t){
+  const S=(k,v)=>{const e=document.getElementById("sum-"+k);if(e)e.textContent=v};
+  S("presets",preset>=0?t.P[preset][0]:preset===-2?t.noneP[1]:"");
+  const[sti,ste]=seaT();S("sea",Math.round(60/(sti+ste))+" "+t.perMin+" · "+sti+" s / "+ste+" s");
+  S("music",st.music?t.mu[st.music]:t.none);
+  const on=SOUNDS.filter(k=>st.vol[k]>0).map(k=>t.s[k]);S("nature",on.length?on.join(", "):t.noneS);
+  S("med",voice&&!voice.paused&&t.m[voiceIdx]?t.m[voiceIdx][0]:t.medSum);
+  const tm=TIMES[st.timer];S("timer",tm?tm+" "+t.min:t.noTimer);
   const b=BINS.find(x=>x[1]===st.beat);document.getElementById("sum-freq").textContent=(st.freq?String(st.freq).replace(".",lang==="en"?".":",")+" Hz":t.none)+(st.beat&&b?" · "+t[b[0]]:"");
 }
 /* the full site menu; while sounds are playing, links open in a new tab so the sound keeps going */
@@ -644,7 +669,7 @@ document.getElementById("seaSnd").addEventListener("click",()=>{
   sea.snd=!sea.snd;if(sea.snd){seaAudio();if(!sea.on){sea.on=true;sea.t0=performance.now()/1000;seaLoop()}}else seaQuiet();
   seaUI(T[lang])});
 document.getElementById("seaRate").addEventListener("input",e=>{sea.r=+e.target.value;try{localStorage.setItem("mc-sea-r",sea.r)}catch(err){}
-  sea.t0=performance.now()/1000;seaUI(T[lang])});
+  sea.t0=performance.now()/1000;seaUI(T[lang]);summaries(T[lang])});
 document.getElementById("seaVol").addEventListener("input",e=>{sea.vol=+e.target.value});
 restore();syncInputs();render();
 
