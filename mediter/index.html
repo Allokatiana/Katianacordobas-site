@@ -102,6 +102,10 @@ body:has(.sound-pill:not([hidden])) main{padding-bottom:calc(96px + env(safe-are
 .fold-h{all:unset;box-sizing:border-box;width:100%;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:18px 20px;cursor:pointer;border-radius:28px}
 .fold-h:focus-visible{outline:3px solid var(--gold);outline-offset:-3px}
 .fold-h .t{display:flex;flex-direction:column;gap:2px;min-width:0}
+.fold-h .fh-ic{flex:none;width:44px;height:44px;border-radius:50%;display:grid;place-items:center;background:var(--chip);color:var(--rose-deep);border:1px solid var(--line)}
+.fold-h .t{flex:1}
+.fold.open .fh-ic{background:var(--rose);color:#5E2338;border-color:transparent}
+.fold-h .fh-ic svg,.fold.open .fold-h .fh-ic svg{color:inherit;transform:none}
 .fold-h .t b{font-family:var(--serif);font-weight:500;font-size:1.6rem;line-height:1.1}
 .fold-h .t small{font-family:var(--sans);font-size:.88rem;color:var(--ink-soft);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .fold-h svg{flex:none;transition:transform .25s;color:var(--rose-deep)}
@@ -200,7 +204,7 @@ footer{text-align:center;font-size:.82rem;color:var(--ink-soft);display:flex;fle
   </section>
 
   <section class="card fold" data-fold="presets">
-    <h2><button class="fold-h" type="button" aria-expanded="false" aria-controls="fb-presets"><span class="t"><b data-t="presetsH"></b><small id="sum-presets"></small></span><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button></h2>
+    <h2><button class="fold-h" type="button" aria-expanded="false" aria-controls="fb-presets"><span class="fh-ic" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l1.8 4.6L18.5 9.5l-4.7 1.9L12 16l-1.8-4.6L5.5 9.5l4.7-1.9z"/><path d="M19 15l.7 1.8 1.8.7-1.8.7-.7 1.8-.7-1.8-1.8-.7 1.8-.7z"/></svg></span><span class="t"><b data-t="presetsH"></b><small id="sum-presets"></small></span><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button></h2>
     <div class="fold-b" id="fb-presets">
       <p class="hint" data-t="presetsHint"></p>
       <div class="presets" id="presets"></div>
@@ -209,7 +213,7 @@ footer{text-align:center;font-size:.82rem;color:var(--ink-soft);display:flex;fle
   </section>
 
   <section class="card fold sea" data-fold="sea" id="sea">
-    <h2><button class="fold-h" type="button" aria-expanded="false" aria-controls="fb-sea"><span class="t"><b data-t="seaH"></b><small id="sum-sea"></small></span><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button></h2>
+    <h2><button class="fold-h" type="button" aria-expanded="false" aria-controls="fb-sea"><span class="fh-ic" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M2 9c2.5 0 2.5-2 5-2s2.5 2 5 2 2.5-2 5-2 2.5 2 5 2M2 15c2.5 0 2.5-2 5-2s2.5 2 5 2 2.5-2 5-2 2.5 2 5 2"/></svg></span><span class="t"><b data-t="seaH"></b><small id="sum-sea"></small></span><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button></h2>
     <div class="fold-b" id="fb-sea">
       <p class="hint" data-t="seaHint"></p>
       <svg class="sea-stage" viewBox="0 0 320 210" aria-hidden="true"><path id="seaW3" fill="#E3A2B4"/><path id="seaW2" fill="#E3A2B4"/><path id="seaW1" fill="#E3A2B4"/></svg>
@@ -232,7 +236,7 @@ footer{text-align:center;font-size:.82rem;color:var(--ink-soft);display:flex;fle
   </div>
 
   <section class="card fold" data-fold="music">
-    <h2><button class="fold-h" type="button" aria-expanded="false" aria-controls="fb-music"><span class="t"><b data-t="musicH"></b><small id="sum-music"></small></span><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button></h2>
+    <h2><button class="fold-h" type="button" aria-expanded="false" aria-controls="fb-music"><span class="fh-ic" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5l11-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="17" cy="16" r="3"/></svg></span><span class="t"><b data-t="musicH"></b><small id="sum-music"></small></span><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button></h2>
     <div class="fold-b" id="fb-music">
       <p class="hint" data-t="musicHint"></p>
       <div class="chips" id="music"></div>
@@ -242,7 +246,7 @@ footer{text-align:center;font-size:.82rem;color:var(--ink-soft);display:flex;fle
   </section>
 
   <section class="card fold" data-fold="nature">
-    <h2><button class="fold-h" type="button" aria-expanded="false" aria-controls="fb-nature"><span class="t"><b data-t="natureH"></b><small id="sum-nature"></small></span><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button></h2>
+    <h2><button class="fold-h" type="button" aria-expanded="false" aria-controls="fb-nature"><span class="fh-ic" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 19c0-8 5-13.5 15-15-1 10-6.5 15-15 15z"/><path d="M5 19l8-8"/></svg></span><span class="t"><b data-t="natureH"></b><small id="sum-nature"></small></span><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button></h2>
     <div class="fold-b" id="fb-nature">
       <p class="hint" data-t="natureHint"></p>
       <div class="sounds" id="sounds"></div>
@@ -251,7 +255,7 @@ footer{text-align:center;font-size:.82rem;color:var(--ink-soft);display:flex;fle
   </section>
 
   <section class="card fold" data-fold="med">
-    <h2><button class="fold-h" type="button" aria-expanded="false" aria-controls="fb-med"><span class="t"><b data-t="medH"></b><small id="sum-med"></small></span><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button></h2>
+    <h2><button class="fold-h" type="button" aria-expanded="false" aria-controls="fb-med"><span class="fh-ic" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 15v-3a8 8 0 0 1 16 0v3"/><rect x="3" y="14" width="4.5" height="6.5" rx="1.6"/><rect x="16.5" y="14" width="4.5" height="6.5" rx="1.6"/></svg></span><span class="t"><b data-t="medH"></b><small id="sum-med"></small></span><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button></h2>
     <div class="fold-b" id="fb-med">
       <p class="hint" data-t="medHint"></p>
       <div class="meds" id="meds"></div>
@@ -261,7 +265,7 @@ footer{text-align:center;font-size:.82rem;color:var(--ink-soft);display:flex;fle
   </section>
 
   <section class="card fold" data-fold="timer">
-    <h2><button class="fold-h" type="button" aria-expanded="false" aria-controls="fb-timer"><span class="t"><b data-t="timerH"></b><small id="sum-timer"></small></span><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button></h2>
+    <h2><button class="fold-h" type="button" aria-expanded="false" aria-controls="fb-timer"><span class="fh-ic" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7 3h10M7 21h10M8 3c0 5 8 6 8 9s-8 4-8 9M16 3c0 5-8 6-8 9s8 4 8 9"/></svg></span><span class="t"><b data-t="timerH"></b><small id="sum-timer"></small></span><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button></h2>
     <div class="fold-b" id="fb-timer">
       <div class="row"><span id="timerLabel"></span><input type="range" id="timer" min="0" max="12" value="0" aria-label="Minuterie / Timer"></div>
       <p class="hint" data-t="timerHint"></p>
@@ -270,7 +274,7 @@ footer{text-align:center;font-size:.82rem;color:var(--ink-soft);display:flex;fle
   </section>
 
   <section class="card fold" data-fold="freq">
-    <h2><button class="fold-h" type="button" aria-expanded="false" aria-controls="fb-freq"><span class="t"><b data-t="moreH"></b><small id="sum-freq"></small></span><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button></h2>
+    <h2><button class="fold-h" type="button" aria-expanded="false" aria-controls="fb-freq"><span class="fh-ic" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12c1.7-5 3.3-5 5 0s3.3 5 5 0 3.3-5 5 0 3.3 5 5 0"/></svg></span><span class="t"><b data-t="moreH"></b><small id="sum-freq"></small></span><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button></h2>
     <div class="fold-b" id="fb-freq">
       <p class="hint" data-t="freqHint"></p>
       <div class="chips" id="freqs"></div>
