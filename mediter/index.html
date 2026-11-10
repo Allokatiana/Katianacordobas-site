@@ -61,15 +61,15 @@ main{max-width:720px;margin:0 auto;display:flex;flex-direction:column;gap:22px;
   padding:12px max(16px,env(safe-area-inset-right,0px)) calc(32px + env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-left,0px))}
 .hero{text-align:center;display:flex;flex-direction:column;align-items:center;gap:10px;padding-top:22px}
 .lotus{width:150px;height:150px;position:relative;display:grid;place-items:center}
-.lotus .halo{position:absolute;inset:-46px;border-radius:50%;background:radial-gradient(circle,rgb(255 240 210/1) 0%,rgb(255 200 170/.85) 26%,rgb(230 130 150/.4) 50%,rgb(230 130 150/0) 72%);transform:scale(.7);opacity:.3}
+.lotus .halo{position:absolute;inset:-40px;border-radius:50%;background:radial-gradient(circle,rgb(255 236 214/.5) 0%,rgb(255 205 185/.32) 30%,rgb(230 140 160/.12) 55%,rgb(230 140 160/0) 72%);transform:scale(.7);opacity:.3}
 .lotus svg path{transform-box:view-box;transform-origin:60px 92px}
-.lotus svg{filter:drop-shadow(0 0 8px rgb(255 214 180/.6))}
-.lotus g{fill:#FBE3D6;fill-opacity:.9;stroke:#FFF1E6}
+.lotus svg{filter:drop-shadow(0 0 4px rgb(255 214 180/.28))}
+.lotus g{fill:#F6DDD4;fill-opacity:.82;stroke:#FBE7DE}
 /* 11 s cycle = 4 s in, 7 s slow out: a long exhale calms the nervous system */
 .lotus .halo{animation:breathe 11s ease-in-out infinite}
 .lotus{animation:bloom 11s ease-in-out infinite;will-change:transform}
-@keyframes breathe{0%,100%{transform:scale(.5);opacity:.15}36%{transform:scale(1.25);opacity:1}}
-@keyframes bloom{0%,100%{transform:scale(.78)}36%{transform:scale(1.32)}}
+@keyframes breathe{0%,100%{transform:scale(.6);opacity:.25}36%{transform:scale(1.12);opacity:.75}}
+@keyframes bloom{0%,100%{transform:scale(.86)}36%{transform:scale(1.16)}}
 .lotus .pl1{animation:openL1 11s ease-in-out infinite}.lotus .pr1{animation:openR1 11s ease-in-out infinite}
 .lotus .pl2{animation:openL2 11s ease-in-out infinite}.lotus .pr2{animation:openR2 11s ease-in-out infinite}
 @keyframes openL1{0%,100%{transform:rotate(10deg)}36%{transform:rotate(-14deg)}}
@@ -87,7 +87,7 @@ body:has(.sound-pill:not([hidden])) main{padding-bottom:calc(96px + env(safe-are
 .ioshint{font-size:.82rem;color:var(--ink-soft);margin:-6px 0 0;max-width:34ch}
 .ioshint[hidden]{display:none}
 .breath{display:flex;flex-direction:column;align-items:center;gap:0;margin:14px 0 6px;position:relative;z-index:1}
-.breath .cue{display:grid;font-family:var(--serif);font-style:italic;font-weight:500;font-size:2.1rem;line-height:1.15;color:#FFF3EA;text-shadow:0 0 18px rgb(255 214 180/.55),0 1px 10px rgb(40 20 40/.55);min-height:1.2em}
+.breath .cue{display:grid;font-family:var(--serif);font-style:italic;font-weight:500;font-size:2.1rem;line-height:1.15;color:#FFF3EA;text-shadow:0 0 12px rgb(255 214 180/.25),0 1px 8px rgb(40 20 40/.45);min-height:1.2em}
 .breath .cue span{grid-area:1/1;opacity:0}
 .breath .in{animation:cueIn 11s ease-in-out infinite}
 .breath .out{animation:cueOut 11s ease-in-out infinite}
