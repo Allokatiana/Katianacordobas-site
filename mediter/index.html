@@ -156,6 +156,18 @@ input[type=range]{width:100%;min-width:0;accent-color:var(--rose-deep);height:28
 .cta{color:#22281A}
 .back{color:var(--rose-deep);font-weight:500}
 footer{text-align:center;font-size:.82rem;color:var(--ink-soft);display:flex;flex-direction:column;gap:6px;align-items:center}
+.sea{align-items:center;text-align:center}
+.sea .hint{max-width:38ch}
+.sea-stage{width:260px;height:260px;max-width:100%;display:grid;place-items:center}
+.sea-orb{width:90px;height:90px;border-radius:50%}
+.sea-cue{font-family:var(--serif);font-style:italic;font-weight:500;font-size:1.9rem;line-height:1.1;min-height:1.2em;margin:-6px 0 0}
+.sea-count{font-size:.9rem;color:var(--ink-soft);min-height:1.4em;margin:0;font-variant-numeric:tabular-nums}
+.sea-btns{display:flex;flex-wrap:wrap;gap:8px;justify-content:center}
+.sea-btns .play{margin-top:0;min-width:160px}
+.sea .row{width:100%;max-width:420px}
+.sea .row span{min-width:7.5em;text-align:left}
+.sea-rate{font-size:.88rem;color:var(--ink-soft);margin:-6px 0 0;font-variant-numeric:tabular-nums}
+.sea-vol[hidden]{display:none}
 @media (prefers-reduced-motion:reduce){.lotus,.lotus .halo,.lotus svg path{animation:none!important;opacity:.9}.breath .cue{display:none}}
 </style>
 </head>
@@ -192,6 +204,21 @@ footer{text-align:center;font-size:.82rem;color:var(--ink-soft);display:flex;fle
     <h2 data-t="presetsH"></h2>
     <p class="hint" data-t="presetsHint"></p>
     <div class="presets" id="presets"></div>
+  </section>
+
+  <section class="card sea" id="sea">
+    <h2 data-t="seaH"></h2>
+    <p class="hint" data-t="seaHint"></p>
+    <div class="sea-stage" aria-hidden="true"><div class="sea-orb" id="seaOrb"></div></div>
+    <p class="sea-cue" id="seaCue" aria-hidden="true"></p>
+    <p class="sea-count" id="seaCount" aria-hidden="true"></p>
+    <div class="sea-btns">
+      <button class="play" id="seaGo" type="button"></button>
+      <button class="chip" id="seaSnd" type="button" aria-pressed="false"></button>
+    </div>
+    <div class="row"><span data-t="seaRateL"></span><input type="range" id="seaRate" min="0" max="3" step="1" value="1"></div>
+    <p class="sea-rate" id="seaRateOut"></p>
+    <div class="row sea-vol" id="seaVolRow" hidden><span data-t="vol"></span><input type="range" id="seaVol" min="0" max="100" value="60" aria-label="Volume"></div>
   </section>
 
   <div class="intro">
@@ -249,7 +276,7 @@ footer{text-align:center;font-size:.82rem;color:var(--ink-soft);display:flex;fle
 </main>
 <script>
 const T={
-fr:{pillOff:"Couper le son",pillOn:"Remettre le son",iosHint:"Tu n'entends rien? Vérifie que ton iPhone n'est pas en mode silencieux et monte le volume.",noneP:["Aucun","Je crée mon propre mélange"],welcomeL:"Bienvenue : comment ça marche",createH:"Crée ton expérience",createHint:"Choisis ta musique, tes sons de la nature et, si tu veux, une méditation guidée. Tout se mélange comme tu le sens.",moreH:"Fréquences et effet binaural",medSum:"Avec ma voix",inhale:"Inspire…",exhale:"Expire…",breatheL:"Respire avec le lotus",musicH:"Musique",musicHint:"Une musique douce pour envelopper le reste. Une seule à la fois.",mu:{calm:"Calme intérieur",heart:"Battement de cœur",hopeful:"Espoir",divine:"Appel au divin",om:"Om de la Terre",light:"Fréquence de lumière"},vvolL:"Volume de ma voix",presetsH:"Mélanges suggérés",presetsHint:"Pas envie de mélanger? Choisis une intention, et tout se règle pour toi.",bowlsH:"Bols tibétains",bowlsHint:"Choisis un ou plusieurs bols. Ils chanteront doucement, de temps en temps. Chaque note est associée à un chakra.",notes:["Do", "Ré", "Mi", "Fa", "Sol", "La", "Si"],chak:["Racine", "Sacré", "Plexus solaire", "Cœur", "Gorge", "Troisième œil", "Couronne"],P:[["Apaiser l'anxiété", "Calme intérieur, rivière, oiseaux"], ["Bien dormir", "Fréquence de lumière, océan, grillons"], ["Méditation profonde", "Om de la Terre, océan, vent"], ["Ancrage", "Battement de cœur, feu, rivière"], ["Ouvrir le cœur", "Appel au divin, oiseaux, 432 Hz"], ["Bien commencer la journée", "Espoir, oiseaux du matin, rivière, 432 Hz"]],title:"Un espace pour respirer",lead:"Choisis tes sons, installe-toi confortablement et laisse-toi déposer. C'est gratuit, c'est pour toi.",
+fr:{seaH:"Respirer avec la mer",seaHint:"Suis la lumière : elle grandit quand tu inspires et se retire doucement quand tu expires. L'expiration est deux fois plus longue, pour aider ton corps à se calmer.",seaGo:"Commencer",seaStop:"Arrêter",seaSnd:"Son de la mer",seaRateL:"Respirations",perMin:"par minute",seaIn:"Inspire",seaOut:"Expire",seaIdle:"Quand tu es prête ou prêt",sIn:"inspire",sOut:"expire",pillOff:"Couper le son",pillOn:"Remettre le son",iosHint:"Tu n'entends rien? Vérifie que ton iPhone n'est pas en mode silencieux et monte le volume.",noneP:["Aucun","Je crée mon propre mélange"],welcomeL:"Bienvenue : comment ça marche",createH:"Crée ton expérience",createHint:"Choisis ta musique, tes sons de la nature et, si tu veux, une méditation guidée. Tout se mélange comme tu le sens.",moreH:"Fréquences et effet binaural",medSum:"Avec ma voix",inhale:"Inspire…",exhale:"Expire…",breatheL:"Respire avec le lotus",musicH:"Musique",musicHint:"Une musique douce pour envelopper le reste. Une seule à la fois.",mu:{calm:"Calme intérieur",heart:"Battement de cœur",hopeful:"Espoir",divine:"Appel au divin",om:"Om de la Terre",light:"Fréquence de lumière"},vvolL:"Volume de ma voix",presetsH:"Mélanges suggérés",presetsHint:"Pas envie de mélanger? Choisis une intention, et tout se règle pour toi.",bowlsH:"Bols tibétains",bowlsHint:"Choisis un ou plusieurs bols. Ils chanteront doucement, de temps en temps. Chaque note est associée à un chakra.",notes:["Do", "Ré", "Mi", "Fa", "Sol", "La", "Si"],chak:["Racine", "Sacré", "Plexus solaire", "Cœur", "Gorge", "Troisième œil", "Couronne"],P:[["Apaiser l'anxiété", "Calme intérieur, rivière, oiseaux"], ["Bien dormir", "Fréquence de lumière, océan, grillons"], ["Méditation profonde", "Om de la Terre, océan, vent"], ["Ancrage", "Battement de cœur, feu, rivière"], ["Ouvrir le cœur", "Appel au divin, oiseaux, 432 Hz"], ["Bien commencer la journée", "Espoir, oiseaux du matin, rivière, 432 Hz"]],title:"Un espace pour respirer",lead:"Choisis tes sons, installe-toi confortablement et laisse-toi déposer. C'est gratuit, c'est pour toi.",
 play:"Commencer",pause:"Faire une pause",ready:"Prends ton temps.",
 natureH:"Sons de la nature",natureHint:"Monte doucement le volume des sons qui t'appellent.",
 freqH:"Fréquence",freqHint:"Une seule à la fois, très douce, sous la musique et les sons de la nature. Les fréquences les plus basses s'entendent mieux avec des écouteurs.",none:"Aucune",vol:"Volume",
@@ -263,7 +290,7 @@ foot:"Offert avec amour par Katiana Cordoba",bookH:"Envie d'aller plus loin?",bo
 s:{wind:"Vent",fire:"Feu de camp",birds:"Oiseaux",forest:"Forêt et ruisseau",river:"Rivière",ocean:"Océan",crickets:"Grillons, la nuit"},
 f:{111:"Renouveau, nouveaux départs",136.1:"Le son OM, l'ancrage dans la Terre",216:"Calme profond, l'octave basse du 432",285:"Régénération, retour à l'équilibre",174:"Apaisement, sécurité",396:"Libérer la peur et la culpabilité",432:"Harmonie naturelle",528:"Amour et transformation",639:"Connexion du cœur",852:"Intuition et éveil"},
 m:[["Balayage corporel","Parcourir le corps avec douceur, d'un endroit à l'autre."],["Respiration consciente","Accompagner la respiration, sans rien changer."],["Ancrage","Sentir les pieds, le poids du corps, le lien avec la terre."],["Ressentir qui tu es vraiment","Observer les pensées, et se reposer dans le silence entre elles."]]},
-es:{pillOff:"Apagar el sonido",pillOn:"Encender el sonido",iosHint:"¿No escuchas nada? Revisa que tu iPhone no esté en modo silencio y sube el volumen.",noneP:["Ninguna","Quiero crear mi propia mezcla"],welcomeL:"Bienvenida: cómo funciona",createH:"Crea tu experiencia",createHint:"Elige tu música, tus sonidos de la naturaleza y, si quieres, una meditación guiada. Todo se mezcla como lo sientas.",moreH:"Frecuencias y efecto binaural",medSum:"Con mi voz",inhale:"Inhala…",exhale:"Exhala…",breatheL:"Respira con el loto",musicH:"Música",musicHint:"Una música suave que envuelve todo lo demás. Una sola a la vez.",mu:{calm:"Calma interior",heart:"Latido",hopeful:"Esperanza",divine:"Llamando a lo divino",om:"Om de la Tierra",light:"Frecuencia de luz"},vvolL:"Volumen de mi voz",presetsH:"Mezclas sugeridas",presetsHint:"¿No quieres mezclar? Elige una intención y todo se ajusta solo.",bowlsH:"Cuencos tibetanos",bowlsHint:"Elige uno o varios cuencos. Cantarán suavemente, de vez en cuando. Cada nota está asociada a un chakra.",notes:["Do", "Re", "Mi", "Fa", "Sol", "La", "Si"],chak:["Raíz", "Sacro", "Plexo solar", "Corazón", "Garganta", "Tercer ojo", "Corona"],P:[["Calmar la ansiedad", "Calma interior, río, pájaros"], ["Dormir bien", "Frecuencia de luz, océano, grillos"], ["Meditación profunda", "Om de la Tierra, océano, viento"], ["Enraizarse", "Latido, fogata, río"], ["Abrir el corazón", "Llamando a lo divino, pájaros, 432 Hz"], ["Empezar bien el día", "Esperanza, pájaros de la mañana, río, 432 Hz"]],title:"Un espacio para respirar",lead:"Elige tus sonidos, ponte cómoda o cómodo y déjate llevar. Es gratis, es para ti.",
+es:{seaH:"Respirar con el mar",seaHint:"Sigue la luz: crece cuando inhalas y se retira suavemente cuando exhalas. La exhalación dura el doble, para ayudar a tu cuerpo a calmarse.",seaGo:"Comenzar",seaStop:"Detener",seaSnd:"Sonido del mar",seaRateL:"Respiraciones",perMin:"por minuto",seaIn:"Inhala",seaOut:"Exhala",seaIdle:"Cuando estés lista o listo",sIn:"inhala",sOut:"exhala",pillOff:"Apagar el sonido",pillOn:"Encender el sonido",iosHint:"¿No escuchas nada? Revisa que tu iPhone no esté en modo silencio y sube el volumen.",noneP:["Ninguna","Quiero crear mi propia mezcla"],welcomeL:"Bienvenida: cómo funciona",createH:"Crea tu experiencia",createHint:"Elige tu música, tus sonidos de la naturaleza y, si quieres, una meditación guiada. Todo se mezcla como lo sientas.",moreH:"Frecuencias y efecto binaural",medSum:"Con mi voz",inhale:"Inhala…",exhale:"Exhala…",breatheL:"Respira con el loto",musicH:"Música",musicHint:"Una música suave que envuelve todo lo demás. Una sola a la vez.",mu:{calm:"Calma interior",heart:"Latido",hopeful:"Esperanza",divine:"Llamando a lo divino",om:"Om de la Tierra",light:"Frecuencia de luz"},vvolL:"Volumen de mi voz",presetsH:"Mezclas sugeridas",presetsHint:"¿No quieres mezclar? Elige una intención y todo se ajusta solo.",bowlsH:"Cuencos tibetanos",bowlsHint:"Elige uno o varios cuencos. Cantarán suavemente, de vez en cuando. Cada nota está asociada a un chakra.",notes:["Do", "Re", "Mi", "Fa", "Sol", "La", "Si"],chak:["Raíz", "Sacro", "Plexo solar", "Corazón", "Garganta", "Tercer ojo", "Corona"],P:[["Calmar la ansiedad", "Calma interior, río, pájaros"], ["Dormir bien", "Frecuencia de luz, océano, grillos"], ["Meditación profunda", "Om de la Tierra, océano, viento"], ["Enraizarse", "Latido, fogata, río"], ["Abrir el corazón", "Llamando a lo divino, pájaros, 432 Hz"], ["Empezar bien el día", "Esperanza, pájaros de la mañana, río, 432 Hz"]],title:"Un espacio para respirar",lead:"Elige tus sonidos, ponte cómoda o cómodo y déjate llevar. Es gratis, es para ti.",
 play:"Comenzar",pause:"Pausar",ready:"Tómate tu tiempo.",
 natureH:"Sonidos de la naturaleza",natureHint:"Sube suavemente el volumen de los sonidos que te llamen.",
 freqH:"Frecuencia",freqHint:"Una sola a la vez, muy suave, debajo de la música y los sonidos de la naturaleza. Las frecuencias más bajas se escuchan mejor con audífonos.",none:"Ninguna",vol:"Volumen",
@@ -277,7 +304,7 @@ foot:"Ofrecido con amor por Katiana Cordoba",bookH:"¿Quieres ir más lejos?",bo
 s:{wind:"Viento",fire:"Fogata",birds:"Pájaros",forest:"Bosque y arroyo",river:"Río",ocean:"Océano",crickets:"Grillos de noche"},
 f:{111:"Renovación, nuevos comienzos",136.1:"El sonido OM, enraizarse en la Tierra",216:"Calma profunda, la octava baja del 432",285:"Regeneración, volver al equilibrio",174:"Alivio, seguridad",396:"Soltar el miedo y la culpa",432:"Armonía natural",528:"Amor y transformación",639:"Conexión del corazón",852:"Intuición y despertar"},
 m:[["Escaneo corporal","Recorrer el cuerpo con suavidad, de un lugar a otro."],["Respiración consciente","Acompañar la respiración, sin cambiar nada."],["Anclaje","Sentir los pies, el peso del cuerpo, la conexión con la tierra."],["Sentir tu verdadero ser","Observar los pensamientos y descansar en el silencio entre ellos."]]},
-en:{pillOff:"Sound off",pillOn:"Sound on",iosHint:"Can't hear anything? Make sure your iPhone isn't on silent and turn up the volume.",noneP:["None","I'll create my own blend"],welcomeL:"Hello! Here's how it works",createH:"Create your experience",createHint:"Choose your music, your nature sounds and, if you like, a guided meditation. Everything blends the way you feel it.",moreH:"Frequencies and binaural",medSum:"With my voice",inhale:"Breathe in…",exhale:"Breathe out…",breatheL:"Breathe with the lotus",musicH:"Music",musicHint:"Soft music to hold everything else. One at a time.",mu:{calm:"Inner calm",heart:"Heartbeat",hopeful:"Hopeful",divine:"Calling the divine",om:"Om of the Earth",light:"Light frequency"},vvolL:"Volume of my voice",presetsH:"Suggested blends",presetsHint:"Don't feel like mixing? Choose an intention and everything is set for you.",bowlsH:"Tibetan bowls",bowlsHint:"Choose one or more bowls. They will sing softly, every now and then. Each note is linked to a chakra.",notes:["C", "D", "E", "F", "G", "A", "B"],chak:["Root", "Sacral", "Solar plexus", "Heart", "Throat", "Third eye", "Crown"],P:[["Ease anxiety", "Inner calm, river, birds"], ["Sleep well", "Light frequency, ocean, crickets"], ["Deep meditation", "Om of the Earth, ocean, wind"], ["Grounding", "Heartbeat, fire, river"], ["Open the heart", "Calling the divine, birds, 432 Hz"], ["Start the day well", "Hopeful, morning birds, river, 432 Hz"]],title:"A space to breathe",lead:"Choose your sounds, get comfortable and let yourself settle. It's free, and it's for you.",
+en:{seaH:"Breathe with the sea",seaHint:"Follow the light: it grows as you breathe in and gently recedes as you breathe out. The out-breath is twice as long, to help your body settle.",seaGo:"Begin",seaStop:"Stop",seaSnd:"Sound of the sea",seaRateL:"Breaths",perMin:"per minute",seaIn:"Breathe in",seaOut:"Breathe out",seaIdle:"Whenever you're ready",sIn:"in",sOut:"out",pillOff:"Sound off",pillOn:"Sound on",iosHint:"Can't hear anything? Make sure your iPhone isn't on silent and turn up the volume.",noneP:["None","I'll create my own blend"],welcomeL:"Hello! Here's how it works",createH:"Create your experience",createHint:"Choose your music, your nature sounds and, if you like, a guided meditation. Everything blends the way you feel it.",moreH:"Frequencies and binaural",medSum:"With my voice",inhale:"Breathe in…",exhale:"Breathe out…",breatheL:"Breathe with the lotus",musicH:"Music",musicHint:"Soft music to hold everything else. One at a time.",mu:{calm:"Inner calm",heart:"Heartbeat",hopeful:"Hopeful",divine:"Calling the divine",om:"Om of the Earth",light:"Light frequency"},vvolL:"Volume of my voice",presetsH:"Suggested blends",presetsHint:"Don't feel like mixing? Choose an intention and everything is set for you.",bowlsH:"Tibetan bowls",bowlsHint:"Choose one or more bowls. They will sing softly, every now and then. Each note is linked to a chakra.",notes:["C", "D", "E", "F", "G", "A", "B"],chak:["Root", "Sacral", "Solar plexus", "Heart", "Throat", "Third eye", "Crown"],P:[["Ease anxiety", "Inner calm, river, birds"], ["Sleep well", "Light frequency, ocean, crickets"], ["Deep meditation", "Om of the Earth, ocean, wind"], ["Grounding", "Heartbeat, fire, river"], ["Open the heart", "Calling the divine, birds, 432 Hz"], ["Start the day well", "Hopeful, morning birds, river, 432 Hz"]],title:"A space to breathe",lead:"Choose your sounds, get comfortable and let yourself settle. It's free, and it's for you.",
 play:"Begin",pause:"Pause",ready:"Take your time.",
 natureH:"Nature sounds",natureHint:"Gently raise the volume of the sounds that call to you.",
 freqH:"Frequency",freqHint:"One at a time, very soft, beneath the music and nature sounds. The lower frequencies are best heard with headphones or earphones.",none:"None",vol:"Volume",
@@ -512,7 +539,7 @@ function render(){
     return `<div class="med"><h3>${h}</h3><p>${p}</p>${has?(()=>{const act=voice&&voiceIdx===i&&!voice.ended,cur=act&&voice.currentTime>0;return `<div class="ctl">${act?`<button class="skip" data-skip="-15" aria-label="${t.back15}">−15 s</button>`:""}<button data-med="${i}">${on?t.stopV:(cur?t.resumeV:t.listen)}</button>${act?`<button class="skip" data-skip="15" aria-label="${t.fwd15}">+15 s</button>`:""}</div>${act?`<input type="range" class="seek" id="vs-${i}" min="0" max="${isFinite(voice.duration)?Math.floor(voice.duration):0}" step="1" value="${Math.floor(voice.currentTime)}" aria-label="${t.seekL}">`:""}<span class="time" id="vt-${i}"></span>`})():`<span class="soon">${t.soon}</span>`}</div>`}).join("");
   document.querySelectorAll("#presets .preset[data-p]").forEach((b,i)=>{b.innerHTML="<b>"+t.P[i][0]+"</b><span>"+t.P[i][1]+"</span>";b.setAttribute("aria-pressed",i===preset)});
   const nb=document.querySelector("#presets .preset[data-none]");nb.innerHTML="<b>"+t.noneP[0]+"</b><span>"+t.noneP[1]+"</span>";nb.setAttribute("aria-pressed",preset===-2);
-  summaries(t);welcomeUI(t);save();updStatus();vtime();}
+  summaries(t);welcomeUI(t);seaUI(t);save();updStatus();vtime();}
 
 document.getElementById("sounds").innerHTML=SOUNDS.map(k=>`<div class="snd" id="c-${k}">
   <span class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">${ICONS[k]}</svg></span>
@@ -577,6 +604,48 @@ document.querySelectorAll(".fold").forEach(f=>{const k=f.dataset.fold,b=f.queryS
   const set=o=>{f.classList.toggle("open",o);b.setAttribute("aria-expanded",o)};set(openSet.includes(k));
   b.addEventListener("click",()=>{const o=!f.classList.contains("open");set(o);openSet=openSet.filter(x=>x!==k);if(o)openSet.push(k);try{localStorage.setItem("mc-open",JSON.stringify(openSet))}catch(e){}})});
 document.getElementById("app").addEventListener("input",()=>{summaries(T[lang]);save()});
+/* ---------- breathe with the sea: the exhale is always twice the inhale ---------- */
+const SEA_IN=[3,4,5,6];const sea={on:false,snd:false,r:1,t0:0,raf:0,g:null,f:null,vol:60,loading:null};
+try{const v=localStorage.getItem("mc-sea-r");if(v!==null&&+v>=0&&+v<4)sea.r=+v}catch(e){}
+document.getElementById("seaRate").value=sea.r;
+function seaT(){const i=SEA_IN[sea.r];return[i,i*2]}
+function seaPaint(e){const o=document.getElementById("seaOrb"),z=90+e*160,a=.3+e*.62,
+  c="rgba("+Math.round(242-e*42)+","+Math.round(204-e*96)+","+Math.round(210-e*72)+",";
+  o.style.width=o.style.height=z+"px";
+  o.style.background="radial-gradient(circle,"+c+a.toFixed(3)+") 0%,"+c+(a*.65).toFixed(3)+") 38%,"+c+(a*.2).toFixed(3)+") 58%,"+c+"0) 72%)"}
+function seaAudio(){
+  if(!ctx)build();iosUnlock();ctx.resume().catch(()=>{});
+  if(!sea.loading)sea.loading=loadBuf("ocean").then(b=>{
+    sea.f=ctx.createBiquadFilter();sea.f.type="lowpass";sea.f.frequency.value=600;sea.g=ctx.createGain();sea.g.gain.value=0;
+    sea.f.connect(sea.g).connect(ctx.destination);
+    const s=ctx.createBufferSource();s.buffer=b;s.loop=true;s.loopStart=PAD;s.loopEnd=Math.min(b.duration,PAD+LEN.ocean);s.connect(sea.f);s.start(0,PAD)})
+    .catch(()=>{sea.loading=null});
+  return sea.loading}
+function seaQuiet(){if(sea.g)sea.g.gain.setTargetAtTime(0,ctx.currentTime,.4)}
+function seaLoop(){
+  const[ti,te]=seaT(),c=ti+te,el=(performance.now()/1000-sea.t0)%c,inh=el<ti,p=inh?el/ti:1-(el-ti)/te,e=.5-.5*Math.cos(Math.PI*p),t=T[lang];
+  seaPaint(e);document.getElementById("seaCue").textContent=inh?t.seaIn:t.seaOut;
+  document.getElementById("seaCount").textContent=Math.ceil(inh?ti-el:c-el)+" s";
+  if(sea.g&&sea.snd){sea.g.gain.setTargetAtTime(Math.pow(sea.vol/100,1.4)*(.12+e*.88),ctx.currentTime,.08);sea.f.frequency.setTargetAtTime(500+e*2600,ctx.currentTime,.08)}
+  sea.raf=requestAnimationFrame(seaLoop)}
+function seaUI(t){
+  const[ti,te]=seaT();document.getElementById("seaGo").textContent=sea.on?t.seaStop:t.seaGo;
+  const sb=document.getElementById("seaSnd");sb.textContent=t.seaSnd;sb.setAttribute("aria-pressed",sea.snd);
+  document.getElementById("seaVolRow").hidden=!sea.snd;
+  document.getElementById("seaRate").setAttribute("aria-label",t.seaRateL);
+  document.getElementById("seaRateOut").textContent=Math.round(60/(ti+te))+" "+t.perMin+" · "+ti+" s "+t.sIn+" · "+te+" s "+t.sOut;
+  if(!sea.on){document.getElementById("seaCue").textContent=t.seaIdle;document.getElementById("seaCount").textContent=""}}
+seaPaint(0);
+document.getElementById("seaGo").addEventListener("click",()=>{
+  sea.on=!sea.on;cancelAnimationFrame(sea.raf);
+  if(sea.on){sea.t0=performance.now()/1000;if(sea.snd)seaAudio();seaLoop()}else{seaQuiet();seaPaint(0)}
+  seaUI(T[lang])});
+document.getElementById("seaSnd").addEventListener("click",()=>{
+  sea.snd=!sea.snd;if(sea.snd){seaAudio();if(!sea.on){sea.on=true;sea.t0=performance.now()/1000;seaLoop()}}else seaQuiet();
+  seaUI(T[lang])});
+document.getElementById("seaRate").addEventListener("input",e=>{sea.r=+e.target.value;try{localStorage.setItem("mc-sea-r",sea.r)}catch(err){}
+  sea.t0=performance.now()/1000;seaUI(T[lang])});
+document.getElementById("seaVol").addEventListener("input",e=>{sea.vol=+e.target.value});
 restore();syncInputs();render();
 
 document.addEventListener("visibilitychange",()=>{if(document.visibilityState==="visible"&&playing&&ctx&&ctx.state!=="running"){iosUnlock();ctx.resume().catch(()=>{})}});
