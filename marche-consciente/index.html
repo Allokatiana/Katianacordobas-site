@@ -71,14 +71,16 @@ p{margin:0 0 14px;font-size:1.06rem;text-wrap:pretty}
 .info dd{margin:4px 0 0;font-size:1.05rem}
 .info dd small{display:block;color:#E4DCCF;font-size:.95rem}
 .info a{color:#F4EEE3}
-.book-box{background:var(--paper);border-radius:22px;overflow:hidden;margin-top:18px}
-.book-box iframe{display:block;width:100%;height:1150px;border:0}
+.book-box{position:relative;background:var(--paper);border-radius:22px;overflow:hidden;margin-top:18px}
+.book-box .wait{position:absolute;top:40px;left:0;right:0;text-align:center;margin:0;color:var(--ink-soft);font-size:1rem}
+.book-box iframe{position:relative}
+.book-box iframe{display:block;width:100%;height:1350px;border:0}
 .alt{margin-top:12px;font-size:.95rem}
 .contact{display:flex;flex-wrap:wrap;gap:10px;margin-top:6px}
 .contact a{display:inline-flex;align-items:center;min-height:44px;padding:0 16px;border-radius:99px;background:var(--paper);color:var(--ink);text-decoration:none;font-weight:600}
 footer{padding:30px 0 calc(36px + env(safe-area-inset-bottom,0px));font-size:.9rem;color:var(--ink-soft);display:flex;flex-wrap:wrap;gap:8px 18px;justify-content:space-between}
 footer a{color:var(--ink-soft)}
-@media (min-width:700px){.info{padding:36px}.info dl{grid-template-columns:1fr 1fr}.book-box iframe{height:760px}}
+@media (min-width:700px){.info{padding:36px}.info dl{grid-template-columns:1fr 1fr}}
 </style>
 </head>
 <body>
@@ -171,6 +173,7 @@ footer a{color:var(--ink-soft)}
   <h2 id="reserver-h">Réserver ma place</h2>
   <p>Il suffit de remplir ce court formulaire. Vous recevrez une confirmation par courriel.</p>
   <div class="book-box">
+    <p class="wait">Le formulaire se charge…</p>
     <iframe title="Réserver ma place à la marche consciente" src="https://calendly.com/katianacoach/marche-consciente/2026-12-06T10:00:00-05:00?embed_type=Inline&amp;hide_gdpr_banner=1&amp;hide_event_type_details=1&amp;background_color=fbf6f1&amp;text_color=2f3a26&amp;primary_color=4a5a3a" loading="lazy"></iframe>
   </div>
   <p class="alt"><a href="https://calendly.com/katianacoach/marche-consciente/2026-12-06T10:00:00-05:00" target="_blank" rel="noopener">Le formulaire ne s’affiche pas&nbsp;? Ouvrez-le dans une nouvelle fenêtre.</a></p>
