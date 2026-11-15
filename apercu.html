@@ -2443,6 +2443,12 @@ On peut peut-être commencer par un simple moment de présence.">Je me sens perd
 .grow-a:focus-visible{outline:2px solid var(--sc-accent);outline-offset:3px}
 .fam-alone{font-weight:500;color:var(--sc-ink)}
 .about-grow{margin:var(--sc-5) 0 0;color:var(--sc-ink);max-width:56ch;font-size:1.1rem;line-height:1.65}
+/* "what can change" — the title leads, the four words follow */
+#ap-h.tg-label{font-size:clamp(2.2rem,1.4rem + 2.8vw,3.6rem);line-height:1.08;font-weight:500;color:var(--sc-ink);max-width:21ch;margin-bottom:var(--sc-5);align-items:flex-start}
+#ap-h.tg-label .lb-ic{margin-top:.2em}
+.tg .tg-beat h3,.tg-beat h3{font-size:clamp(2.2rem,1.5rem + 2.4vw,3.4rem)}
+.tg-beat p{font-size:clamp(1.2rem,1rem + .8vw,1.55rem)}
+@media (max-width:640px){#ap-h.tg-label{font-size:2rem;max-width:none}.tg-beat h3{font-size:2.2rem}.tg-beat p{font-size:1.12rem}}
 /* growth: words on the left, a mountain on the right; seen from behind, she climbs toward the site's sun as you scroll */
 .grow-in.gp-on{max-width:72rem;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(1.5rem,4vw,4rem);align-items:center;text-align:left}
 .gp-on .grow-label{justify-content:flex-start}
