@@ -4922,17 +4922,26 @@ size(); addEventListener('resize',size);
 /* doors: open, then glide to the chosen part of the page */
 (function(){
   var RMq=matchMedia('(prefers-reduced-motion: reduce)');
-  function glideTo(y){
-    if(RMq.matches){ scrollTo({top:y,behavior:'instant'}); return; }
-    var y0=scrollY, d=y-y0, t0=performance.now(), dur=Math.min(2200,Math.max(900,Math.abs(d)*.6));
+  var glideId=0; function stopGlide(){ glideId++; }
+  ['wheel','touchstart','keydown'].forEach(function(ev){ addEventListener(ev,stopGlide,{passive:true}); });
+  function glideTo(y,dur,done){
+    if(RMq.matches){ scrollTo({top:y,behavior:'instant'}); if(done) done(); return; }
+    var id=++glideId, y0=scrollY, d=y-y0, t0=performance.now(); dur=dur||Math.min(2200,Math.max(900,Math.abs(d)*.6));
     var ease=function(k){return k<.5?4*k*k*k:1-Math.pow(-2*k+2,3)/2};
-    (function step(now){ var k=Math.min(1,(now-t0)/dur); scrollTo({top:y0+d*ease(k),behavior:'instant'}); if(k<1) requestAnimationFrame(step); })(t0);
+    (function step(now){ if(id!==glideId) return; var k=Math.min(1,(now-t0)/dur); scrollTo({top:y0+d*ease(k),behavior:'instant'}); if(k<1) requestAnimationFrame(step); else if(done) done(); })(t0);
   }
   [].slice.call(document.querySelectorAll('a[data-door]')).forEach(function(a){
     a.addEventListener('click',function(e){
       var t=document.getElementById(a.getAttribute('href').slice(1)); if(!t) return;
       e.preventDefault(); a.classList.add('open');
-      setTimeout(function(){ glideTo(t.getBoundingClientRect().top+scrollY-80); }, RMq.matches?0:950);
+      setTimeout(function(){
+        var top=t.getBoundingClientRect().top+scrollY-80, g=t.querySelector('.gp svg');
+        if(!g||RMq.matches){ glideTo(top); return; }
+        /* growth door: start where the little walker begins her climb, then walk up with her to the words */
+        var r=g.getBoundingClientRect(), start=Math.min(top, r.top+scrollY+r.height-innerHeight*.96);
+        var lab=t.querySelector('.grow-label'), endY=lab?Math.max(start, lab.getBoundingClientRect().top+scrollY-110):top;
+        glideTo(start,null,function(){ setTimeout(function(){ if(endY>start+20) glideTo(endY,Math.min(5200,Math.max(2600,(endY-start)*6))); },500); });
+      }, RMq.matches?0:950);
       setTimeout(function(){ a.classList.remove('open'); }, 3600);
     });
   });
