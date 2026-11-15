@@ -2448,7 +2448,6 @@ On peut peut-être commencer par un simple moment de présence.">Je me sens perd
 #ap-h.tg-label .lb-ic{margin-top:.2em}
 .tg .tg-beat h3,.tg-beat h3{font-size:clamp(2.2rem,1.5rem + 2.4vw,3.4rem)}
 .tg-beat p{font-size:clamp(1.2rem,1rem + .8vw,1.55rem);max-width:34ch}
-.tg-pause,.tg-bar{display:none!important}
 @media (max-width:640px){#ap-h.tg-label{font-size:2rem;max-width:none}.tg-beat h3{font-size:2.2rem}.tg-beat p{font-size:1.12rem}}
 /* growth: words on the left, a mountain on the right; seen from behind, she climbs toward the site's sun as you scroll */
 .grow-in.gp-on{max-width:72rem;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(1.5rem,4vw,4rem);align-items:center;text-align:left}
@@ -4349,7 +4348,7 @@ if(gd) gd.addEventListener('click',function(){
 /* ---- how we work together: four moments that play when the scene is in view ---- */
 var tg=$('#together');
 if(tg){
-  var steps=$$('.tg-step',tg), pauseBtn=$('.tg-pause',tg), beat=1, playing=false, userPaused=true /* no autoplay: each visitor moves on when they choose */, ended=false, seen=false, BEAT=7000;
+  var steps=$$('.tg-step',tg), pauseBtn=$('.tg-pause',tg), beat=1, playing=false, userPaused=false, ended=false, seen=false, BEAT=9000;
   tg.style.setProperty('--beat', BEAT+'ms');
   function show(i){
     beat=i; tg.dataset.beat=String(i);
