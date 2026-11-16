@@ -479,7 +479,7 @@ function finish(){
 /* iPhone: Web Audio is muted by the silent switch unless a media element is playing.
    A silent looping <audio>, started inside the tap, moves iOS into playback mode. */
 let unlockEl=null;
-function iosUnlock(){try{if(!unlockEl){unlockEl=document.createElement("audio");unlockEl.src="snd/silence30.mp3";unlockEl.loop=true;
+function iosUnlock(){try{if(!unlockEl){unlockEl=document.createElement("audio");unlockEl.src=IOS?"snd/silence.mp3":"snd/silence30.mp3";unlockEl.loop=true;
   unlockEl.setAttribute("playsinline","");unlockEl.setAttribute("x-webkit-airplay","deny");unlockEl.preload="auto";document.body.appendChild(unlockEl)}
   const p=unlockEl.play();if(p&&p.catch)p.catch(()=>{})}catch(e){}
   if(pool)pool.forEach(m=>{if(!m.unlocked&&!m.owner){m.unlocked=true;try{m.el.src="snd/silence.mp3";const q=m.el.play();if(q&&q.then)q.then(()=>{if(!m.owner)m.el.pause()}).catch(()=>{})}catch(e){}}})}
@@ -617,17 +617,22 @@ document.getElementById("meds").addEventListener("click",e=>{const k=e.target.cl
   const d=isFinite(voice.duration)?voice.duration:1e9;voice.currentTime=Math.max(0,Math.min(d-.5,voice.currentTime+ +k.dataset.skip));vtime()});
 document.getElementById("meds").addEventListener("input",e=>{if(!e.target.classList.contains("seek")||!voice)return;seeking=+e.target.value;vtime()});
 document.getElementById("meds").addEventListener("change",e=>{if(!e.target.classList.contains("seek")||!voice)return;voice.currentTime=+e.target.value;seeking=null;vtime()});
-document.getElementById("meds").addEventListener("click",async e=>{const b=e.target.closest("[data-med]");if(!b)return;const i=+b.dataset.med;
+/* The voice starts inside the tap itself (iPhone refuses audio started after a wait).
+   On iPhone the voice plays straight to the speaker instead of through the sound mixer,
+   which can stay silent there; the phone's own volume buttons set its level. */
+document.getElementById("meds").addEventListener("click",e=>{const b=e.target.closest("[data-med]");if(!b)return;const i=+b.dataset.med;
   if(voice&&voiceIdx===i&&!voice.paused){voice.pause();render();return}
   /* only one voice recording at a time: the welcome stops when a meditation starts */
   if(wa&&!wa.paused)wa.pause();
-  if(voice&&voiceIdx===i&&voice.paused&&!voice.ended&&voice.currentTime>0){if(!playing)await start();try{await voice.play()}catch(err){}render();return}
-  if(voice){voice.pause()}
-  if(!playing)await start();
-  voice=new Audio(MEDS[lang][i]);voiceIdx=i;
-  try{const src=ctx.createMediaElementSource(voice),g=ctx.createGain();g.gain.value=st.vvol/100;src.connect(g).connect(master);nodes.voice=g}catch(err){nodes.voice=null;voice.volume=st.vvol/100}
-  voice.addEventListener("timeupdate",vtime);voice.addEventListener("ended",()=>render());voice.addEventListener("pause",()=>render());voice.addEventListener("play",()=>render());
-  await voice.play();render();vtime();});
+  const resume=voice&&voiceIdx===i&&voice.paused&&!voice.ended&&voice.currentTime>0;
+  if(!playing)start();   /* the chosen background sounds, if any */
+  if(!resume){
+    if(voice){voice.pause()}
+    voice=new Audio(MEDS[lang][i]);voice.setAttribute("playsinline","");voice.preload="auto";voiceIdx=i;nodes.voice=null;
+    if(!IOS&&ctx){try{const src=ctx.createMediaElementSource(voice),g=ctx.createGain();g.gain.value=st.vvol/100;src.connect(g).connect(master);nodes.voice=g}catch(err){nodes.voice=null}}
+    if(!nodes.voice){try{voice.volume=st.vvol/100}catch(err){}}
+    voice.addEventListener("timeupdate",vtime);voice.addEventListener("ended",()=>render());voice.addEventListener("pause",()=>render());voice.addEventListener("play",()=>render());}
+  const q=voice.play();if(q&&q.catch)q.catch(()=>{});render();vtime();});
 document.querySelectorAll(".langs button").forEach(b=>b.addEventListener("click",()=>{lang=b.dataset.l;try{localStorage.setItem("mc-lang",lang)}catch(e){}try{history.replaceState(null,"",lang==="fr"?location.pathname:"#"+lang)}catch(e){}render()}));
 document.getElementById("presets").innerHTML=`<button class="preset" type="button" data-none></button>`+PRESETS.map((_,i)=>`<button class="preset" type="button" data-p="${i}"></button>`).join("");
 document.getElementById("presets").addEventListener("click",async e=>{const b=e.target.closest(".preset");if(!b)return;
@@ -696,6 +701,8 @@ function seaSilent(){if(!playing){try{unlockEl&&unlockEl.pause()}catch(e){}}}
 document.getElementById("seaRate").addEventListener("input",e=>{sea.r=+e.target.value;try{localStorage.setItem("mc-sea-r",sea.r)}catch(err){}
   sea.t0=performance.now()/1000;seaUI(T[lang]);summaries(T[lang])});
 document.getElementById("seaVol").addEventListener("input",e=>{sea.vol=+e.target.value});
+/* iPhone ignores volume set by a web page, so its voice slider would do nothing */
+if(IOS){const r=document.getElementById("voiceVol").closest(".row");if(r)r.hidden=true}
 syncInputs();render();
 
 document.addEventListener("visibilitychange",()=>{if(document.visibilityState==="visible"&&playing&&ctx&&ctx.state!=="running"){iosUnlock();ctx.resume().catch(()=>{})}});
