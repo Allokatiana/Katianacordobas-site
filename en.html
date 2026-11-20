@@ -2933,13 +2933,6 @@ body.amb-playing:not(.past-hero) .amb-mini{opacity:0!important;pointer-events:no
   </div>
 </section>
 </main>
-<dialog class="book" aria-labelledby="book-h">
-  <div class="book-in">
-    <div class="book-top"><p id="book-h" class="d book-h">Book your session</p><button class="book-x" type="button" aria-label="Close"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" d="M6 6l12 12M18 6 6 18"/></svg></button></div>
-    <div class="book-frame"><p class="book-wait">The calendar is loading…</p><iframe title="Book your session" data-src="https://calendly.com/katianacoach/inner-work-coaching-session?embed_type=Inline&amp;hide_gdpr_banner=1&amp;background_color=fbf6f1&amp;text_color=3a2830&amp;primary_color=9a4a63" loading="lazy"></iframe></div>
-    <p class="book-alt"><a href="https://calendly.com/katianacoach/inner-work-coaching-session" target="_blank" rel="noopener">Calendar not showing? Open it in a new window.</a></p>
-  </div>
-</dialog>
 <script>window.KC_LANG={"copy": "Copy", "copied": "Copied"};</script>
 <script>/* ============================================================================
    scrollcraft: a scroll-driven interaction runtime
@@ -4498,21 +4491,6 @@ var sec=document.querySelector('.ask6'); if(!sec) return;
 var q=sec.querySelector('.ask-q');
 function check(){ var r=q.getBoundingClientRect(); if(r.top < innerHeight*0.95 && r.bottom > innerHeight*0.12){ sec.classList.add('read'); removeEventListener('scroll',check); } }
 addEventListener('scroll',check,{passive:true}); setTimeout(check,600);
-})();
-
-/* ---- every "Book" button opens the calendar inside the page; the normal link still works if anything fails ---- */
-(function(){
-var dlg=document.querySelector('dialog.book'); if(!dlg || !dlg.showModal) return;
-var frame=dlg.querySelector('iframe'), menu=document.querySelector('dialog.index');
-function open(ev){
-  ev.preventDefault();
-  if(menu && menu.open) menu.close();
-  if(!frame.src){ var u=frame.dataset.src; try{ u+='&embed_domain='+encodeURIComponent(location.hostname||'katianacordoba.com'); }catch(e){} frame.src=u; }
-  dlg.showModal();
-}
-[].slice.call(document.querySelectorAll('a[data-book]')).forEach(function(a){ a.addEventListener('click',open); });
-dlg.querySelector('.book-x').addEventListener('click',function(){ dlg.close(); });
-dlg.addEventListener('click',function(ev){ if(ev.target===dlg) dlg.close(); });
 })();
 
 /* ---- v26 · background music: ON by default, ducks to 10% while the bowl sings, then rises back by itself ----
